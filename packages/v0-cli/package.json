@@ -6,6 +6,9 @@
   "scripts": {
     "build": "tsdown"
   },
+  "bin": {
+    "vuetify0": "./dist/index.js"
+  },
   "keywords": [],
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",

@@ -6,6 +6,9 @@
   "scripts": {
     "build": "tsdown"
   },
+  "bin": {
+    "create-vuetify-v0": "./dist/index.js"
+  },
   "keywords": [
     "vuetify",
     "cli",
