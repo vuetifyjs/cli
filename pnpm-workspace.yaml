@@ -1,0 +1,11 @@
+packages:
+  - 'packages/*'
+catalog:
+  bumpp: ^10.3.1
+  clerc: ^0.44.0
+  eslint: ^9.38.0
+  eslint-config-vuetify: ^4.2.0
+  giget: ^2.0.0
+  kolorist: ^1.8.0
+  sherif: ^1.8.0
+  tsdown: ^0.15.11
