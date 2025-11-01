@@ -1,6 +1,7 @@
 packages:
   - 'packages/*'
 catalog:
+  '@types/node': ^24.9.2
   bumpp: ^10.3.1
   clerc: ^0.44.0
   eslint: ^9.38.0
@@ -9,3 +10,4 @@ catalog:
   kolorist: ^1.8.0
   sherif: ^1.8.0
   tsdown: ^0.15.11
+  typescript: ^5.9.3

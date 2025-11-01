@@ -13,9 +13,11 @@
   "license": "MIT",
   "packageManager": "pnpm@10.7.1",
   "devDependencies": {
+    "@types/node": "catalog:",
     "bumpp": "catalog:",
     "eslint": "catalog:",
     "eslint-config-vuetify": "catalog:",
-    "sherif": "catalog:"
+    "sherif": "catalog:",
+    "typescript": "catalog:"
   }
 }
