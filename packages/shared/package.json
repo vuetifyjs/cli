@@ -3,10 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "description": "Shared functions for Vuetify CLI",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsdown"
-  },
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
@@ -15,5 +11,10 @@
     "kolorist": "catalog:",
     "tsdown": "catalog:",
     "@vuetify/cli-shared": "workspace:*"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.ts"
+    }
   }
 }

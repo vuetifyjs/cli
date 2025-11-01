@@ -2,11 +2,17 @@
   "name": "create-vuetify-v0",
   "version": "0.0.0",
   "description": "Create a new Vuetify project",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "tsdown"
   },
-  "keywords": ["vuetify", "cli", "create", "scaffold", "starter"],
+  "keywords": [
+    "vuetify",
+    "cli",
+    "create",
+    "scaffold",
+    "starter"
+  ],
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
@@ -15,5 +21,11 @@
     "kolorist": "catalog:",
     "tsdown": "catalog:",
     "@vuetify/cli-shared": "workspace:*"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
   }
 }

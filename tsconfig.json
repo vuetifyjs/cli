@@ -13,7 +13,10 @@
     "forceConsistentCasingInFileNames": true,
     "types": [
       "node"
-    ]
+    ],
+    "paths": {
+      "@vuetify/cli-shared": ["./packages/shared/src"]
+    }
   },
   "include": ["./packages/**/src"]
 }

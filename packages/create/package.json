@@ -2,7 +2,7 @@
   "name": "create-vuetify",
   "version": "0.0.0",
   "description": "Create a new Vuetify project",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "tsdown"
   },
@@ -15,5 +15,11 @@
     "kolorist": "catalog:",
     "tsdown": "catalog:",
     "@vuetify/cli-shared": "workspace:*"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
   }
 }
