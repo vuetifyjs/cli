@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   default:
+    '@types/node':
+      specifier: ^24.9.2
+      version: 24.9.2
     bumpp:
       specifier: ^10.3.1
       version: 10.3.1
@@ -39,7 +42,7 @@ importers:
   .:
     devDependencies:
       '@types/node':
-        specifier: ^24.9.2
+        specifier: 'catalog:'
         version: 24.9.2
       bumpp:
         specifier: 'catalog:'
