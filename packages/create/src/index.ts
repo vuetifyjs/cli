@@ -1,8 +1,9 @@
 import { relative, resolve } from 'node:path'
-import { i18n, projectArgs, type ProjectArgs, upgradeSelf } from '@vuetify/cli-shared'
+import { i18n, projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
 import { defineCommand, runMain } from 'citty'
 
 import { version } from '../package.json'
+import { upgrade } from './commands/upgrade'
 
 const cwd = process.cwd()
 
@@ -24,13 +25,7 @@ export const main = defineCommand({
     console.log('Vuetify project creation will be implemented here')
   },
   subCommands: {
-    upgrade: defineCommand({
-      meta: {
-        name: 'upgrade',
-        description: i18n.t('commands.upgrade.description', { pkg: 'create-vuetify' }),
-      },
-      run: () => upgradeSelf('create-vuetify'),
-    }),
+    upgrade,
   },
 })
 

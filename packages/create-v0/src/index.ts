@@ -1,8 +1,9 @@
 import { relative, resolve } from 'node:path'
-import { downloadVuetifyV0Template, i18n, projectArgs, type ProjectArgs, upgradeSelf } from '@vuetify/cli-shared'
+import { downloadVuetifyV0Template, i18n, projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
 import { defineCommand, runMain } from 'citty'
 
 import { version } from '../package.json'
+import { upgrade } from './commands/upgrade'
 
 const cwd = process.cwd()
 
@@ -27,13 +28,7 @@ export const main = defineCommand({
     })
   },
   subCommands: {
-    upgrade: defineCommand({
-      meta: {
-        name: 'upgrade',
-        description: i18n.t('commands.upgrade.description', { pkg: 'create-vuetify-v0' }),
-      },
-      run: () => upgradeSelf('create-vuetify-v0'),
-    }),
+    upgrade,
   },
 })
 

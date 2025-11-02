@@ -4,7 +4,7 @@ import { i18n } from '../i18n'
 
 const choices = ['eslint']
 
-export const commandAdd = defineCommand({
+export const add = defineCommand({
   meta: {
     name: 'add',
     description: i18n.t('commands.add.description'),
