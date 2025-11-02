@@ -1,4 +1,5 @@
 import type { ArgDef } from 'citty'
+import { i18n } from './i18n'
 
 export type ProjectArgs = {
   dir: string
@@ -9,12 +10,12 @@ export function projectArgs (project: string) {
   return {
     dir: {
       type: 'string',
-      description: 'The directory to create the project in',
+      description: i18n.t('args.dir.description'),
       default: project,
     },
     force: {
       type: 'boolean',
-      description: 'Force overwrite existing files',
+      description: i18n.t('args.force.description'),
       default: false,
     },
   } satisfies Record<string, ArgDef>

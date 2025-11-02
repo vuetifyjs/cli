@@ -1,4 +1,5 @@
 export { projectArgs, type ProjectArgs } from './args'
 export { downloadVuetifyV0Template } from './functions/download'
 export { upgradeSelf } from './functions/upgrade'
+export * from './i18n'
 export { templateBuilder } from './utils/template'

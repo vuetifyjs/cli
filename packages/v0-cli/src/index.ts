@@ -1,4 +1,4 @@
-import { upgradeSelf } from '@vuetify/cli-shared'
+import { i18n, upgradeSelf } from '@vuetify/cli-shared'
 import { defineCommand, runMain } from 'citty'
 
 import { version } from '../package.json'
@@ -8,14 +8,14 @@ export const main = defineCommand({
   meta: {
     name: '@vuetify/v0',
     version,
-    description: 'Unified CLI for Vuetify0',
+    description: i18n.t('cli.v0.description'),
   },
   subCommands: {
     init,
     upgrade: defineCommand({
       meta: {
         name: 'upgrade',
-        description: 'Upgrade @vuetify/cli-v0 to latest version',
+        description: i18n.t('commands.upgrade.description', { pkg: '@vuetify/cli-v0' }),
       },
       run: () => upgradeSelf('@vuetify/cli-v0'),
     }),

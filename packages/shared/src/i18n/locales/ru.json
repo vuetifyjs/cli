@@ -1,0 +1,31 @@
+{
+  "commands": {
+    "init": {
+      "description": "Инициализировать проект Vuetify",
+      "creating_project": "Создаём проект в %{dir}"
+    },
+    "upgrade": {
+      "description": "Обновить %{pkg} до последней версии",
+      "not_global": "%{pkg} не установлен глобально.",
+      "start": "Обновляем %{pkg}",
+      "success": "Успешно обновлен %{pkg} до последней версии.",
+      "fail": "Не удалось обновить %{pkg}: %{message}"
+    }
+  },
+  "args": {
+    "dir": {
+      "description": "Папка, в которой будет создан проект"
+    },
+    "force": {
+      "description": "Принудительно перезаписать существующие файлы"
+    }
+  },
+  "cli": {
+    "v0": {
+      "description": "CLI для Vuetify0"
+    },
+    "create_v0": {
+      "description": "Создать проект Vuetify0"
+    }
+  }
+}

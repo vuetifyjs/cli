@@ -1,0 +1,31 @@
+{
+  "commands": {
+    "init": {
+      "description": "Initialize a Vuetify project",
+      "creating_project": "Creating project in %{dir}"
+    },
+    "upgrade": {
+      "description": "Upgrade %{pkg} to latest version",
+      "not_global": "%{pkg} is not installed globally.",
+      "start": "Upgrading %{pkg} globally using nypm...",
+      "success": "Successfully upgraded %{pkg} to latest.",
+      "fail": "Failed to upgrade %{pkg}: %{message}"
+    }
+  },
+  "args": {
+    "dir": {
+      "description": "The directory to create the project in"
+    },
+    "force": {
+      "description": "Force overwrite existing files"
+    }
+  },
+  "cli": {
+    "v0": {
+      "description": "Unified CLI for Vuetify0"
+    },
+    "create_v0": {
+      "description": "Create a Vuetify0 project"
+    }
+  }
+}

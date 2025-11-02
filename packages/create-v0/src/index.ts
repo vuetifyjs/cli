@@ -1,5 +1,5 @@
 import { relative, resolve } from 'node:path'
-import { downloadVuetifyV0Template, projectArgs, type ProjectArgs, upgradeSelf } from '@vuetify/cli-shared'
+import { downloadVuetifyV0Template, i18n, projectArgs, type ProjectArgs, upgradeSelf } from '@vuetify/cli-shared'
 import { defineCommand, runMain } from 'citty'
 
 import { version } from '../package.json'
@@ -10,7 +10,7 @@ export const main = defineCommand({
   meta: {
     name: 'create-vuetify-v0',
     version,
-    description: 'Create a Vuetify0 project',
+    description: i18n.t('cli.create_v0.description'),
   },
   args: {
     ...projectArgs('v0'),
@@ -18,7 +18,7 @@ export const main = defineCommand({
   run: ({ args }: { args: ProjectArgs }) => {
     const dir = args.dir
     const relativeDir = relative(cwd, resolve(cwd, dir))
-    console.log(`Creating project in ${relativeDir}`)
+    console.log(i18n.t('commands.init.creating_project', { dir: relativeDir }))
 
     downloadVuetifyV0Template({
       cwd,
@@ -30,7 +30,7 @@ export const main = defineCommand({
     upgrade: defineCommand({
       meta: {
         name: 'upgrade',
-        description: 'Upgrade create-vuetify-v0 to latest version',
+        description: i18n.t('commands.upgrade.description', { pkg: 'create-vuetify-v0' }),
       },
       run: () => upgradeSelf('create-vuetify-v0'),
     }),
