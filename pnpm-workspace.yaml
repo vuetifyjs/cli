@@ -7,11 +7,15 @@ catalog:
   clerc: ^0.44.0
   eslint: ^9.38.0
   eslint-config-vuetify: ^4.2.0
+  exsolve: ^1.0.7
   giget: ^2.0.0
   i18n-js: ^4.5.1
   is-installed-globally: ^1.0.0
   kolorist: ^1.8.0
   nypm: ^0.6.2
+  open: ^10.2.0
+  pkg-types: ^2.3.0
   sherif: ^1.8.0
   tsdown: ^0.15.11
   typescript: ^5.9.3
+  vuetify: ^3.10.8

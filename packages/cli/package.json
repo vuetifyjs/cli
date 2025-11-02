@@ -18,6 +18,7 @@
     "giget": "catalog:",
     "kolorist": "catalog:",
     "nypm": "catalog:",
+    "open": "catalog:",
     "tsdown": "catalog:"
   },
   "main": "./dist/index.js",

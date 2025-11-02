@@ -3,6 +3,7 @@ import { defineCommand, runMain } from 'citty'
 
 import { version } from '../package.json'
 import { add } from './commands/add'
+import { docs } from './commands/docs'
 import { init } from './commands/init'
 import { update } from './commands/update'
 
@@ -16,6 +17,7 @@ export const main = defineCommand({
     init,
     add,
     update,
+    docs,
     upgrade: defineCommand({
       meta: {
         name: 'upgrade',

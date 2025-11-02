@@ -8,11 +8,14 @@
   "devDependencies": {
     "@vuetify/cli-shared": "workspace:*",
     "citty": "catalog:",
+    "exsolve": "catalog:",
     "giget": "catalog:",
     "i18n-js": "catalog:",
     "is-installed-globally": "catalog:",
     "kolorist": "catalog:",
     "nypm": "catalog:",
+    "open": "catalog:",
+    "pkg-types": "catalog:",
     "tsdown": "catalog:"
   },
   "exports": {

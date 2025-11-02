@@ -4,6 +4,10 @@
       "description": "Initialize a Vuetify project",
       "creating_project": "Creating project in %{dir}"
     },
+    "docs": {
+      "description": "Open documentation",
+      "opening": "Opening %{url}"
+    },
     "add": {
       "description": "Add tools to the project",
       "stub": "Add command will install MCP and ESLint in the future."
@@ -26,6 +30,9 @@
     },
     "force": {
       "description": "Force overwrite existing files"
+    },
+    "version": {
+      "description": "Manually specify Vuetify version (e.g. 1, 2, 3)"
     }
   },
   "cli": {
