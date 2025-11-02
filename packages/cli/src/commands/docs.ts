@@ -1,4 +1,5 @@
-import { i18n, openVuetifyDocs } from '@vuetify/cli-shared'
+import { openVuetifyDocs } from '@vuetify/cli-shared'
+import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand } from 'citty'
 
 export const docs = defineCommand({

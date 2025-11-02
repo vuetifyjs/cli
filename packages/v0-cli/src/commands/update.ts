@@ -1,4 +1,4 @@
-import { i18n } from '@vuetify/cli-shared'
+import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand } from 'citty'
 
 const packages = ['@vuetify/v0', '@vuetify/paper']

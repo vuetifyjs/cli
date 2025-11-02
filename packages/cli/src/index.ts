@@ -1,5 +1,5 @@
-import { i18n } from '@vuetify/cli-shared'
 import { add } from '@vuetify/cli-shared/commands'
+import { i18n } from '@vuetify/cli-shared/i18n'
 
 import { defineCommand, runMain } from 'citty'
 import { version } from '../package.json'
