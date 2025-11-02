@@ -24,6 +24,9 @@
   "exports": {
     ".": {
       "import": "./index.ts"
+    },
+    "./commands": {
+      "import": "./commands/index.ts"
     }
   }
 }

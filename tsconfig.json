@@ -15,7 +15,8 @@
       "node"
     ],
     "paths": {
-      "@vuetify/cli-shared": ["./packages/shared/src"]
+      "@vuetify/cli-shared": ["./packages/shared/src"],
+      "@vuetify/cli-shared/commands": ["./packages/shared/src/commands"]
     }
   },
   "include": ["./packages/**/src"]
