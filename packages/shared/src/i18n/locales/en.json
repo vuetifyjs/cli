@@ -21,6 +21,12 @@
     }
   },
   "cli": {
+    "main": {
+      "description": "Unified CLI for Vuetify"
+    },
+    "create": {
+      "description": "Create a new Vuetify project"
+    },
     "v0": {
       "description": "Unified CLI for Vuetify0"
     },

@@ -21,6 +21,12 @@
     }
   },
   "cli": {
+    "main": {
+      "description": "CLI для Vuetify"
+    },
+    "create": {
+      "description": "Создать новый проект Vuetify"
+    },
     "v0": {
       "description": "CLI для Vuetify0"
     },
