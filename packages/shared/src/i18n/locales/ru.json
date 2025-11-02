@@ -26,8 +26,17 @@
       "invalid_integration": "Недопустимая интеграция: %{integration}. Доступные: %{choices}"
     },
     "update": {
-      "description": "Обновить пакеты проекта",
-      "stub": "Команда update будет управлять обновлениями"
+      "description": "Обновить vuetify зависимости проекта",
+      "stub": "Команда update будет управлять обновлениями",
+      "packages": {
+        "description": "Список пакетов для обновления через запятую"
+      },
+      "nightly": {
+        "description": "Использовать ночные сборки при обновлении"
+      },
+      "nightly_status": "Ночные сборки: %{status}",
+      "packages_to_update": "Пакеты для обновления: %{pkgs}",
+      "no_packages_specified": "Пакеты не указаны; будут обновлены значения по умолчанию"
     },
     "upgrade": {
       "description": "Обновить %{pkg} до последней версии",
@@ -60,7 +69,9 @@
     "all_done": "Готово! Приятной разработки!"
   },
   "common": {
-    "and": "и"
+    "and": "и",
+    "enabled": "включены",
+    "disabled": "выключены"
   },
   "args": {
     "dir": {

@@ -11,12 +11,11 @@ export const update = defineCommand({
   args: {
     nightly: {
       type: 'boolean',
-      description: 'Use nightly builds when updating',
-      default: false,
+      description: i18n.t('commands.update.nightly.description'),
     },
     packages: {
       type: 'string',
-      description: 'Comma-separated list of packages to update',
+      description: i18n.t('commands.update.packages.description'),
       default: packages.join(','),
     },
   },
@@ -28,11 +27,11 @@ export const update = defineCommand({
       .map(s => s.trim())
       .filter(Boolean)
 
-    console.log(`Nightly builds: ${nightly ? 'enabled' : 'disabled'}`)
+    console.log(i18n.t('commands.update.nightly_status', { status: i18n.t(nightly ? 'common.enabled' : 'common.disabled') }))
     if (list.length > 0) {
-      console.log(`Packages to update: ${list.join(', ')}`)
+      console.log(i18n.t('commands.update.packages_to_update', { pkgs: list.join(', ') }))
     } else {
-      console.log('No specific packages provided; would update defaults')
+      console.log(i18n.t('commands.update.no_packages_specified'))
     }
     // TODO: Implement actual package update logic with optional nightly builds
   },

@@ -26,8 +26,17 @@
       "invalid_integration": "Invalid integration: %{integration}. Available: %{choices}"
     },
     "update": {
-      "description": "Update project packages",
-      "stub": "Update command will manage package updates; nightly builds support coming."
+      "description": "Update vuetify dependencies project",
+      "stub": "Update command will manage package updates; nightly builds support coming.",
+      "packages": {
+        "description": "Comma-separated list of packages to update"
+      },
+      "nightly": {
+        "description": "Use nightly builds when updating"
+      },
+      "nightly_status": "Nightly builds: %{status}",
+      "packages_to_update": "Packages to update: %{pkgs}",
+      "no_packages_specified": "No specific packages provided; would update defaults"
     },
     "upgrade": {
       "description": "Upgrade %{pkg} to latest version",
@@ -60,7 +69,9 @@
     "all_done": "All done! Happy hacking!"
   },
   "common": {
-    "and": "and"
+    "and": "and",
+    "enabled": "enabled",
+    "disabled": "disabled"
   },
   "args": {
     "dir": {
