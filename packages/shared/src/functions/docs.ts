@@ -1,9 +1,10 @@
 import open from 'open'
 import { i18n } from '../i18n'
-import { extractMajor, tryResolveVuetifyVersion } from '../utils/vuetify'
+import { extractMajor } from '../utils/package'
+import { tryResolveVuetifyVersion } from '../utils/vuetify'
 
-export async function openVuetifyDocs (cwd: string = process.cwd(), versionArg?: string) {
-  const resolvedVersion = await tryResolveVuetifyVersion(cwd)
+export async function openVuetifyDocs (versionArg?: string, { cwd }: { cwd?: string } = {}) {
+  const resolvedVersion = await tryResolveVuetifyVersion({ cwd })
   const usingManual = typeof versionArg === 'string' && versionArg.length > 0
   const major = extractMajor(usingManual ? versionArg! : resolvedVersion)
 

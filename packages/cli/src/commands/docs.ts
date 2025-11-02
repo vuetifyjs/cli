@@ -15,7 +15,7 @@ export const docs = defineCommand({
   },
   run: async ctx => {
     const version = ctx.args.version
-    await openVuetifyDocs(process.cwd(), version)
+    await openVuetifyDocs(version, { cwd: process.cwd() })
   },
 })
 

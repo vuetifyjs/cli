@@ -6,6 +6,7 @@
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@clack/prompts": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
     "citty": "catalog:",
     "exsolve": "catalog:",
@@ -15,7 +16,9 @@
     "kolorist": "catalog:",
     "nypm": "catalog:",
     "open": "catalog:",
+    "package-manager-detector": "catalog:",
     "pkg-types": "catalog:",
+    "tinyexec": "catalog:",
     "tsdown": "catalog:"
   },
   "exports": {
