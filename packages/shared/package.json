@@ -6,11 +6,11 @@
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "clerc": "catalog:",
+    "@vuetify/cli-shared": "workspace:*",
+    "citty": "catalog:",
     "giget": "catalog:",
     "kolorist": "catalog:",
-    "tsdown": "catalog:",
-    "@vuetify/cli-shared": "workspace:*"
+    "tsdown": "catalog:"
   },
   "exports": {
     ".": {

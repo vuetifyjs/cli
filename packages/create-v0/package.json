@@ -18,12 +18,14 @@
   ],
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "@vuetify/cli-shared": "workspace:*",
+    "citty": "catalog:"
+  },
   "devDependencies": {
-    "clerc": "catalog:",
     "giget": "catalog:",
     "kolorist": "catalog:",
-    "tsdown": "catalog:",
-    "@vuetify/cli-shared": "workspace:*"
+    "tsdown": "catalog:"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
