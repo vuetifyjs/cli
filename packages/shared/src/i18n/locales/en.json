@@ -4,6 +4,14 @@
       "description": "Initialize a Vuetify project",
       "creating_project": "Creating project in %{dir}"
     },
+    "add": {
+      "description": "Add tools to the project",
+      "stub": "Add command will install MCP and ESLint in the future."
+    },
+    "update": {
+      "description": "Update project packages",
+      "stub": "Update command will manage package updates; nightly builds support coming."
+    },
     "upgrade": {
       "description": "Upgrade %{pkg} to latest version",
       "not_global": "%{pkg} is not installed globally.",

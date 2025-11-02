@@ -2,7 +2,9 @@ import { i18n, upgradeSelf } from '@vuetify/cli-shared'
 import { defineCommand, runMain } from 'citty'
 
 import { version } from '../package.json'
+import { add } from './commands/add'
 import { init } from './commands/init'
+import { update } from './commands/update'
 
 export const main = defineCommand({
   meta: {
@@ -12,6 +14,8 @@ export const main = defineCommand({
   },
   subCommands: {
     init,
+    add,
+    update,
     upgrade: defineCommand({
       meta: {
         name: 'upgrade',
