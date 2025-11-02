@@ -9,7 +9,9 @@
     "@vuetify/cli-shared": "workspace:*",
     "citty": "catalog:",
     "giget": "catalog:",
+    "is-installed-globally": "catalog:",
     "kolorist": "catalog:",
+    "nypm": "catalog:",
     "tsdown": "catalog:"
   },
   "exports": {

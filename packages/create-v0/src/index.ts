@@ -1,5 +1,5 @@
 import { relative, resolve } from 'node:path'
-import { downloadVuetifyV0Template, projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
+import { downloadVuetifyV0Template, projectArgs, type ProjectArgs, upgradeSelf } from '@vuetify/cli-shared'
 import { defineCommand, runMain } from 'citty'
 
 import { version } from '../package.json'
@@ -25,6 +25,15 @@ export const main = defineCommand({
       force: args.force,
       dir: args.dir,
     })
+  },
+  subCommands: {
+    upgrade: defineCommand({
+      meta: {
+        name: 'upgrade',
+        description: 'Upgrade create-vuetify-v0 to latest version',
+      },
+      run: () => upgradeSelf('create-vuetify-v0'),
+    }),
   },
 })
 

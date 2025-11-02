@@ -17,6 +17,7 @@
     "citty": "catalog:",
     "giget": "catalog:",
     "kolorist": "catalog:",
+    "nypm": "catalog:",
     "tsdown": "catalog:"
   },
   "main": "./dist/index.js",

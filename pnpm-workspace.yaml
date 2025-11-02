@@ -8,7 +8,9 @@ catalog:
   eslint: ^9.38.0
   eslint-config-vuetify: ^4.2.0
   giget: ^2.0.0
+  is-installed-globally: ^1.0.0
   kolorist: ^1.8.0
+  nypm: ^0.6.2
   sherif: ^1.8.0
   tsdown: ^0.15.11
   typescript: ^5.9.3
