@@ -27,6 +27,12 @@
     },
     "./commands": {
       "import": "./commands/index.ts"
+    },
+    "./utils": {
+      "import": "./utils/index.ts"
+    },
+    "./i18n": {
+      "import": "./i18n/index.ts"
     }
   }
 }
