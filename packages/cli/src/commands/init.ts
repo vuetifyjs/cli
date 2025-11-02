@@ -11,6 +11,10 @@ export const init = defineCommand({
   },
   args: {
     ...projectArgs('vuetify'),
+    v0: {
+      type: 'boolean',
+      description: i18n.t('commands.init.v0.description'),
+    },
   },
   run: ({ args }: { args: ProjectArgs }) => {
     const dir = args.dir
