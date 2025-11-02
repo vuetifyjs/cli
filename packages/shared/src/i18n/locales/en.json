@@ -1,5 +1,14 @@
 {
   "commands": {
+    "eslint": {
+      "description": "Install %{configPkg} to enable ESLint integration with Vuetify.",
+      "action": {
+        "install": "install %{pkgs}",
+        "upgrade": "upgrade %{pkgs}"
+      },
+      "current": "Currently",
+      "need_to": "We need to %{actions}."
+    },
     "init": {
       "description": "Initialize a Vuetify project",
       "creating_project": "Creating project in %{dir}"
@@ -10,7 +19,11 @@
     },
     "add": {
       "description": "Add tools to the project",
-      "stub": "Add command will install MCP and ESLint in the future."
+      "integration": {
+        "description": "Integration to add (choices: %{choices})"
+      },
+      "available_integrations": "Available integrations: %{choices}",
+      "invalid_integration": "Invalid integration: %{integration}. Available: %{choices}"
     },
     "update": {
       "description": "Update project packages",
@@ -23,6 +36,31 @@
       "success": "Successfully upgraded %{pkg} to latest.",
       "fail": "Failed to upgrade %{pkg}: %{message}"
     }
+  },
+  "prompts": {
+    "proceed": "Do you want to proceed?",
+    "eslint": {
+      "overwrite_config": "Found %{file}. Do you want to overwrite it?",
+      "create_config": "No ESLint config found. Do you want to create one?",
+      "add_scripts": "Do you want to add lint scripts to package.json?"
+    }
+  },
+  "spinners": {
+    "eslint": {
+      "installing_deps": "Installing dependencies...",
+      "deps_installed": "Dependencies installed!",
+      "setup_config": "Setting up ESLint config...",
+      "setup_complete": "ESLint config setup complete!"
+    }
+  },
+  "messages": {
+    "eslint": {
+      "deps_already_installed": "All required dependencies are already installed."
+    },
+    "all_done": "All done! Happy hacking!"
+  },
+  "common": {
+    "and": "and"
   },
   "args": {
     "dir": {
