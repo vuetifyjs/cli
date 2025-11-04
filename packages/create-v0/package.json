@@ -18,12 +18,10 @@
   ],
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "@vuetify/cli-shared": "workspace:*",
-    "citty": "catalog:",
-    "nypm": "catalog:"
-  },
   "devDependencies": {
+    "citty": "catalog:",
+    "nypm": "catalog:",
+    "@vuetify/cli-shared": "workspace:*",
     "giget": "catalog:",
     "kolorist": "catalog:",
     "tsdown": "catalog:"
