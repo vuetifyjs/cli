@@ -48,6 +48,9 @@
   },
   "prompts": {
     "proceed": "Do you want to proceed?",
+    "add": {
+      "choose_integration": "Choose an integration to add"
+    },
     "eslint": {
       "overwrite_config": "Found %{file}. Do you want to overwrite it?",
       "create_config": "No ESLint config found. Do you want to create one?",

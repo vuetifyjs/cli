@@ -48,6 +48,9 @@
   },
   "prompts": {
     "proceed": "Хотите продолжить?",
+    "add": {
+      "choose_integration": "Выберите интеграцию для добавления"
+    },
     "eslint": {
       "overwrite_config": "Найден %{file}. Хотите перезаписать?",
       "create_config": "Конфиг ESLint не найден. Создать его?",
