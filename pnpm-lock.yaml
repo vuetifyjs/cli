@@ -131,6 +131,9 @@ importers:
 
   packages/create-v0:
     devDependencies:
+      '@clack/prompts':
+        specifier: 'catalog:'
+        version: 0.11.0
       '@vuetify/cli-shared':
         specifier: workspace:*
         version: link:../shared
