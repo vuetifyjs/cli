@@ -35,7 +35,7 @@ export const add = defineCommand({
     }
     switch (integration) {
       case 'eslint': {
-        addEslint()
+        await addEslint()
         break
       }
     }
