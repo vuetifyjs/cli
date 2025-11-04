@@ -1,4 +1,5 @@
 import { relative, resolve } from 'node:path'
+import { spinner } from '@clack/prompts'
 import { downloadVuetifyV0Template, projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 
@@ -17,16 +18,17 @@ export const main = defineCommand({
   args: {
     ...projectArgs('v0'),
   },
-  run: ({ args }: { args: ProjectArgs }) => {
+  run: async ({ args }: { args: ProjectArgs }) => {
     const dir = args.dir
     const relativeDir = relative(cwd, resolve(cwd, dir))
-    console.log(i18n.t('commands.init.creating_project', { dir: relativeDir }))
-
-    downloadVuetifyV0Template({
+    const s = spinner()
+    s.start(i18n.t('commands.init.creating_project', { dir: relativeDir }))
+    await downloadVuetifyV0Template({
       cwd,
       force: args.force,
       dir: args.dir,
     })
+    s.stop(i18n.t('messages.all_done'))
   },
   subCommands: {
     upgrade,
