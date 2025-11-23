@@ -1,9 +1,9 @@
-import { relative, resolve } from 'node:path'
 import { spinner } from '@clack/prompts'
 import { downloadVuetifyV0Template, projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
-
 import { defineCommand, runMain } from 'citty'
+
+import { relative, resolve } from 'pathe'
 import { version } from '../package.json'
 import { upgrade } from './commands/upgrade'
 

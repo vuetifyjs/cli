@@ -6,4 +6,10 @@ export default vuetify({
     'pnpm/json-enforce-catalog': 'error',
     'pnpm/json-valid-catalog': 'error',
   },
+}, {
+  rules: {
+    'no-restricted-imports': ['error', {
+      patterns: ['node:path'],
+    }],
+  },
 })

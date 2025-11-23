@@ -1,7 +1,7 @@
-import { relative, resolve } from 'node:path'
 import { downloadVuetifyV0Template, projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand } from 'citty'
+import { relative, resolve } from 'pathe'
 
 const cwd = process.cwd()
 

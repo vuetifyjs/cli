@@ -16,6 +16,7 @@ catalog:
   nypm: ^0.6.2
   open: ^10.2.0
   package-manager-detector: ^1.5.0
+  pathe: ^2.0.3
   pkg-types: ^2.3.0
   sherif: ^1.8.0
   tinyexec: ^1.0.1

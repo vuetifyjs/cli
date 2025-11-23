@@ -17,6 +17,7 @@
     "nypm": "catalog:",
     "open": "catalog:",
     "package-manager-detector": "catalog:",
+    "pathe": "catalog:",
     "pkg-types": "catalog:",
     "tinyexec": "catalog:",
     "tsdown": "catalog:"

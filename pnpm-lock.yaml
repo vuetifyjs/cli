@@ -48,6 +48,9 @@ catalogs:
     package-manager-detector:
       specifier: ^1.5.0
       version: 1.5.0
+    pathe:
+      specifier: ^2.0.3
+      version: 2.0.3
     pkg-types:
       specifier: ^2.3.0
       version: 2.3.0
@@ -107,6 +110,9 @@ importers:
       open:
         specifier: 'catalog:'
         version: 10.2.0
+      pathe:
+        specifier: 'catalog:'
+        version: 2.0.3
       tsdown:
         specifier: 'catalog:'
         version: 0.15.11(typescript@5.9.3)
@@ -125,6 +131,9 @@ importers:
       kolorist:
         specifier: 'catalog:'
         version: 1.8.0
+      pathe:
+        specifier: 'catalog:'
+        version: 2.0.3
       tsdown:
         specifier: 'catalog:'
         version: 0.15.11(typescript@5.9.3)
@@ -149,6 +158,9 @@ importers:
       nypm:
         specifier: 'catalog:'
         version: 0.6.2
+      pathe:
+        specifier: 'catalog:'
+        version: 2.0.3
       tsdown:
         specifier: 'catalog:'
         version: 0.15.11(typescript@5.9.3)
@@ -188,6 +200,9 @@ importers:
       package-manager-detector:
         specifier: 'catalog:'
         version: 1.5.0
+      pathe:
+        specifier: 'catalog:'
+        version: 2.0.3
       pkg-types:
         specifier: 'catalog:'
         version: 2.3.0
@@ -218,6 +233,9 @@ importers:
       open:
         specifier: 'catalog:'
         version: 10.2.0
+      pathe:
+        specifier: 'catalog:'
+        version: 2.0.3
       tsdown:
         specifier: 'catalog:'
         version: 0.15.11(typescript@5.9.3)

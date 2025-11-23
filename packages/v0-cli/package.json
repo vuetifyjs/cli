@@ -19,6 +19,7 @@
     "kolorist": "catalog:",
     "nypm": "catalog:",
     "open": "catalog:",
+    "pathe": "catalog:",
     "tsdown": "catalog:"
   },
   "main": "./dist/index.js",

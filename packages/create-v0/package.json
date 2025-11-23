@@ -20,11 +20,12 @@
   "license": "MIT",
   "devDependencies": {
     "@clack/prompts": "catalog:",
-    "citty": "catalog:",
-    "nypm": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
+    "citty": "catalog:",
     "giget": "catalog:",
     "kolorist": "catalog:",
+    "nypm": "catalog:",
+    "pathe": "catalog:",
     "tsdown": "catalog:"
   },
   "main": "./dist/index.js",
