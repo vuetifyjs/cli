@@ -58,11 +58,13 @@
     }
   },
   "spinners": {
+    "dependencies": {
+      "installing": "Installing dependencies",
+      "installed": "Dependencies installed!"
+    },
     "eslint": {
-      "installing_deps": "Installing dependencies...",
-      "deps_installed": "Dependencies installed!",
       "setup_config": "Setting up ESLint config...",
-      "setup_complete": "ESLint config setup complete!"
+      "complete": "ESLint config setup complete!"
     }
   },
   "messages": {

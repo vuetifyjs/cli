@@ -58,11 +58,13 @@
     }
   },
   "spinners": {
+    "dependencies": {
+      "installing": "Устанавливаем зависимости",
+      "installed": "Зависимости установлены!"
+    },
     "eslint": {
-      "installing_deps": "Устанавливаем зависимости...",
-      "deps_installed": "Зависимости установлены!",
-      "setup_config": "Настраиваем конфиг ESLint...",
-      "setup_complete": "Настройка конфига ESLint завершена!"
+      "setup_config": "Настраиваем конфиг ESLint",
+      "complete": "Настройка конфига ESLint завершена!"
     }
   },
   "messages": {

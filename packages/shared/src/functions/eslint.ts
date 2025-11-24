@@ -76,7 +76,7 @@ export async function addEslint () {
     })
     if (shouldInstall === true) {
       const s = spinner()
-      s.start(i18n.t('spinners.eslint.installing_deps'))
+      s.start(i18n.t('spinners.dependencies.installing'))
       if (packagesToInstall.length > 0) {
         await addDevDependency(packagesToInstall, { silent: true })
       }
@@ -85,7 +85,7 @@ export async function addEslint () {
         const upgradeCommand = resolveCommand(packageManager!.agent, 'upgrade', packagesToUpgrade)
         await x(upgradeCommand!.command, upgradeCommand!.args.concat(['--silent']))
       }
-      s.stop(i18n.t('spinners.eslint.deps_installed'))
+      s.stop(i18n.t('spinners.dependencies.installed'))
     }
   } else {
     log.info(i18n.t('messages.eslint.deps_already_installed'))
@@ -104,7 +104,7 @@ export async function addEslint () {
     const s = spinner()
     s.start(i18n.t('spinners.eslint.setup_config'))
     await writeFile(configUrl ?? 'eslint.config.mjs', configData)
-    s.stop(i18n.t('spinners.eslint.setup_complete'))
+    s.stop(i18n.t('spinners.eslint.complete'))
   }
 
   const filename = await findPackage()
