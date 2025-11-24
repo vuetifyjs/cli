@@ -5,6 +5,7 @@
   "description": "Vuetify CLI",
   "type": "module",
   "scripts": {
+    "release": "bumpp -r",
     "build": "pnpm --filter=\"./packages/*\" --filter=\"!./packages/shared\" run build",
     "lint": "eslint --concurrency auto",
     "lint:fix": "eslint --fix --concurrency auto"
