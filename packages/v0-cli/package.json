@@ -7,12 +7,13 @@
     "build": "tsdown"
   },
   "bin": {
-    "vuetify0": "./dist/index.js"
+    "vuetify0": "./dist/index.mjs"
   },
   "keywords": [],
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@clack/prompts": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
     "citty": "catalog:",
     "giget": "catalog:",
@@ -20,12 +21,13 @@
     "nypm": "catalog:",
     "open": "catalog:",
     "pathe": "catalog:",
+    "tinyexec": "catalog:",
     "tsdown": "catalog:"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   }
 }

@@ -7,7 +7,7 @@
     "build": "tsdown"
   },
   "bin": {
-    "vuetify": "./dist/index.js"
+    "vuetify": "./dist/index.mjs"
   },
   "keywords": [],
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
@@ -22,10 +22,10 @@
     "pathe": "catalog:",
     "tsdown": "catalog:"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   }
 }

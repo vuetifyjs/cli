@@ -1,9 +1,11 @@
-import { downloadVuetifyV0Template, projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
+import { projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand } from 'citty'
-import { relative, resolve } from 'pathe'
+import { initVuetify0 } from '../utils/init'
 
 const cwd = process.cwd()
+
+const APP_DEFAULT_NAME = 'vuetify0-app'
 
 export const init = defineCommand({
   meta: {
@@ -11,17 +13,13 @@ export const init = defineCommand({
     description: i18n.t('commands.init.description'),
   },
   args: {
-    ...projectArgs('v0'),
+    ...projectArgs(),
   },
-  run: ({ args }: { args: ProjectArgs }) => {
-    const dir = args.dir
-    const relativeDir = relative(cwd, resolve(cwd, dir))
-    console.log(i18n.t('commands.init.creating_project', { dir: relativeDir }))
-
-    downloadVuetifyV0Template({
+  run: async ({ args }: { args: ProjectArgs }) => {
+    await initVuetify0({
       cwd,
-      force: args.force,
-      dir: args.dir,
+      ...args,
+      defaultName: APP_DEFAULT_NAME,
     })
   },
 })

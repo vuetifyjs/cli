@@ -1,25 +1,27 @@
 packages:
-  - 'packages/*'
+  - packages/*
+
 catalog:
-  '@clack/prompts': ^0.11.0
+  '@clack/prompts': ^1.0.0-alpha.6
   '@types/node': ^24.9.2
   bumpp: ^10.3.1
   citty: ^0.1.6
   clerc: ^0.44.0
-  eslint: ^9.38.0
-  eslint-config-vuetify: ^4.2.0
-  exsolve: ^1.0.7
+  eslint: ^9.39.1
+  eslint-config-vuetify: ^4.2.1-beta.1
+  exsolve: ^1.0.8
   giget: ^2.0.0
   i18n-js: ^4.5.1
   is-installed-globally: ^1.0.0
+  is-interactive: ^2.0.0
   kolorist: ^1.8.0
   nypm: ^0.6.2
-  open: ^10.2.0
+  open: ^11.0.0
   package-manager-detector: ^1.5.0
   pathe: ^2.0.3
   pkg-types: ^2.3.0
-  sherif: ^1.8.0
-  tinyexec: ^1.0.1
-  tsdown: ^0.15.11
+  sherif: ^1.9.0
+  tinyexec: ^1.0.2
+  tsdown: ^0.16.6
   typescript: ^5.9.3
-  vuetify: ^3.10.8
+  vuetify: ^3.10.11

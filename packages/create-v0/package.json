@@ -7,7 +7,7 @@
     "build": "tsdown"
   },
   "bin": {
-    "create-vuetify-v0": "./dist/index.js"
+    "create-vuetify-v0": "./dist/index.mjs"
   },
   "keywords": [
     "vuetify",
@@ -28,10 +28,10 @@
     "pathe": "catalog:",
     "tsdown": "catalog:"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   }
 }

@@ -4,10 +4,10 @@ import { templateBuilder } from '../utils/template'
 type DownloadTemplateOptions = {
   cwd?: string
   force?: boolean
-  dir?: string
+  dir: string
 }
 
-export async function downloadVuetifyV0Template (options: DownloadTemplateOptions = {}) {
+export async function downloadVuetifyV0Template (options: DownloadTemplateOptions) {
   const repo = 'AndreyYolkin/vuetify-templates'
   const subDir = 'v0'
 
@@ -15,8 +15,6 @@ export async function downloadVuetifyV0Template (options: DownloadTemplateOption
   await downloadTemplate(repoUrl, {
     cwd: options.cwd,
     force: options.force ?? true,
-    dir: options.dir ?? 'v0',
+    dir: options.dir,
   })
 }
-
-downloadVuetifyV0Template()

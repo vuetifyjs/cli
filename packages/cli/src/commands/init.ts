@@ -11,7 +11,7 @@ export const init = defineCommand({
     description: i18n.t('commands.init.description'),
   },
   args: {
-    ...projectArgs('vuetify'),
+    ...projectArgs(),
     v0: {
       type: 'boolean',
       description: i18n.t('commands.init.v0.description'),

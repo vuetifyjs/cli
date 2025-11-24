@@ -55,12 +55,19 @@
       "overwrite_config": "Found %{file}. Do you want to overwrite it?",
       "create_config": "No ESLint config found. Do you want to create one?",
       "add_scripts": "Do you want to add lint scripts to package.json?"
-    }
+    },
+    "directory": {
+      "name": "Project name",
+      "overwrite": "Directory \"%{dir}\" already exists. Do you want to overwrite it?",
+      "warn_exists": "Directory \"%{dir}\" already exists. Use --force to overwrite."
+    },
+    "install": "Do you want to install dependencies?"
   },
   "spinners": {
     "dependencies": {
       "installing": "Installing dependencies",
-      "installed": "Dependencies installed!"
+      "installed": "Dependencies installed!",
+      "failed": "Failed to install dependencies"
     },
     "eslint": {
       "setup_config": "Setting up ESLint config...",
@@ -71,7 +78,8 @@
     "eslint": {
       "deps_already_installed": "All required dependencies are already installed."
     },
-    "all_done": "All done! Happy hacking!"
+    "all_done": "All done! Happy hacking!",
+    "project_created": "Project created"
   },
   "common": {
     "and": "and",
@@ -87,6 +95,15 @@
     },
     "version": {
       "description": "Manually specify Vuetify version (e.g. 1, 2, 3)"
+    },
+    "interactive": {
+      "description": "Use interactive mode"
+    },
+    "name": {
+      "description": "Project name"
+    },
+    "install": {
+      "description": "Install dependencies after project creation"
     }
   },
   "cli": {
