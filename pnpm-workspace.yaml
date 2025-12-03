@@ -1,6 +1,8 @@
 packages:
   - packages/*
 
+catalogMode: strict
+
 catalog:
   '@clack/prompts': ^1.0.0-alpha.6
   '@types/node': ^24.9.2
