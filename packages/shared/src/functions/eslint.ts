@@ -13,27 +13,42 @@ import { getPackageManager, getPackageVersion, isVersionAtLeast, tryResolveFileP
 const blue = ansi256(33)
 const description = i18n.t('commands.eslint.description', { configPkg: blue(ESLINT_CONFIG) })
 
-const eslintVersion = await getPackageVersion(ESLINT)
-const configVersion = await getPackageVersion(ESLINT_CONFIG)
+async function getEslintStatus () {
+  const eslintVersion = await getPackageVersion(ESLINT)
+  const configVersion = await getPackageVersion(ESLINT_CONFIG)
 
-const hasEslint = await tryResolvePackage(ESLINT)
-const hasEslintConfig = await tryResolvePackage(ESLINT_CONFIG)
+  const hasEslint = await tryResolvePackage(ESLINT)
+  const hasEslintConfig = await tryResolvePackage(ESLINT_CONFIG)
 
-const isEslintVersionValid = isVersionAtLeast(eslintVersion, '9.5.0')
-const isEslintSupportsConcurrency = isVersionAtLeast(eslintVersion, '9.34.0')
-const isConfigVersionValid = isVersionAtLeast(configVersion, '4.0.0')
+  const isEslintVersionValid = isVersionAtLeast(eslintVersion, '9.5.0')
+  const isEslintSupportsConcurrency = isVersionAtLeast(eslintVersion, '9.34.0')
+  const isConfigVersionValid = isVersionAtLeast(configVersion, '4.0.0')
 
-const packagesToInstall = [
-  ...(hasEslint ? [] : [ESLINT]),
-  ...(hasEslintConfig ? [] : [ESLINT_CONFIG]),
-] as Array<typeof ESLINT | typeof ESLINT_CONFIG>
+  const packagesToInstall = [
+    ...(hasEslint ? [] : [ESLINT]),
+    ...(hasEslintConfig ? [] : [ESLINT_CONFIG]),
+  ] as Array<typeof ESLINT | typeof ESLINT_CONFIG>
 
-const packagesToUpgrade = [
-  ...(isEslintVersionValid ? [] : [ESLINT]),
-  ...(isConfigVersionValid ? [] : [ESLINT_CONFIG]),
-] as Array<typeof ESLINT | typeof ESLINT_CONFIG>
+  const packagesToUpgrade = [
+    ...(isEslintVersionValid ? [] : [ESLINT]),
+    ...(isConfigVersionValid ? [] : [ESLINT_CONFIG]),
+  ] as Array<typeof ESLINT | typeof ESLINT_CONFIG>
 
-function getActionMessage () {
+  return {
+    eslintVersion,
+    configVersion,
+    hasEslint,
+    hasEslintConfig,
+    isEslintVersionValid,
+    isEslintSupportsConcurrency,
+    isConfigVersionValid,
+    packagesToInstall,
+    packagesToUpgrade,
+  }
+}
+
+function getActionMessage (status: Awaited<ReturnType<typeof getEslintStatus>>) {
+  const { packagesToInstall, packagesToUpgrade, hasEslint, hasEslintConfig, eslintVersion, configVersion } = status
   const actions: string[] = []
   if (packagesToInstall.length > 0) {
     const pkgs = packagesToInstall.map(pkg => LINKS[pkg]).join(', ')
@@ -65,12 +80,15 @@ function getActionMessage () {
 export async function addEslint () {
   intro(description)
 
+  const status = await getEslintStatus()
+  const { packagesToInstall, packagesToUpgrade, isEslintSupportsConcurrency } = status
+
   const configUrl = tryResolveFilePath('eslint.config', {
     extensions: ['.js', '.mjs', '.cjs', '.ts', '.mts', '.cts'],
   })
 
   if (packagesToInstall.length > 0 || packagesToUpgrade.length > 0) {
-    log.info(getActionMessage())
+    log.info(getActionMessage(status))
     const shouldInstall = await confirm({
       message: i18n.t('prompts.proceed'),
     })
