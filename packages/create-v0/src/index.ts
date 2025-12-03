@@ -1,7 +1,6 @@
-import { projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
+import { initVuetify0, projectArgs } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand, runMain } from 'citty'
-import { initVuetify0 } from '../../v0-cli/src/utils/init'
 import { version } from '../package.json'
 import { upgrade } from './commands/upgrade'
 
@@ -18,7 +17,7 @@ export const main = defineCommand({
   args: {
     ...projectArgs(),
   },
-  run: async ({ args }: { args: ProjectArgs }) => {
+  run: async ({ args }) => {
     await initVuetify0({
       cwd,
       ...args,

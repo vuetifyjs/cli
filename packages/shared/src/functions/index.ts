@@ -1,4 +1,5 @@
 export * from './docs'
 export * from './download'
 export * from './eslint'
+export * from './init'
 export * from './upgrade'

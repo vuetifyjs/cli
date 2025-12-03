@@ -1,7 +1,6 @@
-import { projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
+import { initVuetify0, projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand } from 'citty'
-import { initVuetify0 } from '../utils/init'
 
 const cwd = process.cwd()
 

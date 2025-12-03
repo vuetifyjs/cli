@@ -1,9 +1,9 @@
 import { existsSync } from 'node:fs'
 import { confirm, isCancel, log, outro, spinner, text } from '@clack/prompts'
-import { downloadVuetifyV0Template } from '@vuetify/cli-shared'
-import { i18n } from '@vuetify/cli-shared/i18n'
 import { installDependencies } from 'nypm'
 import { relative, resolve } from 'pathe'
+import { i18n } from '../i18n'
+import { downloadVuetifyTemplate, downloadVuetifyV0Template } from './download'
 
 export interface InstallOptions {
   cwd: string
@@ -15,7 +15,7 @@ export interface InstallOptions {
   install?: boolean
 }
 
-export async function initVuetify0 (options: InstallOptions) {
+async function initProject (options: InstallOptions, downloader: (opts: { cwd?: string, force?: boolean, dir: string }) => Promise<void>) {
   const { cwd, dir, force, interactive, name, defaultName } = options
 
   let projectName = name ?? dir ?? defaultName
@@ -58,7 +58,7 @@ export async function initVuetify0 (options: InstallOptions) {
     const downloadSpinner = spinner()
     downloadSpinner.start(i18n.t('commands.init.creating_project', { dir: relativeDir }))
 
-    await downloadVuetifyV0Template({
+    await downloader({
       cwd,
       force: explicitForce,
       dir: targetDir,
@@ -97,4 +97,12 @@ export async function initVuetify0 (options: InstallOptions) {
     log.error('Installation failed')
     throw error
   }
+}
+
+export async function initVuetify (options: InstallOptions) {
+  return initProject(options, downloadVuetifyTemplate)
+}
+
+export async function initVuetify0 (options: InstallOptions) {
+  return initProject(options, downloadVuetifyV0Template)
 }

@@ -1,9 +1,11 @@
-import { projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
+import { initVuetify, initVuetify0, projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand } from 'citty'
-import { relative, resolve } from 'pathe'
 
 const cwd = process.cwd()
+
+const VUETIFY_0_APP_DEFAULT_NAME = 'vuetify0-app'
+const VUETIFY_APP_DEFAULT_NAME = 'vuetify-app'
 
 export const init = defineCommand({
   meta: {
@@ -17,13 +19,18 @@ export const init = defineCommand({
       description: i18n.t('commands.init.v0.description'),
     },
   },
-  run: ({ args }: { args: ProjectArgs }) => {
-    const dir = args.dir
-    const relativeDir = relative(cwd, resolve(cwd, dir))
-    console.log(i18n.t('commands.init.creating_project', { dir: relativeDir }))
-
-    // TODO: Implement Vuetify project template download
-    console.log('Vuetify project initialization will be implemented here')
+  run: async ({ args }: { args: ProjectArgs & { v0?: boolean } }) => {
+    await (args.v0
+      ? initVuetify0({
+          cwd,
+          ...args,
+          defaultName: VUETIFY_0_APP_DEFAULT_NAME,
+        })
+      : initVuetify({
+          cwd,
+          ...args,
+          defaultName: VUETIFY_APP_DEFAULT_NAME,
+        }))
   },
 })
 

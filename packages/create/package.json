@@ -13,10 +13,12 @@
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@clack/prompts": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
     "citty": "catalog:",
     "giget": "catalog:",
     "kolorist": "catalog:",
+    "nypm": "catalog:",
     "pathe": "catalog:",
     "tsdown": "catalog:"
   },

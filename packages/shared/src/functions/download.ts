@@ -18,3 +18,15 @@ export async function downloadVuetifyV0Template (options: DownloadTemplateOption
     dir: options.dir,
   })
 }
+
+export async function downloadVuetifyTemplate (options: DownloadTemplateOptions) {
+  const repo = 'AndreyYolkin/vuetify-templates'
+  const subDir = 'vuetify'
+
+  const repoUrl = templateBuilder(repo, subDir)
+  await downloadTemplate(repoUrl, {
+    cwd: options.cwd,
+    force: options.force ?? true,
+    dir: options.dir,
+  })
+}
