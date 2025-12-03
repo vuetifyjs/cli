@@ -20,6 +20,11 @@
       {
         "command": "vuetify.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "vuetify.createProject",
+        "title": "Create Vuetify Project",
+        "category": "Vuetify"
       }
     ],
     "configuration": {
@@ -40,10 +45,13 @@
     "vscode:prepublish": "pnpm run build"
   },
   "devDependencies": {
-    "@types/node": "22.x",
+    "@types/node": "catalog:",
     "@types/vscode": "^1.99.0",
+    "@vuetify/cli-shared": "workspace:*",
+    "nypm": "catalog:",
+    "pathe": "catalog:",
     "reactive-vscode": "^0.4.1",
-    "tsdown": "^0.15.11",
-    "typescript": "^5.9.3"
+    "tsdown": "catalog:",
+    "typescript": "catalog:"
   }
 }

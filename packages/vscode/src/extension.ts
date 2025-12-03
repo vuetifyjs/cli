@@ -1,14 +1,11 @@
 import { defineExtension, useCommand, useIsDarkTheme, watchEffect } from 'reactive-vscode'
-import { window } from 'vscode'
-import { message } from './configs'
+import { createProject } from './commands'
 import { logger } from './utils'
 
 export = defineExtension(() => {
   logger.info('Extension Activated')
 
-  useCommand('vuetify.helloWorld', () => {
-    window.showInformationMessage(message.value)
-  })
+  useCommand('vuetify.createProject', createProject)
 
   const isDark = useIsDarkTheme()
   watchEffect(() => {
