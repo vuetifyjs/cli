@@ -20,17 +20,17 @@ export const add = defineCommand({
     let integration = args.integration
     if (!integration) {
       const selected = await select({
-        message: i18n.t('prompts.add.choose_integration'),
+        message: i18n.t('prompts.add.integration'),
         options: choices.map(c => ({ label: c, value: c })),
       })
       if (typeof selected === 'symbol') {
-        log.warning(i18n.t('commands.add.available_integrations', { choices: choices.join(', ') }))
+        log.warning(i18n.t('commands.add.integration.available', { choices: choices.join(', ') }))
         return
       }
       integration = String(selected)
     }
     if (!choices.includes(integration)) {
-      log.error(i18n.t('commands.add.invalid_integration', { integration, choices: choices.join(', ') }))
+      log.error(i18n.t('commands.add.integration.invalid', { integration, choices: choices.join(', ') }))
       return
     }
     switch (integration) {

@@ -20,26 +20,26 @@
     "add": {
       "description": "Add tools to the project",
       "integration": {
-        "description": "Integration to add (choices: %{choices})"
-      },
-      "available_integrations": "Available integrations: %{choices}",
-      "invalid_integration": "Invalid integration: %{integration}. Available: %{choices}"
+        "description": "Integration to add (choices: %{choices})",
+        "available": "Available integrations: %{choices}",
+        "invalid": "Invalid integration: %{integration}. Available: %{choices}"
+      }
     },
     "update": {
       "description": "Update vuetify dependencies project",
       "stub": "Update command will manage package updates; nightly builds support coming.",
       "packages": {
-        "description": "Comma-separated list of packages to update"
+        "description": "Comma-separated list of packages to update",
+        "list": "Packages to update: %{pkgs}",
+        "none": "No specific packages provided; would update defaults"
       },
       "nightly": {
-        "description": "Use nightly builds when updating"
+        "description": "Use nightly builds when updating",
+        "status": "Nightly builds: %{status}"
       },
-      "nightly_status": "Nightly builds: %{status}",
-      "packages_to_update": "Packages to update: %{pkgs}",
       "already_latest": "%{pkg} is already at the latest version (%{version})",
       "all_updated": "All packages are up to date.",
       "checking": "Checking for updates...",
-      "no_packages_specified": "No specific packages provided; would update defaults",
       "intro": "Checking for updates...",
       "not_installed": "Vuetify is not installed in this project.",
       "deprecated_v2": "Vuetify 2 is deprecated. Please consider upgrading to Vuetify 3.",
@@ -60,17 +60,17 @@
   "prompts": {
     "proceed": "Do you want to proceed?",
     "add": {
-      "choose_integration": "Choose an integration to add"
+      "integration": "Choose an integration to add"
     },
     "eslint": {
-      "overwrite_config": "Found %{file}. Do you want to overwrite it?",
-      "create_config": "No ESLint config found. Do you want to create one?",
-      "add_scripts": "Do you want to add lint scripts to package.json?"
+      "overwrite": "Found %{file}. Do you want to overwrite it?",
+      "create": "No ESLint config found. Do you want to create one?",
+      "scripts": "Do you want to add lint scripts to package.json?"
     },
     "directory": {
       "name": "Project name",
       "overwrite": "Directory \"%{dir}\" already exists. Do you want to overwrite it?",
-      "warn_exists": "Directory \"%{dir}\" already exists. Use --force to overwrite."
+      "warn": "Directory \"%{dir}\" already exists. Use --force to overwrite."
     },
     "install": "Do you want to install dependencies?"
   },

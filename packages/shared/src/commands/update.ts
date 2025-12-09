@@ -76,12 +76,12 @@ export const update = defineCommand({
       if (candidatesFound) {
         log.info(i18n.t('commands.update.all_updated'))
       } else {
-        log.error(i18n.t('commands.update.no_packages_specified'))
+        log.error(i18n.t('commands.update.packages.none'))
       }
       return
     }
 
-    log.info(i18n.t('commands.update.packages_to_update', { pkgs: packagesToUpdate.join(', ') }))
+    log.info(i18n.t('commands.update.packages.list', { pkgs: packagesToUpdate.join(', ') }))
     s.start(i18n.t('spinners.dependencies.installing'))
 
     const depsToUpdate: string[] = []

@@ -50,7 +50,7 @@ async function initProject (options: InstallOptions, downloader: (opts: { cwd?: 
           return
         }
       } else {
-        log.warn(i18n.t('prompts.directory.warn_exists', { dir: relativeDir }))
+        log.warn(i18n.t('prompts.directory.warn', { dir: relativeDir }))
         return
       }
     }

@@ -112,10 +112,10 @@ export async function addEslint () {
   let overwriteConfig = false as boolean | symbol
   overwriteConfig = await (configUrl
     ? confirm({
-        message: i18n.t('prompts.eslint.overwrite_config', { file: underline(relative(process.cwd(), configUrl)) }),
+        message: i18n.t('prompts.eslint.overwrite', { file: underline(relative(process.cwd(), configUrl)) }),
       })
     : confirm({
-        message: i18n.t('prompts.eslint.create_config'),
+        message: i18n.t('prompts.eslint.create'),
       }))
 
   if (overwriteConfig === true) {
@@ -133,7 +133,7 @@ export async function addEslint () {
   const shouldAddScripts = hasLintAndFixScripts
     ? false
     : await confirm({
-        message: i18n.t('prompts.eslint.add_scripts'),
+        message: i18n.t('prompts.eslint.scripts'),
       })
 
   if (shouldAddScripts === true) {
