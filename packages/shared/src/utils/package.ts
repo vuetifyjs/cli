@@ -6,6 +6,10 @@ export async function getPackageManager () {
   return detect({ cwd: process.cwd() })
 }
 
+export async function getProjectPackageJSON (cwd?: string) {
+  return readPackageJSON(cwd || process.cwd())
+}
+
 export function extractMajor (version: string): number | null {
   if (!version) {
     return null

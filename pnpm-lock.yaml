@@ -95,6 +95,9 @@ importers:
 
   packages/cli:
     devDependencies:
+      '@clack/prompts':
+        specifier: 'catalog:'
+        version: 1.0.0-alpha.6
       '@vuetify/cli-shared':
         specifier: workspace:*
         version: link:../shared

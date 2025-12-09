@@ -36,7 +36,15 @@
       },
       "nightly_status": "Nightly builds: %{status}",
       "packages_to_update": "Packages to update: %{pkgs}",
-      "no_packages_specified": "No specific packages provided; would update defaults"
+      "no_packages_specified": "No specific packages provided; would update defaults",
+      "intro": "Checking for updates...",
+      "not_installed": "Vuetify is not installed in this project.",
+      "deprecated_v2": "Vuetify 2 is deprecated. Please consider upgrading to Vuetify 3.",
+      "outdated_v1": "Vuetify 1 is out of date. Please upgrade.",
+      "updated": "Updated %{pkg}",
+      "failed": "Failed to update %{pkg}",
+      "complete": "Update complete",
+      "done": "Done!"
     },
     "upgrade": {
       "description": "Upgrade %{pkg} to latest version",
@@ -104,6 +112,9 @@
     },
     "install": {
       "description": "Install dependencies after project creation"
+    },
+    "verbose": {
+      "description": "Output verbose logs"
     }
   },
   "cli": {
