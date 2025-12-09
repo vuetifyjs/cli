@@ -1,4 +1,4 @@
-import { select } from '@clack/prompts'
+import { log, select } from '@clack/prompts'
 import { defineCommand } from 'citty'
 import { addEslint } from '../functions'
 import { i18n } from '../i18n'
@@ -24,13 +24,13 @@ export const add = defineCommand({
         options: choices.map(c => ({ label: c, value: c })),
       })
       if (typeof selected === 'symbol') {
-        console.log(i18n.t('commands.add.available_integrations', { choices: choices.join(', ') }))
+        log.warning(i18n.t('commands.add.available_integrations', { choices: choices.join(', ') }))
         return
       }
       integration = String(selected)
     }
     if (!choices.includes(integration)) {
-      console.log(i18n.t('commands.add.invalid_integration', { integration, choices: choices.join(', ') }))
+      log.error(i18n.t('commands.add.invalid_integration', { integration, choices: choices.join(', ') }))
       return
     }
     switch (integration) {
