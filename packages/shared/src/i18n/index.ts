@@ -1,2 +1,12 @@
+import type { TranslateOptions } from 'i18n-js'
+import type { TranslationKey } from './types'
+import { i18n as _i18n } from './setup'
+
 export * from './language'
-export * from './setup'
+export * from './types'
+
+export const i18n = Object.assign(_i18n, {
+  t: (scope: TranslationKey, options?: TranslateOptions) => _i18n.t(scope, options),
+}) as Omit<typeof _i18n, 't'> & {
+  t: (scope: TranslationKey, options?: TranslateOptions) => string
+}
