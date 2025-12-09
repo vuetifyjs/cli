@@ -3,7 +3,7 @@ import { defineCommand } from 'citty'
 import { green } from 'kolorist'
 import { addDependency, addDevDependency } from 'nypm'
 import { i18n } from '../i18n'
-import { extractMajor, getProjectPackageJSON } from '../utils'
+import { extractMajor, getNpmPackageVersion, getPackageVersion, getProjectPackageJSON } from '../utils'
 
 export const update = defineCommand({
   meta: {
@@ -34,18 +34,22 @@ export const update = defineCommand({
     const allDeps = { ...deps, ...devDeps }
 
     let packagesToUpdate: string[] = []
+    let candidatesFound = false
     const isNightly = args.nightly
 
     if (isNightly) {
       if (allDeps['vuetify']) {
         packagesToUpdate = ['vuetify']
+        candidatesFound = true
       } else {
         log.warning(i18n.t('commands.update.not_installed'))
         return
       }
     } else if (args.packages) {
       packagesToUpdate = args.packages.split(',').map(s => s.trim()).filter(Boolean)
+      candidatesFound = packagesToUpdate.length > 0
     } else {
+      const candidates: string[] = []
       for (const name of Object.keys(allDeps)) {
         if (
           name === 'vuetify'
@@ -57,13 +61,23 @@ export const update = defineCommand({
           || name === 'eslint-plugin-vuetify'
           || name === 'eslint-config-vuetify'
         ) {
-          packagesToUpdate.push(name)
+          candidates.push(name)
         }
       }
+      packagesToUpdate = candidates
+      candidatesFound = candidates.length > 0
+    }
+
+    if (!isNightly && packagesToUpdate.length > 0) {
+      packagesToUpdate = await filterOutdatedPackages(packagesToUpdate)
     }
 
     if (packagesToUpdate.length === 0) {
-      log.error(i18n.t('commands.update.no_packages_specified'))
+      if (candidatesFound) {
+        log.info(i18n.t('commands.update.all_updated'))
+      } else {
+        log.error(i18n.t('commands.update.no_packages_specified'))
+      }
       return
     }
 
@@ -74,7 +88,7 @@ export const update = defineCommand({
     const devDepsToUpdate: string[] = []
 
     for (const name of packagesToUpdate) {
-      let version = ''
+      let version = '@latest'
 
       if (name === 'vuetify') {
         if (isNightly) {
@@ -128,3 +142,25 @@ export const update = defineCommand({
     outro(i18n.t('commands.update.done'))
   },
 })
+
+async function filterOutdatedPackages (packages: string[]) {
+  log.step(i18n.t('commands.update.checking'))
+
+  const checkedPackages = await Promise.all(packages.map(async name => {
+    const current = await getPackageVersion(name)
+    const latest = await getNpmPackageVersion(name)
+
+    if (current && latest && current === latest) {
+      return { name, needsUpdate: false, version: latest }
+    }
+    return { name, needsUpdate: true }
+  }))
+
+  const toUpdate = []
+  for (const { name, needsUpdate } of checkedPackages) {
+    if (needsUpdate) {
+      toUpdate.push(name)
+    }
+  }
+  return toUpdate
+}

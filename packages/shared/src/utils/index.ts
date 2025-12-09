@@ -1,4 +1,5 @@
 export * from './cli'
+export * from './npm'
 export * from './package'
 export * from './template'
 export * from './vuetify'
