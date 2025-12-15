@@ -10,6 +10,7 @@
       "need_to": "We need to %{actions}."
     },
     "init": {
+      "v0": "Initialize a Vuetify0 project",
       "description": "Initialize a Vuetify project",
       "creating_project": "Creating project in %{dir}"
     },

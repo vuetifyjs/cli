@@ -16,7 +16,7 @@ export const init = defineCommand({
     ...projectArgs(),
     v0: {
       type: 'boolean',
-      description: i18n.t('commands.init.v0.description'),
+      description: i18n.t('commands.init.v0'),
     },
   },
   run: async ({ args }: { args: ProjectArgs & { v0?: boolean } }) => {
