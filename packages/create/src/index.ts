@@ -117,7 +117,7 @@ export const main = defineCommand({
       }
       s.stop(i18n.t('spinners.template.copied'))
     } else {
-      const templateSource = `gh:vuetifyjs/cli/templates/${templateName}`
+      const templateSource = `gh:vuetifyjs/templates/${templateName}`
 
       try {
         await downloadTemplate(templateSource, {
