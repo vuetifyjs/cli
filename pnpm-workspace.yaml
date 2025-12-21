@@ -6,6 +6,7 @@ catalogMode: strict
 
 catalog:
   '@fontsource/roboto': 5.2.7
+  '@intellectronica/ruler': ^0.3.18
   '@mdi/font': 7.4.47
   '@nuxt/eslint': ^1.12.1
   '@pinia/nuxt': ^0.5.1
@@ -56,4 +57,3 @@ catalog:
   vuetify: ^3.11.4
   vitest: ^4.0.16
   vuetify-nuxt-module: ^0.19.1
-

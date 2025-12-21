@@ -1,0 +1,5 @@
+default_agents = ["copilot", "claude", "trae"]
+
+[mcp_servers.vuetify]
+url = "https://mcp.vuetifyjs.com/mcp"
+

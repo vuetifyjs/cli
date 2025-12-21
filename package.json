@@ -8,13 +8,16 @@
     "release": "bumpp -r",
     "build": "pnpm --filter=\"./packages/*\" --filter=\"!./packages/shared\" run build",
     "lint": "eslint --concurrency auto",
-    "lint:fix": "eslint --fix --concurrency auto"
+    "lint:fix": "eslint --fix --concurrency auto",
+    "ruler": "ruler apply",
+    "ruler:revert": "ruler revert"
   },
   "keywords": [],
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
   "packageManager": "pnpm@10.7.1",
   "devDependencies": {
+    "@intellectronica/ruler": "catalog:",
     "@types/node": "catalog:",
     "bumpp": "catalog:",
     "eslint": "catalog:",
