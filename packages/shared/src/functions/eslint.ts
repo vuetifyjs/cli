@@ -83,7 +83,7 @@ export async function addEslint () {
   const status = await getEslintStatus()
   const { packagesToInstall, packagesToUpgrade, isEslintSupportsConcurrency } = status
 
-  const configUrl = tryResolveFilePath('eslint.config', {
+  const configUrl = tryResolveFilePath('./eslint.config', {
     extensions: ['.js', '.mjs', '.cjs', '.ts', '.mts', '.cts'],
   })
 
