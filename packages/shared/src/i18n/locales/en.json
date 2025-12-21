@@ -118,7 +118,7 @@
         "label": "Vuetify Nuxt Module",
         "hint": "Use vuetify-nuxt-module instead of local plugin"
       },
-      "ruler": {
+      "mcp": {
         "label": "MCP",
         "hint": "Use official MCP Vuetify integration"
       }

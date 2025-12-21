@@ -117,11 +117,11 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
             message: i18n.t('prompts.features.select', { hint: dim('↑/↓ to navigate, space to select, a to toggle all, enter to confirm') }),
             options: [
               { label: i18n.t('prompts.features.eslint.label'), value: 'eslint', hint: i18n.t('prompts.features.eslint.hint') },
-              { label: i18n.t('prompts.features.ruler.label'), value: 'ruler', hint: i18n.t('prompts.features.ruler.hint') },
+              { label: i18n.t('prompts.features.mcp.label'), value: 'mcp', hint: i18n.t('prompts.features.mcp.hint') },
               { label: i18n.t('prompts.features.pinia.label'), value: 'pinia', hint: i18n.t('prompts.features.pinia.hint') },
               { label: i18n.t('prompts.features.i18n.label'), value: 'i18n', hint: i18n.t('prompts.features.i18n.hint') },
             ],
-            initialValues: ['eslint', 'ruler'],
+            initialValues: ['eslint', 'mcp'],
             required: false,
           })
         : multiselect({
@@ -129,11 +129,11 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
             options: [
               { label: i18n.t('prompts.features.eslint.label'), value: 'eslint', hint: i18n.t('prompts.features.eslint.hint') },
               { label: i18n.t('prompts.features.vuetify_nuxt_module.label'), value: 'vuetify-nuxt-module', hint: i18n.t('prompts.features.vuetify_nuxt_module.hint') },
-              { label: i18n.t('prompts.features.ruler.label'), value: 'ruler', hint: i18n.t('prompts.features.ruler.hint') },
+              { label: i18n.t('prompts.features.mcp.label'), value: 'mcp', hint: i18n.t('prompts.features.mcp.hint') },
               { label: i18n.t('prompts.features.pinia.label'), value: 'pinia', hint: i18n.t('prompts.features.pinia.hint') },
               { label: i18n.t('prompts.features.i18n.label'), value: 'i18n', hint: i18n.t('prompts.features.i18n.hint') },
             ],
-            initialValues: ['eslint', 'vuetify-nuxt-module', 'ruler'],
+            initialValues: ['eslint', 'vuetify-nuxt-module', 'mcp'],
             required: false,
           })
     },

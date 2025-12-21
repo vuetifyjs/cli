@@ -3,15 +3,15 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import rootPkg from './dependencies/package.json' with { type: 'json' }
 
-export const ruler: Feature = {
-  name: 'ruler',
+export const mcp: Feature = {
+  name: 'mcp',
   apply: async ({ cwd, pkg }) => {
     pkg.devDependencies = pkg.devDependencies || {}
     pkg.devDependencies['@intellectronica/ruler'] = rootPkg.dependencies['@intellectronica/ruler']
 
     pkg.scripts = pkg.scripts || {}
-    pkg.scripts['ruler'] = 'ruler apply'
-    pkg.scripts['ruler:revert'] = 'ruler revert'
+    pkg.scripts['mcp'] = 'ruler apply'
+    pkg.scripts['mcp:revert'] = 'ruler revert'
 
     const rulerDir = join(cwd, '.ruler')
     await mkdir(rulerDir, { recursive: true })
