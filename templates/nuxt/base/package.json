@@ -1,0 +1,21 @@
+{
+  "name": "vuetify-nuxt-project",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@mdi/font": "7.4.47",
+    "nuxt": "^4.2.2",
+    "vue": "^3.5.26",
+    "vuetify": "^3.11.4"
+  },
+  "devDependencies": {
+    "sass": "^1.97.1"
+  }
+}

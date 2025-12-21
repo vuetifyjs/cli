@@ -14,18 +14,27 @@
   "license": "MIT",
   "devDependencies": {
     "@clack/prompts": "catalog:",
+    "@types/validate-npm-package-name": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
     "citty": "catalog:",
     "giget": "catalog:",
     "kolorist": "catalog:",
     "nypm": "catalog:",
     "pathe": "catalog:",
-    "tsdown": "catalog:"
+    "tsdown": "catalog:",
+    "vitest": "catalog:"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "magicast": "catalog:",
+    "package-manager-detector": "catalog:",
+    "pkg-types": "catalog:",
+    "tinyexec": "catalog:",
+    "validate-npm-package-name": "catalog:"
   }
 }

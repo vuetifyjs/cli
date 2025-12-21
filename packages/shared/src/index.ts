@@ -1,4 +1,5 @@
 export { projectArgs, type ProjectArgs } from './args'
 export * from './commands'
 export * from './functions'
+export * from './utils/banner'
 export { templateBuilder } from './utils/template'

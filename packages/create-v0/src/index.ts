@@ -1,4 +1,4 @@
-import { initVuetify0, projectArgs } from '@vuetify/cli-shared'
+import { createBanner, initVuetify0, projectArgs } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand, runMain } from 'citty'
 import { version } from '../package.json'
@@ -18,6 +18,7 @@ export const main = defineCommand({
     ...projectArgs(),
   },
   run: async ({ args }) => {
+    console.log(createBanner())
     await initVuetify0({
       cwd,
       ...args,

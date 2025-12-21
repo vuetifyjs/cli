@@ -73,11 +73,78 @@
       "overwrite": "Directory \"%{dir}\" already exists. Do you want to overwrite it?",
       "warn": "Directory \"%{dir}\" already exists. Use --force to overwrite."
     },
-    "install": "Do you want to install dependencies?"
+    "install": "Do you want to install dependencies?",
+    "project": {
+      "name": "Project name:",
+      "invalid": "Invalid project name: %{error}",
+      "overwrite": "The project path: %{path} already exists, would you like to overwrite this directory?"
+    },
+    "framework": {
+      "select": "Which framework would you like to use?",
+      "vue": "Vue",
+      "nuxt": "Nuxt"
+    },
+    "typescript": {
+      "use": "Use TypeScript?"
+    },
+    "router": {
+      "conflict": "Cannot select both \"router\" and \"file-router\" features.",
+      "select": "Which router would you like to use?",
+      "none": "None",
+      "standard": {
+        "label": "Vue Router",
+        "hint": "Standard Vue Router"
+      },
+      "file": {
+        "label": "Vue Router (File-based)",
+        "hint": "File-based routing with unplugin-vue-router"
+      }
+    },
+    "features": {
+      "select": "Select features to install: %{hint}",
+      "pinia": {
+        "label": "Pinia",
+        "hint": "Intuitive, type safe and flexible Store for Vue"
+      },
+      "eslint": {
+        "label": "ESLint",
+        "hint": "Pluggable JavaScript linter"
+      },
+      "i18n": {
+        "label": "I18n",
+        "hint": "Internationalization support for Vue"
+      },
+      "vuetify_nuxt_module": {
+        "label": "Vuetify Nuxt Module",
+        "hint": "Use vuetify-nuxt-module instead of local plugin"
+      }
+    },
+    "client_hints": {
+      "enable": "Enable Client Hints? (Requires SSR)"
+    },
+    "package_manager": {
+      "select": "Which package manager would you like to use?"
+    },
+    "cancel": "Operation cancelled."
   },
   "spinners": {
+    "template": {
+      "downloading": "Downloading template %{template}...",
+      "copied": "Template copied",
+      "downloaded": "Template downloaded",
+      "failed": "Failed to download template"
+    },
+    "config": {
+      "applying": "Applying configuration...",
+      "applied": "Configuration applied"
+    },
+    "convert": {
+      "js": "Converting to JavaScript...",
+      "done": "Converted to JavaScript"
+    },
     "dependencies": {
       "installing": "Installing dependencies",
+      "installing_with": "Installing dependencies with %{pm}...",
       "installed": "Dependencies installed!",
       "failed": "Failed to install dependencies"
     },
@@ -91,7 +158,11 @@
       "deps_already_installed": "All required dependencies are already installed."
     },
     "all_done": "All done! Happy hacking!",
-    "project_created": "Project created"
+    "project_created": "Project created",
+    "create": {
+      "intro": "Create Vuetify v%{version}",
+      "generated": "%{name} has been generated at %{path}"
+    }
   },
   "common": {
     "and": "and",

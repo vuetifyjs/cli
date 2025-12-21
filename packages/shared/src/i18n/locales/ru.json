@@ -73,11 +73,75 @@
       "overwrite": "Папка \"%{dir}\" уже существует. Хотите перезаписать её?",
       "warn": "Папка \"%{dir}\" уже существует. Используйте --force для перезаписи."
     },
-    "install": "Хотите установить зависимости?"
+    "install": "Хотите установить зависимости?",
+    "project": {
+      "name": "Название проекта:",
+      "invalid": "Некорректное название проекта: %{error}",
+      "overwrite": "Папка проекта: %{path} уже существует, хотите перезаписать её?"
+    },
+    "framework": {
+      "select": "Какой фреймворк вы хотите использовать?",
+      "vue": "Vue",
+      "nuxt": "Nuxt"
+    },
+    "typescript": {
+      "use": "Использовать TypeScript?"
+    },
+    "router": {
+      "conflict": "Нельзя выбрать одновременно 'router' и 'file-router'.",
+      "select": "Какой роутер вы хотите использовать?",
+      "none": "Никакой",
+      "standard": {
+        "label": "Vue Router",
+        "hint": "Стандартный Vue Router"
+      },
+      "file": {
+        "label": "Vue Router (File-based)",
+        "hint": "Файловый роутинг с unplugin-vue-router"
+      }
+    },
+    "features": {
+      "select": "Выберите функции для установки: %{hint}",
+      "pinia": {
+        "label": "Pinia",
+        "hint": "Интуитивный, типобезопасный и гибкий Store для Vue"
+      },
+      "eslint": {
+        "label": "ESLint",
+        "hint": "Подключаемый линтер JavaScript"
+      },
+      "i18n": {
+        "label": "I18n",
+        "hint": "Поддержка i18n для Vue"
+      },
+      "vuetify_nuxt_module": {
+        "label": "Vuetify Nuxt Module",
+        "hint": "Использовать vuetify-nuxt-module вместо локального плагина"
+      }
+    },
+    "package_manager": {
+      "select": "Какой менеджер пакетов вы хотите использовать?"
+    },
+    "cancel": "Операция отменена."
   },
   "spinners": {
+    "template": {
+      "downloading": "Загрузка шаблона %{template}...",
+      "copied": "Шаблон скопирован",
+      "downloaded": "Шаблон загружен",
+      "failed": "Не удалось загрузить шаблон"
+    },
+    "config": {
+      "applying": "Применение конфигурации...",
+      "applied": "Конфигурация применена"
+    },
+    "convert": {
+      "js": "Преобразование в JavaScript...",
+      "done": "Преобразовано в JavaScript"
+    },
     "dependencies": {
       "installing": "Устанавливаем зависимости",
+      "installing_with": "Установка зависимостей с помощью %{pm}...",
       "installed": "Зависимости установлены!",
       "failed": "Не удалось установить зависимости"
     },
@@ -91,7 +155,11 @@
       "deps_already_installed": "Все необходимые зависимости уже установлены."
     },
     "all_done": "Готово! Приятной разработки!",
-    "project_created": "Проект создан"
+    "project_created": "Проект создан",
+    "create": {
+      "intro": "Создание Vuetify v%{version}",
+      "generated": "%{name} был создан в %{path}"
+    }
   },
   "common": {
     "and": "и",

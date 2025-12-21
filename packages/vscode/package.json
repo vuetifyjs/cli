@@ -46,11 +46,11 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "@types/vscode": "^1.99.0",
+    "@types/vscode": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
     "nypm": "catalog:",
     "pathe": "catalog:",
-    "reactive-vscode": "^0.4.1",
+    "reactive-vscode": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:"
   }

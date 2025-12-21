@@ -1,15 +1,25 @@
 packages:
   - packages/*
+  - templates/*
 
 catalogMode: strict
 
 catalog:
-  '@clack/prompts': ^1.0.0-alpha.6
+  '@fontsource/roboto': 5.2.7
+  '@mdi/font': 7.4.47
+  '@nuxt/eslint': ^1.12.1
+  '@pinia/nuxt': ^0.5.1
+  '@tsconfig/node22': ^22.0.5
+  '@types/validate-npm-package-name': ^4.0.2
+  '@clack/prompts': ^1.0.0-alpha.8
   '@types/node': ^24.9.2
+  '@types/vscode': ^1.99.0
+  '@vitejs/plugin-vue': ^6.0.2
+  '@vue/tsconfig': ^0.8.1
   bumpp: ^10.3.1
   citty: ^0.1.6
   clerc: ^0.44.0
-  eslint: ^9.39.1
+  eslint: ^9.39.2
   eslint-config-vuetify: ^4.3.3
   exsolve: ^1.0.8
   giget: ^2.0.0
@@ -17,13 +27,33 @@ catalog:
   is-installed-globally: ^1.0.0
   is-interactive: ^2.0.0
   kolorist: ^1.8.0
+  magicast: ^0.5.1
+  npm-run-all2: ^8.0.4
+  nuxt: ^3.11.1
   nypm: ^0.6.2
   open: ^11.0.0
   package-manager-detector: ^1.5.0
   pathe: ^2.0.3
+  pinia: ^3.0.3
   pkg-types: ^2.3.0
+  reactive-vscode: ^0.4.1
+  sass: ^1.72.0
+  sass-embedded: ^1.93.3
   sherif: ^1.9.0
   tinyexec: ^1.0.2
   tsdown: ^0.16.6
   typescript: ^5.9.3
-  vuetify: ^3.10.11
+  unplugin-auto-import: ^20.1.0
+  unplugin-fonts: ^1.4.0
+  unplugin-vue-router: ^0.15.0
+  validate-npm-package-name: ^7.0.1
+  vite: ^7.2.6
+  vite-plugin-vue-layouts-next: ^1.0.0
+  vite-plugin-vuetify: ^2.1.2
+  vue: ^3.5.25
+  vue-router: ^4.5.1
+  vue-tsc: ^3.1.5
+  vuetify: ^3.11.4
+  vitest: ^4.0.16
+  vuetify-nuxt-module: ^0.19.1
+

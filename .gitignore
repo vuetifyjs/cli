@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-vuetify-app
-vuetify0-app
+vuetify-project
+.test-tmp
