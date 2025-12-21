@@ -118,6 +118,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
             options: [
               { label: i18n.t('prompts.features.pinia.label'), value: 'pinia', hint: i18n.t('prompts.features.pinia.hint') },
               { label: i18n.t('prompts.features.eslint.label'), value: 'eslint', hint: i18n.t('prompts.features.eslint.hint') },
+              { label: i18n.t('prompts.features.i18n.label'), value: 'i18n', hint: i18n.t('prompts.features.i18n.hint') },
             ],
             initialValues: ['eslint'],
             required: false,
