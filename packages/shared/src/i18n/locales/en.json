@@ -157,6 +157,9 @@
     "eslint": {
       "deps_already_installed": "All required dependencies are already installed."
     },
+    "deno": {
+      "version_warning": "\n  Deno v%{version} detected. This template requires Deno v2 or higher.\n"
+    },
     "all_done": "All done! Happy hacking!",
     "project_created": "Project created",
     "create": {

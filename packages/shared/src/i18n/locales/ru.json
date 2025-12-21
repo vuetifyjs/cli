@@ -154,6 +154,9 @@
     "eslint": {
       "deps_already_installed": "Все необходимые зависимости уже установлены."
     },
+    "deno": {
+      "version_warning": "\n  У вас установлен Deno v%{version}. Этот шаблон требует Deno v2 или выше.\n"
+    },
     "all_done": "Готово! Приятной разработки!",
     "project_created": "Проект создан",
     "create": {
