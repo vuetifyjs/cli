@@ -116,22 +116,24 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         ? multiselect({
             message: i18n.t('prompts.features.select', { hint: dim('↑/↓ to navigate, space to select, a to toggle all, enter to confirm') }),
             options: [
-              { label: i18n.t('prompts.features.pinia.label'), value: 'pinia', hint: i18n.t('prompts.features.pinia.hint') },
               { label: i18n.t('prompts.features.eslint.label'), value: 'eslint', hint: i18n.t('prompts.features.eslint.hint') },
+              { label: i18n.t('prompts.features.ruler.label'), value: 'ruler', hint: i18n.t('prompts.features.ruler.hint') },
+              { label: i18n.t('prompts.features.pinia.label'), value: 'pinia', hint: i18n.t('prompts.features.pinia.hint') },
               { label: i18n.t('prompts.features.i18n.label'), value: 'i18n', hint: i18n.t('prompts.features.i18n.hint') },
             ],
-            initialValues: ['eslint'],
+            initialValues: ['eslint', 'ruler'],
             required: false,
           })
         : multiselect({
             message: i18n.t('prompts.features.select', { hint: dim('↑/↓ to navigate, space to select, a to toggle all, enter to confirm') }),
             options: [
-              { label: i18n.t('prompts.features.pinia.label'), value: 'pinia', hint: i18n.t('prompts.features.pinia.hint') },
               { label: i18n.t('prompts.features.eslint.label'), value: 'eslint', hint: i18n.t('prompts.features.eslint.hint') },
               { label: i18n.t('prompts.features.vuetify_nuxt_module.label'), value: 'vuetify-nuxt-module', hint: i18n.t('prompts.features.vuetify_nuxt_module.hint') },
+              { label: i18n.t('prompts.features.ruler.label'), value: 'ruler', hint: i18n.t('prompts.features.ruler.hint') },
+              { label: i18n.t('prompts.features.pinia.label'), value: 'pinia', hint: i18n.t('prompts.features.pinia.hint') },
               { label: i18n.t('prompts.features.i18n.label'), value: 'i18n', hint: i18n.t('prompts.features.i18n.hint') },
             ],
-            initialValues: ['eslint', 'vuetify-nuxt-module'],
+            initialValues: ['eslint', 'vuetify-nuxt-module', 'ruler'],
             required: false,
           })
     },

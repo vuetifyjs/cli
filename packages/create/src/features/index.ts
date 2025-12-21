@@ -4,6 +4,7 @@ import { eslint } from './eslint'
 import { i18n } from './i18n'
 import { pinia } from './pinia'
 import { fileRouter, router } from './router'
+import { ruler } from './ruler'
 import { vuetifyNuxtModule } from './vuetify-nuxt-module'
 
 export const features: Record<string, Feature> = {
@@ -12,6 +13,7 @@ export const features: Record<string, Feature> = {
   pinia,
   i18n,
   eslint,
+  ruler,
   'vuetify-nuxt-module': vuetifyNuxtModule,
 }
 

@@ -117,6 +117,10 @@
       "vuetify_nuxt_module": {
         "label": "Vuetify Nuxt Module",
         "hint": "Использовать vuetify-nuxt-module вместо локального плагина"
+      },
+      "ruler": {
+        "label": "MCP",
+        "hint": "Добавить официальный MCP Vuetify сервер"
       }
     },
     "package_manager": {

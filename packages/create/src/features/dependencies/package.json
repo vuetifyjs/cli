@@ -12,6 +12,7 @@
     "unplugin-vue-router": "^0.19.1",
     "vite-plugin-vuetify": "^2.1.2",
     "pathe": "^2.0.3",
-    "@vuetify/loader-shared": "^2.1.1"
+    "@vuetify/loader-shared": "^2.1.1",
+    "@intellectronica/ruler": "^0.3.18"
   }
 }
