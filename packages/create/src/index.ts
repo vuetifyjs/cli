@@ -1,7 +1,7 @@
 import fs, { existsSync, rmSync } from 'node:fs'
 import { join } from 'node:path'
 import { intro, outro, spinner } from '@clack/prompts'
-import { createBanner, initVuetify0, projectArgs } from '@vuetify/cli-shared'
+import { createBanner, projectArgs } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand, runMain } from 'citty'
 import { downloadTemplate } from 'giget'
@@ -14,8 +14,6 @@ import { vuetifyNuxtManual } from './features/vuetify-nuxt-manual'
 import { prompt } from './prompts'
 import { convertProjectToJS } from './utils/convertProjectToJS'
 import { installDependencies } from './utils/installDependencies'
-
-const VUETIFY_0_APP_DEFAULT_NAME = 'vuetify0-app'
 
 export const main = defineCommand({
   meta: {
@@ -30,13 +28,13 @@ export const main = defineCommand({
       description: 'The current working directory',
     },
     features: {
-      type: 'string', // This might need to be array? citty args are usually string/boolean
-      // If user passes --features router,pinia
+      type: 'string',
       description: 'The features to install (router, pinia, eslint)',
     },
     typescript: {
       type: 'boolean',
       description: 'Use TypeScript',
+      default: true,
     },
     packageManager: {
       type: 'string',
@@ -47,9 +45,15 @@ export const main = defineCommand({
       description: 'Show debug logs',
       default: false,
     },
-    v0: {
-      type: 'boolean',
-      description: i18n.t('cli.create_v0.description'),
+    type: {
+      type: 'string',
+      description: 'The Vuetify version to use (vuetify, vuetify0)',
+      default: 'vuetify',
+    },
+    platform: {
+      type: 'string',
+      description: 'The framework to use (vue, nuxt)',
+      default: 'vue',
     },
   },
   run: async ({ args }) => {
@@ -60,15 +64,6 @@ export const main = defineCommand({
 
     console.log(createBanner())
 
-    if (args.v0) {
-      await initVuetify0({
-        ...args,
-        defaultName: VUETIFY_0_APP_DEFAULT_NAME,
-        cwd,
-      })
-      return
-    }
-
     intro(i18n.t('messages.create.intro', { version }))
 
     const features = typeof args.features === 'string'
@@ -78,7 +73,17 @@ export const main = defineCommand({
     const rawArgs = args as Record<string, any>
     const packageManager = rawArgs.packageManager || rawArgs['package-manager']
 
-    const context = await prompt({ ...args, features, packageManager }, cwd)
+    if (args.v0) {
+      rawArgs.type = 'vuetify0'
+    }
+
+    const context = await prompt({
+      ...args,
+      features,
+      packageManager,
+      platform: rawArgs.platform,
+      type: rawArgs.type,
+    }, cwd)
     debug('context=', JSON.stringify(context, null, 2))
     const projectRoot = join(cwd, context.name)
     debug('projectRoot=', projectRoot)
@@ -87,7 +92,7 @@ export const main = defineCommand({
       rmSync(projectRoot, { recursive: true, force: true })
     }
 
-    const templateName = context.type === 'vue'
+    const templateName = context.platform === 'vue'
       ? `vue/base`
       : `nuxt/base`
 
@@ -140,7 +145,7 @@ export const main = defineCommand({
       await applyFeatures(projectRoot, context.features, pkg, !!context.typescript, context.clientHints)
     }
 
-    if (context.type === 'nuxt' && (!context.features || !context.features.includes('vuetify-nuxt-module'))) {
+    if (context.platform === 'nuxt' && (!context.features || !context.features.includes('vuetify-nuxt-module'))) {
       await vuetifyNuxtManual.apply({ cwd: projectRoot, pkg, isTypescript: !!context.typescript })
     }
     s.stop(i18n.t('spinners.config.applied'))
@@ -155,7 +160,7 @@ export const main = defineCommand({
       await writePackageJSON(pkgPath, pkg)
     }
 
-    if (context.type === 'vue' && !context.typescript) {
+    if (context.platform === 'vue' && !context.typescript) {
       s.start(i18n.t('spinners.convert.js'))
       await convertProjectToJS(projectRoot)
       s.stop(i18n.t('spinners.convert.done'))

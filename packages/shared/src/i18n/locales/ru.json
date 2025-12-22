@@ -82,6 +82,7 @@
     "framework": {
       "select": "Какой фреймворк вы хотите использовать?",
       "vue": "Vue",
+      "vuetify0": "Vuetify0 (alpha)",
       "nuxt": "Nuxt"
     },
     "typescript": {

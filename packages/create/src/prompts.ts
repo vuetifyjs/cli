@@ -10,13 +10,15 @@ import validate from 'validate-npm-package-name'
 
 export interface ProjectOptions {
   name: string
-  type: 'vue' | 'nuxt'
+  platform: 'vue' | 'nuxt'
+  type: 'vuetify' | 'vuetify0'
   features: string[]
   typescript?: boolean
   packageManager?: string
   install?: boolean
   force?: boolean
   clientHints?: boolean
+  interactive?: boolean
 }
 
 export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()): Promise<ProjectOptions> {
@@ -24,6 +26,9 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
     name: () => {
       if (args.name) {
         return Promise.resolve(args.name)
+      }
+      if (!args.interactive) {
+        return Promise.resolve('vuetify-project')
       }
       return text({
         message: i18n.t('prompts.project.name'),
@@ -44,7 +49,9 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         if (args.force) {
           return Promise.resolve(true)
         }
-
+        if (!args.interactive) {
+          return Promise.resolve(false)
+        }
         return confirm({
           message: i18n.t('prompts.project.overwrite', { path: projectRoot }),
           initialValue: false,
@@ -52,9 +59,12 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       }
       return Promise.resolve(args.force || false)
     },
-    type: () => {
-      if (args.type) {
-        return Promise.resolve(args.type)
+    platform: () => {
+      if (args.platform) {
+        return Promise.resolve(args.platform)
+      }
+      if (!args.interactive) {
+        return Promise.resolve('vue')
       }
       return select({
         message: i18n.t('prompts.framework.select'),
@@ -65,10 +75,26 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         ],
       })
     },
+    type: () => {
+      if (args.type) {
+        return Promise.resolve(args.type)
+      }
+      if (!args.interactive) {
+        return Promise.resolve('vuetify')
+      }
+      return select({
+        message: 'Which version of Vuetify?',
+        initialValue: 'vuetify',
+        options: [
+          { label: 'Vuetify', value: 'vuetify', hint: 'Standard Material Design Component Framework' },
+          { label: 'Vuetify 0 (alpha)', value: 'vuetify0', hint: 'Headless Component Library' },
+        ],
+      })
+    },
     typescript: ({ results }) => {
-      const type = (results.type as string) || args.type
+      const platform = (results.platform as string) || args.platform
 
-      if (type === 'vue' && args.typescript === undefined) {
+      if (platform === 'vue' && args.typescript === undefined) {
         return confirm({
           message: i18n.t('prompts.typescript.use'),
           initialValue: true,
@@ -91,8 +117,8 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         return Promise.resolve('none')
       }
 
-      const type = (results.type as string) || args.type
-      if (type !== 'vue') {
+      const platform = (results.platform as string) || args.platform
+      if (platform !== 'vue') {
         return Promise.resolve('none')
       }
 
@@ -110,9 +136,12 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       if (args.features) {
         return Promise.resolve(args.features.filter(f => f !== 'router' && f !== 'file-router'))
       }
-      const type = (results.type as string) || args.type
+      if (!args.interactive) {
+        return Promise.resolve([])
+      }
+      const platform = (results.platform as string) || args.platform
 
-      return type === 'vue'
+      return platform === 'vue'
         ? multiselect({
             message: i18n.t('prompts.features.select', { hint: dim('↑/↓ to navigate, space to select, a to toggle all, enter to confirm') }),
             options: [
@@ -141,10 +170,13 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       if (args.clientHints !== undefined) {
         return Promise.resolve(args.clientHints)
       }
-      const type = (results.type as string) || args.type
+      if (!args.interactive) {
+        return Promise.resolve(false)
+      }
+      const platform = (results.platform as string) || args.platform
       const features = (results.features as string[]) || args.features || []
 
-      if (type === 'nuxt' && features.includes('vuetify-nuxt-module')) {
+      if (platform === 'nuxt' && features.includes('vuetify-nuxt-module')) {
         return confirm({
           message: i18n.t('prompts.client_hints.enable'),
           initialValue: false,
@@ -158,6 +190,9 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       }
       if (args.install === false) {
         return Promise.resolve('none')
+      }
+      if (!args.interactive) {
+        return Promise.resolve(getUserAgent() ?? 'npm')
       }
       return select({
         message: i18n.t('prompts.package_manager.select'),
@@ -175,6 +210,9 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
     install: ({ results }) => {
       if (args.install !== undefined) {
         return Promise.resolve(args.install)
+      }
+      if (!args.interactive) {
+        return Promise.resolve(false)
       }
       const pm = (results.packageManager as string) || args.packageManager
       if (pm === 'none') {
