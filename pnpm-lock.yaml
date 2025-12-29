@@ -196,6 +196,16 @@ importers:
         specifier: 'catalog:'
         version: 4.0.16(@types/node@24.9.2)(jiti@2.6.1)(yaml@2.8.1)
 
+  packages/create-vuetify-0:
+    dependencies:
+      create-vuetify0:
+        specifier: workspace:*
+        version: link:../create0
+    devDependencies:
+      tsdown:
+        specifier: 'catalog:'
+        version: 0.16.6(synckit@0.11.11)(typescript@5.9.3)
+
   packages/create0:
     devDependencies:
       '@clack/prompts':
