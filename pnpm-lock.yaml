@@ -196,7 +196,7 @@ importers:
         specifier: 'catalog:'
         version: 4.0.16(@types/node@24.9.2)(jiti@2.6.1)(yaml@2.8.1)
 
-  packages/create-v0:
+  packages/create0:
     devDependencies:
       '@clack/prompts':
         specifier: 'catalog:'
@@ -267,39 +267,6 @@ importers:
       pkg-types:
         specifier: 'catalog:'
         version: 2.3.0
-      tinyexec:
-        specifier: 'catalog:'
-        version: 1.0.2
-      tsdown:
-        specifier: 'catalog:'
-        version: 0.16.6(synckit@0.11.11)(typescript@5.9.3)
-
-  packages/v0-cli:
-    devDependencies:
-      '@clack/prompts':
-        specifier: 'catalog:'
-        version: 1.0.0-alpha.8
-      '@vuetify/cli-shared':
-        specifier: workspace:*
-        version: link:../shared
-      citty:
-        specifier: 'catalog:'
-        version: 0.1.6
-      giget:
-        specifier: 'catalog:'
-        version: 2.0.0
-      kolorist:
-        specifier: 'catalog:'
-        version: 1.8.0
-      nypm:
-        specifier: 'catalog:'
-        version: 0.6.2
-      open:
-        specifier: 'catalog:'
-        version: 11.0.0
-      pathe:
-        specifier: 'catalog:'
-        version: 2.0.3
       tinyexec:
         specifier: 'catalog:'
         version: 1.0.2

@@ -1,5 +1,5 @@
 {
-  "name": "create-vuetify-v0",
+  "name": "create-vuetify0",
   "version": "0.0.6-beta.7",
   "description": "Create a new Vuetify project",
   "type": "module",
@@ -7,7 +7,7 @@
     "build": "tsdown"
   },
   "bin": {
-    "create-vuetify-v0": "./dist/index.mjs"
+    "create-vuetify0": "./dist/index.mjs"
   },
   "keywords": [
     "vuetify",
