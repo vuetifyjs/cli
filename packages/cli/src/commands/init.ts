@@ -1,11 +1,7 @@
-import { initVuetify, initVuetify0, projectArgs, type ProjectArgs } from '@vuetify/cli-shared'
+import { createVuetify, projectArgs } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand } from 'citty'
-
-const cwd = process.cwd()
-
-const VUETIFY_0_APP_DEFAULT_NAME = 'vuetify0-app'
-const VUETIFY_APP_DEFAULT_NAME = 'vuetify-app'
+import { version } from '../../package.json'
 
 export const init = defineCommand({
   meta: {
@@ -14,23 +10,44 @@ export const init = defineCommand({
   },
   args: {
     ...projectArgs(),
-    v0: {
+    cwd: {
+      type: 'string',
+      description: 'The current working directory',
+    },
+    features: {
+      type: 'string',
+      description: 'The features to install (router, pinia, eslint)',
+    },
+    typescript: {
       type: 'boolean',
-      description: i18n.t('commands.init.v0'),
+      description: 'Use TypeScript',
+      default: true,
+    },
+    packageManager: {
+      type: 'string',
+      description: 'The package manager to use (npm, pnpm, yarn, bun)',
+    },
+    debug: {
+      type: 'boolean',
+      description: 'Show debug logs',
+      default: false,
+    },
+    type: {
+      type: 'string',
+      description: 'The Vuetify version to use (vuetify, vuetify0)',
+      default: 'vuetify',
+    },
+    platform: {
+      type: 'string',
+      description: 'The framework to use (vue, nuxt)',
+      default: 'vue',
     },
   },
-  run: async ({ args }: { args: ProjectArgs & { v0?: boolean } }) => {
-    await (args.v0
-      ? initVuetify0({
-          cwd,
-          ...args,
-          defaultName: VUETIFY_0_APP_DEFAULT_NAME,
-        })
-      : initVuetify({
-          cwd,
-          ...args,
-          defaultName: VUETIFY_APP_DEFAULT_NAME,
-        }))
+  run: async ({ args }) => {
+    await createVuetify({
+      ...args,
+      version,
+    })
   },
 })
 

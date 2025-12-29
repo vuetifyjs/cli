@@ -1,5 +1,5 @@
+export * from './create'
 export * from './docs'
-export * from './download'
 export * from './eslint'
-export * from './init'
+export * from './scaffold'
 export * from './upgrade'

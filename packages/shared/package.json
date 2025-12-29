@@ -36,5 +36,9 @@
     "./i18n": {
       "import": "./i18n/index.ts"
     }
+  },
+  "dependencies": {
+    "magicast": "catalog:",
+    "validate-npm-package-name": "catalog:"
   }
 }
