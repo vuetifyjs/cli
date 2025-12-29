@@ -1,6 +1,6 @@
 {
   "name": "cli",
-  "version": "0.0.6-beta.7",
+  "version": "0.0.6",
   "private": true,
   "description": "Vuetify CLI",
   "type": "module",
