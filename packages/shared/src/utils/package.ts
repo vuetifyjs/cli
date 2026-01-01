@@ -2,6 +2,8 @@ import { resolveModulePath } from 'exsolve'
 import { detect } from 'package-manager-detector'
 import { readPackageJSON } from 'pkg-types'
 
+export { resolveCommand } from 'package-manager-detector'
+
 export async function getPackageManager () {
   return detect({ cwd: process.cwd() })
 }

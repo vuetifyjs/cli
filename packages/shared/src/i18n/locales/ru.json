@@ -210,5 +210,12 @@
     "create_v0": {
       "description": "Создать проект Vuetify0"
     }
+  },
+  "utils": {
+    "update_check": {
+      "available": "Доступно обновление!",
+      "run_update": "Выполните %{command}, чтобы обновить",
+      "run_with": "Выполните %{command}"
+    }
   }
 }

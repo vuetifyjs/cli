@@ -1,6 +1,7 @@
 import { createBanner } from '@vuetify/cli-shared'
 import { add } from '@vuetify/cli-shared/commands'
 import { i18n } from '@vuetify/cli-shared/i18n'
+import { checkForUpdate } from '@vuetify/cli-shared/utils'
 
 import { defineCommand, runMain } from 'citty'
 import { version } from '../package.json'
@@ -25,4 +26,5 @@ export const main = defineCommand({
 })
 
 console.log(createBanner())
+await checkForUpdate(version)
 runMain(main)

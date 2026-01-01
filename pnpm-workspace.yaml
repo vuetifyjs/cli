@@ -11,6 +11,7 @@ catalog:
   '@nuxt/eslint': ^1.12.1
   '@pinia/nuxt': ^0.5.1
   '@tsconfig/node22': ^22.0.5
+  '@types/semver': ^7.7.1
   '@types/validate-npm-package-name': ^4.0.2
   '@clack/prompts': ^1.0.0-alpha.8
   '@types/node': ^24.9.2
@@ -40,6 +41,7 @@ catalog:
   reactive-vscode: ^0.4.1
   sass: ^1.72.0
   sass-embedded: ^1.93.3
+  semver: ^7.7.3
   sherif: ^1.9.0
   tinyexec: ^1.0.2
   tsdown: ^0.16.6

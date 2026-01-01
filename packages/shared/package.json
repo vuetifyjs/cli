@@ -7,6 +7,7 @@
   "license": "MIT",
   "devDependencies": {
     "@clack/prompts": "catalog:",
+    "@types/semver": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
     "citty": "catalog:",
     "exsolve": "catalog:",
@@ -39,6 +40,7 @@
   },
   "dependencies": {
     "magicast": "catalog:",
+    "semver": "catalog:",
     "validate-npm-package-name": "catalog:"
   }
 }
