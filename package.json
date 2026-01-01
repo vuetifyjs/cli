@@ -21,7 +21,7 @@
     "@types/node": "catalog:",
     "bumpp": "catalog:",
     "eslint": "catalog:",
-    "eslint-config-vuetify": "catalog:",
+    "eslint-config-vuetify": "4.3.5-beta.1",
     "sherif": "catalog:",
     "typescript": "catalog:"
   }
