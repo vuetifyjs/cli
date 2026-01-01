@@ -2,7 +2,7 @@ import { defineExtension, useCommand, useIsDarkTheme, watchEffect } from 'reacti
 import { createProject } from './commands'
 import { logger } from './utils'
 
-export = defineExtension(() => {
+export default defineExtension(() => {
   logger.info('Extension Activated')
 
   useCommand('vuetify.createProject', createProject)
