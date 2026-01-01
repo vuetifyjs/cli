@@ -5,6 +5,9 @@ export default vuetify({
   pnpm: {
     enforceCatalog: true,
   },
+  ts: {
+    projectService: 'tsconfig.json',
+  },
 }, {
   files: ['templates/**', 'packages/create/src/features/**'],
   rules: {
