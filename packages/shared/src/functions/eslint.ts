@@ -1,12 +1,14 @@
 import { writeFile } from 'node:fs/promises'
 import { confirm, intro, log, outro, spinner } from '@clack/prompts'
 import { ansi256, underline } from 'kolorist'
+import { loadFile } from 'magicast'
+import { getDefaultExportOptions } from 'magicast/helpers'
 import { addDevDependency } from 'nypm'
 import { resolveCommand } from 'package-manager-detector/commands'
 import { relative } from 'pathe'
 import { findPackage, readPackage, updatePackage } from 'pkg-types'
 import { x } from 'tinyexec'
-import { configData, ESLINT, ESLINT_CONFIG, LINKS } from '../constants/eslint'
+import { configData, ESLINT, ESLINT_CONFIG, LINKS, NUXT_ESLINT } from '../constants/eslint'
 import { i18n } from '../i18n'
 import { getPackageManager, getPackageVersion, isVersionAtLeast, tryResolveFilePath, tryResolvePackage } from '../utils/package'
 
@@ -14,11 +16,18 @@ const blue = ansi256(33)
 const description = i18n.t('commands.eslint.description', { configPkg: blue(ESLINT_CONFIG) })
 
 async function getEslintStatus () {
+  const nuxtConfigUrl = tryResolveFilePath('./nuxt.config', {
+    extensions: ['.ts', '.js', '.mjs', '.cjs', '.mts', '.cts'],
+  })
+  const isNuxt = !!nuxtConfigUrl
+
   const eslintVersion = await getPackageVersion(ESLINT)
   const configVersion = await getPackageVersion(ESLINT_CONFIG)
+  const nuxtEslintVersion = await getPackageVersion(NUXT_ESLINT)
 
   const hasEslint = await tryResolvePackage(ESLINT)
   const hasEslintConfig = await tryResolvePackage(ESLINT_CONFIG)
+  const hasNuxtEslint = await tryResolvePackage(NUXT_ESLINT)
 
   const isEslintVersionValid = isVersionAtLeast(eslintVersion, '9.5.0')
   const isEslintSupportsConcurrency = isVersionAtLeast(eslintVersion, '9.34.0')
@@ -27,28 +36,45 @@ async function getEslintStatus () {
   const packagesToInstall = [
     ...(hasEslint ? [] : [ESLINT]),
     ...(hasEslintConfig ? [] : [ESLINT_CONFIG]),
-  ] as Array<typeof ESLINT | typeof ESLINT_CONFIG>
+    ...(isNuxt && !hasNuxtEslint ? [NUXT_ESLINT] : []),
+  ] as Array<typeof ESLINT | typeof ESLINT_CONFIG | typeof NUXT_ESLINT>
 
   const packagesToUpgrade = [
     ...(isEslintVersionValid ? [] : [ESLINT]),
     ...(isConfigVersionValid ? [] : [ESLINT_CONFIG]),
-  ] as Array<typeof ESLINT | typeof ESLINT_CONFIG>
+  ] as Array<typeof ESLINT | typeof ESLINT_CONFIG | typeof NUXT_ESLINT>
 
   return {
     eslintVersion,
     configVersion,
+    nuxtEslintVersion,
     hasEslint,
     hasEslintConfig,
+    hasNuxtEslint,
     isEslintVersionValid,
     isEslintSupportsConcurrency,
     isConfigVersionValid,
     packagesToInstall,
     packagesToUpgrade,
+    isNuxt,
+    nuxtConfigUrl,
   }
 }
 
+function getNuxtEslintContent (isTypescript: boolean) {
+  return `import vuetify from 'eslint-config-vuetify'
+import withNuxt from './.nuxt/eslint.config.mjs'
+
+export default withNuxt(
+  vuetify({
+    ts: ${isTypescript},
+  }),
+)
+`
+}
+
 function getActionMessage (status: Awaited<ReturnType<typeof getEslintStatus>>) {
-  const { packagesToInstall, packagesToUpgrade, hasEslint, hasEslintConfig, eslintVersion, configVersion } = status
+  const { packagesToInstall, packagesToUpgrade, hasEslint, hasEslintConfig, hasNuxtEslint, eslintVersion, configVersion, nuxtEslintVersion } = status
   const actions: string[] = []
   if (packagesToInstall.length > 0) {
     const pkgs = packagesToInstall.map(pkg => LINKS[pkg]).join(', ')
@@ -64,13 +90,16 @@ function getActionMessage (status: Awaited<ReturnType<typeof getEslintStatus>>) 
     }
   }
 
-  if (hasEslint || hasEslintConfig) {
+  if (hasEslint || hasEslintConfig || hasNuxtEslint) {
     actions.push(`(${i18n.t('commands.eslint.current')}:`)
     if (hasEslint) {
       actions.push(`  ${ESLINT}: ${eslintVersion}`)
     }
     if (hasEslintConfig) {
       actions.push(`  ${ESLINT_CONFIG}: ${configVersion}`)
+    }
+    if (hasNuxtEslint) {
+      actions.push(`  ${NUXT_ESLINT}: ${nuxtEslintVersion}`)
     }
     actions.push(')')
   }
@@ -81,7 +110,10 @@ export async function addEslint () {
   intro(description)
 
   const status = await getEslintStatus()
-  const { packagesToInstall, packagesToUpgrade, isEslintSupportsConcurrency } = status
+  const { packagesToInstall, packagesToUpgrade, isEslintSupportsConcurrency, isNuxt, nuxtConfigUrl } = status
+
+  const tsConfigUrl = tryResolveFilePath('tsconfig.json')
+  const isTypescript = !!tsConfigUrl
 
   const configUrl = tryResolveFilePath('./eslint.config', {
     extensions: ['.js', '.mjs', '.cjs', '.ts', '.mts', '.cts'],
@@ -107,6 +139,26 @@ export async function addEslint () {
     }
   } else {
     log.info(i18n.t('messages.eslint.deps_already_installed'))
+  }
+
+  if (isNuxt && nuxtConfigUrl) {
+    const mod = await loadFile(nuxtConfigUrl)
+    const options = getDefaultExportOptions(mod)
+    if (options) {
+      options.modules ||= []
+      if (!options.modules.includes('@nuxt/eslint')) {
+        options.modules.push('@nuxt/eslint')
+
+        options.eslint = {
+          config: {
+            import: {
+              package: 'eslint-plugin-import-lite',
+            },
+          },
+        }
+        await writeFile(nuxtConfigUrl, mod.generate().code)
+      }
+    }
   }
 
   let overwriteConfig = false as boolean | symbol
