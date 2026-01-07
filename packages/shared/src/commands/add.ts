@@ -1,9 +1,9 @@
 import { log, select } from '@clack/prompts'
 import { defineCommand } from 'citty'
-import { addEslint } from '../functions'
+import { addEslint, addMcp } from '../functions'
 import { i18n } from '../i18n'
 
-const choices = ['eslint']
+const choices = ['eslint', 'mcp']
 
 export const add = defineCommand({
   meta: {
@@ -36,6 +36,10 @@ export const add = defineCommand({
     switch (integration) {
       case 'eslint': {
         await addEslint()
+        break
+      }
+      case 'mcp': {
+        await addMcp()
         break
       }
     }

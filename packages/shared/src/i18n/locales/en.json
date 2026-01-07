@@ -9,6 +9,14 @@
       "current": "Currently",
       "need_to": "We need to %{actions}."
     },
+    "mcp": {
+      "description": "Install %{pkg} to enable MCP integration with Vuetify.",
+      "action": {
+        "install": "install %{pkg}"
+      },
+      "current": "Currently",
+      "need_to": "We need to %{action}."
+    },
     "init": {
       "v0": "Initialize a Vuetify0 project",
       "description": "Initialize a Vuetify project",
@@ -67,6 +75,11 @@
       "overwrite": "Found %{file}. Do you want to overwrite it?",
       "create": "No ESLint config found. Do you want to create one?",
       "scripts": "Do you want to add lint scripts to package.json?"
+    },
+    "mcp": {
+      "overwrite": "Found %{file}. Overwrite?",
+      "create": "Create Ruler config files?",
+      "scripts": "Add mcp scripts to package.json?"
     },
     "directory": {
       "name": "Project name",
@@ -156,6 +169,10 @@
     "eslint": {
       "setup_config": "Setting up ESLint config...",
       "complete": "ESLint config setup complete!"
+    },
+    "mcp": {
+      "setup_config": "Setting up Ruler config...",
+      "complete": "Ruler setup complete"
     }
   },
   "messages": {

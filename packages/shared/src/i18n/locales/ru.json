@@ -9,6 +9,14 @@
       "current": "Сейчас",
       "need_to": "Нужно %{actions}."
     },
+    "mcp": {
+      "description": "Установим %{configPkg}, чтобы включить интеграцию MCP с Vuetify.",
+      "action": {
+        "install": "установить %{pkgs}"
+      },
+      "current": "Сейчас",
+      "need_to": "Нужно %{actions}."
+    },
     "init": {
       "v0": "Инициализировать проект Vuetify0",
       "description": "Инициализировать проект Vuetify",

@@ -1,5 +1,6 @@
 export * from './create'
 export * from './docs'
 export * from './eslint'
+export * from './mcp'
 export * from './scaffold'
 export * from './upgrade'

@@ -1,0 +1,22 @@
+export function getRulerToml () {
+  return `# For a complete example, see: https://okigu.com/ruler#complete-example
+
+# List of agents to configure
+default_agents = ["copilot", "claude", "trae"]
+
+[mcp_servers.vuetify]
+url = "https://mcp.vuetifyjs.com/mcp"
+
+# https://github.com/vuetifyjs/mcp#authentication
+# [mcp_servers.vuetify.headers]
+# Authorization = "Bearer <YOUR_API_KEY>"
+`
+}
+
+export function getAgentsMd () {
+  return `# Project Rules
+
+## General
+- Follow the existing code style and patterns.
+`
+}
