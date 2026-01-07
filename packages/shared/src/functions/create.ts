@@ -1,5 +1,4 @@
 import type { ProjectArgs } from '../args'
-import type { ProjectOptions } from '../prompts'
 import { join } from 'node:path'
 import { intro, outro, spinner } from '@clack/prompts'
 import { i18n } from '../i18n'
