@@ -41,6 +41,7 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
     type,
     features,
     typescript,
+    type,
     packageManager,
     install,
     force,
