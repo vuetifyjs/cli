@@ -40,6 +40,7 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
     platform,
     features,
     typescript,
+    type,
     packageManager,
     install,
     force,
@@ -56,9 +57,18 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
     rmSync(projectRoot, { recursive: true, force: true })
   }
 
-  const templateName = platform === 'vue'
-    ? `vue/base`
-    : `nuxt/base`
+  const templates = {
+    vue: {
+      vuetify0: 'vuetify0/base',
+      vuetify: 'vue/base',
+    },
+    nuxt: {
+      vuetify0: 'vuetify0/nuxt',
+      vuetify: 'vue/nuxt',
+    },
+  } as const
+
+  const templateName = templates[platform][type]
 
   callbacks.onDownloadStart?.(templateName)
 
