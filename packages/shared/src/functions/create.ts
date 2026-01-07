@@ -58,9 +58,9 @@ export async function createVuetify (options: CreateVuetifyOptions) {
       type: context.type as 'vuetify' | 'vuetify0',
       features: context.features,
       typescript: !!context.typescript,
-      packageManager: context.packageManager,
-      install: context.install,
-      force: context.force,
+      packageManager: context.packageManager as string,
+      install: context.install as boolean,
+      force: context.force as boolean,
       clientHints: context.clientHints,
       debug: args.debug,
     }, {
