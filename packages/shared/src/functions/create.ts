@@ -1,4 +1,5 @@
 import type { ProjectArgs } from '../args'
+import type { ProjectOptions } from '../prompts'
 import { join } from 'node:path'
 import { intro, outro, spinner } from '@clack/prompts'
 import { i18n } from '../i18n'
@@ -58,9 +59,9 @@ export async function createVuetify (options: CreateVuetifyOptions) {
       type: context.type as 'vuetify' | 'vuetify0',
       features: context.features,
       typescript: !!context.typescript,
-      packageManager: context.packageManager as string,
-      install: context.install as boolean,
-      force: context.force as boolean,
+      packageManager: context.packageManager,
+      install: context.install,
+      force: context.force,
       clientHints: context.clientHints,
       debug: args.debug,
     }, {

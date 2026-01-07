@@ -14,9 +14,9 @@ export interface ScaffoldOptions {
   type: 'vuetify' | 'vuetify0'
   features: string[]
   typescript: boolean
-  packageManager: string
-  install: boolean
-  force: boolean
+  packageManager?: string
+  install?: boolean
+  force?: boolean
   clientHints?: boolean
   debug?: boolean
 }
