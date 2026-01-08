@@ -5,6 +5,7 @@ export interface FeatureContext {
   pkg: PackageJson
   isTypescript: boolean
   clientHints?: boolean
+  type?: 'vuetify' | 'vuetify0'
 }
 
 export interface Feature {

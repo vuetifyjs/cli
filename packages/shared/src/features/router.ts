@@ -8,8 +8,8 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const router: Feature = {
   name: 'router',
-  apply: async ({ cwd, pkg, isTypescript }) => {
-    await installFeature('router', cwd)
+  apply: async ({ cwd, pkg, isTypescript, type }) => {
+    await installFeature('router', cwd, type)
 
     const ext = isTypescript ? 'ts' : 'js'
     pkg.dependencies = pkg.dependencies || {}
@@ -43,8 +43,8 @@ export const router: Feature = {
 
 export const fileRouter: Feature = {
   name: 'file-router',
-  apply: async ({ cwd, pkg, isTypescript }) => {
-    await installFeature('file-router', cwd)
+  apply: async ({ cwd, pkg, isTypescript, type }) => {
+    await installFeature('file-router', cwd, type)
 
     const ext = isTypescript ? 'ts' : 'js'
     pkg.dependencies = pkg.dependencies || {}

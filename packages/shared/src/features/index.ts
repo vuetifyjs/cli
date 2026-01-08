@@ -23,11 +23,12 @@ export async function applyFeatures (
   pkg: PackageJson,
   isTypescript: boolean,
   clientHints?: boolean,
+  type?: 'vuetify' | 'vuetify0',
 ) {
   for (const name of featureNames) {
     const feature = features[name]
     if (feature) {
-      await feature.apply({ cwd, pkg, isTypescript, clientHints })
+      await feature.apply({ cwd, pkg, isTypescript, clientHints, type })
     }
   }
 }
