@@ -4,6 +4,7 @@ import { writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { loadFile } from 'magicast'
 import { getDefaultExportOptions } from 'magicast/helpers'
+import { addStatementToFunctionBody, isFunction } from '../utils/magicast'
 import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const pinia: Feature = {
@@ -62,8 +63,8 @@ export const pinia: Feature = {
       })
 
       const registerPlugins = mod.exports.registerPlugins
-      if (registerPlugins && registerPlugins.$type === 'function') {
-        registerPlugins.$body.push('app.use(createPinia())')
+      if (isFunction(registerPlugins)) {
+        addStatementToFunctionBody(registerPlugins, 'app.use(createPinia())')
       }
 
       await writeFile(pluginsPath, mod.generate().code)

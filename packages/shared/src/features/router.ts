@@ -4,6 +4,7 @@ import { writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { builders, loadFile } from 'magicast'
 import { installFeature } from '../utils/installFeature'
+import { addStatementToFunctionBody, isFunction } from '../utils/magicast'
 import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const router: Feature = {
@@ -33,8 +34,8 @@ export const router: Feature = {
     })
 
     const registerPlugins = mod.exports.registerPlugins
-    if (registerPlugins && registerPlugins.$type === 'function') {
-      registerPlugins.$body.push('app.use(router)')
+    if (isFunction(registerPlugins)) {
+      addStatementToFunctionBody(registerPlugins, 'app.use(router)')
     }
 
     await writeFile(pluginsPath, mod.generate().code)
@@ -70,8 +71,8 @@ export const fileRouter: Feature = {
     })
 
     const registerPlugins = mod.exports.registerPlugins
-    if (registerPlugins && registerPlugins.$type === 'function') {
-      registerPlugins.$body.push('app.use(router)')
+    if (isFunction(registerPlugins)) {
+      addStatementToFunctionBody(registerPlugins, 'app.use(router)')
     }
 
     await writeFile(pluginsPath, mod.generate().code)

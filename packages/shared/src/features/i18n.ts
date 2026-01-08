@@ -4,6 +4,7 @@ import { writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { loadFile } from 'magicast'
 import { getDefaultExportOptions } from 'magicast/helpers'
+import { addStatementToFunctionBody, isFunction } from '../utils/magicast'
 import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const i18n: Feature = {
@@ -56,8 +57,8 @@ export const i18n: Feature = {
         })
 
         const registerPlugins = mod.exports.registerPlugins
-        if (registerPlugins && registerPlugins.$type === 'function') {
-          registerPlugins.$body.push('app.use(i18n)')
+        if (isFunction(registerPlugins)) {
+          addStatementToFunctionBody(registerPlugins, 'app.use(i18n)')
         }
 
         await writeFile(pluginsPath, mod.generate().code)
