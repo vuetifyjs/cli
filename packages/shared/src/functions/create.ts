@@ -1,6 +1,8 @@
 import type { ProjectArgs } from '../args'
-import { join } from 'node:path'
-import { intro, outro, spinner } from '@clack/prompts'
+import { join, relative } from 'node:path'
+import { box, intro, outro, spinner } from '@clack/prompts'
+import { ansi256, link } from 'kolorist'
+import { getUserAgent } from 'package-manager-detector'
 import { i18n } from '../i18n'
 import { prompt } from '../prompts'
 import { createBanner } from '../utils/banner'
@@ -99,5 +101,29 @@ export async function createVuetify (options: CreateVuetifyOptions) {
     throw error
   }
 
-  outro(i18n.t('messages.create.generated', { name: context.name, path: projectRoot }))
+  const relativePath = relative(cwd, projectRoot)
+  const pm = (context.packageManager === 'none' ? getUserAgent() : context.packageManager) || 'npm'
+
+  const lines = []
+  if (relativePath) {
+    lines.push(`cd ${relativePath}`)
+  }
+  if (!context.install) {
+    lines.push(`${pm} install`)
+  }
+  lines.push(`${pm} ${pm === 'npm' ? 'run ' : ''}dev`)
+
+  outro(i18n.t('messages.create.generated', { name: context.name, path: relativePath }))
+
+  box(lines.join('\n'), 'Next steps', {
+    withGuide: false,
+  })
+
+  const blue = ansi256(33)
+
+  console.log(
+    `${blue(link('Docs', 'https://0.vuetifyjs.com/guide'))}  ⸱ `
+    + `${blue(link('Discord', 'https://discord.gg/vK6T89eNP7'))}  ⸱ `
+    + `${blue(link('Support Us', 'https://opencollective.com/vuetify'))}\n`,
+  )
 }
