@@ -9,7 +9,7 @@ export default defineConfig({
   shortcuts: {
     'bg-glass-surface': '[background:color-mix(in_srgb,var(--v0-surface)_70%,transparent)] backdrop-blur-12',
     'border-subtle': '[border-color:color-mix(in_srgb,var(--v0-divider)_50%,transparent)]',
-    'sr-only': 'absolute w-1px h-1px p-0 -m-1px overflow-hidden clip-rect-0 whitespace-nowrap border-0',
+    'sr-only': 'absolute w-1px h-1px p-0 -m-1px overflow-hidden whitespace-nowrap border-0',
   },
   preflights: [
     {
