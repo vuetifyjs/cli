@@ -27,6 +27,7 @@ export const i18n: Feature = {
 
         // Add basic configuration
         options.i18n = {
+          defaultLocale: 'en',
           vueI18n: './i18n.config.ts',
         }
       }
