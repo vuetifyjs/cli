@@ -10,7 +10,7 @@
 <template>
   <div aria-hidden="true" class="mesh-bg" />
   <main class="main-bg min-h-screen p-8 flex items-center">
-    <NuxtPage />
+    <HelloWorld />
   </main>
 </template>
 
