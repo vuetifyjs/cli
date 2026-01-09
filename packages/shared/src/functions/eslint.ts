@@ -8,7 +8,8 @@ import { resolveCommand } from 'package-manager-detector/commands'
 import { relative } from 'pathe'
 import { findPackage, readPackage, updatePackage } from 'pkg-types'
 import { x } from 'tinyexec'
-import { configData, ESLINT, ESLINT_CONFIG, LINKS, NUXT_ESLINT } from '../constants/eslint'
+import { ESLINT, ESLINT_CONFIG, LINKS, NUXT_ESLINT } from '../constants/eslint'
+import { getNuxtEslintContent, getVueEslintContent } from '../features/eslint'
 import { i18n } from '../i18n'
 import { getPackageManager, getPackageVersion, isVersionAtLeast, tryResolveFilePath, tryResolvePackage } from '../utils/package'
 
@@ -59,18 +60,6 @@ async function getEslintStatus () {
     isNuxt,
     nuxtConfigUrl,
   }
-}
-
-function getNuxtEslintContent (isTypescript: boolean) {
-  return `import vuetify from 'eslint-config-vuetify'
-import withNuxt from './.nuxt/eslint.config.mjs'
-
-export default withNuxt(
-  vuetify({
-    ts: ${isTypescript},
-  }),
-)
-`
 }
 
 function getActionMessage (status: Awaited<ReturnType<typeof getEslintStatus>>) {
@@ -171,6 +160,7 @@ export async function addEslint () {
       }))
 
   if (overwriteConfig === true) {
+    const configData = isNuxt ? getNuxtEslintContent(isTypescript) : getVueEslintContent(isTypescript)
     const s = spinner()
     s.start(i18n.t('spinners.eslint.setup_config'))
     await writeFile(configUrl ?? 'eslint.config.mjs', configData)

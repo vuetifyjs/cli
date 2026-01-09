@@ -9,8 +9,3 @@ export const LINKS = {
   [ESLINT_CONFIG]: link(ESLINT_CONFIG, 'https://npmjs.org/package/eslint-config-vuetify'),
   [NUXT_ESLINT]: link(NUXT_ESLINT, 'https://npmjs.org/package/@nuxt/eslint'),
 }
-
-export const configData = `import vuetify from 'eslint-config-vuetify'
-
-export default vuetify()
-`

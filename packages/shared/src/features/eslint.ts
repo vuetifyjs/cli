@@ -53,7 +53,7 @@ export const eslint: Feature = {
   },
 }
 
-function getVueEslintContent (isTypescript: boolean) {
+export function getVueEslintContent (isTypescript: boolean) {
   return `import vuetify from 'eslint-config-vuetify'
 
 export default vuetify({
@@ -62,7 +62,7 @@ export default vuetify({
 `
 }
 
-function getNuxtEslintContent (isTypescript: boolean) {
+export function getNuxtEslintContent (isTypescript: boolean) {
   return `import vuetify from 'eslint-config-vuetify'
 import withNuxt from './.nuxt/eslint.config.mjs'
 
