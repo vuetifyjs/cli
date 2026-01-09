@@ -1,6 +1,6 @@
 {
   "name": "create-vuetify0",
-  "version": "0.0.10-beta.13",
+  "version": "0.0.10-beta.14",
   "description": "Create a new Vuetify project",
   "type": "module",
   "scripts": {
