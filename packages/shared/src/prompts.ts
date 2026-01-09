@@ -140,6 +140,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         return Promise.resolve([])
       }
       const platform = (results.platform as string) || args.platform
+      const type = (results.type as string) || args.type
 
       return platform === 'vue'
         ? multiselect({
@@ -157,12 +158,12 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
             message: i18n.t('prompts.features.select', { hint: dim('↑/↓ to navigate, space to select, a to toggle all, enter to confirm') }),
             options: [
               { label: i18n.t('prompts.features.eslint.label'), value: 'eslint', hint: i18n.t('prompts.features.eslint.hint') },
-              { label: i18n.t('prompts.features.vuetify_nuxt_module.label'), value: 'vuetify-nuxt-module', hint: i18n.t('prompts.features.vuetify_nuxt_module.hint') },
+              ...(type === 'vuetify0' ? [] : [{ label: i18n.t('prompts.features.vuetify_nuxt_module.label'), value: 'vuetify-nuxt-module', hint: i18n.t('prompts.features.vuetify_nuxt_module.hint') }]),
               { label: i18n.t('prompts.features.mcp.label'), value: 'mcp', hint: i18n.t('prompts.features.mcp.hint') },
               { label: i18n.t('prompts.features.pinia.label'), value: 'pinia' },
               { label: i18n.t('prompts.features.i18n.label'), value: 'i18n' },
             ],
-            initialValues: ['eslint', 'vuetify-nuxt-module', 'mcp'],
+            initialValues: ['eslint', ...(type === 'vuetify0' ? [] : ['vuetify-nuxt-module']), 'mcp'],
             required: false,
           })
     },
