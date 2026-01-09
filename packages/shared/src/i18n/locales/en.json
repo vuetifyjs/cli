@@ -117,16 +117,14 @@
     "features": {
       "select": "Select features to install: %{hint}",
       "pinia": {
-        "label": "Pinia",
-        "hint": "Intuitive, type safe and flexible Store for Vue"
+        "label": "Pinia"
       },
       "eslint": {
         "label": "ESLint",
-        "hint": "Pluggable JavaScript linter"
+        "hint": "with eslint-config-vuetify"
       },
       "i18n": {
-        "label": "I18n",
-        "hint": "Internationalization support for Vue"
+        "label": "I18n"
       },
       "vuetify_nuxt_module": {
         "label": "Vuetify Nuxt Module",
@@ -134,7 +132,7 @@
       },
       "mcp": {
         "label": "MCP",
-        "hint": "Use official MCP Vuetify integration"
+        "hint": "with @vuetify/mcp and @intellectronica/ruler"
       }
     },
     "client_hints": {
