@@ -20,3 +20,6 @@
 ## Development
 - Use `tsdown` for building packages.
 - When adding new features to the CLI, consider if the logic belongs in `shared` to be reusable across `cli`, `create`, `create-v0`, `v0-cli`, and `vscode`.
+
+## Package versions
+- when adding packages/shared/src/features/dependencies/package.json, make sure to run npm view to get actual versions of each package
