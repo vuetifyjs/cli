@@ -127,6 +127,10 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         return Promise.resolve('none')
       }
 
+      if (!args.interactive) {
+        return Promise.resolve('none')
+      }
+
       return select({
         message: i18n.t('prompts.router.select'),
         initialValue: 'router',
