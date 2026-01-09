@@ -45,6 +45,7 @@ export async function createVuetify (options: CreateVuetifyOptions) {
     packageManager,
     platform: rawArgs.platform,
     type: rawArgs.type,
+    css: rawArgs.css,
   }, cwd)
   debug('context=', JSON.stringify(context, null, 2))
   const projectRoot = join(cwd, context.name)

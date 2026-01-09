@@ -99,6 +99,16 @@
       "vuetify0": "Vuetify0 (alpha)",
       "nuxt": "Nuxt"
     },
+    "css_framework": {
+      "select": "Which CSS framework?",
+      "unocss": {
+        "hint": "Instant on-demand atomic CSS engine"
+      },
+      "tailwindcss": {
+        "hint": "A utility-first CSS framework"
+      },
+      "none": "None"
+    },
     "typescript": {
       "use": "Use TypeScript?"
     },

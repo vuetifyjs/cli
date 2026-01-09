@@ -37,6 +37,10 @@ export const init = defineCommand({
       description: 'The Vuetify version to use (vuetify, vuetify0)',
       default: 'vuetify',
     },
+    css: {
+      type: 'string',
+      description: 'The CSS framework to use (unocss, tailwindcss, none)',
+    },
     platform: {
       type: 'string',
       description: 'The framework to use (vue, nuxt)',

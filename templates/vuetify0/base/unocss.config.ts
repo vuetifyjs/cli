@@ -63,8 +63,5 @@ export default defineConfig({
       'on-surface': 'var(--v0-on-surface)',
       'on-surface-variant': 'var(--v0-on-surface-variant)',
     },
-    borderColor: {
-      DEFAULT: 'var(--v0-divider)',
-    },
   },
 })

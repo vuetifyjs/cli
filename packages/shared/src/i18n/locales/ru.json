@@ -94,6 +94,18 @@
       "vuetify0": "Vuetify0 (alpha)",
       "nuxt": "Nuxt"
     },
+    "css_framework": {
+      "select": "Какой фреймворк CSS вы хотите использовать?",
+      "none": "Никакой",
+      "unocss": {
+        "label": "UnoCSS",
+        "hint": "Быстрая и гибкая система стилей"
+      },
+      "tailwindcss": {
+        "label": "Tailwind CSS",
+        "hint": "Атомарный CSS-фреймворк"
+      }
+    },
     "typescript": {
       "use": "Использовать TypeScript?"
     },

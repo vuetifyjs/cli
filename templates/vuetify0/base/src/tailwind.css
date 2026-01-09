@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+html {
+  scrollbar-gutter: stable;
+}
+
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--v0-primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@theme inline {
+  --color-primary: var(--v0-primary);
+  --color-secondary: var(--v0-secondary);
+  --color-error: var(--v0-error);
+  --color-info: var(--v0-info);
+  --color-success: var(--v0-success);
+  --color-warning: var(--v0-warning);
+  --color-background: var(--v0-background);
+  --color-surface: var(--v0-surface);
+  --color-surface-tint: var(--v0-surface-tint);
+  --color-surface-variant: var(--v0-surface-variant);
+  --color-divider: var(--v0-divider);
+  --color-on-primary: var(--v0-on-primary);
+  --color-on-secondary: var(--v0-on-secondary);
+  --color-on-error: var(--v0-on-error);
+  --color-on-info: var(--v0-on-info);
+  --color-on-success: var(--v0-on-success);
+  --color-on-warning: var(--v0-on-warning);
+  --color-on-background: var(--v0-on-background);
+  --color-on-surface: var(--v0-on-surface);
+  --color-on-surface-variant: var(--v0-on-surface-variant);
+}
+
+@layer utilities {
+  .sr-only {
+    @apply absolute w-[1px] h-[1px] p-0 -m-[1px] overflow-hidden whitespace-nowrap border-0;
+  }
+  .border-subtle {
+    @apply [border-color:color-mix(in_srgb,var(--v0-divider)_50%,transparent)];
+  }
+  .bg-glass-surface {
+    @apply [background:color-mix(in_srgb,var(--v0-surface)_70%,transparent)] backdrop-blur-[12];
+  }
+}

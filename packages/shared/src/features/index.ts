@@ -1,10 +1,13 @@
 import type { PackageJson } from 'pkg-types'
 import type { Feature } from './types'
+import { cssNone } from './css-none'
 import { eslint } from './eslint'
 import { i18n } from './i18n'
 import { mcp } from './mcp'
 import { pinia } from './pinia'
 import { fileRouter, router } from './router'
+import { tailwindcss } from './tailwindcss'
+import { unocss } from './unocss'
 import { vuetifyNuxtModule } from './vuetify-nuxt-module'
 
 export const features: Record<string, Feature> = {
@@ -15,6 +18,9 @@ export const features: Record<string, Feature> = {
   eslint,
   mcp,
   'vuetify-nuxt-module': vuetifyNuxtModule,
+  unocss,
+  tailwindcss,
+  'css-none': cssNone,
 }
 
 export async function applyFeatures (

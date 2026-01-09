@@ -19,6 +19,7 @@ export interface ProjectOptions {
   force?: boolean
   clientHints?: boolean
   interactive?: boolean
+  css?: 'unocss' | 'tailwindcss' | 'none'
 }
 
 export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()): Promise<ProjectOptions> {
@@ -93,6 +94,35 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         options: [
           { label: 'Vuetify', value: 'vuetify', hint: 'Standard Material Design Component Framework' },
           { label: 'Vuetify 0 (alpha)', value: 'vuetify0', hint: 'Headless Component Library' },
+        ],
+      })
+    },
+    cssFramework: ({ results }) => {
+      const type = (results.type as string) || args.type
+      if (type !== 'vuetify0') {
+        return Promise.resolve('none')
+      }
+
+      if (args.css) {
+        if (args.css.includes('unocss')) {
+          return Promise.resolve('unocss')
+        }
+        if (args.css.includes('tailwindcss')) {
+          return Promise.resolve('tailwindcss')
+        }
+      }
+
+      if (!args.interactive) {
+        return Promise.resolve('none')
+      }
+
+      return select({
+        message: i18n.t('prompts.css_framework.select'),
+        initialValue: 'unocss',
+        options: [
+          { label: 'UnoCSS', value: 'unocss', hint: i18n.t('prompts.css_framework.unocss.hint') },
+          { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
+          { label: i18n.t('prompts.css_framework.none'), value: 'none' },
         ],
       })
     },
@@ -243,6 +273,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
   const features = [
     ...(options.features as string[]),
     options.router,
+    options.cssFramework === 'none' ? 'css-none' : options.cssFramework,
   ].filter(f => f && f !== 'none')
 
   return {
