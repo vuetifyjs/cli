@@ -38,7 +38,6 @@ export const main = defineCommand({
     platform: {
       type: 'string',
       description: 'The framework to use (vue, nuxt)',
-      default: 'vue',
     },
   },
   run: async ({ args }) => {
