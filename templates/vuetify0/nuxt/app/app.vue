@@ -1,9 +1,34 @@
+<script lang="ts" setup>
+  useHead({
+    title: 'Vuetify0 - Headless Components for Vue 3',
+    link: [
+      { rel: 'icon', type: 'image/png', href: '/0.png' },
+    ],
+  })
+</script>
+
 <template>
-  <main class="min-h-screen bg-background text-foreground p-4">
-    <HelloWorld />
+  <div aria-hidden="true" class="mesh-bg" />
+  <main class="main-bg min-h-screen p-8 flex items-center">
+    <NuxtPage />
   </main>
 </template>
 
-<script setup lang="ts">
-//
-</script>
+<style>
+  .main-bg {
+    background: color-mix(in srgb, var(--v0-background) 85%, transparent);
+  }
+
+  .mesh-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(at 40% 20%, color-mix(in srgb, var(--v0-primary) 40%, transparent) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, color-mix(in srgb, var(--v0-info) 35%, transparent) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, color-mix(in srgb, var(--v0-error) 25%, transparent) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, color-mix(in srgb, var(--v0-success) 30%, transparent) 0px, transparent 50%),
+      radial-gradient(at 20% 80%, color-mix(in srgb, var(--v0-warning) 20%, transparent) 0px, transparent 50%);
+  }
+</style>
