@@ -19,6 +19,7 @@
   "devDependencies": {
     "@intellectronica/ruler": "catalog:",
     "@types/node": "catalog:",
+    "@types/validate-npm-package-name": "catalog:",
     "bumpp": "catalog:",
     "conventional-changelog-vuetify": "^2.0.2",
     "eslint": "catalog:",

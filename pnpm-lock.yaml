@@ -104,6 +104,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 24.9.2
+      '@types/validate-npm-package-name':
+        specifier: 'catalog:'
+        version: 4.0.2
       bumpp:
         specifier: 'catalog:'
         version: 10.3.1
