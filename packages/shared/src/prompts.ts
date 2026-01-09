@@ -60,6 +60,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
           cancel(i18n.t('prompts.project.cancel'))
           process.exit(0)
         }
+        return true
       }
       return args.force || false
     },
