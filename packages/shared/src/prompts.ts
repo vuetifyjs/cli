@@ -41,23 +41,27 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         },
       })
     },
-    force: ({ results }) => {
+    force: async ({ results }) => {
       const name = (results.name as string) || args.name
       const projectRoot = join(cwd, name!)
 
       if (existsSync(projectRoot) && readdirSync(projectRoot).length > 0) {
         if (args.force) {
-          return Promise.resolve(true)
+          return true
         }
         if (!args.interactive) {
-          return Promise.resolve(false)
+          return false
         }
-        return confirm({
+        const overwrite = await confirm({
           message: i18n.t('prompts.project.overwrite', { path: projectRoot }),
           initialValue: false,
         })
+        if (overwrite === false || typeof overwrite !== 'boolean') {
+          cancel(i18n.t('prompts.project.cancel'))
+          process.exit(0)
+        }
       }
-      return Promise.resolve(args.force || false)
+      return args.force || false
     },
     platform: () => {
       if (args.platform) {

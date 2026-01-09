@@ -90,7 +90,8 @@
     "project": {
       "name": "Project name:",
       "invalid": "Invalid project name: %{error}",
-      "overwrite": "The project path: %{path} already exists, would you like to overwrite this directory?"
+      "overwrite": "The project path: %{path} already exists, would you like to overwrite this directory?",
+      "cancel": "Use the different name for the project."
     },
     "framework": {
       "select": "Which framework would you like to use?",
@@ -141,7 +142,7 @@
     "package_manager": {
       "select": "Which package manager would you like to use?"
     },
-    "cancel": "Operation cancelled."
+    "cancel": "Setup cancelled. You can run this command again anytime."
   },
   "spinners": {
     "template": {
