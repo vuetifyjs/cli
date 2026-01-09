@@ -1,7 +1,7 @@
 import { createThemePlugin } from '@vuetify/v0'
 
 export default createThemePlugin({
-  default: 'light',
+  default: 'dark',
   target: 'html',
   themes: {
     light: {

@@ -2,7 +2,7 @@ import { createThemePlugin } from '@vuetify/v0'
 
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.vueApp.use(createThemePlugin({
-    default: 'light',
+    default: 'dark',
     target: 'html',
     themes: {
       light: {
