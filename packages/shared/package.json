@@ -1,6 +1,6 @@
 {
   "name": "@vuetify/cli-shared",
-  "version": "0.0.10-beta.7",
+  "version": "0.0.10-beta.8",
   "private": true,
   "description": "Shared functions for Vuetify CLI",
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
