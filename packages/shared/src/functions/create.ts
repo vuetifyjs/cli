@@ -4,7 +4,7 @@ import { box, intro, outro, spinner } from '@clack/prompts'
 import { ansi256, link } from 'kolorist'
 import { getUserAgent } from 'package-manager-detector'
 import { i18n } from '../i18n'
-import { prompt } from '../prompts'
+import { type ProjectOptions, prompt } from '../prompts'
 import { createBanner } from '../utils/banner'
 import { scaffold } from './scaffold'
 
@@ -19,6 +19,8 @@ export interface CreateVuetifyOptions extends ProjectArgs {
   type?: string
   platform?: string
   clientHints?: boolean
+  css?: string
+  router?: string
 }
 
 export async function createVuetify (options: CreateVuetifyOptions) {
@@ -45,7 +47,8 @@ export async function createVuetify (options: CreateVuetifyOptions) {
     packageManager,
     platform: rawArgs.platform,
     type: rawArgs.type,
-    css: rawArgs.css,
+    css: rawArgs.css as ProjectOptions['css'],
+    router: rawArgs.router as ProjectOptions['router'],
   }, cwd)
   debug('context=', JSON.stringify(context, null, 2))
   const projectRoot = join(cwd, context.name)

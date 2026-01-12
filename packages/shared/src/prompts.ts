@@ -2,7 +2,7 @@
 
 import { existsSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
-import { cancel, confirm, group, multiselect, select, text } from '@clack/prompts'
+import { cancel, confirm, group, log, multiselect, select, text } from '@clack/prompts'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { dim } from 'kolorist'
 import { getUserAgent } from 'package-manager-detector'
@@ -20,6 +20,7 @@ export interface ProjectOptions {
   clientHints?: boolean
   interactive?: boolean
   css?: 'unocss' | 'tailwindcss' | 'none'
+  router?: 'router' | 'file-router' | 'none'
 }
 
 export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()): Promise<ProjectOptions> {
@@ -110,6 +111,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         if (args.css.includes('tailwindcss')) {
           return Promise.resolve('tailwindcss')
         }
+        return Promise.resolve('none')
       }
 
       if (!args.interactive) {
@@ -118,7 +120,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
 
       return select({
         message: i18n.t('prompts.css_framework.select'),
-        initialValue: 'unocss',
+        initialValue: type === 'vuetify0' ? 'unocss' : 'none',
         options: [
           { label: 'UnoCSS', value: 'unocss', hint: i18n.t('prompts.css_framework.unocss.hint') },
           { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
@@ -138,18 +140,8 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       return Promise.resolve(args.typescript ?? true)
     },
     router: ({ results }) => {
-      if (args.features) {
-        if (args.features.includes('router') && args.features.includes('file-router')) {
-          console.error(i18n.t('prompts.router.conflict'))
-          process.exit(1)
-        }
-        if (args.features.includes('router')) {
-          return Promise.resolve('router')
-        }
-        if (args.features.includes('file-router')) {
-          return Promise.resolve('file-router')
-        }
-        return Promise.resolve('none')
+      if (args.router) {
+        return Promise.resolve(args.router)
       }
 
       const platform = (results.platform as string) || args.platform

@@ -53,13 +53,13 @@ describe('create-vuetify matrix', () => {
     // Vue + TS
     { name: 'vue-ts', args: ['--type=vue', '--typescript', '--features='] },
     // Vue + TS + Router
-    { name: 'vue-ts-router', args: ['--type=vue', '--typescript', '--features=router'] },
+    { name: 'vue-ts-router', args: ['--type=vue', '--typescript', '--router=router'] },
     // Vue + TS + Pinia
     { name: 'vue-ts-pinia', args: ['--type=vue', '--typescript', '--features=pinia'] },
     // Vue + TS + ESLint
     { name: 'vue-ts-eslint', args: ['--type=vue', '--typescript', '--features=eslint'] },
     // Vue + TS + All
-    { name: 'vue-ts-all', args: ['--type=vue', '--typescript', '--features=router,pinia,eslint'] },
+    { name: 'vue-ts-all', args: ['--type=vue', '--typescript', '--router=router', '--features=pinia,eslint'] },
 
     // Nuxt
     { name: 'nuxt', args: ['--type=nuxt', '--features='] },

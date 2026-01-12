@@ -19,7 +19,11 @@ export const main = defineCommand({
     },
     features: {
       type: 'string',
-      description: 'The features to install (router, pinia, eslint)',
+      description: 'The features to install (pinia, eslint, i18n, mcp)',
+    },
+    router: {
+      type: 'string',
+      description: 'The router to install (router, file-router, none)',
     },
     typescript: {
       type: 'boolean',
