@@ -6,13 +6,13 @@ catalogMode: strict
 
 catalog:
   '@bomb.sh/tab': ^0.0.11
-  '@intellectronica/ruler': ^0.3.18
+  '@intellectronica/ruler': ^0.3.23
   '@types/semver': ^7.7.1
   '@types/validate-npm-package-name': ^4.0.2
-  '@clack/prompts': ^1.0.0-alpha.8
-  '@types/node': ^24.9.2
-  '@types/vscode': ^1.99.0
-  bumpp: ^10.3.1
+  '@clack/prompts': ^1.0.0-alpha.9
+  '@types/node': ^24.10.7
+  '@types/vscode': ^1.108.1
+  bumpp: ^10.3.2
   citty: ^0.1.6
   eslint: ^9.39.2
   eslint-config-vuetify: ^4.3.5-beta.1
@@ -25,14 +25,14 @@ catalog:
   magicast: ^0.5.1
   nypm: ^0.6.2
   open: ^11.0.0
-  package-manager-detector: ^1.5.0
+  package-manager-detector: ^1.6.0
   pathe: ^2.0.3
   pkg-types: ^2.3.0
   reactive-vscode: ^0.4.1
   semver: ^7.7.3
   sherif: ^1.9.0
   tinyexec: ^1.0.2
-  tsdown: ^0.16.6
+  tsdown: ^0.16.8
   typescript: ^5.9.3
-  validate-npm-package-name: ^7.0.1
-  vitest: ^4.0.16
+  validate-npm-package-name: ^7.0.2
+  vitest: ^4.0.17
