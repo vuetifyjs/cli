@@ -6,6 +6,11 @@
   "scripts": {
     "build": "tsdown"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "bin": {
     "create-vuetify": "./dist/index.mjs"
   },
