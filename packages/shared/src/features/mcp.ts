@@ -1,6 +1,6 @@
 import type { Feature } from './types'
 import { mkdir, writeFile } from 'node:fs/promises'
-import { join } from 'node:path'
+import { join } from 'pathe'
 import { getAgentsMd, getRulerToml } from '../utils/mcp'
 import rootPkg from './dependencies/package.json' with { type: 'json' }
 

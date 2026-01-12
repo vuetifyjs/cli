@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 import { existsSync, readdirSync } from 'node:fs'
-import { join } from 'node:path'
-import { cancel, confirm, group, log, multiselect, select, text } from '@clack/prompts'
+import { cancel, confirm, group, multiselect, select, text } from '@clack/prompts'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { dim } from 'kolorist'
 import { getUserAgent } from 'package-manager-detector'
+import { join } from 'pathe'
 import validate from 'validate-npm-package-name'
 
 export interface ProjectOptions {

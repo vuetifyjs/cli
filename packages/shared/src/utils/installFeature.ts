@@ -1,7 +1,7 @@
 import { cpSync, existsSync, mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 import { downloadTemplate } from 'giget'
+import { join } from 'pathe'
 
 export async function installFeature (feature: string, cwd: string, type: 'vuetify' | 'vuetify0' = 'vuetify') {
   const templateBase = type === 'vuetify0' ? 'vuetify0' : 'vue'

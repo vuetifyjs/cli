@@ -1,9 +1,8 @@
 import fs, { existsSync, rmSync } from 'node:fs'
-import { join } from 'node:path'
 import { downloadTemplate } from 'giget'
+import { join } from 'pathe'
 import { readPackageJSON, writePackageJSON } from 'pkg-types'
-import { applyFeatures } from '../features'
-import { vuetifyNuxtManual } from '../features/vuetify-nuxt-manual'
+import { applyFeatures, vuetifyNuxtManual } from '../features'
 import { convertProjectToJS } from '../utils/convertProjectToJS'
 import { installDependencies } from '../utils/installDependencies'
 

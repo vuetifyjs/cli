@@ -1,9 +1,9 @@
 import type { Feature } from './types'
 import { existsSync, mkdirSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
-import { join } from 'node:path'
 import { loadFile } from 'magicast'
 import { getDefaultExportOptions } from 'magicast/helpers'
+import { join } from 'pathe'
 import { addStatementToFunctionBody, isFunction } from '../utils/magicast'
 import rootPkg from './dependencies/package.json' with { type: 'json' }
 

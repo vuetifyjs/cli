@@ -17,10 +17,10 @@ const blue = ansi256(33)
 const description = i18n.t('commands.eslint.description', { configPkg: blue(ESLINT_CONFIG) })
 
 async function getEslintStatus () {
-  const nuxtConfigUrl = tryResolveFilePath('./nuxt.config', {
+  const nuxtConfigPath = tryResolveFilePath('./nuxt.config', {
     extensions: ['.ts', '.js', '.mjs', '.cjs', '.mts', '.cts'],
   })
-  const isNuxt = !!nuxtConfigUrl
+  const isNuxt = !!nuxtConfigPath
 
   const eslintVersion = await getPackageVersion(ESLINT)
   const configVersion = await getPackageVersion(ESLINT_CONFIG)
@@ -58,7 +58,7 @@ async function getEslintStatus () {
     packagesToInstall,
     packagesToUpgrade,
     isNuxt,
-    nuxtConfigUrl,
+    nuxtConfigPath,
   }
 }
 
@@ -99,12 +99,12 @@ export async function addEslint () {
   intro(description)
 
   const status = await getEslintStatus()
-  const { packagesToInstall, packagesToUpgrade, isEslintSupportsConcurrency, isNuxt, nuxtConfigUrl } = status
+  const { packagesToInstall, packagesToUpgrade, isEslintSupportsConcurrency, isNuxt, nuxtConfigPath } = status
 
-  const tsConfigUrl = tryResolveFilePath('tsconfig.json')
-  const isTypescript = !!tsConfigUrl
+  const tsConfigPath = tryResolveFilePath('tsconfig.json')
+  const isTypescript = !!tsConfigPath
 
-  const configUrl = tryResolveFilePath('./eslint.config', {
+  const configPath = tryResolveFilePath('./eslint.config', {
     extensions: ['.js', '.mjs', '.cjs', '.ts', '.mts', '.cts'],
   })
 
@@ -130,8 +130,8 @@ export async function addEslint () {
     log.info(i18n.t('messages.eslint.deps_already_installed'))
   }
 
-  if (isNuxt && nuxtConfigUrl) {
-    const mod = await loadFile(nuxtConfigUrl)
+  if (isNuxt && nuxtConfigPath) {
+    const mod = await loadFile(nuxtConfigPath)
     const options = getDefaultExportOptions(mod)
     if (options) {
       options.modules ||= []
@@ -145,15 +145,15 @@ export async function addEslint () {
             },
           },
         }
-        await writeFile(nuxtConfigUrl, mod.generate().code)
+        await writeFile(nuxtConfigPath, mod.generate().code)
       }
     }
   }
 
   let overwriteConfig = false as boolean | symbol
-  overwriteConfig = await (configUrl
+  overwriteConfig = await (configPath
     ? confirm({
-        message: i18n.t('prompts.eslint.overwrite', { file: underline(relative(process.cwd(), configUrl)) }),
+        message: i18n.t('prompts.eslint.overwrite', { file: underline(relative(process.cwd(), configPath)) }),
       })
     : confirm({
         message: i18n.t('prompts.eslint.create'),
@@ -163,7 +163,7 @@ export async function addEslint () {
     const configData = isNuxt ? getNuxtEslintContent(isTypescript) : getVueEslintContent(isTypescript)
     const s = spinner()
     s.start(i18n.t('spinners.eslint.setup_config'))
-    await writeFile(configUrl ?? 'eslint.config.mjs', configData)
+    await writeFile(configPath ?? 'eslint.config.mjs', configData)
     s.stop(i18n.t('spinners.eslint.complete'))
   }
 

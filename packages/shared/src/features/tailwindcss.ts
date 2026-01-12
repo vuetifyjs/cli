@@ -1,9 +1,9 @@
 import type { Feature } from './types'
 import { existsSync, rmSync } from 'node:fs'
 import { readFile, writeFile } from 'node:fs/promises'
-import { join } from 'node:path'
 import { loadFile } from 'magicast'
 import { addNuxtModule, addVitePlugin } from 'magicast/helpers'
+import { join } from 'pathe'
 import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const tailwindcss: Feature = {

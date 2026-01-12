@@ -1,6 +1,6 @@
 import type { Feature } from './types'
 import { existsSync, rmSync } from 'node:fs'
-import { join } from 'node:path'
+import { join } from 'pathe'
 
 export const cssNone: Feature = {
   name: 'css-none',

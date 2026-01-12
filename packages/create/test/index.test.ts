@@ -1,12 +1,12 @@
 import fs from 'node:fs'
-import path from 'node:path'
+import { join, resolve } from 'pathe'
 import { x } from 'tinyexec'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
-const CLI_PATH = path.resolve(__dirname, '../dist/index.mjs')
+const CLI_PATH = resolve(__dirname, '../dist/index.mjs')
 // Assuming templates are at the root of the repo
-const TEMPLATES_PATH = path.resolve(__dirname, '../../../templates')
-const TEMP_DIR = path.resolve(__dirname, '../.test-tmp')
+const TEMPLATES_PATH = resolve(__dirname, '../../../templates')
+const TEMP_DIR = resolve(__dirname, '../.test-tmp')
 
 const TIMEOUT = 10_000 // 10s
 
@@ -74,7 +74,7 @@ describe('create-vuetify matrix', () => {
   for (const { name, args } of matrix) {
     it(`should create project ${name}`, async () => {
       const projectName = `test-${name}`
-      const projectPath = path.join(TEMP_DIR, projectName)
+      const projectPath = join(TEMP_DIR, projectName)
 
       // Clean up previous run
       if (fs.existsSync(projectPath)) {
@@ -91,22 +91,22 @@ describe('create-vuetify matrix', () => {
       }
 
       expect(fs.existsSync(projectPath)).toBe(true)
-      expect(fs.existsSync(path.join(projectPath, 'package.json'))).toBe(true)
+      expect(fs.existsSync(join(projectPath, 'package.json'))).toBe(true)
 
       // Basic check for file structure
       if (args.includes('vue')) {
-        expect(fs.existsSync(path.join(projectPath, 'src/main.ts')) || fs.existsSync(path.join(projectPath, 'src/main.js'))).toBe(true)
+        expect(fs.existsSync(join(projectPath, 'src/main.ts')) || fs.existsSync(join(projectPath, 'src/main.js'))).toBe(true)
       } else if (args.includes('nuxt')) {
-        expect(fs.existsSync(path.join(projectPath, 'nuxt.config.ts'))).toBe(true)
+        expect(fs.existsSync(join(projectPath, 'nuxt.config.ts'))).toBe(true)
 
         // Check for modules/vuetify.ts and dependencies
         const hasModuleFeature = args.some(arg => arg.includes('vuetify-nuxt-module'))
         if (hasModuleFeature) {
-          expect(fs.existsSync(path.join(projectPath, 'modules/vuetify.ts'))).toBe(false)
+          expect(fs.existsSync(join(projectPath, 'modules/vuetify.ts'))).toBe(false)
         } else {
-          expect(fs.existsSync(path.join(projectPath, 'modules/vuetify.ts'))).toBe(true)
+          expect(fs.existsSync(join(projectPath, 'modules/vuetify.ts'))).toBe(true)
 
-          const pkg = JSON.parse(fs.readFileSync(path.join(projectPath, 'package.json'), 'utf8'))
+          const pkg = JSON.parse(fs.readFileSync(join(projectPath, 'package.json'), 'utf8'))
           expect(pkg.devDependencies).toHaveProperty('vite-plugin-vuetify')
           expect(pkg.devDependencies).toHaveProperty('@vuetify/loader-shared')
           expect(pkg.devDependencies).toHaveProperty('pathe')

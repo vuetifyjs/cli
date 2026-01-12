@@ -245,6 +245,9 @@
     },
     "verbose": {
       "description": "Output verbose logs"
+    },
+    "version": {
+      "description": "The Vuetify version to check documentation for"
     }
   },
   "cli": {

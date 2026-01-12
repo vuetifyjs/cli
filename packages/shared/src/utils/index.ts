@@ -1,4 +1,5 @@
 export * from './cli'
+export * from './installFeature'
 export * from './npm'
 export * from './package'
 export * from './template'

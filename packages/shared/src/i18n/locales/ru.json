@@ -235,6 +235,9 @@
     },
     "verbose": {
       "description": "Вывести подробные логи"
+    },
+    "version": {
+      "description": "Версия Vuetify для просмотра документации"
     }
   },
   "cli": {
