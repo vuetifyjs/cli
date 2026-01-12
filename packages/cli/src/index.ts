@@ -1,5 +1,5 @@
 import tab from '@bomb.sh/tab/citty'
-import { createBanner } from '@vuetify/cli-shared'
+import { createBanner, registerProjectArgsCompletion } from '@vuetify/cli-shared'
 import { add } from '@vuetify/cli-shared/commands'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { checkForUpdate } from '@vuetify/cli-shared/utils'
@@ -31,7 +31,12 @@ export const main = defineCommand({
   },
 })
 
-await tab(main)
+await tab(main).then(completion => {
+  const initCommand = completion.commands.get('init')
+  if (initCommand) {
+    registerProjectArgsCompletion(initCommand)
+  }
+})
 
 console.log(createBanner())
 await checkForUpdate(version)

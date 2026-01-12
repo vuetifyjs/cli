@@ -1,5 +1,5 @@
 import tab from '@bomb.sh/tab/citty'
-import { createVuetify, projectArgs } from '@vuetify/cli-shared'
+import { createVuetify, projectArgs, registerProjectArgsCompletion } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand, runMain } from 'citty'
 
@@ -34,6 +34,8 @@ export const main = defineCommand({
   },
 })
 
-await tab(main)
+await tab(main).then(completion => {
+  registerProjectArgsCompletion(completion)
+})
 
 runMain(main)
