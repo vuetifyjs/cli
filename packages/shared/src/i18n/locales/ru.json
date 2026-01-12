@@ -200,9 +200,6 @@
     "force": {
       "description": "Принудительно перезаписать существующие файлы"
     },
-    "version": {
-      "description": "Указать версию Vuetify вручную (напр. 1, 2, 3)"
-    },
     "interactive": {
       "description": "Использовать интерактивный режим"
     },
@@ -211,6 +208,30 @@
     },
     "install": {
       "description": "Установить зависимости после создания проекта"
+    },
+    "features": {
+      "description": "Функции для установки"
+    },
+    "router": {
+      "description": "Роутер для установки"
+    },
+    "css": {
+      "description": "CSS фреймворк для использования"
+    },
+    "typescript": {
+      "description": "Использовать JavaScript"
+    },
+    "packageManager": {
+      "description": "Менеджер пакетов для использования"
+    },
+    "debug": {
+      "description": "Показать отладочные логи"
+    },
+    "type": {
+      "description": "Версия Vuetify для использования"
+    },
+    "platform": {
+      "description": "Фреймворк для использования"
     },
     "verbose": {
       "description": "Вывести подробные логи"

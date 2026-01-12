@@ -210,9 +210,6 @@
     "force": {
       "description": "Force overwrite existing files"
     },
-    "version": {
-      "description": "Manually specify Vuetify version (e.g. 1, 2, 3)"
-    },
     "interactive": {
       "description": "Use interactive mode"
     },
@@ -221,6 +218,30 @@
     },
     "install": {
       "description": "Install dependencies after project creation"
+    },
+    "features": {
+      "description": "The features to install"
+    },
+    "router": {
+      "description": "The router to install"
+    },
+    "css": {
+      "description": "The CSS framework to use"
+    },
+    "typescript": {
+      "description": "Use JavaScript instead of TypeScript"
+    },
+    "packageManager": {
+      "description": "The package manager to use"
+    },
+    "debug": {
+      "description": "Show debug logs"
+    },
+    "type": {
+      "description": "The Vuetify version to use"
+    },
+    "platform": {
+      "description": "The framework to use"
     },
     "verbose": {
       "description": "Output verbose logs"

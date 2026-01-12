@@ -13,40 +13,10 @@ export const main = defineCommand({
     description: i18n.t('cli.create_v0.description'),
   },
   args: {
-    ...projectArgs(),
+    ...projectArgs({ exclude: ['type'] }),
     cwd: {
       type: 'string',
       description: 'The current working directory',
-    },
-    features: {
-      type: 'string',
-      description: 'The features to install (pinia, eslint, i18n, mcp)',
-    },
-    router: {
-      type: 'string',
-      description: 'The router to install (router, file-router, none)',
-    },
-    typescript: {
-      type: 'boolean',
-      description: 'Use TypeScript',
-      default: true,
-    },
-    packageManager: {
-      type: 'string',
-      description: 'The package manager to use (npm, pnpm, yarn, bun)',
-    },
-    debug: {
-      type: 'boolean',
-      description: 'Show debug logs',
-      default: false,
-    },
-    css: {
-      type: 'string',
-      description: 'The CSS framework to use (unocss, tailwindcss, none)',
-    },
-    platform: {
-      type: 'string',
-      description: 'The framework to use (vue, nuxt)',
     },
   },
   run: async ({ args }) => {

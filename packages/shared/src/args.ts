@@ -8,13 +8,61 @@ export type ProjectArgs = {
   interactive: boolean
   name?: string
   install?: boolean
+  features?: string
+  router?: string
+  css?: string
+  typescript?: boolean
+  packageManager?: string
+  debug?: boolean
+  type?: string
+  platform?: string
 }
 
-export function projectArgs () {
-  return {
-    dir: {
+export function projectArgs (options?: { exclude?: (keyof ProjectArgs)[] }) {
+  const args = {
+    name: {
       type: 'string',
-      description: i18n.t('args.dir.description'),
+      description: i18n.t('args.name.description'),
+    },
+    type: {
+      type: 'string',
+      description: i18n.t('args.type.description'),
+      default: 'vuetify',
+      valueHint: 'vuetify | vuetify0',
+    },
+    platform: {
+      type: 'string',
+      description: i18n.t('args.platform.description'),
+      default: 'vue',
+      valueHint: 'vue | nuxt',
+    },
+    features: {
+      type: 'string',
+      description: i18n.t('args.features.description'),
+      valueHint: 'pinia,eslint,i18n,mcp',
+    },
+    router: {
+      type: 'string',
+      description: i18n.t('args.router.description'),
+      valueHint: 'router | file-router | none',
+    },
+    css: {
+      type: 'string',
+      description: i18n.t('args.css.description'),
+      valueHint: 'unocss | tailwindcss | none',
+    },
+    packageManager: {
+      type: 'string',
+      description: i18n.t('args.packageManager.description'),
+    },
+    install: {
+      type: 'boolean',
+      description: i18n.t('args.install.description'),
+    },
+    typescript: {
+      type: 'boolean',
+      description: i18n.t('args.typescript.description'),
+      default: true,
     },
     force: {
       type: 'boolean',
@@ -26,13 +74,22 @@ export function projectArgs () {
       description: i18n.t('args.interactive.description'),
       default: isInteractive(),
     },
-    name: {
-      type: 'string',
-      description: i18n.t('args.name.description'),
-    },
-    install: {
+    debug: {
       type: 'boolean',
-      description: i18n.t('args.install.description'),
+      description: i18n.t('args.debug.description'),
+      default: false,
     },
-  } satisfies Record<string, ArgDef>
+    dir: {
+      type: 'string',
+      description: i18n.t('args.dir.description'),
+    },
+  } satisfies Record<keyof ProjectArgs, ArgDef>
+
+  if (options?.exclude) {
+    for (const key of options.exclude) {
+      delete args[key]
+    }
+  }
+
+  return args
 }
