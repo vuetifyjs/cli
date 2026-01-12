@@ -16,7 +16,15 @@ export const init = defineCommand({
     },
     features: {
       type: 'string',
-      description: 'The features to install (router, pinia, eslint)',
+      description: 'The features to install (pinia, eslint, i18n, mcp)',
+    },
+    router: {
+      type: 'string',
+      description: 'The router to install (router, file-router, none)',
+    },
+    css: {
+      type: 'string',
+      description: 'The CSS framework to use (unocss, tailwindcss, none)',
     },
     typescript: {
       type: 'boolean',
@@ -36,10 +44,6 @@ export const init = defineCommand({
       type: 'string',
       description: 'The Vuetify version to use (vuetify, vuetify0)',
       default: 'vuetify',
-    },
-    css: {
-      type: 'string',
-      description: 'The CSS framework to use (unocss, tailwindcss, none)',
     },
     platform: {
       type: 'string',
