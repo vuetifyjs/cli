@@ -4,7 +4,7 @@ import { add } from '@vuetify/cli-shared/commands'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { checkForUpdate } from '@vuetify/cli-shared/utils'
 
-import { defineCommand, runMain } from 'citty'
+import { defineCommand, runMain, showUsage } from 'citty'
 import { version } from '../package.json'
 import { docs } from './commands/docs'
 import { init } from './commands/init'
@@ -24,10 +24,12 @@ export const main = defineCommand({
     docs,
     upgrade,
   },
-  run: async ({ args }) => {
+  run: async ({ args, cmd }) => {
     if (args._[0] === 'complete') {
       return
     }
+    console.log(createBanner())
+    showUsage(cmd)
   },
 })
 
@@ -38,6 +40,5 @@ await tab(main).then(completion => {
   }
 })
 
-console.log(createBanner())
 await checkForUpdate(version)
 runMain(main)
