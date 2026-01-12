@@ -36,6 +36,9 @@ catalogs:
     eslint:
       specifier: ^9.39.2
       version: 9.39.2
+    eslint-config-vuetify:
+      specifier: ^4.3.5-beta.1
+      version: 4.3.5-beta.1
     exsolve:
       specifier: ^1.0.8
       version: 1.0.8
@@ -120,7 +123,7 @@ importers:
         specifier: 'catalog:'
         version: 9.39.2(jiti@2.6.1)
       eslint-config-vuetify:
-        specifier: 4.3.5-beta.1
+        specifier: 'catalog:'
         version: 4.3.5-beta.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       sherif:
         specifier: 'catalog:'

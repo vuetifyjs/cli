@@ -23,7 +23,7 @@
     "bumpp": "catalog:",
     "conventional-changelog-vuetify": "^2.0.2",
     "eslint": "catalog:",
-    "eslint-config-vuetify": "4.3.5-beta.1",
+    "eslint-config-vuetify": "catalog:",
     "sherif": "catalog:",
     "typescript": "catalog:"
   }
