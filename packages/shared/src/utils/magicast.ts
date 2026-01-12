@@ -6,7 +6,9 @@ import { parseExpression } from 'magicast'
  * so we need to manipulate the AST directly.
  */
 export function addStatementToFunctionBody (fn: any, statement: string) {
-  if (!fn || !fn.$ast?.body?.body) return false
+  if (!fn || !fn.$ast?.body?.body) {
+    return false
+  }
 
   const expr = parseExpression(statement)
   const newStatement = {

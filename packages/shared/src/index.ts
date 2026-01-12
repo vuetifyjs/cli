@@ -1,6 +1,6 @@
 export { projectArgs, type ProjectArgs } from './args'
 export * from './commands'
+export { registerProjectArgsCompletion } from './completion'
 export * from './functions'
 export * from './utils/banner'
 export { templateBuilder } from './utils/template'
-export { registerProjectArgsCompletion } from './completion'
