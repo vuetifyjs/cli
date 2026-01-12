@@ -8,7 +8,7 @@ import { upgrade } from './commands/upgrade'
 
 export const main = defineCommand({
   meta: {
-    name: 'create-vuetify-0',
+    name: 'create-vuetify0',
     version,
     description: i18n.t('cli.create_v0.description'),
   },
