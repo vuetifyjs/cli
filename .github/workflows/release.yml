@@ -34,6 +34,9 @@ jobs:
         env:
           CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Patch create-vuetify version
+        run: node .github/scripts/patch-create-version.mjs 3
+
       - name: Build
         run: pnpm build
 
@@ -43,3 +46,6 @@ jobs:
 
       - name: Publish other packages besides create-vuetify
         run: pnpm --filter "!create-vuetify" -r publish --tag latest --access public --no-git-checks
+
+      - name: Publish create-vuetify with beta
+        run: pnpm --filter "create-vuetify" publish --tag beta --access public --no-git-checks
