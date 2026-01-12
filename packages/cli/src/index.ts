@@ -1,3 +1,4 @@
+import tab from '@bomb.sh/tab/citty'
 import { createBanner } from '@vuetify/cli-shared'
 import { add } from '@vuetify/cli-shared/commands'
 import { i18n } from '@vuetify/cli-shared/i18n'
@@ -23,7 +24,14 @@ export const main = defineCommand({
     docs,
     upgrade,
   },
+  run: async ({ args }) => {
+    if (args._[0] === 'complete') {
+      return
+    }
+  },
 })
+
+await tab(main)
 
 console.log(createBanner())
 await checkForUpdate(version)

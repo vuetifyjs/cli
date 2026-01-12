@@ -13,6 +13,7 @@
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@bomb.sh/tab": "catalog:",
     "@clack/prompts": "catalog:",
     "@types/validate-npm-package-name": "catalog:",
     "@vuetify/cli-shared": "workspace:*",

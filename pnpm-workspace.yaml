@@ -5,6 +5,7 @@ packages:
 catalogMode: strict
 
 catalog:
+  '@bomb.sh/tab': ^0.0.11
   '@fontsource/roboto': 5.2.7
   '@intellectronica/ruler': ^0.3.18
   '@mdi/font': 7.4.47

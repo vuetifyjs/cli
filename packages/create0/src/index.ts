@@ -1,3 +1,4 @@
+import tab from '@bomb.sh/tab/citty'
 import { createVuetify, projectArgs } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand, runMain } from 'citty'
@@ -49,6 +50,9 @@ export const main = defineCommand({
     },
   },
   run: async ({ args }) => {
+    if (args._[0] === 'complete') {
+      return
+    }
     await createVuetify({
       ...args,
       version,
@@ -59,5 +63,7 @@ export const main = defineCommand({
     upgrade,
   },
 })
+
+await tab(main)
 
 runMain(main)

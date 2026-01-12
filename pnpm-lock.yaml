@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   default:
+    '@bomb.sh/tab':
+      specifier: ^0.0.11
+      version: 0.0.11
     '@clack/prompts':
       specifier: ^1.0.0-alpha.8
       version: 1.0.0-alpha.8
@@ -128,6 +131,9 @@ importers:
 
   packages/cli:
     devDependencies:
+      '@bomb.sh/tab':
+        specifier: 'catalog:'
+        version: 0.0.11(cac@6.7.14)(citty@0.1.6)
       '@clack/prompts':
         specifier: 'catalog:'
         version: 1.0.0-alpha.8
@@ -174,6 +180,9 @@ importers:
         specifier: 'catalog:'
         version: 7.0.1
     devDependencies:
+      '@bomb.sh/tab':
+        specifier: 'catalog:'
+        version: 0.0.11(cac@6.7.14)(citty@0.1.6)
       '@clack/prompts':
         specifier: 'catalog:'
         version: 1.0.0-alpha.8
@@ -207,6 +216,9 @@ importers:
 
   packages/create0:
     devDependencies:
+      '@bomb.sh/tab':
+        specifier: 'catalog:'
+        version: 0.0.11(cac@6.7.14)(citty@0.1.6)
       '@clack/prompts':
         specifier: 'catalog:'
         version: 1.0.0-alpha.8
@@ -351,6 +363,21 @@ packages:
   '@babel/types@7.28.5':
     resolution: {integrity: sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==}
     engines: {node: '>=6.9.0'}
+
+  '@bomb.sh/tab@0.0.11':
+    resolution: {integrity: sha512-RSqyreeicYBALcMaNxIUJTBknftXsyW45VRq5gKDNwKroh0Re5SDoWwXZaphb+OTEzVdpm/BA8Uq6y0P+AtVYw==}
+    hasBin: true
+    peerDependencies:
+      cac: ^6.7.14
+      citty: ^0.1.6
+      commander: ^13.1.0
+    peerDependenciesMeta:
+      cac:
+        optional: true
+      citty:
+        optional: true
+      commander:
+        optional: true
 
   '@clack/core@0.5.0':
     resolution: {integrity: sha512-p3y0FIOwaYRUPRcMO7+dlmLh8PSRcrjuTndsiA0WAFbWES0mLZlrjVoBRZ9DzkPFJZG6KGkJmoEAY0ZcVWTkow==}
@@ -2199,6 +2226,11 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
+
+  '@bomb.sh/tab@0.0.11(cac@6.7.14)(citty@0.1.6)':
+    optionalDependencies:
+      cac: 6.7.14
+      citty: 0.1.6
 
   '@clack/core@0.5.0':
     dependencies:
