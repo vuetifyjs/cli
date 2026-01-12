@@ -13,7 +13,7 @@ import { upgrade } from './commands/upgrade'
 
 export const main = defineCommand({
   meta: {
-    name: '@vuetify/cli',
+    name: 'vuetify',
     version,
     description: i18n.t('cli.main.description'),
   },
