@@ -1,15 +1,33 @@
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.vuetifyjs.com/docs/images/one/logos/vcli-logo-dark.svg">
+    <img alt="Vuetify CLI Logo" src="https://cdn.vuetifyjs.com/docs/images/one/logos/vcli-logo-light.svg" height="150">
+  </picture>
+</div>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@vuetify/cli">
+    <img src="https://img.shields.io/npm/v/@vuetify/cli.svg" alt="Version">
+  </a>
+  <a href="https://www.npmjs.com/package/@vuetify/cli">
+    <img src="https://img.shields.io/npm/dt/@vuetify/cli.svg" alt="Downloads">
+  </a>
+  <br>
+  <a href="https://github.com/vuetifyjs/cli/blob/master/LICENSE">
+    <img src="https://img.shields.io/npm/l/@vuetify/cli.svg" alt="License">
+  </a>
+  <a href="https://community.vuetifyjs.com">
+    <img src="https://discordapp.com/api/guilds/340160225338195969/widget.png" alt="Chat">
+  </a>
+</p>
+
 # @vuetify/cli
 
-CLI utilities and commands for Vuetify.
+The official command line interface for Vuetify.
 
-## Usage
+## Installation
 
-### Global installation
-
-You can install the CLI globally using `npm`, `pnpm`, `yarn`, or `bun`:
-
-```sh
-# npm
+```bash
 npm install -g @vuetify/cli
 
 # pnpm
@@ -22,9 +40,9 @@ yarn global add @vuetify/cli
 bun add -g @vuetify/cli
 ```
 
-then you can run the CLI using `vuetify` in your terminal.
+## Usage
 
-```sh
+```bash
 vuetify --help
 ```
 
@@ -49,17 +67,6 @@ bunx @vuetify/cli
 deno run -A npm:@vuetify/cli
 ```
 
-## Status
-
-Work in progress.
-
-## Development
-
-From the monorepo root:
-
-- Install deps: `pnpm install`
-- Build: `pnpm -F @vuetify/cli run build`
-
 ## License
 
-MIT
+[MIT License](./LICENSE)
