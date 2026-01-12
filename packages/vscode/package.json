@@ -3,7 +3,7 @@
   "name": "vuetify-vscode",
   "displayName": "Vuetify",
   "type": "module",
-  "version": "0.0.12-beta.3",
+  "version": "0.0.12",
   "private": true,
   "categories": [
     "Other"
