@@ -23,3 +23,6 @@
 
 ## Package versions
 - when adding packages/shared/src/features/dependencies/package.json, make sure to run npm view to get actual versions of each package
+
+## i18n
+Packages use i18n packages/shared/src/i18n/locales for localization. Ensure all languages are supported and up-to-date when adding new features or fixing existing ones.
