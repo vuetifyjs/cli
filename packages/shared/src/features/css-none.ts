@@ -4,9 +4,7 @@ import { join } from 'node:path'
 
 export const cssNone: Feature = {
   name: 'css-none',
-  apply: async ({ cwd }) => {
-    const isNuxt = existsSync(join(cwd, 'nuxt.config.ts'))
-
+  apply: async ({ cwd, isNuxt }) => {
     // Cleanup from tailwindcss.ts
     const unocssConfig = join(cwd, 'unocss.config.ts')
     if (existsSync(unocssConfig)) {

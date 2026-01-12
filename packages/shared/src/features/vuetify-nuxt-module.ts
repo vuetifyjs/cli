@@ -8,9 +8,8 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const vuetifyNuxtModule: Feature = {
   name: 'vuetify-nuxt-module',
-  apply: async ({ cwd, pkg, clientHints }) => {
+  apply: async ({ cwd, pkg, clientHints, isNuxt }) => {
     // Only applies to Nuxt
-    const isNuxt = existsSync(join(cwd, 'nuxt.config.ts'))
     if (!isNuxt) {
       return
     }

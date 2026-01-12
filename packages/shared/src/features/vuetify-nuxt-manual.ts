@@ -1,5 +1,4 @@
 import type { Feature } from './types'
-import { existsSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { builders, loadFile } from 'magicast'
@@ -8,12 +7,12 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const vuetifyNuxtManual: Feature = {
   name: 'vuetify-nuxt-manual',
-  apply: async ({ cwd, pkg }) => {
+  apply: async ({ cwd, pkg, isNuxt }) => {
     // Only applies to Nuxt
-    const configPath = join(cwd, 'nuxt.config.ts')
-    if (!existsSync(configPath)) {
+    if (!isNuxt) {
       return
     }
+    const configPath = join(cwd, 'nuxt.config.ts')
 
     pkg.devDependencies = pkg.devDependencies || {}
     pkg.devDependencies['vite-plugin-vuetify'] = rootPkg.dependencies['vite-plugin-vuetify']

@@ -8,9 +8,7 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const unocss: Feature = {
   name: 'unocss',
-  apply: async ({ cwd, pkg, isTypescript }) => {
-    const isNuxt = existsSync(join(cwd, 'nuxt.config.ts'))
-
+  apply: async ({ cwd, pkg, isTypescript, isNuxt }) => {
     // Add UnoCSS dependencies
     pkg.devDependencies = pkg.devDependencies || {}
     pkg.devDependencies['unocss'] = rootPkg.dependencies['unocss']

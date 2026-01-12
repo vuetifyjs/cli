@@ -107,11 +107,11 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
 
   callbacks.onConfigStart?.()
   if (features && features.length > 0) {
-    await applyFeatures(projectRoot, features, pkg, !!typescript, clientHints, type)
+    await applyFeatures(projectRoot, features, pkg, !!typescript, platform === 'nuxt', clientHints, type)
   }
 
   if (platform === 'nuxt' && type !== 'vuetify0' && (!features || !features.includes('vuetify-nuxt-module'))) {
-    await vuetifyNuxtManual.apply({ cwd: projectRoot, pkg, isTypescript: !!typescript })
+    await vuetifyNuxtManual.apply({ cwd: projectRoot, pkg, isTypescript: !!typescript, isNuxt: true })
   }
   callbacks.onConfigEnd?.()
 

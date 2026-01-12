@@ -8,9 +8,7 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const tailwindcss: Feature = {
   name: 'tailwindcss',
-  apply: async ({ cwd, pkg, isTypescript }) => {
-    const isNuxt = existsSync(join(cwd, 'nuxt.config.ts'))
-
+  apply: async ({ cwd, pkg, isTypescript, isNuxt }) => {
     const unocssConfig = join(cwd, 'unocss.config.ts')
 
     if (existsSync(unocssConfig)) {

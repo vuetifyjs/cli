@@ -9,9 +9,8 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const i18n: Feature = {
   name: 'i18n',
-  apply: async ({ cwd, pkg, isTypescript }) => {
+  apply: async ({ cwd, pkg, isTypescript, isNuxt }) => {
     const ext = isTypescript ? 'ts' : 'js'
-    const isNuxt = existsSync(join(cwd, 'nuxt.config.ts'))
 
     if (isNuxt) {
       pkg.dependencies ??= {}

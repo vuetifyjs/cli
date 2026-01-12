@@ -9,11 +9,8 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const pinia: Feature = {
   name: 'pinia',
-  apply: async ({ cwd, pkg, isTypescript }) => {
+  apply: async ({ cwd, pkg, isTypescript, isNuxt }) => {
     const ext = isTypescript ? 'ts' : 'js'
-
-    // Check if Nuxt
-    const isNuxt = existsSync(join(cwd, 'nuxt.config.ts'))
 
     if (isNuxt) {
       pkg.dependencies ??= {}

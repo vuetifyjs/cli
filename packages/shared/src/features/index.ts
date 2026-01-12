@@ -28,13 +28,14 @@ export async function applyFeatures (
   featureNames: string[],
   pkg: PackageJson,
   isTypescript: boolean,
+  isNuxt: boolean,
   clientHints?: boolean,
   type?: 'vuetify' | 'vuetify0',
 ) {
   for (const name of featureNames) {
     const feature = features[name]
     if (feature) {
-      await feature.apply({ cwd, pkg, isTypescript, clientHints, type })
+      await feature.apply({ cwd, pkg, isTypescript, isNuxt, clientHints, type })
     }
   }
 }

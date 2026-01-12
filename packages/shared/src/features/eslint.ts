@@ -1,5 +1,4 @@
 import type { Feature } from './types'
-import { existsSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { loadFile } from 'magicast'
@@ -8,10 +7,7 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const eslint: Feature = {
   name: 'eslint',
-  apply: async ({ cwd, pkg, isTypescript }) => {
-    // Check if Nuxt
-    const isNuxt = existsSync(join(cwd, 'nuxt.config.ts'))
-
+  apply: async ({ cwd, pkg, isTypescript, isNuxt }) => {
     if (isNuxt) {
       pkg.devDependencies = pkg.devDependencies || {}
       pkg.devDependencies['eslint'] = rootPkg.dependencies.eslint
