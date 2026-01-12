@@ -12,7 +12,7 @@ export interface CreateVuetifyOptions extends ProjectArgs {
   [key: string]: any
   version: string
   cwd?: string
-  features?: string | string[]
+  features?: string
   typescript?: boolean
   packageManager?: string
   debug?: boolean
