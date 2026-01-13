@@ -28,8 +28,10 @@ export const main = defineCommand({
     if (args._[0] === 'complete') {
       return
     }
-    console.log(createBanner())
-    showUsage(cmd)
+    if (args._.length === 0) {
+      console.log(createBanner())
+      showUsage(cmd)
+    }
   },
 })
 
