@@ -14,9 +14,16 @@ export const analyze = defineCommand({
       description: 'Directory to scan',
       default: '.',
     },
+    suppressWarnings: {
+      type: 'boolean',
+      description: 'Suppress warnings',
+      default: false,
+    },
   },
   run: async ({ args }) => {
-    log.warn('This command is experimental and may change in the future.')
+    if (!args.suppressWarnings) {
+      log.warn('This command is experimental and may change in the future.')
+    }
     const cwd = resolve(process.cwd(), args.dir)
     const features = await analyzeProject(cwd)
     console.log(JSON.stringify(features, null, 2))
