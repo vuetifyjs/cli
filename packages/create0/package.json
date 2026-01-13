@@ -19,7 +19,9 @@
     "cli",
     "create",
     "scaffold",
-    "starter"
+    "starter",
+    "vue",
+    "vuetify0"
   ],
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",

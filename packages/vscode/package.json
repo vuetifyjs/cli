@@ -8,6 +8,13 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "vuetify",
+    "vscode",
+    "extension",
+    "snippets",
+    "tooling"
+  ],
   "main": "./dist/extension.cjs",
   "engines": {
     "vscode": "^1.99.0"
