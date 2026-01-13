@@ -6,6 +6,7 @@ import { checkForUpdate } from '@vuetify/cli-shared/utils'
 
 import { defineCommand, runMain, showUsage } from 'citty'
 import { version } from '../package.json'
+import { analyze } from './commands/analyze'
 import { docs } from './commands/docs'
 import { init } from './commands/init'
 import { update } from './commands/update'
@@ -23,6 +24,7 @@ export const main = defineCommand({
     update,
     docs,
     upgrade,
+    analyze,
   },
   run: async ({ args, cmd }) => {
     if (args._[0] === 'complete') {

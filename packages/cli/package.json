@@ -26,6 +26,7 @@
   "devDependencies": {
     "@bomb.sh/tab": "catalog:",
     "@clack/prompts": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
     "citty": "catalog:",
     "giget": "catalog:",

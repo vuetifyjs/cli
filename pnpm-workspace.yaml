@@ -2,21 +2,21 @@ packages:
   - packages/*
   - templates/*
 
-catalogMode: strict
-
 catalog:
   '@bomb.sh/tab': ^0.0.11
+  '@clack/prompts': ^1.0.0-alpha.9
   '@intellectronica/ruler': ^0.3.23
+  '@types/node': ^24.10.7
   '@types/semver': ^7.7.1
   '@types/validate-npm-package-name': ^4.0.2
-  '@clack/prompts': ^1.0.0-alpha.9
-  '@types/node': ^24.10.7
   '@types/vscode': ^1.108.1
+  '@typescript-eslint/parser': ^8.53.0
   bumpp: ^10.3.2
   citty: ^0.1.6
   eslint: ^9.39.2
   eslint-config-vuetify: ^4.3.5-beta.1
   exsolve: ^1.0.8
+  fast-glob: ^3.3.3
   giget: ^2.0.0
   i18n-js: ^4.5.1
   is-installed-globally: ^1.0.0
@@ -32,7 +32,11 @@ catalog:
   semver: ^7.7.3
   sherif: ^1.9.0
   tinyexec: ^1.0.2
+  tinyglobby: ^0.2.15
   tsdown: ^0.16.8
   typescript: ^5.9.3
   validate-npm-package-name: ^7.0.2
   vitest: ^4.0.17
+  vue-eslint-parser: ^10.2.0
+
+catalogMode: strict

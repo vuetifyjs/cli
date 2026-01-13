@@ -39,8 +39,11 @@
     }
   },
   "dependencies": {
+    "@typescript-eslint/parser": "catalog:",
     "magicast": "catalog:",
     "semver": "catalog:",
-    "validate-npm-package-name": "catalog:"
+    "tinyglobby": "catalog:",
+    "validate-npm-package-name": "catalog:",
+    "vue-eslint-parser": "catalog:"
   }
 }

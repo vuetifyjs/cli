@@ -1,3 +1,4 @@
+export * from './analyze'
 export * from './create'
 export * from './docs'
 export * from './eslint'
