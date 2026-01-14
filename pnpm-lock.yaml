@@ -142,6 +142,10 @@ importers:
         version: 5.9.3
 
   packages/cli:
+    dependencies:
+      '@typescript-eslint/parser':
+        specifier: 'catalog:'
+        version: 8.53.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
     devDependencies:
       '@bomb.sh/tab':
         specifier: 'catalog:'
@@ -149,9 +153,6 @@ importers:
       '@clack/prompts':
         specifier: 'catalog:'
         version: 1.0.0-alpha.9
-      '@typescript-eslint/parser':
-        specifier: 'catalog:'
-        version: 8.53.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@vuetify/cli-shared':
         specifier: workspace:*
         version: link:../shared

@@ -26,7 +26,6 @@
   "devDependencies": {
     "@bomb.sh/tab": "catalog:",
     "@clack/prompts": "catalog:",
-    "@typescript-eslint/parser": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
     "citty": "catalog:",
     "giget": "catalog:",
@@ -35,6 +34,9 @@
     "open": "catalog:",
     "pathe": "catalog:",
     "tsdown": "catalog:"
+  },
+  "dependencies": {
+    "@typescript-eslint/parser": "catalog:"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
