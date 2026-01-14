@@ -9,6 +9,9 @@ export const ConsoleReporter: Reporter = {
     console.log(bold('Vuetify Analysis Report'))
     console.log(blue('======================='))
     console.log()
+    console.log(`Package: ${green(data.meta.packageName)}`)
+    console.log(`Version: ${green(data.meta.version)}`)
+    console.log()
 
     if (data.features.length === 0) {
       console.log(yellow('No Vuetify features detected.'))

@@ -6,6 +6,10 @@ export interface AnalyzedFeature {
 }
 
 export interface AnalyzeReport {
+  meta: {
+    packageName: string
+    version: string
+  }
   features: AnalyzedFeature[]
 }
 

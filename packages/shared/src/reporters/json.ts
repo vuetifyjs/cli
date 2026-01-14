@@ -4,7 +4,7 @@ import { resolve } from 'pathe'
 
 export const JsonReporter: Reporter = {
   report: async (data: AnalyzeReport, options?: ReporterOptions) => {
-    const output = JSON.stringify(data.features, null, 2)
+    const output = JSON.stringify(data, null, 2)
 
     if (options?.output) {
       const path = resolve(process.cwd(), options.output)

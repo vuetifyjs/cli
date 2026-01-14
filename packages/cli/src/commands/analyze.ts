@@ -37,7 +37,7 @@ export const analyze = defineCommand({
       log.warn('This command is experimental and may change in the future.')
     }
     const cwd = resolve(process.cwd(), args.dir)
-    const features = await analyzeProject(cwd)
+    const report = await analyzeProject(cwd)
 
     let reporter: Reporter
     switch (args.reporter) {
@@ -51,7 +51,7 @@ export const analyze = defineCommand({
       }
     }
 
-    await reporter.report({ features }, { output: args.output })
+    await reporter.report(report, { output: args.output })
   },
 })
 

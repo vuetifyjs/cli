@@ -1,9 +1,9 @@
-import type { AnalyzedFeature, FeatureType } from '../reporters/types'
+import type { AnalyzeReport, FeatureType } from '../reporters/types'
 import { existsSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { createRequire } from 'node:module'
 import { dirname, join } from 'pathe'
-import { resolvePackageJSON } from 'pkg-types'
+import { readPackageJSON, resolvePackageJSON } from 'pkg-types'
 import { glob } from 'tinyglobby'
 import { parse } from 'vue-eslint-parser'
 
@@ -178,18 +178,19 @@ export function analyzeCode (code: string, targetPackage = '@vuetify/v0') {
   return found
 }
 
-export async function analyzeProject (cwd: string = process.cwd(), targetPackage = '@vuetify/v0'): Promise<AnalyzedFeature[]> {
+export async function analyzeProject (cwd: string = process.cwd(), targetPackage = '@vuetify/v0'): Promise<AnalyzeReport> {
   if (!existsSync(cwd)) {
     throw new Error(`Directory ${cwd} does not exist`)
   }
 
-  const [files, importMap] = await Promise.all([
+  const [files, importMap, pkg] = await Promise.all([
     glob(['**/*.{vue,ts,js,tsx,jsx}'], {
       cwd,
       ignore: ['**/node_modules/**', '**/dist/**', '**/.git/**'],
       absolute: true,
     }),
     loadImportMap(cwd, targetPackage),
+    readPackageJSON(targetPackage, { url: cwd }).catch(() => null),
   ])
 
   const features = new Map<string, { isType: boolean }>()
@@ -213,8 +214,14 @@ export async function analyzeProject (cwd: string = process.cwd(), targetPackage
     }
   }
 
-  return Array.from(features.keys()).toSorted().map(name => ({
-    name,
-    type: getFeatureType(name, features.get(name)?.isType, importMap),
-  }))
+  return {
+    meta: {
+      packageName: pkg?.name || targetPackage,
+      version: pkg?.version || 'unknown',
+    },
+    features: Array.from(features.keys()).toSorted().map(name => ({
+      name,
+      type: getFeatureType(name, features.get(name)?.isType, importMap),
+    })),
+  }
 }
