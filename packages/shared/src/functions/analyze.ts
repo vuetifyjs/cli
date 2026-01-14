@@ -68,44 +68,51 @@ function walk (node: any, callback: (node: any, parent: any) => void, parent?: a
   }
 }
 
-export function analyzeCode (code: string, targetPackage = '@vuetify/v0') {
+export function analyzeCode (code: string, targetPackages: string[] = ['@vuetify/v0']) {
   const ast = parse(code, {
     sourceType: 'module',
     ecmaVersion: 2022,
     parser: require.resolve('@typescript-eslint/parser'),
   })
 
-  const found = new Map<string, { isType: boolean }>()
+  const found = new Map<string, Map<string, { isType: boolean }>>()
+  for (const pkg of targetPackages) {
+    found.set(pkg, new Map())
+  }
 
   if (ast.body) {
     // eslint-disable-next-line complexity
     walk(ast, (node, parent) => {
       // Static imports: import { X } from 'pkg'
-      if (node.type === 'ImportDeclaration' && typeof node.source.value === 'string' && (node.source.value === targetPackage || node.source.value.startsWith(`${targetPackage}/`))) {
-        const isDeclType = node.importKind === 'type'
-        for (const spec of node.specifiers) {
-          const isSpecType = spec.importKind === 'type'
-          const isType = isDeclType || isSpecType
+      if (node.type === 'ImportDeclaration' && typeof node.source.value === 'string') {
+        const targetPackage = targetPackages.find(pkg => node.source.value === pkg || node.source.value.startsWith(`${pkg}/`))
+        if (targetPackage) {
+          const packageFeatures = found.get(targetPackage)!
+          const isDeclType = node.importKind === 'type'
+          for (const spec of node.specifiers) {
+            const isSpecType = spec.importKind === 'type'
+            const isType = isDeclType || isSpecType
 
-          if (spec.type === 'ImportSpecifier' && 'name' in spec.imported) {
-            const name = spec.imported.name
-            const current = found.get(name)
-            if (current) {
-              if (!isType) {
-                current.isType = false
+            if (spec.type === 'ImportSpecifier' && 'name' in spec.imported) {
+              const name = spec.imported.name
+              const current = packageFeatures.get(name)
+              if (current) {
+                if (!isType) {
+                  current.isType = false
+                }
+              } else {
+                packageFeatures.set(name, { isType })
               }
-            } else {
-              found.set(name, { isType })
-            }
-          } else if (spec.type === 'ImportDefaultSpecifier') {
-            const name = 'default'
-            const current = found.get(name)
-            if (current) {
-              if (!isType) {
-                current.isType = false
+            } else if (spec.type === 'ImportDefaultSpecifier') {
+              const name = 'default'
+              const current = packageFeatures.get(name)
+              if (current) {
+                if (!isType) {
+                  current.isType = false
+                }
+              } else {
+                packageFeatures.set(name, { isType })
               }
-            } else {
-              found.set(name, { isType })
             }
           }
         }
@@ -113,28 +120,32 @@ export function analyzeCode (code: string, targetPackage = '@vuetify/v0') {
 
       // Dynamic imports: import('pkg').then(...) or import('pkg')['prop']
       // Node structure for import('pkg'): { type: 'ImportExpression', source: { value: 'pkg' } }
-      if (node.type === 'ImportExpression' && node.source.value === targetPackage // Case 1: import('pkg')['Prop'] or import('pkg').Prop
+      if (node.type === 'ImportExpression'
         && parent?.type === 'MemberExpression' && parent.object === node) {
-        if (parent.property.type === 'Identifier' && !parent.computed) {
-          // .Prop
-          if (parent.property.name === 'then') {
-            return
-          }
-          const name = parent.property.name
-          const current = found.get(name)
-          if (current) {
-            current.isType = false
-          } else {
-            found.set(name, { isType: false })
-          }
-        } else if (parent.property.type === 'Literal') {
-          // ['Prop']
-          const name = parent.property.value
-          const current = found.get(name)
-          if (current) {
-            current.isType = false
-          } else {
-            found.set(name, { isType: false })
+        const targetPackage = targetPackages.find(pkg => node.source.value === pkg)
+        if (targetPackage) {
+          const packageFeatures = found.get(targetPackage)!
+          if (parent.property.type === 'Identifier' && !parent.computed) {
+            // .Prop
+            if (parent.property.name === 'then') {
+              return
+            }
+            const name = parent.property.name
+            const current = packageFeatures.get(name)
+            if (current) {
+              current.isType = false
+            } else {
+              packageFeatures.set(name, { isType: false })
+            }
+          } else if (parent.property.type === 'Literal') {
+            // ['Prop']
+            const name = parent.property.value
+            const current = packageFeatures.get(name)
+            if (current) {
+              current.isType = false
+            } else {
+              packageFeatures.set(name, { isType: false })
+            }
           }
         }
       }
@@ -152,22 +163,24 @@ export function analyzeCode (code: string, targetPackage = '@vuetify/v0') {
       if (node.type === 'MemberExpression' // Check if object is AwaitExpression
         && node.object.type === 'AwaitExpression' && node.object.argument.type === 'ImportExpression') {
         const source = node.object.argument.source.value
-        if (source === targetPackage) {
+        const targetPackage = targetPackages.find(pkg => source === pkg)
+        if (targetPackage) {
+          const packageFeatures = found.get(targetPackage)!
           if (node.property.type === 'Identifier' && !node.computed) {
             const name = node.property.name
-            const current = found.get(name)
+            const current = packageFeatures.get(name)
             if (current) {
               current.isType = false
             } else {
-              found.set(name, { isType: false })
+              packageFeatures.set(name, { isType: false })
             }
           } else if (node.property.type === 'Literal') {
             const name = node.property.value
-            const current = found.get(name)
+            const current = packageFeatures.get(name)
             if (current) {
               current.isType = false
             } else {
-              found.set(name, { isType: false })
+              packageFeatures.set(name, { isType: false })
             }
           }
         }
@@ -178,35 +191,41 @@ export function analyzeCode (code: string, targetPackage = '@vuetify/v0') {
   return found
 }
 
-export async function analyzeProject (cwd: string = process.cwd(), targetPackage = '@vuetify/v0'): Promise<AnalyzeReport> {
+export async function analyzeProject (cwd: string = process.cwd(), targetPackages: string[] = ['@vuetify/v0']): Promise<AnalyzeReport[]> {
   if (!existsSync(cwd)) {
     throw new Error(`Directory ${cwd} does not exist`)
   }
 
-  const [files, importMap, pkg] = await Promise.all([
+  const [files, importMaps, pkgs] = await Promise.all([
     glob(['**/*.{vue,ts,js,tsx,jsx}'], {
       cwd,
       ignore: ['**/node_modules/**', '**/dist/**', '**/.git/**'],
       absolute: true,
     }),
-    loadImportMap(cwd, targetPackage),
-    readPackageJSON(targetPackage, { url: cwd }).catch(() => null),
+    Promise.all(targetPackages.map(pkg => loadImportMap(cwd, pkg))),
+    Promise.all(targetPackages.map(pkg => readPackageJSON(pkg, { url: cwd }).catch(() => null))),
   ])
 
-  const features = new Map<string, { isType: boolean }>()
+  const features = new Map<string, Map<string, { isType: boolean }>>()
+  for (const pkg of targetPackages) {
+    features.set(pkg, new Map())
+  }
 
   for (const file of files) {
     try {
       const code = await readFile(file, 'utf8')
-      const fileFeatures = analyzeCode(code, targetPackage)
-      for (const [name, info] of fileFeatures) {
-        const current = features.get(name)
-        if (current) {
-          if (!info.isType) {
-            current.isType = false
+      const fileFeatures = analyzeCode(code, targetPackages)
+      for (const [pkg, pkgFeatures] of fileFeatures) {
+        const globalPkgFeatures = features.get(pkg)!
+        for (const [name, info] of pkgFeatures) {
+          const current = globalPkgFeatures.get(name)
+          if (current) {
+            if (!info.isType) {
+              current.isType = false
+            }
+          } else {
+            globalPkgFeatures.set(name, { isType: info.isType })
           }
-        } else {
-          features.set(name, { isType: info.isType })
         }
       }
     } catch {
@@ -214,14 +233,20 @@ export async function analyzeProject (cwd: string = process.cwd(), targetPackage
     }
   }
 
-  return {
-    meta: {
-      packageName: pkg?.name || targetPackage,
-      version: pkg?.version || 'unknown',
-    },
-    features: Array.from(features.keys()).toSorted().map(name => ({
-      name,
-      type: getFeatureType(name, features.get(name)?.isType, importMap),
-    })),
-  }
+  return targetPackages.map((pkgName, index) => {
+    const pkgFeatures = features.get(pkgName)!
+    const importMap = importMaps[index]
+    const pkgInfo = pkgs[index]
+
+    return {
+      meta: {
+        packageName: pkgInfo?.name || pkgName,
+        version: pkgInfo?.version || 'unknown',
+      },
+      features: Array.from(pkgFeatures.keys()).toSorted().map(name => ({
+        name,
+        type: getFeatureType(name, pkgFeatures.get(name)?.isType, importMap),
+      })),
+    }
+  })
 }

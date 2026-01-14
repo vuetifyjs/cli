@@ -19,6 +19,12 @@ export const analyze = defineCommand({
       alias: 'o',
       description: 'Output file path (only for json reporter)',
     },
+    targets: {
+      type: 'string',
+      alias: 't',
+      description: 'Target packages to analyze (comma separated)',
+      default: '@vuetify/v0',
+    },
     reporter: {
       type: 'string',
       alias: 'r',
@@ -37,7 +43,8 @@ export const analyze = defineCommand({
       log.warn('This command is experimental and may change in the future.')
     }
     const cwd = resolve(process.cwd(), args.dir)
-    const report = await analyzeProject(cwd)
+    const targets = args.targets.split(',').map(t => t.trim())
+    const report = await analyzeProject(cwd, targets)
 
     let reporter: Reporter
     switch (args.reporter) {

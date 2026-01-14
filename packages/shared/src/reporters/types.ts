@@ -18,5 +18,5 @@ export interface ReporterOptions {
 }
 
 export interface Reporter {
-  report: (data: AnalyzeReport, options?: ReporterOptions) => Promise<void> | void
+  report: (data: AnalyzeReport[], options?: ReporterOptions) => Promise<void> | void
 }
