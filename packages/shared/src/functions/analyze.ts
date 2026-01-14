@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { createRequire } from 'node:module'
 import { glob } from 'tinyglobby'
@@ -93,6 +94,10 @@ export function analyzeCode (code: string, targetPackage = '@vuetify/v0') {
 }
 
 export async function analyzeProject (cwd: string = process.cwd(), targetPackage = '@vuetify/v0') {
+  if (!existsSync(cwd)) {
+    throw new Error(`Directory ${cwd} does not exist`)
+  }
+
   const files = await glob(['**/*.{vue,ts,js,tsx,jsx}'], {
     cwd,
     ignore: ['**/node_modules/**', '**/dist/**', '**/.git/**'],
