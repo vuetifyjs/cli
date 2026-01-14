@@ -44,5 +44,10 @@ await tab(main).then(completion => {
   }
 })
 
-await checkForUpdate(version)
+const hasReporter = process.argv.includes('--reporter') || process.argv.includes('-r')
+
+if (!hasReporter) {
+  await checkForUpdate(version)
+}
+
 runMain(main)

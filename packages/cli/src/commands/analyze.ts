@@ -1,5 +1,5 @@
 import { log } from '@clack/prompts'
-import { analyzeProject } from '@vuetify/cli-shared'
+import { analyzeProject, ConsoleReporter, JsonReporter, type Reporter } from '@vuetify/cli-shared'
 import { defineCommand } from 'citty'
 import { resolve } from 'pathe'
 
@@ -14,6 +14,18 @@ export const analyze = defineCommand({
       description: 'Directory to scan',
       default: '.',
     },
+    output: {
+      type: 'string',
+      alias: 'o',
+      description: 'Output file path (only for json reporter)',
+    },
+    reporter: {
+      type: 'string',
+      alias: 'r',
+      description: 'Reporter to use (console, json)',
+      default: 'console',
+      valueHint: 'console | json',
+    },
     suppressWarnings: {
       type: 'boolean',
       description: 'Suppress warnings',
@@ -21,12 +33,25 @@ export const analyze = defineCommand({
     },
   },
   run: async ({ args }) => {
-    if (!args.suppressWarnings) {
+    if (!args.suppressWarnings && args.reporter !== 'json') {
       log.warn('This command is experimental and may change in the future.')
     }
     const cwd = resolve(process.cwd(), args.dir)
     const features = await analyzeProject(cwd)
-    console.log(JSON.stringify(features, null, 2))
+
+    let reporter: Reporter
+    switch (args.reporter) {
+      case 'json': {
+        reporter = JsonReporter
+        break
+      }
+      default: {
+        reporter = ConsoleReporter
+        break
+      }
+    }
+
+    await reporter.report({ features }, { output: args.output })
   },
 })
 
