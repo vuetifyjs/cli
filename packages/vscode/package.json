@@ -8,6 +8,14 @@
   "categories": [
     "Other"
   ],
+  "description": "Vuetify extension for Visual Studio Code (WIP)",
+  "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuetifyjs/cli.git",
+    "directory": "packages/vscode"
+  },
   "keywords": [
     "vuetify",
     "vscode",

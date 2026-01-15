@@ -23,6 +23,11 @@
   ],
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuetifyjs/cli.git",
+    "directory": "packages/cli"
+  },
   "devDependencies": {
     "@bomb.sh/tab": "catalog:",
     "@clack/prompts": "catalog:",
