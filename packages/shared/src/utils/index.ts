@@ -1,4 +1,6 @@
 export * from './cli'
+export * from './convertProjectToJS'
+export * from './getTemplateSource'
 export * from './installFeature'
 export * from './npm'
 export * from './package'

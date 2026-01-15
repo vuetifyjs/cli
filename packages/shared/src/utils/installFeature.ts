@@ -2,6 +2,7 @@ import { cpSync, existsSync, mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { downloadTemplate } from 'giget'
 import { join } from 'pathe'
+import { getTemplateSource } from './getTemplateSource'
 
 export async function installFeature (feature: string, cwd: string, type: 'vuetify' | 'vuetify0' = 'vuetify') {
   const templateBase = type === 'vuetify0' ? 'vuetify0' : 'vue'
@@ -15,7 +16,7 @@ export async function installFeature (feature: string, cwd: string, type: 'vueti
   } else {
     const tmp = mkdtempSync(join(tmpdir(), 'vuetify-feature-'))
     try {
-      await downloadTemplate(`gh:vuetifyjs/cli/templates/${templateName}`, {
+      await downloadTemplate(getTemplateSource(templateName), {
         dir: tmp,
       })
       cpSync(tmp, cwd, { recursive: true })

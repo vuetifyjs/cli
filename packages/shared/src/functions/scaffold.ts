@@ -4,6 +4,7 @@ import { join } from 'pathe'
 import { readPackageJSON, writePackageJSON } from 'pkg-types'
 import { applyFeatures, vuetifyNuxtManual } from '../features'
 import { convertProjectToJS } from '../utils/convertProjectToJS'
+import { getTemplateSource } from '../utils/getTemplateSource'
 import { installDependencies } from '../utils/installDependencies'
 
 export interface ScaffoldOptions {
@@ -87,7 +88,7 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
       debug(`templatePath does not exist: ${templatePath}`)
     }
   } else {
-    const templateSource = `gh:vuetifyjs/cli/templates/${templateName}`
+    const templateSource = getTemplateSource(templateName)
 
     try {
       await downloadTemplate(templateSource, {
