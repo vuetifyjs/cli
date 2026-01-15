@@ -49,5 +49,19 @@ export const ConsoleReporter: Reporter = {
       }
       console.log()
     }
+
+    // Generate docs URL with all documentable features
+    const documentableTypes = new Set(['component', 'composable', 'plugin', 'util'])
+    const allFeatures = reports
+      .flatMap(r => r.features)
+      .filter(f => documentableTypes.has(f.type))
+      .map(f => f.name)
+
+    if (allFeatures.length > 0) {
+      const url = `https://v0.vuetifyjs.com/?features=${allFeatures.join(',')}`
+      console.log(bold('Documentation'))
+      console.log(`  ${blue('→')} ${url}`)
+      console.log()
+    }
   },
 }
