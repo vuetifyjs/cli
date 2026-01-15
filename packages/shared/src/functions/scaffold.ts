@@ -87,7 +87,7 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
       debug(`templatePath does not exist: ${templatePath}`)
     }
   } else {
-    const templateSource = `gh:vuetifyjs/templates/${templateName}`
+    const templateSource = `gh:vuetifyjs/cli/templates/${templateName}`
 
     try {
       await downloadTemplate(templateSource, {

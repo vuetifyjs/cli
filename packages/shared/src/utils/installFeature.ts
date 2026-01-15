@@ -15,7 +15,7 @@ export async function installFeature (feature: string, cwd: string, type: 'vueti
   } else {
     const tmp = mkdtempSync(join(tmpdir(), 'vuetify-feature-'))
     try {
-      await downloadTemplate(`gh:vuetifyjs/templates/${templateName}`, {
+      await downloadTemplate(`gh:vuetifyjs/cli/templates/${templateName}`, {
         dir: tmp,
       })
       cpSync(tmp, cwd, { recursive: true })
