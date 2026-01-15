@@ -11,7 +11,10 @@ const require = createRequire(import.meta.url)
 
 async function loadImportMap (cwd: string, targetPackage: string) {
   try {
-    const pkgPath = await resolvePackageJSON(targetPackage, { url: cwd })
+    const pkgPath = await resolvePackageJSON(targetPackage, { url: cwd, try: true })
+    if (!pkgPath) {
+      return null
+    }
     const pkgRoot = dirname(pkgPath)
     const mapPath = join(pkgRoot, 'dist/json/importMap.json')
     if (existsSync(mapPath)) {
