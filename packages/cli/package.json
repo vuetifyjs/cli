@@ -1,6 +1,6 @@
 {
   "name": "@vuetify/cli",
-  "version": "0.0.13-beta.8",
+  "version": "0.0.13-beta.9",
   "description": "Vuetify CLI",
   "type": "module",
   "scripts": {
