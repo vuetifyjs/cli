@@ -58,7 +58,7 @@ export const ConsoleReporter: Reporter = {
       .map(f => f.name)
 
     if (allFeatures.length > 0) {
-      const url = `https://v0.vuetifyjs.com/?features=${allFeatures.join(',')}`
+      const url = `https://0.vuetifyjs.com/?features=${allFeatures.join(',')}`
       console.log(bold('Documentation'))
       console.log(`  ${blue('→')} ${url}`)
       console.log()
