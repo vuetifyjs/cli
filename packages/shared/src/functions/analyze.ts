@@ -1,11 +1,12 @@
-import type { AnalyzeReport, FeatureType } from '../reporters/types'
+import type { AnalyzeReport, FeatureType, ParseError } from '../reporters/types'
 import { existsSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { createRequire } from 'node:module'
-import { dirname, join } from 'pathe'
+import { dirname, join, relative } from 'pathe'
 import { readPackageJSON, resolvePackageJSON } from 'pkg-types'
 import { glob } from 'tinyglobby'
 import { parse } from 'vue-eslint-parser'
+import { DirectoryNotFoundError, FileParseError } from '../errors'
 
 const require = createRequire(import.meta.url)
 
@@ -193,7 +194,7 @@ export function analyzeCode (code: string, targetPackages: string[] = ['@vuetify
 
 export async function analyzeProject (cwd: string = process.cwd(), targetPackages: string[] = ['@vuetify/v0']): Promise<AnalyzeReport[]> {
   if (!existsSync(cwd)) {
-    throw new Error(`Directory ${cwd} does not exist`)
+    throw new DirectoryNotFoundError(cwd)
   }
 
   const [files, importMaps, pkgs] = await Promise.all([
@@ -210,6 +211,8 @@ export async function analyzeProject (cwd: string = process.cwd(), targetPackage
   for (const pkg of targetPackages) {
     features.set(pkg, new Map())
   }
+
+  const parseErrors: ParseError[] = []
 
   for (const file of files) {
     try {
@@ -228,8 +231,17 @@ export async function analyzeProject (cwd: string = process.cwd(), targetPackage
           }
         }
       }
-    } catch {
-      // console.warn(`Failed to analyze ${file}:`, error)
+    } catch (error_) {
+      const error = error_ instanceof Error ? error_ : new Error(String(error_))
+      const parseError = new FileParseError(file, error)
+      parseErrors.push({
+        file: relative(cwd, file),
+        error: error.message,
+      })
+      // Log in debug mode if needed, but don't swallow silently
+      if (process.env.DEBUG) {
+        console.warn(parseError.toString())
+      }
     }
   }
 
@@ -247,6 +259,7 @@ export async function analyzeProject (cwd: string = process.cwd(), targetPackage
         name,
         type: getFeatureType(name, pkgFeatures.get(name)?.isType, importMap),
       })),
+      parseErrors: parseErrors.length > 0 ? parseErrors : undefined,
     }
   })
 }

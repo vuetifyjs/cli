@@ -5,12 +5,18 @@ export interface AnalyzedFeature {
   type: FeatureType
 }
 
+export interface ParseError {
+  file: string
+  error: string
+}
+
 export interface AnalyzeReport {
   meta: {
     packageName: string
     version: string
   }
   features: AnalyzedFeature[]
+  parseErrors?: ParseError[]
 }
 
 export interface ReporterOptions {

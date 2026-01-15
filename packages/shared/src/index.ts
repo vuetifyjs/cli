@@ -1,6 +1,7 @@
 export { projectArgs, type ProjectArgs } from './args'
 export * from './commands'
 export { registerProjectArgsCompletion } from './completion'
+export * from './errors'
 export * from './functions'
 export * from './reporters'
 export * from './utils/banner'
