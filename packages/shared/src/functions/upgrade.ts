@@ -1,10 +1,21 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { log } from '@clack/prompts'
-import isGlobal from 'is-installed-globally'
 import { addDependency } from 'nypm'
 import { i18n } from '../i18n'
 
+function isInstalledLocally (): boolean {
+  // Check if CLI is inside a local node_modules (relative to cwd)
+  // If so, it's a local installation and shouldn't be upgraded globally
+  const __dirname = path.dirname(fileURLToPath(import.meta.url))
+  const cwd = process.cwd()
+  const localNodeModules = path.join(cwd, 'node_modules')
+
+  return __dirname.startsWith(localNodeModules)
+}
+
 export async function upgradeSelf (pkgName: string) {
-  if (!isGlobal) {
+  if (isInstalledLocally()) {
     log.warning(i18n.t('commands.upgrade.not_global', { pkg: pkgName }))
     return
   }
