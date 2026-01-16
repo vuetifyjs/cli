@@ -1,5 +1,5 @@
 import type { AnalyzeReport, Reporter } from './types'
-import { ansi256, bold, green, yellow } from 'kolorist'
+import { ansi256, bold, dim, green, red, yellow } from 'kolorist'
 
 const blue = ansi256(33)
 
@@ -9,6 +9,9 @@ export const ConsoleReporter: Reporter = {
     console.log(bold('Vuetify Analysis Report'))
     console.log(blue('======================='))
     console.log()
+
+    // Collect all parse errors across reports (they're duplicated since they apply to all packages)
+    const allParseErrors = reports[0]?.parseErrors ?? []
 
     for (const data of reports) {
       console.log(`Package: ${green(data.meta.packageName)}`)
@@ -61,6 +64,24 @@ export const ConsoleReporter: Reporter = {
       const url = `https://0.vuetifyjs.com/?features=${allFeatures.join(',')}`
       console.log(bold('Documentation'))
       console.log(`  ${blue('→')} ${url}`)
+      console.log()
+    }
+
+    // Report parse errors if any files were skipped
+    if (allParseErrors.length > 0) {
+      console.log(yellow(bold('Warnings')))
+      console.log(yellow(`${allParseErrors.length} file(s) could not be parsed and were skipped:`))
+      console.log()
+      for (const parseError of allParseErrors.slice(0, 10)) {
+        console.log(`  ${red('✗')} ${parseError.file}`)
+        console.log(`    ${dim(parseError.error.split('\n')[0])}`)
+      }
+      if (allParseErrors.length > 10) {
+        console.log(`  ${dim(`... and ${allParseErrors.length - 10} more`)}`)
+      }
+      console.log()
+      console.log(dim('  These files may contain syntax errors or unsupported syntax.'))
+      console.log(dim('  Set DEBUG=1 for detailed error messages.'))
       console.log()
     }
   },

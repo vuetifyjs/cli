@@ -3,6 +3,7 @@ import { box, intro, outro, spinner } from '@clack/prompts'
 import { ansi256, link } from 'kolorist'
 import { getUserAgent } from 'package-manager-detector'
 import { join, relative } from 'pathe'
+import { formatError, VuetifyCliError } from '../errors'
 import { i18n } from '../i18n'
 import { type ProjectOptions, prompt } from '../prompts'
 import { createBanner } from '../utils/banner'
@@ -101,7 +102,11 @@ export async function createVuetify (options: CreateVuetifyOptions) {
     })
   } catch (error) {
     s.stop(i18n.t('spinners.template.failed'))
-    console.error(`Failed to create project: ${error}`)
+    console.error()
+    console.error(formatError(error))
+    if (error instanceof VuetifyCliError && error.suggestion) {
+      console.error()
+    }
     throw error
   }
 

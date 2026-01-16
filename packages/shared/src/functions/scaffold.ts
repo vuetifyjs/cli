@@ -2,6 +2,7 @@ import fs, { existsSync, rmSync } from 'node:fs'
 import { downloadTemplate } from 'giget'
 import { join } from 'pathe'
 import { readPackageJSON, writePackageJSON } from 'pkg-types'
+import { DependencyInstallError, FeatureApplyError, TemplateCopyError, TemplateDownloadError } from '../errors'
 import { applyFeatures, vuetifyNuxtManual } from '../features'
 import { convertProjectToJS } from '../utils/convertProjectToJS'
 import { getTemplateSource } from '../utils/getTemplateSource'
@@ -33,6 +34,7 @@ export interface ScaffoldCallbacks {
   onInstallEnd?: () => void
 }
 
+// eslint-disable-next-line complexity -- error handling adds necessary complexity for DX
 export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCallbacks = {}) {
   const {
     cwd,
@@ -77,15 +79,20 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
     debug(`Copying template from ${templatePath}...`)
     if (existsSync(templatePath)) {
       debug(`templatePath exists. Copying to ${projectRoot}`)
-      fs.cpSync(templatePath, projectRoot, {
-        recursive: true,
-        filter: src => {
-          return !src.includes('node_modules') && !src.includes('.git') && !src.includes('.DS_Store')
-        },
-      })
-      debug(`Copy complete.`)
+      try {
+        fs.cpSync(templatePath, projectRoot, {
+          recursive: true,
+          filter: src => {
+            return !src.includes('node_modules') && !src.includes('.git') && !src.includes('.DS_Store')
+          },
+        })
+        debug(`Copy complete.`)
+      } catch (error_) {
+        const error = error_ instanceof Error ? error_ : new Error(String(error_))
+        throw new TemplateCopyError(templatePath, error)
+      }
     } else {
-      debug(`templatePath does not exist: ${templatePath}`)
+      throw new TemplateCopyError(templatePath, new Error('Template path does not exist'))
     }
   } else {
     const templateSource = getTemplateSource(templateName)
@@ -95,9 +102,9 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
         dir: projectRoot,
         force,
       })
-    } catch (error) {
-      console.error(`Failed to download template: ${error}`)
-      throw error
+    } catch (error_) {
+      const error = error_ instanceof Error ? error_ : new Error(String(error_))
+      throw new TemplateDownloadError(templateName, error)
     }
   }
   callbacks.onDownloadEnd?.()
@@ -107,11 +114,21 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
 
   callbacks.onConfigStart?.()
   if (features && features.length > 0) {
-    await applyFeatures(projectRoot, features, pkg, !!typescript, platform === 'nuxt', clientHints, type)
+    try {
+      await applyFeatures(projectRoot, features, pkg, !!typescript, platform === 'nuxt', clientHints, type)
+    } catch (error_) {
+      const error = error_ instanceof Error ? error_ : new Error(String(error_))
+      throw new FeatureApplyError(features.join(', '), error)
+    }
   }
 
   if (platform === 'nuxt' && type !== 'vuetify0' && (!features || !features.includes('vuetify-nuxt-module'))) {
-    await vuetifyNuxtManual.apply({ cwd: projectRoot, pkg, isTypescript: !!typescript, isNuxt: true })
+    try {
+      await vuetifyNuxtManual.apply({ cwd: projectRoot, pkg, isTypescript: !!typescript, isNuxt: true })
+    } catch (error_) {
+      const error = error_ instanceof Error ? error_ : new Error(String(error_))
+      throw new FeatureApplyError('vuetify-nuxt-manual', error)
+    }
   }
   callbacks.onConfigEnd?.()
 
@@ -133,7 +150,12 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
 
   if (install && packageManager) {
     callbacks.onInstallStart?.(packageManager)
-    await installDependencies(projectRoot, packageManager as any)
+    try {
+      await installDependencies(projectRoot, packageManager as any)
+    } catch (error_) {
+      const error = error_ instanceof Error ? error_ : new Error(String(error_))
+      throw new DependencyInstallError(packageManager, error)
+    }
     callbacks.onInstallEnd?.()
   }
 }
