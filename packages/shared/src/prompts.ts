@@ -90,11 +90,11 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         return Promise.resolve('vuetify')
       }
       return select({
-        message: 'Which version of Vuetify?',
+        message: i18n.t('prompts.type.select'),
         initialValue: 'vuetify',
         options: [
-          { label: 'Vuetify', value: 'vuetify', hint: 'Standard Material Design Component Framework' },
-          { label: 'Vuetify 0 (alpha)', value: 'vuetify0', hint: 'Headless Component Library' },
+          { label: i18n.t('prompts.type.vuetify.label'), value: 'vuetify', hint: i18n.t('prompts.type.vuetify.hint') },
+          { label: i18n.t('prompts.type.vuetify0.label'), value: 'vuetify0', hint: i18n.t('prompts.type.vuetify0.hint') },
         ],
       })
     },

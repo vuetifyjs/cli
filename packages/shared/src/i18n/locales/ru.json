@@ -97,6 +97,17 @@
       "vuetify0": "Vuetify0 (alpha)",
       "nuxt": "Nuxt"
     },
+    "type": {
+      "select": "Какую версию Vuetify использовать?",
+      "vuetify": {
+        "label": "Vuetify",
+        "hint": "Стандартная библиотека компонентов Material Design"
+      },
+      "vuetify0": {
+        "label": "Vuetify 0 (альфа)",
+        "hint": "Библиотека headless компонентов"
+      }
+    },
     "css_framework": {
       "select": "Какой фреймворк CSS вы хотите использовать?",
       "none": "Никакой",
