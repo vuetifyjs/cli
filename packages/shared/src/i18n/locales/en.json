@@ -99,6 +99,17 @@
       "vuetify0": "Vuetify0 (alpha)",
       "nuxt": "Nuxt"
     },
+    "type": {
+      "select": "Which version of Vuetify?",
+      "vuetify": {
+        "label": "Vuetify",
+        "hint": "Standard Material Design Component Framework"
+      },
+      "vuetify0": {
+        "label": "Vuetify 0 (alpha)",
+        "hint": "Headless Component Library"
+      }
+    },
     "css_framework": {
       "select": "Which CSS framework?",
       "unocss": {
