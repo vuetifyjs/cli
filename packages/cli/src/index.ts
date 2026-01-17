@@ -1,6 +1,6 @@
 import tab from '@bomb.sh/tab/citty'
 import { createBanner, registerProjectArgsCompletion } from '@vuetify/cli-shared'
-import { add } from '@vuetify/cli-shared/commands'
+import { add, ask } from '@vuetify/cli-shared/commands'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { checkForUpdate } from '@vuetify/cli-shared/utils'
 
@@ -21,6 +21,7 @@ export const main = defineCommand({
   subCommands: {
     init,
     add,
+    ask,
     update,
     docs,
     upgrade,

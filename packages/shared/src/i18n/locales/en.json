@@ -17,6 +17,9 @@
       "current": "Currently",
       "need_to": "We need to %{action}."
     },
+    "analyze": {
+      "description": "Analyze Vuetify usage in the project"
+    },
     "init": {
       "v0": "Initialize a Vuetify0 project",
       "description": "Initialize a Vuetify project",
@@ -33,6 +36,10 @@
         "available": "Available integrations: %{choices}",
         "invalid": "Invalid integration: %{integration}. Available: %{choices}"
       }
+    },
+    "ask": {
+      "description": "Ask Vuetify AI a question",
+      "no_key": "Please provide GEMINI_API_KEY environment variable or --api-key flag"
     },
     "update": {
       "description": "Update vuetify dependencies project",
@@ -155,6 +162,12 @@
     "cancel": "Setup cancelled. You can run this command again anytime."
   },
   "spinners": {
+    "ask": {
+      "connecting": "Connecting to Vuetify MCP...",
+      "generating": "Thinking...",
+      "done": "Done",
+      "error": "Error asking Vuetify AI"
+    },
     "template": {
       "downloading": "Downloading template %{template}...",
       "copied": "Template copied",
@@ -207,6 +220,9 @@
     "dir": {
       "description": "The directory to create the project in"
     },
+    "scanDir": {
+      "description": "The directory to scan"
+    },
     "force": {
       "description": "Force overwrite existing files"
     },
@@ -248,6 +264,33 @@
     },
     "version": {
       "description": "The Vuetify version to check documentation for"
+    },
+    "model": {
+      "description": "The model to use"
+    },
+    "question": {
+      "description": "The question to ask"
+    },
+    "apiKey": {
+      "description": "Google Generative AI API Key"
+    },
+    "raw": {
+      "description": "Return only the response text"
+    },
+    "cwd": {
+      "description": "The current working directory"
+    },
+    "output": {
+      "description": "Output file path (only for json reporter)"
+    },
+    "targets": {
+      "description": "Target packages to analyze (comma separated)"
+    },
+    "reporter": {
+      "description": "Reporter to use (console, json)"
+    },
+    "suppressWarnings": {
+      "description": "Suppress warnings"
     }
   },
   "cli": {

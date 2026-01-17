@@ -39,6 +39,8 @@
     }
   },
   "dependencies": {
+    "@google/generative-ai": "catalog:",
+    "@modelcontextprotocol/sdk": "catalog:",
     "@typescript-eslint/parser": "catalog:",
     "magicast": "catalog:",
     "semver": "catalog:",

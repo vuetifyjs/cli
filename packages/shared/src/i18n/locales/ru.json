@@ -17,6 +17,9 @@
       "current": "Сейчас",
       "need_to": "Нужно %{actions}."
     },
+    "analyze": {
+      "description": "Анализировать использование Vuetify в проекте"
+    },
     "init": {
       "v0": "Инициализировать проект Vuetify0",
       "description": "Инициализировать проект Vuetify",
@@ -149,6 +152,12 @@
     "cancel": "Создание проекта отменено. Вы можете запустить команду снова в любое время."
   },
   "spinners": {
+    "ask": {
+      "connecting": "Подключаемся к Vuetify MCP...",
+      "generating": "Думаю...",
+      "done": "Готово!",
+      "error": "Произошла ошибка при обращении к Vuetify AI"
+    },
     "template": {
       "downloading": "Загрузка шаблона %{template}...",
       "copied": "Шаблон скопирован",
@@ -197,6 +206,9 @@
     "dir": {
       "description": "Папка, в которой будет создан проект"
     },
+    "scanDir": {
+      "description": "Директория для сканирования"
+    },
     "force": {
       "description": "Принудительно перезаписать существующие файлы"
     },
@@ -238,6 +250,33 @@
     },
     "version": {
       "description": "Версия Vuetify для просмотра документации"
+    },
+    "model": {
+      "description": "Модель для использования"
+    },
+    "question": {
+      "description": "Вопрос для обращения"
+    },
+    "apiKey": {
+      "description": "Ключ API Google Generative AI"
+    },
+    "raw": {
+      "description": "Вернуть только текст ответа"
+    },
+    "cwd": {
+      "description": "Текущая рабочая директория"
+    },
+    "output": {
+      "description": "Путь к файлу вывода (только для json репортера)"
+    },
+    "targets": {
+      "description": "Целевые пакеты для анализа (через запятую)"
+    },
+    "reporter": {
+      "description": "Используемый репортер (console, json)"
+    },
+    "suppressWarnings": {
+      "description": "Скрыть предупреждения"
     }
   },
   "cli": {

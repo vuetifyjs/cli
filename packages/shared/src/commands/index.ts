@@ -1,4 +1,5 @@
 export * from './add'
+export * from './ask'
 export * from './docs'
 export * from './update'
 export * from './upgrade'

@@ -1,40 +1,41 @@
 import { log } from '@clack/prompts'
 import { analyzeProject, ConsoleReporter, JsonReporter, type Reporter } from '@vuetify/cli-shared'
+import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand } from 'citty'
 import { resolve } from 'pathe'
 
 export const analyze = defineCommand({
   meta: {
     name: 'analyze',
-    description: 'Analyze Vuetify usage in the project',
+    description: i18n.t('commands.analyze.description'),
   },
   args: {
     dir: {
       type: 'positional',
-      description: 'Directory to scan',
+      description: i18n.t('args.scanDir.description'),
       default: '.',
     },
     output: {
       type: 'string',
       alias: 'o',
-      description: 'Output file path (only for json reporter)',
+      description: i18n.t('args.output.description'),
     },
     targets: {
       type: 'string',
       alias: 't',
-      description: 'Target packages to analyze (comma separated)',
+      description: i18n.t('args.targets.description'),
       default: '@vuetify/v0',
     },
     reporter: {
       type: 'string',
       alias: 'r',
-      description: 'Reporter to use (console, json)',
+      description: i18n.t('args.reporter.description'),
       default: 'console',
       valueHint: 'console | json',
     },
     suppressWarnings: {
       type: 'boolean',
-      description: 'Suppress warnings',
+      description: i18n.t('args.suppressWarnings.description'),
       default: false,
     },
   },

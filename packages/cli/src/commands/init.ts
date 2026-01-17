@@ -12,7 +12,7 @@ export const init = defineCommand({
     ...projectArgs(),
     cwd: {
       type: 'string',
-      description: 'The current working directory',
+      description: i18n.t('args.cwd.description'),
     },
   },
   run: async ({ args }) => {
