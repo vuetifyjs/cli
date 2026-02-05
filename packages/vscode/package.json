@@ -38,14 +38,36 @@
         "category": "Vuetify"
       },
       {
-        "command": "vuetify.openComponentDocs",
-        "title": "Open Vuetify Component Documentation",
-        "category": "Vuetify"
-      },
-      {
         "command": "vuetify.openApiDocs",
         "title": "Open Vuetify API Documentation",
         "category": "Vuetify"
+      },
+      {
+        "command": "vuetify.openComponentDocs",
+        "title": "Open Vuetify Component Documentation",
+        "category": "Vuetify"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "vue",
+        "path": "./snippets/vuetify.json"
+      },
+      {
+        "language": "vue-html",
+        "path": "./snippets/vuetify.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/vuetify.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/vuetify.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/vuetify.json"
       }
     ],
     "menus": {
@@ -78,7 +100,8 @@
     "dev": "tsdown --watch ./src --env.NODE_ENV development",
     "typecheck": "tsc --noEmit",
     "vscode:prepublish": "pnpm run build",
-    "generate:map": "node scripts/generate-map.mjs"
+    "generate:map": "node scripts/generate-map.mjs",
+    "generate:snippets": "node scripts/generate-snippets.mjs"
   },
   "devDependencies": {
     "@types/node": "catalog:",

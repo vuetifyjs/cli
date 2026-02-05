@@ -1,0 +1,1730 @@
+{
+  "VAlert": {
+    "prefix": "v-alert",
+    "body": [
+      "<v-alert text=\"${1}\" title=\"${2}\">",
+      "\t$0",
+      "</v-alert>"
+    ],
+    "description": "Vuetify VAlert Component"
+  },
+  "VAlertTitle": {
+    "prefix": "v-alert-title",
+    "body": [
+      "<v-alert-title>",
+      "\t$0",
+      "</v-alert-title>"
+    ],
+    "description": "Vuetify VAlertTitle Component"
+  },
+  "VApp": {
+    "prefix": "v-app",
+    "body": [
+      "<v-app>",
+      "\t$0",
+      "</v-app>"
+    ],
+    "description": "Vuetify VApp Component"
+  },
+  "VAppBar": {
+    "prefix": "v-app-bar",
+    "body": [
+      "<v-app-bar title=\"${1}\">",
+      "\t$0",
+      "</v-app-bar>"
+    ],
+    "description": "Vuetify VAppBar Component"
+  },
+  "VAppBarNavIcon": {
+    "prefix": "v-app-bar-nav-icon",
+    "body": [
+      "<v-app-bar-nav-icon text=\"${1}\">",
+      "\t$0",
+      "</v-app-bar-nav-icon>"
+    ],
+    "description": "Vuetify VAppBarNavIcon Component"
+  },
+  "VAppBarTitle": {
+    "prefix": "v-app-bar-title",
+    "body": [
+      "<v-app-bar-title text=\"${1}\">",
+      "\t$0",
+      "</v-app-bar-title>"
+    ],
+    "description": "Vuetify VAppBarTitle Component"
+  },
+  "VAutocomplete": {
+    "prefix": "v-autocomplete",
+    "body": [
+      "<v-autocomplete label=\"${1}\" items=\"${2}\">",
+      "\t$0",
+      "</v-autocomplete>"
+    ],
+    "description": "Vuetify VAutocomplete Component"
+  },
+  "VAvatar": {
+    "prefix": "v-avatar",
+    "body": [
+      "<v-avatar text=\"${1}\">",
+      "\t$0",
+      "</v-avatar>"
+    ],
+    "description": "Vuetify VAvatar Component"
+  },
+  "VBadge": {
+    "prefix": "v-badge",
+    "body": [
+      "<v-badge label=\"${1}\">",
+      "\t$0",
+      "</v-badge>"
+    ],
+    "description": "Vuetify VBadge Component"
+  },
+  "VBanner": {
+    "prefix": "v-banner",
+    "body": [
+      "<v-banner text=\"${1}\">",
+      "\t$0",
+      "</v-banner>"
+    ],
+    "description": "Vuetify VBanner Component"
+  },
+  "VBannerActions": {
+    "prefix": "v-banner-actions",
+    "body": [
+      "<v-banner-actions>",
+      "\t$0",
+      "</v-banner-actions>"
+    ],
+    "description": "Vuetify VBannerActions Component"
+  },
+  "VBannerText": {
+    "prefix": "v-banner-text",
+    "body": [
+      "<v-banner-text>",
+      "\t$0",
+      "</v-banner-text>"
+    ],
+    "description": "Vuetify VBannerText Component"
+  },
+  "VBottomNavigation": {
+    "prefix": "v-bottom-navigation",
+    "body": [
+      "<v-bottom-navigation>",
+      "\t$0",
+      "</v-bottom-navigation>"
+    ],
+    "description": "Vuetify VBottomNavigation Component"
+  },
+  "VBottomSheet": {
+    "prefix": "v-bottom-sheet",
+    "body": [
+      "<v-bottom-sheet>",
+      "\t$0",
+      "</v-bottom-sheet>"
+    ],
+    "description": "Vuetify VBottomSheet Component"
+  },
+  "VBreadcrumbs": {
+    "prefix": "v-breadcrumbs",
+    "body": [
+      "<v-breadcrumbs items=\"${1}\">",
+      "\t$0",
+      "</v-breadcrumbs>"
+    ],
+    "description": "Vuetify VBreadcrumbs Component"
+  },
+  "VBreadcrumbsDivider": {
+    "prefix": "v-breadcrumbs-divider",
+    "body": [
+      "<v-breadcrumbs-divider>",
+      "\t$0",
+      "</v-breadcrumbs-divider>"
+    ],
+    "description": "Vuetify VBreadcrumbsDivider Component"
+  },
+  "VBreadcrumbsItem": {
+    "prefix": "v-breadcrumbs-item",
+    "body": [
+      "<v-breadcrumbs-item title=\"${1}\">",
+      "\t$0",
+      "</v-breadcrumbs-item>"
+    ],
+    "description": "Vuetify VBreadcrumbsItem Component"
+  },
+  "VBtn": {
+    "prefix": "v-btn",
+    "body": [
+      "<v-btn text=\"${1}\">",
+      "\t$0",
+      "</v-btn>"
+    ],
+    "description": "Vuetify VBtn Component"
+  },
+  "VBtnGroup": {
+    "prefix": "v-btn-group",
+    "body": [
+      "<v-btn-group>",
+      "\t$0",
+      "</v-btn-group>"
+    ],
+    "description": "Vuetify VBtnGroup Component"
+  },
+  "VBtnToggle": {
+    "prefix": "v-btn-toggle",
+    "body": [
+      "<v-btn-toggle>",
+      "\t$0",
+      "</v-btn-toggle>"
+    ],
+    "description": "Vuetify VBtnToggle Component"
+  },
+  "VCalendar": {
+    "prefix": "v-calendar",
+    "body": [
+      "<v-calendar>",
+      "\t$0",
+      "</v-calendar>"
+    ],
+    "description": "Vuetify VCalendar Component"
+  },
+  "VCard": {
+    "prefix": "v-card",
+    "body": [
+      "<v-card text=\"${1}\" title=\"${2}\">",
+      "\t$0",
+      "</v-card>"
+    ],
+    "description": "Vuetify VCard Component"
+  },
+  "VCardActions": {
+    "prefix": "v-card-actions",
+    "body": [
+      "<v-card-actions>",
+      "\t$0",
+      "</v-card-actions>"
+    ],
+    "description": "Vuetify VCardActions Component"
+  },
+  "VCardItem": {
+    "prefix": "v-card-item",
+    "body": [
+      "<v-card-item title=\"${1}\">",
+      "\t$0",
+      "</v-card-item>"
+    ],
+    "description": "Vuetify VCardItem Component"
+  },
+  "VCardSubtitle": {
+    "prefix": "v-card-subtitle",
+    "body": [
+      "<v-card-subtitle>",
+      "\t$0",
+      "</v-card-subtitle>"
+    ],
+    "description": "Vuetify VCardSubtitle Component"
+  },
+  "VCardText": {
+    "prefix": "v-card-text",
+    "body": [
+      "<v-card-text>",
+      "\t$0",
+      "</v-card-text>"
+    ],
+    "description": "Vuetify VCardText Component"
+  },
+  "VCardTitle": {
+    "prefix": "v-card-title",
+    "body": [
+      "<v-card-title>",
+      "\t$0",
+      "</v-card-title>"
+    ],
+    "description": "Vuetify VCardTitle Component"
+  },
+  "VCarousel": {
+    "prefix": "v-carousel",
+    "body": [
+      "<v-carousel>",
+      "\t$0",
+      "</v-carousel>"
+    ],
+    "description": "Vuetify VCarousel Component"
+  },
+  "VCarouselItem": {
+    "prefix": "v-carousel-item",
+    "body": [
+      "<v-carousel-item src=\"${1}\">",
+      "\t$0",
+      "</v-carousel-item>"
+    ],
+    "description": "Vuetify VCarouselItem Component"
+  },
+  "VCheckbox": {
+    "prefix": "v-checkbox",
+    "body": [
+      "<v-checkbox label=\"${1}\">",
+      "\t$0",
+      "</v-checkbox>"
+    ],
+    "description": "Vuetify VCheckbox Component"
+  },
+  "VCheckboxBtn": {
+    "prefix": "v-checkbox-btn",
+    "body": [
+      "<v-checkbox-btn label=\"${1}\">",
+      "\t$0",
+      "</v-checkbox-btn>"
+    ],
+    "description": "Vuetify VCheckboxBtn Component"
+  },
+  "VChip": {
+    "prefix": "v-chip",
+    "body": [
+      "<v-chip text=\"${1}\" label=\"${2}\">",
+      "\t$0",
+      "</v-chip>"
+    ],
+    "description": "Vuetify VChip Component"
+  },
+  "VChipGroup": {
+    "prefix": "v-chip-group",
+    "body": [
+      "<v-chip-group>",
+      "\t$0",
+      "</v-chip-group>"
+    ],
+    "description": "Vuetify VChipGroup Component"
+  },
+  "VClassIcon": {
+    "prefix": "v-class-icon",
+    "body": [
+      "<v-class-icon>",
+      "\t$0",
+      "</v-class-icon>"
+    ],
+    "description": "Vuetify VClassIcon Component"
+  },
+  "VCode": {
+    "prefix": "v-code",
+    "body": [
+      "<v-code>",
+      "\t$0",
+      "</v-code>"
+    ],
+    "description": "Vuetify VCode Component"
+  },
+  "VCol": {
+    "prefix": "v-col",
+    "body": [
+      "<v-col>",
+      "\t$0",
+      "</v-col>"
+    ],
+    "description": "Vuetify VCol Component"
+  },
+  "VColorInput": {
+    "prefix": "v-color-input",
+    "body": [
+      "<v-color-input title=\"${1}\" label=\"${2}\">",
+      "\t$0",
+      "</v-color-input>"
+    ],
+    "description": "Vuetify VColorInput Component"
+  },
+  "VColorPicker": {
+    "prefix": "v-color-picker",
+    "body": [
+      "<v-color-picker title=\"${1}\">",
+      "\t$0",
+      "</v-color-picker>"
+    ],
+    "description": "Vuetify VColorPicker Component"
+  },
+  "VCombobox": {
+    "prefix": "v-combobox",
+    "body": [
+      "<v-combobox label=\"${1}\" items=\"${2}\">",
+      "\t$0",
+      "</v-combobox>"
+    ],
+    "description": "Vuetify VCombobox Component"
+  },
+  "VComponentIcon": {
+    "prefix": "v-component-icon",
+    "body": [
+      "<v-component-icon>",
+      "\t$0",
+      "</v-component-icon>"
+    ],
+    "description": "Vuetify VComponentIcon Component"
+  },
+  "VConfirmEdit": {
+    "prefix": "v-confirm-edit",
+    "body": [
+      "<v-confirm-edit>",
+      "\t$0",
+      "</v-confirm-edit>"
+    ],
+    "description": "Vuetify VConfirmEdit Component"
+  },
+  "VContainer": {
+    "prefix": "v-container",
+    "body": [
+      "<v-container>",
+      "\t$0",
+      "</v-container>"
+    ],
+    "description": "Vuetify VContainer Component"
+  },
+  "VCounter": {
+    "prefix": "v-counter",
+    "body": [
+      "<v-counter>",
+      "\t$0",
+      "</v-counter>"
+    ],
+    "description": "Vuetify VCounter Component"
+  },
+  "VDataIterator": {
+    "prefix": "v-data-iterator",
+    "body": [
+      "<v-data-iterator items=\"${1}\">",
+      "\t$0",
+      "</v-data-iterator>"
+    ],
+    "description": "Vuetify VDataIterator Component"
+  },
+  "VDataTable": {
+    "prefix": "v-data-table",
+    "body": [
+      "<v-data-table items=\"${1}\">",
+      "\t$0",
+      "</v-data-table>"
+    ],
+    "description": "Vuetify VDataTable Component"
+  },
+  "VDataTableFooter": {
+    "prefix": "v-data-table-footer",
+    "body": [
+      "<v-data-table-footer>",
+      "\t$0",
+      "</v-data-table-footer>"
+    ],
+    "description": "Vuetify VDataTableFooter Component"
+  },
+  "VDataTableHeaders": {
+    "prefix": "v-data-table-headers",
+    "body": [
+      "<v-data-table-headers>",
+      "\t$0",
+      "</v-data-table-headers>"
+    ],
+    "description": "Vuetify VDataTableHeaders Component"
+  },
+  "VDataTableRow": {
+    "prefix": "v-data-table-row",
+    "body": [
+      "<v-data-table-row>",
+      "\t$0",
+      "</v-data-table-row>"
+    ],
+    "description": "Vuetify VDataTableRow Component"
+  },
+  "VDataTableRows": {
+    "prefix": "v-data-table-rows",
+    "body": [
+      "<v-data-table-rows items=\"${1}\">",
+      "\t$0",
+      "</v-data-table-rows>"
+    ],
+    "description": "Vuetify VDataTableRows Component"
+  },
+  "VDataTableServer": {
+    "prefix": "v-data-table-server",
+    "body": [
+      "<v-data-table-server items=\"${1}\">",
+      "\t$0",
+      "</v-data-table-server>"
+    ],
+    "description": "Vuetify VDataTableServer Component"
+  },
+  "VDataTableVirtual": {
+    "prefix": "v-data-table-virtual",
+    "body": [
+      "<v-data-table-virtual items=\"${1}\">",
+      "\t$0",
+      "</v-data-table-virtual>"
+    ],
+    "description": "Vuetify VDataTableVirtual Component"
+  },
+  "VDateInput": {
+    "prefix": "v-date-input",
+    "body": [
+      "<v-date-input text=\"${1}\" title=\"${2}\" label=\"${3}\">",
+      "\t$0",
+      "</v-date-input>"
+    ],
+    "description": "Vuetify VDateInput Component"
+  },
+  "VDatePicker": {
+    "prefix": "v-date-picker",
+    "body": [
+      "<v-date-picker text=\"${1}\" title=\"${2}\">",
+      "\t$0",
+      "</v-date-picker>"
+    ],
+    "description": "Vuetify VDatePicker Component"
+  },
+  "VDatePickerControls": {
+    "prefix": "v-date-picker-controls",
+    "body": [
+      "<v-date-picker-controls text=\"${1}\">",
+      "\t$0",
+      "</v-date-picker-controls>"
+    ],
+    "description": "Vuetify VDatePickerControls Component"
+  },
+  "VDatePickerHeader": {
+    "prefix": "v-date-picker-header",
+    "body": [
+      "<v-date-picker-header>",
+      "\t$0",
+      "</v-date-picker-header>"
+    ],
+    "description": "Vuetify VDatePickerHeader Component"
+  },
+  "VDatePickerMonth": {
+    "prefix": "v-date-picker-month",
+    "body": [
+      "<v-date-picker-month>",
+      "\t$0",
+      "</v-date-picker-month>"
+    ],
+    "description": "Vuetify VDatePickerMonth Component"
+  },
+  "VDatePickerMonths": {
+    "prefix": "v-date-picker-months",
+    "body": [
+      "<v-date-picker-months>",
+      "\t$0",
+      "</v-date-picker-months>"
+    ],
+    "description": "Vuetify VDatePickerMonths Component"
+  },
+  "VDatePickerYears": {
+    "prefix": "v-date-picker-years",
+    "body": [
+      "<v-date-picker-years>",
+      "\t$0",
+      "</v-date-picker-years>"
+    ],
+    "description": "Vuetify VDatePickerYears Component"
+  },
+  "VDefaultsProvider": {
+    "prefix": "v-defaults-provider",
+    "body": [
+      "<v-defaults-provider>",
+      "\t$0",
+      "</v-defaults-provider>"
+    ],
+    "description": "Vuetify VDefaultsProvider Component"
+  },
+  "VDialog": {
+    "prefix": "v-dialog",
+    "body": [
+      "<v-dialog>",
+      "\t$0",
+      "</v-dialog>"
+    ],
+    "description": "Vuetify VDialog Component"
+  },
+  "VDialogBottomTransition": {
+    "prefix": "v-dialog-bottom-transition",
+    "body": [
+      "<v-dialog-bottom-transition>",
+      "\t$0",
+      "</v-dialog-bottom-transition>"
+    ],
+    "description": "Vuetify VDialogBottomTransition Component"
+  },
+  "VDialogTopTransition": {
+    "prefix": "v-dialog-top-transition",
+    "body": [
+      "<v-dialog-top-transition>",
+      "\t$0",
+      "</v-dialog-top-transition>"
+    ],
+    "description": "Vuetify VDialogTopTransition Component"
+  },
+  "VDialogTransition": {
+    "prefix": "v-dialog-transition",
+    "body": [
+      "<v-dialog-transition>",
+      "\t$0",
+      "</v-dialog-transition>"
+    ],
+    "description": "Vuetify VDialogTransition Component"
+  },
+  "VDivider": {
+    "prefix": "v-divider",
+    "body": [
+      "<v-divider>",
+      "\t$0",
+      "</v-divider>"
+    ],
+    "description": "Vuetify VDivider Component"
+  },
+  "VEmptyState": {
+    "prefix": "v-empty-state",
+    "body": [
+      "<v-empty-state text=\"${1}\" title=\"${2}\">",
+      "\t$0",
+      "</v-empty-state>"
+    ],
+    "description": "Vuetify VEmptyState Component"
+  },
+  "VExpandTransition": {
+    "prefix": "v-expand-transition",
+    "body": [
+      "<v-expand-transition>",
+      "\t$0",
+      "</v-expand-transition>"
+    ],
+    "description": "Vuetify VExpandTransition Component"
+  },
+  "VExpandXTransition": {
+    "prefix": "v-expand-xtransition",
+    "body": [
+      "<v-expand-xtransition>",
+      "\t$0",
+      "</v-expand-xtransition>"
+    ],
+    "description": "Vuetify VExpandXTransition Component"
+  },
+  "VExpansionPanel": {
+    "prefix": "v-expansion-panel",
+    "body": [
+      "<v-expansion-panel text=\"${1}\" title=\"${2}\">",
+      "\t$0",
+      "</v-expansion-panel>"
+    ],
+    "description": "Vuetify VExpansionPanel Component"
+  },
+  "VExpansionPanelText": {
+    "prefix": "v-expansion-panel-text",
+    "body": [
+      "<v-expansion-panel-text>",
+      "\t$0",
+      "</v-expansion-panel-text>"
+    ],
+    "description": "Vuetify VExpansionPanelText Component"
+  },
+  "VExpansionPanelTitle": {
+    "prefix": "v-expansion-panel-title",
+    "body": [
+      "<v-expansion-panel-title>",
+      "\t$0",
+      "</v-expansion-panel-title>"
+    ],
+    "description": "Vuetify VExpansionPanelTitle Component"
+  },
+  "VExpansionPanels": {
+    "prefix": "v-expansion-panels",
+    "body": [
+      "<v-expansion-panels>",
+      "\t$0",
+      "</v-expansion-panels>"
+    ],
+    "description": "Vuetify VExpansionPanels Component"
+  },
+  "VFab": {
+    "prefix": "v-fab",
+    "body": [
+      "<v-fab text=\"${1}\">",
+      "\t$0",
+      "</v-fab>"
+    ],
+    "description": "Vuetify VFab Component"
+  },
+  "VFabTransition": {
+    "prefix": "v-fab-transition",
+    "body": [
+      "<v-fab-transition>",
+      "\t$0",
+      "</v-fab-transition>"
+    ],
+    "description": "Vuetify VFabTransition Component"
+  },
+  "VFadeTransition": {
+    "prefix": "v-fade-transition",
+    "body": [
+      "<v-fade-transition>",
+      "\t$0",
+      "</v-fade-transition>"
+    ],
+    "description": "Vuetify VFadeTransition Component"
+  },
+  "VField": {
+    "prefix": "v-field",
+    "body": [
+      "<v-field label=\"${1}\">",
+      "\t$0",
+      "</v-field>"
+    ],
+    "description": "Vuetify VField Component"
+  },
+  "VFieldLabel": {
+    "prefix": "v-field-label",
+    "body": [
+      "<v-field-label>",
+      "\t$0",
+      "</v-field-label>"
+    ],
+    "description": "Vuetify VFieldLabel Component"
+  },
+  "VFileInput": {
+    "prefix": "v-file-input",
+    "body": [
+      "<v-file-input label=\"${1}\">",
+      "\t$0",
+      "</v-file-input>"
+    ],
+    "description": "Vuetify VFileInput Component"
+  },
+  "VFileUpload": {
+    "prefix": "v-file-upload",
+    "body": [
+      "<v-file-upload title=\"${1}\">",
+      "\t$0",
+      "</v-file-upload>"
+    ],
+    "description": "Vuetify VFileUpload Component"
+  },
+  "VFileUploadItem": {
+    "prefix": "v-file-upload-item",
+    "body": [
+      "<v-file-upload-item title=\"${1}\">",
+      "\t$0",
+      "</v-file-upload-item>"
+    ],
+    "description": "Vuetify VFileUploadItem Component"
+  },
+  "VFooter": {
+    "prefix": "v-footer",
+    "body": [
+      "<v-footer>",
+      "\t$0",
+      "</v-footer>"
+    ],
+    "description": "Vuetify VFooter Component"
+  },
+  "VForm": {
+    "prefix": "v-form",
+    "body": [
+      "<v-form>",
+      "\t$0",
+      "</v-form>"
+    ],
+    "description": "Vuetify VForm Component"
+  },
+  "VHotkey": {
+    "prefix": "v-hotkey",
+    "body": [
+      "<v-hotkey>",
+      "\t$0",
+      "</v-hotkey>"
+    ],
+    "description": "Vuetify VHotkey Component"
+  },
+  "VHover": {
+    "prefix": "v-hover",
+    "body": [
+      "<v-hover>",
+      "\t$0",
+      "</v-hover>"
+    ],
+    "description": "Vuetify VHover Component"
+  },
+  "VIcon": {
+    "prefix": "v-icon",
+    "body": [
+      "<v-icon>",
+      "\t$0",
+      "</v-icon>"
+    ],
+    "description": "Vuetify VIcon Component"
+  },
+  "VIconBtn": {
+    "prefix": "v-icon-btn",
+    "body": [
+      "<v-icon-btn text=\"${1}\">",
+      "\t$0",
+      "</v-icon-btn>"
+    ],
+    "description": "Vuetify VIconBtn Component"
+  },
+  "VImg": {
+    "prefix": "v-img",
+    "body": [
+      "<v-img src=\"${1}\">",
+      "\t$0",
+      "</v-img>"
+    ],
+    "description": "Vuetify VImg Component"
+  },
+  "VInfiniteScroll": {
+    "prefix": "v-infinite-scroll",
+    "body": [
+      "<v-infinite-scroll>",
+      "\t$0",
+      "</v-infinite-scroll>"
+    ],
+    "description": "Vuetify VInfiniteScroll Component"
+  },
+  "VInput": {
+    "prefix": "v-input",
+    "body": [
+      "<v-input label=\"${1}\">",
+      "\t$0",
+      "</v-input>"
+    ],
+    "description": "Vuetify VInput Component"
+  },
+  "VItem": {
+    "prefix": "v-item",
+    "body": [
+      "<v-item>",
+      "\t$0",
+      "</v-item>"
+    ],
+    "description": "Vuetify VItem Component"
+  },
+  "VItemGroup": {
+    "prefix": "v-item-group",
+    "body": [
+      "<v-item-group>",
+      "\t$0",
+      "</v-item-group>"
+    ],
+    "description": "Vuetify VItemGroup Component"
+  },
+  "VKbd": {
+    "prefix": "v-kbd",
+    "body": [
+      "<v-kbd>",
+      "\t$0",
+      "</v-kbd>"
+    ],
+    "description": "Vuetify VKbd Component"
+  },
+  "VLabel": {
+    "prefix": "v-label",
+    "body": [
+      "<v-label text=\"${1}\">",
+      "\t$0",
+      "</v-label>"
+    ],
+    "description": "Vuetify VLabel Component"
+  },
+  "VLayout": {
+    "prefix": "v-layout",
+    "body": [
+      "<v-layout>",
+      "\t$0",
+      "</v-layout>"
+    ],
+    "description": "Vuetify VLayout Component"
+  },
+  "VLayoutItem": {
+    "prefix": "v-layout-item",
+    "body": [
+      "<v-layout-item>",
+      "\t$0",
+      "</v-layout-item>"
+    ],
+    "description": "Vuetify VLayoutItem Component"
+  },
+  "VLazy": {
+    "prefix": "v-lazy",
+    "body": [
+      "<v-lazy>",
+      "\t$0",
+      "</v-lazy>"
+    ],
+    "description": "Vuetify VLazy Component"
+  },
+  "VLigatureIcon": {
+    "prefix": "v-ligature-icon",
+    "body": [
+      "<v-ligature-icon>",
+      "\t$0",
+      "</v-ligature-icon>"
+    ],
+    "description": "Vuetify VLigatureIcon Component"
+  },
+  "VList": {
+    "prefix": "v-list",
+    "body": [
+      "<v-list items=\"${1}\">",
+      "\t$0",
+      "</v-list>"
+    ],
+    "description": "Vuetify VList Component"
+  },
+  "VListGroup": {
+    "prefix": "v-list-group",
+    "body": [
+      "<v-list-group title=\"${1}\">",
+      "\t$0",
+      "</v-list-group>"
+    ],
+    "description": "Vuetify VListGroup Component"
+  },
+  "VListImg": {
+    "prefix": "v-list-img",
+    "body": [
+      "<v-list-img>",
+      "\t$0",
+      "</v-list-img>"
+    ],
+    "description": "Vuetify VListImg Component"
+  },
+  "VListItem": {
+    "prefix": "v-list-item",
+    "body": [
+      "<v-list-item title=\"${1}\">",
+      "\t$0",
+      "</v-list-item>"
+    ],
+    "description": "Vuetify VListItem Component"
+  },
+  "VListItemAction": {
+    "prefix": "v-list-item-action",
+    "body": [
+      "<v-list-item-action>",
+      "\t$0",
+      "</v-list-item-action>"
+    ],
+    "description": "Vuetify VListItemAction Component"
+  },
+  "VListItemMedia": {
+    "prefix": "v-list-item-media",
+    "body": [
+      "<v-list-item-media>",
+      "\t$0",
+      "</v-list-item-media>"
+    ],
+    "description": "Vuetify VListItemMedia Component"
+  },
+  "VListItemSubtitle": {
+    "prefix": "v-list-item-subtitle",
+    "body": [
+      "<v-list-item-subtitle>",
+      "\t$0",
+      "</v-list-item-subtitle>"
+    ],
+    "description": "Vuetify VListItemSubtitle Component"
+  },
+  "VListItemTitle": {
+    "prefix": "v-list-item-title",
+    "body": [
+      "<v-list-item-title>",
+      "\t$0",
+      "</v-list-item-title>"
+    ],
+    "description": "Vuetify VListItemTitle Component"
+  },
+  "VListSubheader": {
+    "prefix": "v-list-subheader",
+    "body": [
+      "<v-list-subheader title=\"${1}\">",
+      "\t$0",
+      "</v-list-subheader>"
+    ],
+    "description": "Vuetify VListSubheader Component"
+  },
+  "VLocaleProvider": {
+    "prefix": "v-locale-provider",
+    "body": [
+      "<v-locale-provider>",
+      "\t$0",
+      "</v-locale-provider>"
+    ],
+    "description": "Vuetify VLocaleProvider Component"
+  },
+  "VMain": {
+    "prefix": "v-main",
+    "body": [
+      "<v-main>",
+      "\t$0",
+      "</v-main>"
+    ],
+    "description": "Vuetify VMain Component"
+  },
+  "VMaskInput": {
+    "prefix": "v-mask-input",
+    "body": [
+      "<v-mask-input label=\"${1}\">",
+      "\t$0",
+      "</v-mask-input>"
+    ],
+    "description": "Vuetify VMaskInput Component"
+  },
+  "VMenu": {
+    "prefix": "v-menu",
+    "body": [
+      "<v-menu>",
+      "\t$0",
+      "</v-menu>"
+    ],
+    "description": "Vuetify VMenu Component"
+  },
+  "VMessages": {
+    "prefix": "v-messages",
+    "body": [
+      "<v-messages>",
+      "\t$0",
+      "</v-messages>"
+    ],
+    "description": "Vuetify VMessages Component"
+  },
+  "VNavigationDrawer": {
+    "prefix": "v-navigation-drawer",
+    "body": [
+      "<v-navigation-drawer>",
+      "\t$0",
+      "</v-navigation-drawer>"
+    ],
+    "description": "Vuetify VNavigationDrawer Component"
+  },
+  "VNoSsr": {
+    "prefix": "v-no-ssr",
+    "body": [
+      "<v-no-ssr>",
+      "\t$0",
+      "</v-no-ssr>"
+    ],
+    "description": "Vuetify VNoSsr Component"
+  },
+  "VNumberInput": {
+    "prefix": "v-number-input",
+    "body": [
+      "<v-number-input label=\"${1}\">",
+      "\t$0",
+      "</v-number-input>"
+    ],
+    "description": "Vuetify VNumberInput Component"
+  },
+  "VOtpInput": {
+    "prefix": "v-otp-input",
+    "body": [
+      "<v-otp-input label=\"${1}\">",
+      "\t$0",
+      "</v-otp-input>"
+    ],
+    "description": "Vuetify VOtpInput Component"
+  },
+  "VOverlay": {
+    "prefix": "v-overlay",
+    "body": [
+      "<v-overlay>",
+      "\t$0",
+      "</v-overlay>"
+    ],
+    "description": "Vuetify VOverlay Component"
+  },
+  "VPagination": {
+    "prefix": "v-pagination",
+    "body": [
+      "<v-pagination>",
+      "\t$0",
+      "</v-pagination>"
+    ],
+    "description": "Vuetify VPagination Component"
+  },
+  "VParallax": {
+    "prefix": "v-parallax",
+    "body": [
+      "<v-parallax>",
+      "\t$0",
+      "</v-parallax>"
+    ],
+    "description": "Vuetify VParallax Component"
+  },
+  "VPicker": {
+    "prefix": "v-picker",
+    "body": [
+      "<v-picker title=\"${1}\">",
+      "\t$0",
+      "</v-picker>"
+    ],
+    "description": "Vuetify VPicker Component"
+  },
+  "VPickerTitle": {
+    "prefix": "v-picker-title",
+    "body": [
+      "<v-picker-title>",
+      "\t$0",
+      "</v-picker-title>"
+    ],
+    "description": "Vuetify VPickerTitle Component"
+  },
+  "VPie": {
+    "prefix": "v-pie",
+    "body": [
+      "<v-pie title=\"${1}\" items=\"${2}\">",
+      "\t$0",
+      "</v-pie>"
+    ],
+    "description": "Vuetify VPie Component"
+  },
+  "VPieSegment": {
+    "prefix": "v-pie-segment",
+    "body": [
+      "<v-pie-segment>",
+      "\t$0",
+      "</v-pie-segment>"
+    ],
+    "description": "Vuetify VPieSegment Component"
+  },
+  "VPieTooltip": {
+    "prefix": "v-pie-tooltip",
+    "body": [
+      "<v-pie-tooltip>",
+      "\t$0",
+      "</v-pie-tooltip>"
+    ],
+    "description": "Vuetify VPieTooltip Component"
+  },
+  "VProgressCircular": {
+    "prefix": "v-progress-circular",
+    "body": [
+      "<v-progress-circular>",
+      "\t$0",
+      "</v-progress-circular>"
+    ],
+    "description": "Vuetify VProgressCircular Component"
+  },
+  "VProgressLinear": {
+    "prefix": "v-progress-linear",
+    "body": [
+      "<v-progress-linear>",
+      "\t$0",
+      "</v-progress-linear>"
+    ],
+    "description": "Vuetify VProgressLinear Component"
+  },
+  "VPullToRefresh": {
+    "prefix": "v-pull-to-refresh",
+    "body": [
+      "<v-pull-to-refresh>",
+      "\t$0",
+      "</v-pull-to-refresh>"
+    ],
+    "description": "Vuetify VPullToRefresh Component"
+  },
+  "VRadio": {
+    "prefix": "v-radio",
+    "body": [
+      "<v-radio label=\"${1}\">",
+      "\t$0",
+      "</v-radio>"
+    ],
+    "description": "Vuetify VRadio Component"
+  },
+  "VRadioGroup": {
+    "prefix": "v-radio-group",
+    "body": [
+      "<v-radio-group label=\"${1}\">",
+      "\t$0",
+      "</v-radio-group>"
+    ],
+    "description": "Vuetify VRadioGroup Component"
+  },
+  "VRangeSlider": {
+    "prefix": "v-range-slider",
+    "body": [
+      "<v-range-slider label=\"${1}\">",
+      "\t$0",
+      "</v-range-slider>"
+    ],
+    "description": "Vuetify VRangeSlider Component"
+  },
+  "VRating": {
+    "prefix": "v-rating",
+    "body": [
+      "<v-rating>",
+      "\t$0",
+      "</v-rating>"
+    ],
+    "description": "Vuetify VRating Component"
+  },
+  "VResponsive": {
+    "prefix": "v-responsive",
+    "body": [
+      "<v-responsive>",
+      "\t$0",
+      "</v-responsive>"
+    ],
+    "description": "Vuetify VResponsive Component"
+  },
+  "VRow": {
+    "prefix": "v-row",
+    "body": [
+      "<v-row>",
+      "\t$0",
+      "</v-row>"
+    ],
+    "description": "Vuetify VRow Component"
+  },
+  "VScaleTransition": {
+    "prefix": "v-scale-transition",
+    "body": [
+      "<v-scale-transition>",
+      "\t$0",
+      "</v-scale-transition>"
+    ],
+    "description": "Vuetify VScaleTransition Component"
+  },
+  "VScrollXReverseTransition": {
+    "prefix": "v-scroll-xreverse-transition",
+    "body": [
+      "<v-scroll-xreverse-transition>",
+      "\t$0",
+      "</v-scroll-xreverse-transition>"
+    ],
+    "description": "Vuetify VScrollXReverseTransition Component"
+  },
+  "VScrollXTransition": {
+    "prefix": "v-scroll-xtransition",
+    "body": [
+      "<v-scroll-xtransition>",
+      "\t$0",
+      "</v-scroll-xtransition>"
+    ],
+    "description": "Vuetify VScrollXTransition Component"
+  },
+  "VScrollYReverseTransition": {
+    "prefix": "v-scroll-yreverse-transition",
+    "body": [
+      "<v-scroll-yreverse-transition>",
+      "\t$0",
+      "</v-scroll-yreverse-transition>"
+    ],
+    "description": "Vuetify VScrollYReverseTransition Component"
+  },
+  "VScrollYTransition": {
+    "prefix": "v-scroll-ytransition",
+    "body": [
+      "<v-scroll-ytransition>",
+      "\t$0",
+      "</v-scroll-ytransition>"
+    ],
+    "description": "Vuetify VScrollYTransition Component"
+  },
+  "VSelect": {
+    "prefix": "v-select",
+    "body": [
+      "<v-select label=\"${1}\" items=\"${2}\">",
+      "\t$0",
+      "</v-select>"
+    ],
+    "description": "Vuetify VSelect Component"
+  },
+  "VSelectionControl": {
+    "prefix": "v-selection-control",
+    "body": [
+      "<v-selection-control label=\"${1}\">",
+      "\t$0",
+      "</v-selection-control>"
+    ],
+    "description": "Vuetify VSelectionControl Component"
+  },
+  "VSelectionControlGroup": {
+    "prefix": "v-selection-control-group",
+    "body": [
+      "<v-selection-control-group>",
+      "\t$0",
+      "</v-selection-control-group>"
+    ],
+    "description": "Vuetify VSelectionControlGroup Component"
+  },
+  "VSheet": {
+    "prefix": "v-sheet",
+    "body": [
+      "<v-sheet>",
+      "\t$0",
+      "</v-sheet>"
+    ],
+    "description": "Vuetify VSheet Component"
+  },
+  "VSkeletonLoader": {
+    "prefix": "v-skeleton-loader",
+    "body": [
+      "<v-skeleton-loader>",
+      "\t$0",
+      "</v-skeleton-loader>"
+    ],
+    "description": "Vuetify VSkeletonLoader Component"
+  },
+  "VSlideGroup": {
+    "prefix": "v-slide-group",
+    "body": [
+      "<v-slide-group>",
+      "\t$0",
+      "</v-slide-group>"
+    ],
+    "description": "Vuetify VSlideGroup Component"
+  },
+  "VSlideGroupItem": {
+    "prefix": "v-slide-group-item",
+    "body": [
+      "<v-slide-group-item>",
+      "\t$0",
+      "</v-slide-group-item>"
+    ],
+    "description": "Vuetify VSlideGroupItem Component"
+  },
+  "VSlideXReverseTransition": {
+    "prefix": "v-slide-xreverse-transition",
+    "body": [
+      "<v-slide-xreverse-transition>",
+      "\t$0",
+      "</v-slide-xreverse-transition>"
+    ],
+    "description": "Vuetify VSlideXReverseTransition Component"
+  },
+  "VSlideXTransition": {
+    "prefix": "v-slide-xtransition",
+    "body": [
+      "<v-slide-xtransition>",
+      "\t$0",
+      "</v-slide-xtransition>"
+    ],
+    "description": "Vuetify VSlideXTransition Component"
+  },
+  "VSlideYReverseTransition": {
+    "prefix": "v-slide-yreverse-transition",
+    "body": [
+      "<v-slide-yreverse-transition>",
+      "\t$0",
+      "</v-slide-yreverse-transition>"
+    ],
+    "description": "Vuetify VSlideYReverseTransition Component"
+  },
+  "VSlideYTransition": {
+    "prefix": "v-slide-ytransition",
+    "body": [
+      "<v-slide-ytransition>",
+      "\t$0",
+      "</v-slide-ytransition>"
+    ],
+    "description": "Vuetify VSlideYTransition Component"
+  },
+  "VSlider": {
+    "prefix": "v-slider",
+    "body": [
+      "<v-slider label=\"${1}\">",
+      "\t$0",
+      "</v-slider>"
+    ],
+    "description": "Vuetify VSlider Component"
+  },
+  "VSnackbar": {
+    "prefix": "v-snackbar",
+    "body": [
+      "<v-snackbar text=\"${1}\">",
+      "\t$0",
+      "</v-snackbar>"
+    ],
+    "description": "Vuetify VSnackbar Component"
+  },
+  "VSnackbarQueue": {
+    "prefix": "v-snackbar-queue",
+    "body": [
+      "<v-snackbar-queue text=\"${1}\">",
+      "\t$0",
+      "</v-snackbar-queue>"
+    ],
+    "description": "Vuetify VSnackbarQueue Component"
+  },
+  "VSpacer": {
+    "prefix": "v-spacer",
+    "body": [
+      "<v-spacer>",
+      "\t$0",
+      "</v-spacer>"
+    ],
+    "description": "Vuetify VSpacer Component"
+  },
+  "VSparkline": {
+    "prefix": "v-sparkline",
+    "body": [
+      "<v-sparkline>",
+      "\t$0",
+      "</v-sparkline>"
+    ],
+    "description": "Vuetify VSparkline Component"
+  },
+  "VSpeedDial": {
+    "prefix": "v-speed-dial",
+    "body": [
+      "<v-speed-dial>",
+      "\t$0",
+      "</v-speed-dial>"
+    ],
+    "description": "Vuetify VSpeedDial Component"
+  },
+  "VStepper": {
+    "prefix": "v-stepper",
+    "body": [
+      "<v-stepper items=\"${1}\">",
+      "\t$0",
+      "</v-stepper>"
+    ],
+    "description": "Vuetify VStepper Component"
+  },
+  "VStepperActions": {
+    "prefix": "v-stepper-actions",
+    "body": [
+      "<v-stepper-actions>",
+      "\t$0",
+      "</v-stepper-actions>"
+    ],
+    "description": "Vuetify VStepperActions Component"
+  },
+  "VStepperHeader": {
+    "prefix": "v-stepper-header",
+    "body": [
+      "<v-stepper-header>",
+      "\t$0",
+      "</v-stepper-header>"
+    ],
+    "description": "Vuetify VStepperHeader Component"
+  },
+  "VStepperItem": {
+    "prefix": "v-stepper-item",
+    "body": [
+      "<v-stepper-item title=\"${1}\">",
+      "\t$0",
+      "</v-stepper-item>"
+    ],
+    "description": "Vuetify VStepperItem Component"
+  },
+  "VStepperVertical": {
+    "prefix": "v-stepper-vertical",
+    "body": [
+      "<v-stepper-vertical items=\"${1}\">",
+      "\t$0",
+      "</v-stepper-vertical>"
+    ],
+    "description": "Vuetify VStepperVertical Component"
+  },
+  "VStepperVerticalActions": {
+    "prefix": "v-stepper-vertical-actions",
+    "body": [
+      "<v-stepper-vertical-actions>",
+      "\t$0",
+      "</v-stepper-vertical-actions>"
+    ],
+    "description": "Vuetify VStepperVerticalActions Component"
+  },
+  "VStepperVerticalItem": {
+    "prefix": "v-stepper-vertical-item",
+    "body": [
+      "<v-stepper-vertical-item text=\"${1}\" title=\"${2}\">",
+      "\t$0",
+      "</v-stepper-vertical-item>"
+    ],
+    "description": "Vuetify VStepperVerticalItem Component"
+  },
+  "VStepperWindow": {
+    "prefix": "v-stepper-window",
+    "body": [
+      "<v-stepper-window>",
+      "\t$0",
+      "</v-stepper-window>"
+    ],
+    "description": "Vuetify VStepperWindow Component"
+  },
+  "VStepperWindowItem": {
+    "prefix": "v-stepper-window-item",
+    "body": [
+      "<v-stepper-window-item>",
+      "\t$0",
+      "</v-stepper-window-item>"
+    ],
+    "description": "Vuetify VStepperWindowItem Component"
+  },
+  "VSvgIcon": {
+    "prefix": "v-svg-icon",
+    "body": [
+      "<v-svg-icon>",
+      "\t$0",
+      "</v-svg-icon>"
+    ],
+    "description": "Vuetify VSvgIcon Component"
+  },
+  "VSwitch": {
+    "prefix": "v-switch",
+    "body": [
+      "<v-switch label=\"${1}\">",
+      "\t$0",
+      "</v-switch>"
+    ],
+    "description": "Vuetify VSwitch Component"
+  },
+  "VSystemBar": {
+    "prefix": "v-system-bar",
+    "body": [
+      "<v-system-bar>",
+      "\t$0",
+      "</v-system-bar>"
+    ],
+    "description": "Vuetify VSystemBar Component"
+  },
+  "VTab": {
+    "prefix": "v-tab",
+    "body": [
+      "<v-tab text=\"${1}\">",
+      "\t$0",
+      "</v-tab>"
+    ],
+    "description": "Vuetify VTab Component"
+  },
+  "VTable": {
+    "prefix": "v-table",
+    "body": [
+      "<v-table>",
+      "\t$0",
+      "</v-table>"
+    ],
+    "description": "Vuetify VTable Component"
+  },
+  "VTabs": {
+    "prefix": "v-tabs",
+    "body": [
+      "<v-tabs items=\"${1}\">",
+      "\t$0",
+      "</v-tabs>"
+    ],
+    "description": "Vuetify VTabs Component"
+  },
+  "VTabsWindow": {
+    "prefix": "v-tabs-window",
+    "body": [
+      "<v-tabs-window>",
+      "\t$0",
+      "</v-tabs-window>"
+    ],
+    "description": "Vuetify VTabsWindow Component"
+  },
+  "VTabsWindowItem": {
+    "prefix": "v-tabs-window-item",
+    "body": [
+      "<v-tabs-window-item>",
+      "\t$0",
+      "</v-tabs-window-item>"
+    ],
+    "description": "Vuetify VTabsWindowItem Component"
+  },
+  "VTextField": {
+    "prefix": "v-text-field",
+    "body": [
+      "<v-text-field label=\"${1}\">",
+      "\t$0",
+      "</v-text-field>"
+    ],
+    "description": "Vuetify VTextField Component"
+  },
+  "VTextarea": {
+    "prefix": "v-textarea",
+    "body": [
+      "<v-textarea label=\"${1}\">",
+      "\t$0",
+      "</v-textarea>"
+    ],
+    "description": "Vuetify VTextarea Component"
+  },
+  "VThemeProvider": {
+    "prefix": "v-theme-provider",
+    "body": [
+      "<v-theme-provider>",
+      "\t$0",
+      "</v-theme-provider>"
+    ],
+    "description": "Vuetify VThemeProvider Component"
+  },
+  "VTimePicker": {
+    "prefix": "v-time-picker",
+    "body": [
+      "<v-time-picker title=\"${1}\">",
+      "\t$0",
+      "</v-time-picker>"
+    ],
+    "description": "Vuetify VTimePicker Component"
+  },
+  "VTimePickerClock": {
+    "prefix": "v-time-picker-clock",
+    "body": [
+      "<v-time-picker-clock>",
+      "\t$0",
+      "</v-time-picker-clock>"
+    ],
+    "description": "Vuetify VTimePickerClock Component"
+  },
+  "VTimePickerControls": {
+    "prefix": "v-time-picker-controls",
+    "body": [
+      "<v-time-picker-controls>",
+      "\t$0",
+      "</v-time-picker-controls>"
+    ],
+    "description": "Vuetify VTimePickerControls Component"
+  },
+  "VTimeline": {
+    "prefix": "v-timeline",
+    "body": [
+      "<v-timeline>",
+      "\t$0",
+      "</v-timeline>"
+    ],
+    "description": "Vuetify VTimeline Component"
+  },
+  "VTimelineItem": {
+    "prefix": "v-timeline-item",
+    "body": [
+      "<v-timeline-item>",
+      "\t$0",
+      "</v-timeline-item>"
+    ],
+    "description": "Vuetify VTimelineItem Component"
+  },
+  "VToolbar": {
+    "prefix": "v-toolbar",
+    "body": [
+      "<v-toolbar title=\"${1}\">",
+      "\t$0",
+      "</v-toolbar>"
+    ],
+    "description": "Vuetify VToolbar Component"
+  },
+  "VToolbarItems": {
+    "prefix": "v-toolbar-items",
+    "body": [
+      "<v-toolbar-items>",
+      "\t$0",
+      "</v-toolbar-items>"
+    ],
+    "description": "Vuetify VToolbarItems Component"
+  },
+  "VToolbarTitle": {
+    "prefix": "v-toolbar-title",
+    "body": [
+      "<v-toolbar-title text=\"${1}\">",
+      "\t$0",
+      "</v-toolbar-title>"
+    ],
+    "description": "Vuetify VToolbarTitle Component"
+  },
+  "VTooltip": {
+    "prefix": "v-tooltip",
+    "body": [
+      "<v-tooltip text=\"${1}\">",
+      "\t$0",
+      "</v-tooltip>"
+    ],
+    "description": "Vuetify VTooltip Component"
+  },
+  "VTreeview": {
+    "prefix": "v-treeview",
+    "body": [
+      "<v-treeview items=\"${1}\">",
+      "\t$0",
+      "</v-treeview>"
+    ],
+    "description": "Vuetify VTreeview Component"
+  },
+  "VTreeviewGroup": {
+    "prefix": "v-treeview-group",
+    "body": [
+      "<v-treeview-group title=\"${1}\">",
+      "\t$0",
+      "</v-treeview-group>"
+    ],
+    "description": "Vuetify VTreeviewGroup Component"
+  },
+  "VTreeviewItem": {
+    "prefix": "v-treeview-item",
+    "body": [
+      "<v-treeview-item title=\"${1}\">",
+      "\t$0",
+      "</v-treeview-item>"
+    ],
+    "description": "Vuetify VTreeviewItem Component"
+  },
+  "VValidation": {
+    "prefix": "v-validation",
+    "body": [
+      "<v-validation label=\"${1}\">",
+      "\t$0",
+      "</v-validation>"
+    ],
+    "description": "Vuetify VValidation Component"
+  },
+  "VVideo": {
+    "prefix": "v-video",
+    "body": [
+      "<v-video src=\"${1}\">",
+      "\t$0",
+      "</v-video>"
+    ],
+    "description": "Vuetify VVideo Component"
+  },
+  "VVideoControls": {
+    "prefix": "v-video-controls",
+    "body": [
+      "<v-video-controls>",
+      "\t$0",
+      "</v-video-controls>"
+    ],
+    "description": "Vuetify VVideoControls Component"
+  },
+  "VVideoVolume": {
+    "prefix": "v-video-volume",
+    "body": [
+      "<v-video-volume label=\"${1}\">",
+      "\t$0",
+      "</v-video-volume>"
+    ],
+    "description": "Vuetify VVideoVolume Component"
+  },
+  "VVirtualScroll": {
+    "prefix": "v-virtual-scroll",
+    "body": [
+      "<v-virtual-scroll items=\"${1}\">",
+      "\t$0",
+      "</v-virtual-scroll>"
+    ],
+    "description": "Vuetify VVirtualScroll Component"
+  },
+  "VWindow": {
+    "prefix": "v-window",
+    "body": [
+      "<v-window>",
+      "\t$0",
+      "</v-window>"
+    ],
+    "description": "Vuetify VWindow Component"
+  },
+  "VWindowItem": {
+    "prefix": "v-window-item",
+    "body": [
+      "<v-window-item>",
+      "\t$0",
+      "</v-window-item>"
+    ],
+    "description": "Vuetify VWindowItem Component"
+  }
+}
