@@ -1,14 +1,15 @@
-import { defineExtension, useCommand, useIsDarkTheme, watchEffect } from 'reactive-vscode'
-import { createProject } from './commands'
+import { defineExtension, useCommand, useDisposable } from 'reactive-vscode'
+import { createProject, openApiDocs, openComponentDocs } from './commands'
+import { registerCodeActionProvider, registerHoverProvider } from './providers'
 import { logger } from './utils'
 
 export default defineExtension(() => {
   logger.info('Extension Activated')
 
   useCommand('vuetify.createProject', createProject)
+  useCommand('vuetify.openApiDocs', openApiDocs)
+  useCommand('vuetify.openComponentDocs', openComponentDocs)
 
-  const isDark = useIsDarkTheme()
-  watchEffect(() => {
-    logger.info('Is Dark Theme:', isDark.value)
-  })
+  useDisposable(registerHoverProvider())
+  useDisposable(registerCodeActionProvider())
 })

@@ -33,15 +33,35 @@
   "contributes": {
     "commands": [
       {
-        "command": "vuetify.helloWorld",
-        "title": "Hello World"
-      },
-      {
         "command": "vuetify.createProject",
         "title": "Create Vuetify Project",
         "category": "Vuetify"
+      },
+      {
+        "command": "vuetify.openComponentDocs",
+        "title": "Open Vuetify Component Documentation",
+        "category": "Vuetify"
+      },
+      {
+        "command": "vuetify.openApiDocs",
+        "title": "Open Vuetify API Documentation",
+        "category": "Vuetify"
       }
     ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "vuetify.openApiDocs",
+          "when": "editorTextFocus && resourceLangId == vue",
+          "group": "vuetify@1"
+        },
+        {
+          "command": "vuetify.openComponentDocs",
+          "when": "editorTextFocus && resourceLangId == vue",
+          "group": "vuetify@2"
+        }
+      ]
+    },
     "configuration": {
       "title": "Vuetify",
       "properties": {
@@ -57,12 +77,14 @@
     "build": "tsdown --env.NODE_ENV production",
     "dev": "tsdown --watch ./src --env.NODE_ENV development",
     "typecheck": "tsc --noEmit",
-    "vscode:prepublish": "pnpm run build"
+    "vscode:prepublish": "pnpm run build",
+    "generate:map": "node scripts/generate-map.mjs"
   },
   "devDependencies": {
     "@types/node": "catalog:",
     "@types/vscode": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
+    "giget": "catalog:",
     "nypm": "catalog:",
     "pathe": "catalog:",
     "reactive-vscode": "catalog:",

@@ -26,6 +26,7 @@ dist-ssr
 
 vuetify-project
 .test-tmp
+.cache-docs
 
 
 # START Ruler Generated Files

@@ -344,6 +344,9 @@ importers:
       '@vuetify/cli-shared':
         specifier: workspace:*
         version: link:../shared
+      giget:
+        specifier: 'catalog:'
+        version: 2.0.0
       nypm:
         specifier: 'catalog:'
         version: 0.6.2
