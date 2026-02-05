@@ -35,6 +35,8 @@ async function openDocs (type: 'api' | 'component', componentName?: string) {
     url = slug
       ? `${baseUrl}/components/${slug}`
       : `${baseUrl}/components/${componentName}`
+  } else if (type === 'api') {
+    url = `${baseUrl}/api/${componentName}`
   }
 
   if (version && version !== '0.0.0') {
