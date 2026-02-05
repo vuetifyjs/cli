@@ -1,5 +1,13 @@
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
+import { homedir } from 'node:os'
+import { join } from 'node:path'
 import { scaffold } from '@vuetify/cli-shared'
 import { commands, type QuickPickItem, Uri, window, workspace } from 'vscode'
+
+interface PresetItem extends QuickPickItem {
+  value: any
+  isDefault?: boolean
+}
 
 interface TemplateItem extends QuickPickItem {
   value: 'vuetify' | 'vuetify0'
@@ -55,7 +63,133 @@ export async function createProject () {
     return
   }
 
-  // 3. Select Platform
+  // 3. Get Configuration (Preset or Manual)
+  const preset = await selectPreset()
+  if (preset === undefined) {
+    return
+  } // Cancelled
+
+  const config: ProjectConfig | undefined = preset
+    ? {
+        platform: preset.platform || 'vue',
+        type: preset.type || 'vuetify',
+        features: preset.features || [],
+        typescript: preset.typescript ?? true,
+        packageManager: preset.packageManager || 'npm',
+        install: preset.install ?? false,
+        clientHints: preset.clientHints ?? false,
+      }
+    : await collectManualOptions()
+
+  if (!config) {
+    return
+  }
+
+  // 4. Create Project
+  await window.withProgress(
+    {
+      location: 15, // Notification
+      title: `Creating Vuetify project in ${projectName}...`,
+      cancellable: false,
+    },
+    async progress => {
+      try {
+        await scaffold({
+          cwd,
+          name: projectName,
+          ...config!,
+          force: true,
+        }, {
+          onDownloadStart: () => progress.report({ message: 'Downloading template...' }),
+          onConfigStart: () => progress.report({ message: 'Applying configuration...' }),
+          onConvertStart: () => progress.report({ message: 'Converting to JavaScript...' }),
+          onInstallStart: pm => progress.report({ message: `Installing dependencies with ${pm}...` }),
+        })
+      } catch (error) {
+        window.showErrorMessage(`Failed to create project: ${error}`)
+        throw error
+      }
+    },
+  )
+
+  // 5. Open Project
+  const openSelection = await window.showInformationMessage(
+    'Project created successfully. Open it now?',
+    'Open in New Window',
+    'Add to Workspace',
+  )
+
+  const targetDir = Uri.file(`${cwd}/${projectName}`)
+
+  if (openSelection === 'Open in New Window') {
+    commands.executeCommand('vscode.openFolder', targetDir, true)
+  } else if (openSelection === 'Add to Workspace') {
+    workspace.updateWorkspaceFolders(
+      workspace.workspaceFolders ? workspace.workspaceFolders.length : 0,
+      0,
+      { uri: targetDir, name: projectName },
+    )
+  }
+}
+
+interface ProjectConfig {
+  platform: 'vue' | 'nuxt'
+  type: 'vuetify' | 'vuetify0'
+  features: string[]
+  typescript: boolean
+  packageManager: string
+  install: boolean
+  clientHints: boolean
+}
+
+async function selectPreset (): Promise<any | null | undefined> {
+  const home = homedir()
+  const presetsDir = join(home, '.vuetify', 'create', 'presets')
+
+  if (!existsSync(presetsDir)) {
+    return null
+  }
+
+  const files = readdirSync(presetsDir).filter(f => f.endsWith('.json'))
+  if (files.length === 0) {
+    return null
+  }
+
+  const presetItems: PresetItem[] = [
+    { label: 'Start from scratch', description: 'Manually select features', isDefault: true, value: null, picked: true },
+  ]
+
+  for (const file of files) {
+    try {
+      const content = readFileSync(join(presetsDir, file), 'utf8')
+      const preset = JSON.parse(content)
+      const name = preset.meta?.displayName || file.replace('.json', '')
+      presetItems.push({
+        label: name,
+        description: `Preset: ${file.replace('.json', '')}`,
+        value: preset,
+      })
+    } catch {
+      // ignore invalid presets
+    }
+  }
+
+  if (presetItems.length <= 1) {
+    return null
+  }
+
+  const selected = await window.showQuickPick(presetItems, {
+    placeHolder: 'Select a preset or start from scratch',
+  })
+
+  if (!selected) {
+    return undefined
+  } // Cancelled
+  return selected.value
+}
+
+async function collectManualOptions (): Promise<ProjectConfig | undefined> {
+  // Select Platform
   const platformItem = await window.showQuickPick<PlatformItem>(
     [
       { label: 'Vue', value: 'vue', description: 'Vue.js Framework', picked: true },
@@ -69,8 +203,8 @@ export async function createProject () {
   }
   const platform = platformItem.value
 
-  // 4. Select Template Version
-  const template = await window.showQuickPick<TemplateItem>(
+  // Select Template Version
+  const templateItem = await window.showQuickPick<TemplateItem>(
     [
       {
         label: 'Vuetify 3 (Latest)',
@@ -89,13 +223,14 @@ export async function createProject () {
     },
   )
 
-  if (!template) {
+  if (!templateItem) {
     return
   }
+  const type = templateItem.value
 
-  // 5. CSS Framework (only for Vuetify 0)
+  // CSS Framework (only for Vuetify 0)
   let cssFramework = 'none'
-  if (template.value === 'vuetify0') {
+  if (type === 'vuetify0') {
     const cssItem = await window.showQuickPick<StringItem>(
       [
         { label: 'UnoCSS', value: 'unocss', description: 'Instant on-demand atomic CSS engine', picked: true },
@@ -110,7 +245,7 @@ export async function createProject () {
     cssFramework = cssItem.value
   }
 
-  // 6. TypeScript
+  // TypeScript
   const tsItem = await window.showQuickPick<BoolItem>(
     [
       { label: 'Yes', value: true, description: 'Use TypeScript', picked: true },
@@ -124,7 +259,7 @@ export async function createProject () {
   }
   const typescript = tsItem.value
 
-  // 7. Router (only for Vue)
+  // Router (only for Vue)
   let router = 'none'
   if (platform === 'vue') {
     const routerItem = await window.showQuickPick<StringItem>(
@@ -141,7 +276,7 @@ export async function createProject () {
     router = routerItem.value
   }
 
-  // 8. Features
+  // Features
   const featureOptions: FeatureItem[] = [
     { label: 'ESLint', value: 'eslint', picked: true },
     { label: 'MCP', value: 'mcp', description: 'Model Context Protocol', picked: true },
@@ -149,7 +284,7 @@ export async function createProject () {
     { label: 'i18n', value: 'i18n' },
   ]
 
-  if (platform === 'nuxt' && template.value !== 'vuetify0') {
+  if (platform === 'nuxt' && type !== 'vuetify0') {
     featureOptions.push({
       label: 'Vuetify Nuxt Module',
       value: 'vuetify-nuxt-module',
@@ -168,9 +303,9 @@ export async function createProject () {
   if (!featureItems) {
     return
   }
-  let features = featureItems.map(item => item.value)
+  const features = featureItems.map(item => item.value)
 
-  // 9. Client Hints (only for Nuxt + vuetify-nuxt-module)
+  // Client Hints (only for Nuxt + vuetify-nuxt-module)
   let clientHints = false
   if (platform === 'nuxt' && features.includes('vuetify-nuxt-module')) {
     const hintsItem = await window.showQuickPick<BoolItem>(
@@ -186,7 +321,7 @@ export async function createProject () {
     clientHints = hintsItem.value
   }
 
-  // 10. Package Manager
+  // Package Manager
   const pmItem = await window.showQuickPick(
     ['npm', 'pnpm', 'yarn', 'bun', 'deno'],
     { placeHolder: 'Select Package Manager' },
@@ -197,7 +332,7 @@ export async function createProject () {
   }
   const packageManager = pmItem
 
-  // 11. Install Dependencies
+  // Install Dependencies
   const installItem = await window.showQuickPick<BoolItem>(
     [
       { label: 'Yes', value: true, description: 'Install dependencies after creation', picked: true },
@@ -219,59 +354,17 @@ export async function createProject () {
   }
   if (cssFramework !== 'none') {
     features.push(cssFramework)
-  } else if (template.value === 'vuetify0' && cssFramework === 'none') {
+  } else if (type === 'vuetify0' && cssFramework === 'none') {
     features.push('css-none')
   }
 
-  // 12. Create Project
-  await window.withProgress(
-    {
-      location: 15, // Notification
-      title: `Creating Vuetify project in ${projectName}...`,
-      cancellable: false,
-    },
-    async progress => {
-      try {
-        await scaffold({
-          cwd,
-          name: projectName,
-          platform,
-          type: template.value,
-          features,
-          typescript,
-          packageManager,
-          install,
-          force: true,
-          clientHints,
-        }, {
-          onDownloadStart: () => progress.report({ message: 'Downloading template...' }),
-          onConfigStart: () => progress.report({ message: 'Applying configuration...' }),
-          onConvertStart: () => progress.report({ message: 'Converting to JavaScript...' }),
-          onInstallStart: pm => progress.report({ message: `Installing dependencies with ${pm}...` }),
-        })
-      } catch (error) {
-        window.showErrorMessage(`Failed to create project: ${error}`)
-        throw error
-      }
-    },
-  )
-
-  // 13. Open Project
-  const openSelection = await window.showInformationMessage(
-    'Project created successfully. Open it now?',
-    'Open in New Window',
-    'Add to Workspace',
-  )
-
-  const targetDir = Uri.file(`${cwd}/${projectName}`)
-
-  if (openSelection === 'Open in New Window') {
-    commands.executeCommand('vscode.openFolder', targetDir, true)
-  } else if (openSelection === 'Add to Workspace') {
-    workspace.updateWorkspaceFolders(
-      workspace.workspaceFolders ? workspace.workspaceFolders.length : 0,
-      0,
-      { uri: targetDir, name: projectName },
-    )
+  return {
+    platform,
+    type,
+    features,
+    typescript,
+    packageManager,
+    install,
+    clientHints,
   }
 }
