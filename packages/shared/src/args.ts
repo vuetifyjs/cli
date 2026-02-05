@@ -16,6 +16,7 @@ export type ProjectArgs = {
   debug?: boolean
   type?: string
   platform?: string
+  preset?: string
 }
 
 export function projectArgs (options?: { exclude?: (keyof ProjectArgs)[] }) {
@@ -80,6 +81,10 @@ export function projectArgs (options?: { exclude?: (keyof ProjectArgs)[] }) {
     dir: {
       type: 'string',
       description: i18n.t('args.dir.description'),
+    },
+    preset: {
+      type: 'string',
+      description: i18n.t('args.preset.description'),
     },
   } satisfies Record<keyof ProjectArgs, ArgDef>
 

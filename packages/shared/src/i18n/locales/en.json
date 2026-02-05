@@ -64,6 +64,18 @@
       "start": "Upgrading %{pkg} globally using nypm...",
       "success": "Successfully upgraded %{pkg} to latest.",
       "fail": "Failed to upgrade %{pkg}: %{message}"
+    },
+    "presets": {
+      "description": "List existing presets",
+      "intro": "Saved Presets",
+      "empty": "No presets found.",
+      "list": "Available presets:",
+      "done": "Use --preset <name> to create a project from a preset",
+      "select": "Select a preset",
+      "cancel": "Selection cancelled",
+      "selected": "Selected preset: %{name}",
+      "use": "Create a project with this preset?",
+      "tip": "Create a project and save it as a preset to see it here."
     }
   },
   "prompts": {
@@ -80,6 +92,12 @@
       "overwrite": "Found %{file}. Overwrite?",
       "create": "Create Ruler config files?",
       "scripts": "Add mcp scripts to package.json?"
+    },
+    "preset": {
+      "save": "Do you want to save these settings as a preset?",
+      "name": "Preset name (display name):",
+      "overwrite": "Preset \"%{name}\" already exists. Do you want to overwrite it?",
+      "saved": "Preset saved to %{path}"
     },
     "directory": {
       "name": "Project name",
@@ -259,6 +277,9 @@
     },
     "version": {
       "description": "The Vuetify version to check documentation for"
+    },
+    "preset": {
+      "description": "Path to a preset file to load"
     }
   },
   "cli": {

@@ -39,6 +39,7 @@
     }
   },
   "dependencies": {
+    "@sindresorhus/slugify": "catalog:",
     "@typescript-eslint/parser": "catalog:",
     "magicast": "catalog:",
     "semver": "catalog:",

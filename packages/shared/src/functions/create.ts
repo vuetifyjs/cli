@@ -1,8 +1,11 @@
 import type { ProjectArgs } from '../args'
-import { box, intro, outro, spinner } from '@clack/prompts'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { homedir } from 'node:os'
+import { box, confirm, intro, log, outro, spinner, text } from '@clack/prompts'
+import slugify from '@sindresorhus/slugify'
 import { ansi256, link } from 'kolorist'
 import { getUserAgent } from 'package-manager-detector'
-import { join, relative } from 'pathe'
+import { join, relative, resolve } from 'pathe'
 import { i18n } from '../i18n'
 import { type ProjectOptions, prompt } from '../prompts'
 import { createBanner } from '../utils/banner'
@@ -23,16 +26,54 @@ export interface CreateVuetifyOptions extends ProjectArgs {
   router?: string
 }
 
-export async function createVuetify (options: CreateVuetifyOptions) {
+export interface StylisticOptions {
+  intro?: boolean
+}
+
+export async function createVuetify (options: CreateVuetifyOptions, commandOptions?: StylisticOptions) {
   const { version, ...args } = options
   const cwd = args.cwd || process.cwd()
   const debug = (...msg: any[]) => args.debug && console.log('DEBUG:', ...msg)
   debug('run args=', JSON.stringify(args, null, 2))
   debug('VUETIFY_CLI_TEMPLATES_PATH=', process.env.VUETIFY_CLI_TEMPLATES_PATH)
 
-  console.log(createBanner())
+  if (commandOptions?.intro === false) {
+    log.info(i18n.t('messages.create.intro', { version }))
+  } else {
+    console.log(createBanner())
 
-  intro(i18n.t('messages.create.intro', { version }))
+    intro(i18n.t('messages.create.intro', { version }))
+  }
+
+  if (args.preset) {
+    const home = homedir()
+    const presetPath = resolve(args.preset)
+    const presetName = args.preset.endsWith('.json') ? args.preset : `${args.preset}.json`
+    const globalPresetPath = join(home, '.vuetify', 'presets', presetName)
+
+    let presetContent
+    if (existsSync(presetPath)) {
+      presetContent = readFileSync(presetPath, 'utf8')
+    } else if (existsSync(globalPresetPath)) {
+      presetContent = readFileSync(globalPresetPath, 'utf8')
+    } else {
+      const slug = slugify(args.preset)
+      const slugGlobalPath = join(home, '.vuetify', 'presets', `${slug}.json`)
+      if (existsSync(slugGlobalPath)) {
+        presetContent = readFileSync(slugGlobalPath, 'utf8')
+      }
+    }
+
+    if (presetContent) {
+      try {
+        const preset = JSON.parse(presetContent)
+        Object.assign(args, preset)
+        debug('loaded preset=', preset)
+      } catch (error) {
+        debug('failed to parse preset', error)
+      }
+    }
+  }
 
   const features = typeof args.features === 'string'
     ? args.features.split(',').filter(Boolean)
@@ -51,6 +92,59 @@ export async function createVuetify (options: CreateVuetifyOptions) {
     router: rawArgs.router as ProjectOptions['router'],
   }, cwd)
   debug('context=', JSON.stringify(context, null, 2))
+
+  if (args.interactive && !args.preset) {
+    const save = await confirm({
+      message: i18n.t('prompts.preset.save'),
+      initialValue: false,
+    })
+
+    if (save) {
+      const displayName = await text({
+        message: i18n.t('prompts.preset.name'),
+        validate: value => {
+          if (!value) {
+            return 'Please enter a name'
+          }
+        },
+      })
+
+      if (typeof displayName === 'string') {
+        const home = homedir()
+        const presetsDir = join(home, '.vuetify', 'create', 'presets')
+        if (!existsSync(presetsDir)) {
+          mkdirSync(presetsDir, { recursive: true })
+        }
+
+        const slug = slugify(displayName)
+        const filename = `${slug}.json`
+        const presetPath = join(presetsDir, filename)
+
+        let shouldSave = true
+        if (existsSync(presetPath)) {
+          shouldSave = await confirm({
+            message: i18n.t('prompts.preset.overwrite', { name: displayName }),
+            initialValue: false,
+          }) as boolean
+        }
+
+        if (shouldSave) {
+          const { name: _, ...presetContext } = context
+          const presetContent = {
+            ...presetContext,
+            version, // CLI version
+            meta: {
+              version: '1.0.0', // Preset format version
+              displayName,
+            },
+          }
+          writeFileSync(presetPath, JSON.stringify(presetContent, null, 2))
+          log.step(i18n.t('prompts.preset.saved', { path: presetPath }))
+        }
+      }
+    }
+  }
+
   const projectRoot = join(cwd, context.name)
   debug('projectRoot=', projectRoot)
 
