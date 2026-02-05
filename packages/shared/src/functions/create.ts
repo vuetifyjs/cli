@@ -156,6 +156,7 @@ export async function createVuetify (options: CreateVuetifyOptions, commandOptio
       name: context.name,
       platform: context.platform as 'vue' | 'nuxt',
       type: context.type as 'vuetify' | 'vuetify0',
+      vuetifyVersion: context.vuetifyVersion,
       features: context.features,
       typescript: !!context.typescript,
       packageManager: context.packageManager,

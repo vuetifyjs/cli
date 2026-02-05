@@ -73,6 +73,7 @@ export async function createProject () {
     ? {
         platform: preset.platform || 'vue',
         type: preset.type || 'vuetify',
+        vuetifyVersion: preset.vuetifyVersion,
         features: preset.features || [],
         typescript: preset.typescript ?? true,
         packageManager: preset.packageManager || 'npm',
@@ -135,6 +136,7 @@ export async function createProject () {
 interface ProjectConfig {
   platform: 'vue' | 'nuxt'
   type: 'vuetify' | 'vuetify0'
+  vuetifyVersion?: '3.x' | '4.x'
   features: string[]
   typescript: boolean
   packageManager: string
@@ -227,6 +229,22 @@ async function collectManualOptions (): Promise<ProjectConfig | undefined> {
     return
   }
   const type = templateItem.value
+
+  // Select Vuetify Version
+  let vuetifyVersion: '3.x' | '4.x' | undefined
+  if (type === 'vuetify') {
+    const versionItem = await window.showQuickPick<StringItem>(
+      [
+        { label: 'Vuetify 3 (Latest)', value: '3.x', picked: true },
+        { label: 'Vuetify 4 (Beta)', value: '4.x' },
+      ],
+      { placeHolder: 'Select Vuetify Version' },
+    )
+    if (!versionItem) {
+      return
+    }
+    vuetifyVersion = versionItem.value as '3.x' | '4.x'
+  }
 
   // CSS Framework (only for Vuetify 0)
   let cssFramework = 'none'
@@ -361,6 +379,7 @@ async function collectManualOptions (): Promise<ProjectConfig | undefined> {
   return {
     platform,
     type,
+    vuetifyVersion,
     features,
     typescript,
     packageManager,

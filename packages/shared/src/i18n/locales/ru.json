@@ -123,6 +123,11 @@
         "hint": "Библиотека headless компонентов"
       }
     },
+    "vuetify_version": {
+      "select": "Выберите версию Vuetify:",
+      "3_x": "Vuetify 3 (стабильная)",
+      "4_x": "Vuetify 4 (бета)"
+    },
     "css_framework": {
       "select": "Какой фреймворк CSS вы хотите использовать?",
       "none": "Никакой",

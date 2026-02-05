@@ -12,6 +12,7 @@ export interface ScaffoldOptions {
   name: string
   platform: 'vue' | 'nuxt'
   type: 'vuetify' | 'vuetify0'
+  vuetifyVersion?: '3.x' | '4.x'
   features: string[]
   typescript: boolean
   packageManager?: string
@@ -41,6 +42,7 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
     features,
     typescript,
     type,
+    vuetifyVersion,
     packageManager,
     install,
     force,
@@ -104,6 +106,10 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
 
   let pkg
   pkg = await readPackageJSON(join(projectRoot, 'package.json'))
+
+  if (vuetifyVersion === '4.x' && pkg.dependencies && pkg.dependencies.vuetify) {
+    pkg.dependencies.vuetify = '^4.0.0-beta.1'
+  }
 
   callbacks.onConfigStart?.()
   if (features && features.length > 0) {
