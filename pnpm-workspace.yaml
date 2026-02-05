@@ -9,7 +9,7 @@ catalog:
   '@types/node': ^24.10.7
   '@types/semver': ^7.7.1
   '@types/validate-npm-package-name': ^4.0.2
-  '@types/vscode': ^1.108.1
+  '@types/vscode': 'catalog:'
   '@typescript-eslint/parser': ^8.53.0
   bumpp: ^10.3.2
   citty: ^0.1.6

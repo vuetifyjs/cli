@@ -6,9 +6,10 @@
   "version": "0.0.14",
   "private": true,
   "categories": [
-    "Other"
+    "Snippets"
   ],
-  "description": "Vuetify extension for Visual Studio Code (WIP)",
+  "icon": "images/icon.png",
+  "description": "Vuetify extension for Visual Studio Code",
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -25,7 +26,7 @@
   ],
   "main": "./dist/extension.cjs",
   "engines": {
-    "vscode": "^1.99.0"
+    "vscode": "^1.107.0"
   },
   "activationEvents": [
     "onStartupFinished"
@@ -105,7 +106,7 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "@types/vscode": "catalog:",
+    "@types/vscode": "1.107.0",
     "@vuetify/cli-shared": "workspace:*",
     "giget": "catalog:",
     "nypm": "catalog:",
