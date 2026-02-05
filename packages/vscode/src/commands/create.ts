@@ -17,6 +17,10 @@ interface FeatureItem extends QuickPickItem {
   value: string
 }
 
+interface StringItem extends QuickPickItem {
+  value: string
+}
+
 export async function createProject () {
   // 1. Select Destination Directory
   const uri = await window.showOpenDialog({
@@ -89,7 +93,24 @@ export async function createProject () {
     return
   }
 
-  // 5. TypeScript
+  // 5. CSS Framework (only for Vuetify 0)
+  let cssFramework = 'none'
+  if (template.value === 'vuetify0') {
+    const cssItem = await window.showQuickPick<StringItem>(
+      [
+        { label: 'UnoCSS', value: 'unocss', description: 'Instant on-demand atomic CSS engine', picked: true },
+        { label: 'Tailwind CSS', value: 'tailwindcss', description: 'Utility-first CSS framework' },
+        { label: 'None', value: 'none' },
+      ],
+      { placeHolder: 'Select CSS Framework' },
+    )
+    if (!cssItem) {
+      return
+    }
+    cssFramework = cssItem.value
+  }
+
+  // 6. TypeScript
   const tsItem = await window.showQuickPick<BoolItem>(
     [
       { label: 'Yes', value: true, description: 'Use TypeScript', picked: true },
@@ -103,13 +124,41 @@ export async function createProject () {
   }
   const typescript = tsItem.value
 
-  // 6. Features
+  // 7. Router (only for Vue)
+  let router = 'none'
+  if (platform === 'vue') {
+    const routerItem = await window.showQuickPick<StringItem>(
+      [
+        { label: 'Vue Router', value: 'router', description: 'Standard Vue Router', picked: true },
+        { label: 'File-based Router', value: 'file-router', description: 'unplugin-vue-router' },
+        { label: 'None', value: 'none' },
+      ],
+      { placeHolder: 'Select Router' },
+    )
+    if (!routerItem) {
+      return
+    }
+    router = routerItem.value
+  }
+
+  // 8. Features
+  const featureOptions: FeatureItem[] = [
+    { label: 'ESLint', value: 'eslint', picked: true },
+    { label: 'MCP', value: 'mcp', description: 'Model Context Protocol', picked: true },
+    { label: 'Pinia', value: 'pinia', picked: true },
+    { label: 'i18n', value: 'i18n' },
+  ]
+
+  if (platform === 'nuxt' && template.value !== 'vuetify0') {
+    featureOptions.push({
+      label: 'Vuetify Nuxt Module',
+      value: 'vuetify-nuxt-module',
+      picked: true,
+    })
+  }
+
   const featureItems = await window.showQuickPick<FeatureItem>(
-    [
-      { label: 'Vue Router', value: 'router', picked: true },
-      { label: 'Pinia', value: 'pinia', picked: true },
-      { label: 'ESLint', value: 'eslint', picked: true },
-    ],
+    featureOptions,
     {
       canPickMany: true,
       placeHolder: 'Select features',
@@ -119,11 +168,27 @@ export async function createProject () {
   if (!featureItems) {
     return
   }
-  const features = featureItems.map(item => item.value)
+  let features = featureItems.map(item => item.value)
 
-  // 7. Package Manager
+  // 9. Client Hints (only for Nuxt + vuetify-nuxt-module)
+  let clientHints = false
+  if (platform === 'nuxt' && features.includes('vuetify-nuxt-module')) {
+    const hintsItem = await window.showQuickPick<BoolItem>(
+      [
+        { label: 'No', value: false, picked: true },
+        { label: 'Yes', value: true, description: 'Enable Client Hints' },
+      ],
+      { placeHolder: 'Enable Client Hints?' },
+    )
+    if (!hintsItem) {
+      return
+    }
+    clientHints = hintsItem.value
+  }
+
+  // 10. Package Manager
   const pmItem = await window.showQuickPick(
-    ['npm', 'pnpm', 'yarn', 'bun'],
+    ['npm', 'pnpm', 'yarn', 'bun', 'deno'],
     { placeHolder: 'Select Package Manager' },
   )
 
@@ -132,7 +197,7 @@ export async function createProject () {
   }
   const packageManager = pmItem
 
-  // 8. Install Dependencies
+  // 11. Install Dependencies
   const installItem = await window.showQuickPick<BoolItem>(
     [
       { label: 'Yes', value: true, description: 'Install dependencies after creation', picked: true },
@@ -148,7 +213,17 @@ export async function createProject () {
   }
   const install = installItem.value
 
-  // 9. Create Project
+  // Assemble features array
+  if (router !== 'none') {
+    features.push(router)
+  }
+  if (cssFramework !== 'none') {
+    features.push(cssFramework)
+  } else if (template.value === 'vuetify0' && cssFramework === 'none') {
+    features.push('css-none')
+  }
+
+  // 12. Create Project
   await window.withProgress(
     {
       location: 15, // Notification
@@ -167,6 +242,7 @@ export async function createProject () {
           packageManager,
           install,
           force: true,
+          clientHints,
         }, {
           onDownloadStart: () => progress.report({ message: 'Downloading template...' }),
           onConfigStart: () => progress.report({ message: 'Applying configuration...' }),
@@ -180,7 +256,7 @@ export async function createProject () {
     },
   )
 
-  // 10. Open Project
+  // 13. Open Project
   const openSelection = await window.showInformationMessage(
     'Project created successfully. Open it now?',
     'Open in New Window',
