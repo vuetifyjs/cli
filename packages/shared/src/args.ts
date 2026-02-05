@@ -27,13 +27,11 @@ export function projectArgs (options?: { exclude?: (keyof ProjectArgs)[] }) {
     type: {
       type: 'string',
       description: i18n.t('args.type.description'),
-      default: 'vuetify',
       valueHint: 'vuetify | vuetify0',
     },
     platform: {
       type: 'string',
       description: i18n.t('args.platform.description'),
-      default: 'vue',
       valueHint: 'vue | nuxt',
     },
     features: {
