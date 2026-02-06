@@ -231,6 +231,22 @@ importers:
         version: 4.0.18(@types/node@24.10.11)(jiti@2.6.1)(yaml@2.8.2)
 
   packages/create0:
+    dependencies:
+      magicast:
+        specifier: 'catalog:'
+        version: 0.5.2
+      package-manager-detector:
+        specifier: 'catalog:'
+        version: 1.6.0
+      pkg-types:
+        specifier: 'catalog:'
+        version: 2.3.0
+      tinyexec:
+        specifier: 'catalog:'
+        version: 1.0.2
+      validate-npm-package-name:
+        specifier: 'catalog:'
+        version: 7.0.2
     devDependencies:
       '@bomb.sh/tab':
         specifier: 'catalog:'

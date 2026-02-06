@@ -44,5 +44,12 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "magicast": "catalog:",
+    "package-manager-detector": "catalog:",
+    "pkg-types": "catalog:",
+    "tinyexec": "catalog:",
+    "validate-npm-package-name": "catalog:"
   }
 }
