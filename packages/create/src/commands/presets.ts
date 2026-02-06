@@ -3,7 +3,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { confirm, intro, log, outro, select } from '@clack/prompts'
-import { createVuetify, projectArgs } from '@vuetify/cli-shared'
+import { createVuetify, projectArgs, standardPresets } from '@vuetify/cli-shared'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { capitalize } from '@vuetify/cli-shared/utils'
 import { defineCommand } from 'citty'
@@ -34,23 +34,11 @@ export const presets = defineCommand({
 
     intro(i18n.t('commands.presets.intro'))
 
-    if (!existsSync(presetsDir)) {
-      log.warn(i18n.t('commands.presets.empty'))
-      log.info(i18n.t('commands.presets.tip'))
-      outro(i18n.t('commands.presets.done'))
-      return
-    }
+    const files = existsSync(presetsDir) ? readdirSync(presetsDir).filter(f => f.endsWith('.json')) : []
 
-    const files = readdirSync(presetsDir).filter(f => f.endsWith('.json'))
+    const systemPresets: ({ name: string, invalid: false, formattedLine?: string, key: string })[] = []
+    const userPresets: ({ name: string, invalid: boolean, formattedLine?: string, file?: string })[] = []
 
-    if (files.length === 0) {
-      log.warn(i18n.t('commands.presets.empty'))
-      log.info(i18n.t('commands.presets.tip'))
-      outro(i18n.t('commands.presets.done'))
-      return
-    }
-
-    const presets: ({ name: string, invalid: true } | { name: string, invalid: false, formattedLine?: string, file: string })[] = []
     for (const file of files) {
       try {
         const content = readFileSync(join(presetsDir, file), 'utf8')
@@ -61,34 +49,66 @@ export const presets = defineCommand({
         const features = preset.features || []
 
         const formattedLine = `${name} ${dim(`(`)}${blue(type)} + ${green(platform)} ${dim(`|`)} ${(features.join(','))}${dim(`)`)}`
-        presets.push({
+        userPresets.push({
           name,
           invalid: false,
           formattedLine,
           file,
         })
       } catch {
-        presets.push({
+        userPresets.push({
           name: file.replace('.json', ''),
           invalid: true,
         })
       }
     }
 
+    for (const [key, preset] of Object.entries(standardPresets)) {
+      const name = preset.meta.displayName
+      const type = capitalize(preset.type)
+      const platform = capitalize(preset.platform)
+      const features = preset.features || []
+
+      const formattedLine = `${name} ${dim(`(`)}${blue(type)} + ${green(platform)}${features.length > 0 ? ` ${dim(`|`)} ${(features.join(','))}` : ''}${dim(`)`)}`
+      systemPresets.push({
+        name,
+        invalid: false,
+        formattedLine,
+        key,
+      })
+    }
+
     if (args.list) {
-      for (const p of presets) {
-        p.invalid
-          ? log.error(`${p.name} ${dim('(invalid)')}`)
-          : log.success(p.formattedLine!)
+      log.message(dim('System Presets'))
+      for (const p of systemPresets) {
+        log.success(p.formattedLine!)
       }
+
+      if (userPresets.length > 0) {
+        log.message(dim('User Presets'))
+        for (const p of userPresets) {
+          p.invalid
+            ? log.error(`${p.name} ${dim('(invalid)')}`)
+            : log.success(p.formattedLine!)
+        }
+      }
+
       outro(i18n.t('commands.presets.done'))
     } else {
-      const preset = await select({
-        message: i18n.t('commands.presets.select'),
-        options: presets.filter(p => !p.invalid).map(p => ({
+      const options: { label: string, value: any }[] = [
+        ...systemPresets.map(p => ({
           label: p.formattedLine!,
           value: p,
         })),
+        ...userPresets.filter(p => !p.invalid).map(p => ({
+          label: p.formattedLine!,
+          value: p,
+        })),
+      ]
+
+      const preset = await select({
+        message: i18n.t('commands.presets.select'),
+        options,
       })
 
       if (!preset || typeof preset === 'symbol') {
@@ -97,7 +117,7 @@ export const presets = defineCommand({
         return
       }
 
-      log.success(i18n.t('commands.presets.selected', { name: preset.name }))
+      log.success(i18n.t('commands.presets.selected', { name: (preset as any).name }))
 
       const run = await confirm({
         message: i18n.t('commands.presets.use'),
@@ -106,9 +126,9 @@ export const presets = defineCommand({
       if (run && typeof run !== 'symbol') {
         await createVuetify({
           ...args,
-          preset: join(presetsDir, preset.file),
+          preset: (preset as any).key || join(presetsDir, (preset as any).file!),
           version,
-        }, { intro: false })
+        } as any, { intro: false })
       } else {
         outro(i18n.t('commands.presets.done'))
       }

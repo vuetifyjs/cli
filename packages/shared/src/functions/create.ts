@@ -6,6 +6,7 @@ import slugify from '@sindresorhus/slugify'
 import { ansi256, link } from 'kolorist'
 import { getUserAgent } from 'package-manager-detector'
 import { join, relative, resolve } from 'pathe'
+import { standardPresets } from '../constants/presets'
 import { i18n } from '../i18n'
 import { type ProjectOptions, prompt } from '../prompts'
 import { createBanner } from '../utils/banner'
@@ -46,31 +47,37 @@ export async function createVuetify (options: CreateVuetifyOptions, commandOptio
   }
 
   if (args.preset) {
-    const home = homedir()
-    const presetPath = resolve(args.preset)
-    const presetName = args.preset.endsWith('.json') ? args.preset : `${args.preset}.json`
-    const globalPresetPath = join(home, '.vuetify', 'presets', presetName)
-
-    let presetContent
-    if (existsSync(presetPath)) {
-      presetContent = readFileSync(presetPath, 'utf8')
-    } else if (existsSync(globalPresetPath)) {
-      presetContent = readFileSync(globalPresetPath, 'utf8')
+    if (standardPresets[args.preset]) {
+      const preset = standardPresets[args.preset]
+      Object.assign(args, preset)
+      debug('loaded standard preset=', preset)
     } else {
-      const slug = slugify(args.preset)
-      const slugGlobalPath = join(home, '.vuetify', 'presets', `${slug}.json`)
-      if (existsSync(slugGlobalPath)) {
-        presetContent = readFileSync(slugGlobalPath, 'utf8')
-      }
-    }
+      const home = homedir()
+      const presetPath = resolve(args.preset)
+      const presetName = args.preset.endsWith('.json') ? args.preset : `${args.preset}.json`
+      const globalPresetPath = join(home, '.vuetify', 'presets', presetName)
 
-    if (presetContent) {
-      try {
-        const preset = JSON.parse(presetContent)
-        Object.assign(args, preset)
-        debug('loaded preset=', preset)
-      } catch (error) {
-        debug('failed to parse preset', error)
+      let presetContent
+      if (existsSync(presetPath)) {
+        presetContent = readFileSync(presetPath, 'utf8')
+      } else if (existsSync(globalPresetPath)) {
+        presetContent = readFileSync(globalPresetPath, 'utf8')
+      } else {
+        const slug = slugify(args.preset)
+        const slugGlobalPath = join(home, '.vuetify', 'presets', `${slug}.json`)
+        if (existsSync(slugGlobalPath)) {
+          presetContent = readFileSync(slugGlobalPath, 'utf8')
+        }
+      }
+
+      if (presetContent) {
+        try {
+          const preset = JSON.parse(presetContent)
+          Object.assign(args, preset)
+          debug('loaded preset=', preset)
+        } catch (error) {
+          debug('failed to parse preset', error)
+        }
       }
     }
   }
@@ -90,6 +97,7 @@ export async function createVuetify (options: CreateVuetifyOptions, commandOptio
     type: rawArgs.type,
     css: rawArgs.css as ProjectOptions['css'],
     router: rawArgs.router as ProjectOptions['router'],
+    vuetifyVersion: args.vuetifyVersion as ProjectOptions['vuetifyVersion'],
   }, cwd)
   debug('context=', JSON.stringify(context, null, 2))
 
