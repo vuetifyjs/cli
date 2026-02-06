@@ -8,4 +8,5 @@ export default defineConfig({
   external: [
     'vscode',
   ],
+  inlineOnly: false,
 })

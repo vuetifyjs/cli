@@ -17,6 +17,7 @@ export type ProjectArgs = {
   type?: string
   platform?: string
   preset?: string
+  vuetifyVersion?: string
 }
 
 export function projectArgs (options?: { exclude?: (keyof ProjectArgs)[] }) {
@@ -26,14 +27,16 @@ export function projectArgs (options?: { exclude?: (keyof ProjectArgs)[] }) {
       description: i18n.t('args.name.description'),
     },
     type: {
-      type: 'string',
+      type: 'enum',
       description: i18n.t('args.type.description'),
       valueHint: 'vuetify | vuetify0',
+      options: ['vuetify', 'vuetify0'],
     },
     platform: {
-      type: 'string',
+      type: 'enum',
       description: i18n.t('args.platform.description'),
       valueHint: 'vue | nuxt',
+      options: ['vue', 'nuxt'],
     },
     features: {
       type: 'string',
@@ -85,6 +88,10 @@ export function projectArgs (options?: { exclude?: (keyof ProjectArgs)[] }) {
     preset: {
       type: 'string',
       description: i18n.t('args.preset.description'),
+    },
+    vuetifyVersion: {
+      type: 'string',
+      description: i18n.t('args.vuetifyVersion.description'),
     },
   } satisfies Record<keyof ProjectArgs, ArgDef>
 

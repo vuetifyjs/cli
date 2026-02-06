@@ -19,7 +19,7 @@
     "type": "git",
     "url": "git+https://github.com/vuetifyjs/cli.git"
   },
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@10.28.2",
   "devDependencies": {
     "@intellectronica/ruler": "catalog:",
     "@types/node": "catalog:",

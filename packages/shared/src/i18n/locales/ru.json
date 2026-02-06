@@ -275,6 +275,9 @@
     },
     "version": {
       "description": "Версия Vuetify для просмотра документации"
+    },
+    "vuetifyVersion": {
+      "description": "Версия Vuetify"
     }
   },
   "cli": {

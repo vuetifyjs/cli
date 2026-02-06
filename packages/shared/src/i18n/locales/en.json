@@ -285,6 +285,9 @@
     },
     "preset": {
       "description": "Path to a preset file to load"
+    },
+    "vuetifyVersion": {
+      "description": "Vuetify version"
     }
   },
   "cli": {
