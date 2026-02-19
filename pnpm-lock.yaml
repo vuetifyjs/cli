@@ -7,8 +7,8 @@ settings:
 catalogs:
   default:
     '@bomb.sh/tab':
-      specifier: ^0.0.12
-      version: 0.0.12
+      specifier: ^0.0.13
+      version: 0.0.13
     '@clack/prompts':
       specifier: ^1.0.0
       version: 1.0.0
@@ -108,6 +108,9 @@ catalogs:
     vue-eslint-parser:
       specifier: ^10.2.0
       version: 10.2.0
+    which:
+      specifier: ^6.0.1
+      version: 6.0.1
 
 importers:
 
@@ -149,7 +152,7 @@ importers:
     devDependencies:
       '@bomb.sh/tab':
         specifier: 'catalog:'
-        version: 0.0.12(cac@6.7.14)(citty@0.2.0)
+        version: 0.0.13(cac@6.7.14)(citty@0.2.0)
       '@clack/prompts':
         specifier: 'catalog:'
         version: 1.0.0
@@ -198,7 +201,7 @@ importers:
     devDependencies:
       '@bomb.sh/tab':
         specifier: 'catalog:'
-        version: 0.0.12(cac@6.7.14)(citty@0.2.0)
+        version: 0.0.13(cac@6.7.14)(citty@0.2.0)
       '@clack/prompts':
         specifier: 'catalog:'
         version: 1.0.0
@@ -250,7 +253,7 @@ importers:
     devDependencies:
       '@bomb.sh/tab':
         specifier: 'catalog:'
-        version: 0.0.12(cac@6.7.14)(citty@0.2.0)
+        version: 0.0.13(cac@6.7.14)(citty@0.2.0)
       '@clack/prompts':
         specifier: 'catalog:'
         version: 1.0.0
@@ -275,6 +278,61 @@ importers:
       tsdown:
         specifier: 'catalog:'
         version: 0.20.3(synckit@0.11.11)(typescript@5.9.3)
+
+  packages/mcp:
+    dependencies:
+      '@bomb.sh/tab':
+        specifier: 'catalog:'
+        version: 0.0.13(cac@6.7.14)(citty@0.2.0)
+      '@clack/prompts':
+        specifier: 'catalog:'
+        version: 1.0.0
+      '@vuetify/cli-shared':
+        specifier: workspace:*
+        version: link:../shared
+      citty:
+        specifier: 'catalog:'
+        version: 0.2.0
+      is-wsl:
+        specifier: ^3.1.0
+        version: 3.1.0
+      jsonc-parser:
+        specifier: ^3.3.1
+        version: 3.3.1
+      kolorist:
+        specifier: 'catalog:'
+        version: 1.8.0
+      nypm:
+        specifier: 'catalog:'
+        version: 0.6.5
+      pathe:
+        specifier: 'catalog:'
+        version: 2.0.3
+      pkg-types:
+        specifier: 'catalog:'
+        version: 2.3.0
+      std-env:
+        specifier: ^3.9.0
+        version: 3.10.0
+      tinyexec:
+        specifier: 'catalog:'
+        version: 1.0.2
+      which:
+        specifier: 'catalog:'
+        version: 6.0.1
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.10.11
+      '@types/which':
+        specifier: ^3.0.4
+        version: 3.0.4
+      tsdown:
+        specifier: 'catalog:'
+        version: 0.20.3(synckit@0.11.11)(typescript@5.9.3)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
 
   packages/shared:
     dependencies:
@@ -428,12 +486,12 @@ packages:
     resolution: {integrity: sha512-ubmJ6TShyaD69VE9DQrlXcdkvJbmwWPB8qYj0H2kaJi29O7vJT9ajSdBd2W8CG34pwL9pYA74fi7RHC1qbLoVQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
-  '@bomb.sh/tab@0.0.12':
-    resolution: {integrity: sha512-dYRwg4MqfHR5/BcTy285XOGRhjQFmNpaJBZ0tl2oU+RY595MQ5ApTF6j3OvauPAooHL6cfoOZMySQrOQztT8RQ==}
+  '@bomb.sh/tab@0.0.13':
+    resolution: {integrity: sha512-QY5gQ/4GSDiCsCFjwXvbqnL0tvaCaG38O9jwvamdxajTEtdcKuYEICfpShF0B66GVmihUF91b2hTOWoUJvWRYw==}
     hasBin: true
     peerDependencies:
       cac: ^6.7.14
-      citty: ^0.1.6
+      citty: ^0.1.6 || ^0.2.0
       commander: ^13.1.0
     peerDependenciesMeta:
       cac:
@@ -981,6 +1039,9 @@ packages:
 
   '@types/vscode@1.107.0':
     resolution: {integrity: sha512-XS8YE1jlyTIowP64+HoN30OlC1H9xqSlq1eoLZUgFEC8oUTO6euYZxti1xRiLSfZocs4qytTzR6xCBYtioQTCg==}
+
+  '@types/which@3.0.4':
+    resolution: {integrity: sha512-liyfuo/106JdlgSchJzXEQCVArk0CvevqPote8F8HgWgJ3dRCcTHgJIsLDuee0kxk/mhbInzIZk3QWSZJ8R+2w==}
 
   '@typescript-eslint/eslint-plugin@8.51.0':
     resolution: {integrity: sha512-XtssGWJvypyM2ytBnSnKtHYOGT+4ZwTnBVl36TA4nRO2f4PRNGz5/1OszHzcZCvcBMh+qb7I06uoCmLTRdR9og==}
@@ -1747,6 +1808,10 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
+  isexe@4.0.0:
+    resolution: {integrity: sha512-FFUtZMpoZ8RqHS3XeXEmHWLA4thH+ZxCv2lOiPIn1Xc7CxrqhWzNSDzD+/chS/zbYezmiwWLdQC09JdQKmthOw==}
+    engines: {node: '>=20'}
+
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
@@ -2326,6 +2391,11 @@ packages:
     engines: {node: '>= 8'}
     hasBin: true
 
+  which@6.0.1:
+    resolution: {integrity: sha512-oGLe46MIrCRqX7ytPUf66EAYvdeMIZYn3WaocqqKZAxrBpkqHfL/qvTyJ/bTk5+AqHCjXmrv3CEWgy368zhRUg==}
+    engines: {node: ^20.17.0 || >=22.9.0}
+    hasBin: true
+
   why-is-node-running@2.3.0:
     resolution: {integrity: sha512-hUrmaWBdVDcxvYqnyh09zunKzROWjbZTiNy8dBEjkS7ehEDQibXJ7XvlmtbwuTclUiIyN+CyXQD4Vmko8fNm8w==}
     engines: {node: '>=8'}
@@ -2417,7 +2487,7 @@ snapshots:
       '@babel/helper-string-parser': 8.0.0-rc.1
       '@babel/helper-validator-identifier': 8.0.0-rc.1
 
-  '@bomb.sh/tab@0.0.12(cac@6.7.14)(citty@0.2.0)':
+  '@bomb.sh/tab@0.0.13(cac@6.7.14)(citty@0.2.0)':
     optionalDependencies:
       cac: 6.7.14
       citty: 0.2.0
@@ -2815,6 +2885,8 @@ snapshots:
   '@types/validate-npm-package-name@4.0.2': {}
 
   '@types/vscode@1.107.0': {}
+
+  '@types/which@3.0.4': {}
 
   '@typescript-eslint/eslint-plugin@8.51.0(@typescript-eslint/parser@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
@@ -3587,7 +3659,7 @@ snapshots:
       consola: 3.4.2
       defu: 6.1.4
       node-fetch-native: 1.6.7
-      nypm: 0.6.2
+      nypm: 0.6.5
       pathe: 2.0.3
 
   giget@3.1.2: {}
@@ -3667,6 +3739,8 @@ snapshots:
       is-inside-container: 1.0.0
 
   isexe@2.0.0: {}
+
+  isexe@4.0.0: {}
 
   jiti@2.6.1: {}
 
@@ -4216,6 +4290,10 @@ snapshots:
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
+
+  which@6.0.1:
+    dependencies:
+      isexe: 4.0.0
 
   why-is-node-running@2.3.0:
     dependencies:

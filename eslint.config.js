@@ -8,4 +8,8 @@ export default vuetify({
   ts: {
     tsconfigRootDir: import.meta.dirname,
   },
+}, {
+  rules: {
+    '@typescript-eslint/member-ordering': 'off',
+  },
 })
