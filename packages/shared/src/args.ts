@@ -17,7 +17,6 @@ export type ProjectArgs = {
   type?: string
   platform?: string
   preset?: string
-  vuetifyVersion?: string
 }
 
 export function projectArgs (options?: { exclude?: (keyof ProjectArgs)[] }) {
@@ -88,10 +87,6 @@ export function projectArgs (options?: { exclude?: (keyof ProjectArgs)[] }) {
     preset: {
       type: 'string',
       description: i18n.t('args.preset.description'),
-    },
-    vuetifyVersion: {
-      type: 'string',
-      description: i18n.t('args.vuetifyVersion.description'),
     },
   } satisfies Record<keyof ProjectArgs, ArgDef>
 

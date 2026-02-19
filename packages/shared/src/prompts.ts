@@ -21,7 +21,6 @@ export interface ProjectOptions {
   interactive?: boolean
   css?: 'unocss' | 'tailwindcss' | 'none'
   router?: 'router' | 'file-router' | 'none'
-  vuetifyVersion?: '3.x' | '4.x'
 }
 
 export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()): Promise<ProjectOptions> {
@@ -96,29 +95,6 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         options: [
           { label: i18n.t('prompts.type.vuetify.label'), value: 'vuetify', hint: i18n.t('prompts.type.vuetify.hint') },
           { label: i18n.t('prompts.type.vuetify0.label'), value: 'vuetify0', hint: i18n.t('prompts.type.vuetify0.hint') },
-        ],
-      })
-    },
-    vuetifyVersion: ({ results }) => {
-      const type = (results.type as string) || args.type
-      if (type !== 'vuetify') {
-        return Promise.resolve(undefined)
-      }
-
-      if (args.vuetifyVersion) {
-        return Promise.resolve(args.vuetifyVersion)
-      }
-
-      if (!args.interactive) {
-        return Promise.resolve('3.x')
-      }
-
-      return select({
-        message: i18n.t('prompts.vuetify_version.select'),
-        initialValue: '3.x',
-        options: [
-          { label: i18n.t('prompts.vuetify_version.3_x'), value: '3.x' },
-          { label: i18n.t('prompts.vuetify_version.4_x'), value: '4.x' },
         ],
       })
     },

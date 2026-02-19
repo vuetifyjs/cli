@@ -97,7 +97,6 @@ export async function createVuetify (options: CreateVuetifyOptions, commandOptio
     type: rawArgs.type,
     css: rawArgs.css as ProjectOptions['css'],
     router: rawArgs.router as ProjectOptions['router'],
-    vuetifyVersion: args.vuetifyVersion as ProjectOptions['vuetifyVersion'],
   }, cwd)
   debug('context=', JSON.stringify(context, null, 2))
 
@@ -164,7 +163,6 @@ export async function createVuetify (options: CreateVuetifyOptions, commandOptio
       name: context.name,
       platform: context.platform as 'vue' | 'nuxt',
       type: context.type as 'vuetify' | 'vuetify0',
-      vuetifyVersion: context.vuetifyVersion,
       features: context.features,
       typescript: !!context.typescript,
       packageManager: context.packageManager,

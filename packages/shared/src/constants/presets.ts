@@ -8,7 +8,6 @@ export interface Preset {
   router?: string
   css?: string
   typescript?: boolean
-  vuetifyVersion?: string
 }
 
 export const standardPresets: Record<string, Preset> = {
