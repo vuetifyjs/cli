@@ -1,5 +1,3 @@
-import { defineConfigs } from 'reactive-vscode'
+import { defineConfig } from 'reactive-vscode'
 
-export const { message } = defineConfigs('vuetify', {
-  message: 'string',
-})
+export const { message } = defineConfig<{ message: string }>('vuetify')
