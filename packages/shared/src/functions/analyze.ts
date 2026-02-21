@@ -246,7 +246,7 @@ export async function analyzeProject (cwd: string = process.cwd(), targetPackage
         packageName: pkgInfo?.name || pkgName,
         version: pkgInfo?.version || 'unknown',
       },
-      features: Array.from(pkgFeatures.keys()).toSorted().map(name => ({
+      features: Array.from(pkgFeatures.keys()).toSorted().map((name: string) => ({
         name,
         type: getFeatureType(name, pkgFeatures.get(name)?.isType, importMap),
       })),
