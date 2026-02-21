@@ -3,7 +3,7 @@ import isInteractive from 'is-interactive'
 import { i18n } from './i18n'
 
 export type ProjectArgs = {
-  dir: string
+  dir?: string
   force: boolean
   interactive: boolean
   name?: string

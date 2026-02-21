@@ -10,7 +10,7 @@ export function addStatementToFunctionBody (fn: any, statement: string) {
     return false
   }
 
-  const expr = parseExpression(statement)
+  const expr = parseExpression(statement) as { $ast: unknown }
   const newStatement = {
     type: 'ExpressionStatement',
     expression: expr.$ast,

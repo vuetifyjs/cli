@@ -51,7 +51,7 @@
       "checking": "Checking for updates...",
       "intro": "Checking for updates...",
       "not_installed": "Vuetify is not installed in this project.",
-      "deprecated_v2": "Vuetify 2 is deprecated. Please consider upgrading to Vuetify 3.",
+      "deprecated_v2": "Vuetify 2 is deprecated. Please consider upgrading to Vuetify 4.",
       "outdated_v1": "Vuetify 1 is out of date. Please upgrade.",
       "updated": "Updated %{pkg}",
       "failed": "Failed to update %{pkg}",

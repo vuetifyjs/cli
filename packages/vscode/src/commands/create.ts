@@ -207,8 +207,8 @@ async function collectManualOptions (): Promise<ProjectConfig | undefined> {
   const templateItem = await window.showQuickPick<TemplateItem>(
     [
       {
-        label: 'Vuetify 3 (Latest)',
-        description: 'Standard Vuetify 3 project',
+        label: 'Vuetify 4 (Latest)',
+        description: 'Standard Vuetify 4 project',
         value: 'vuetify',
         picked: true,
       },
