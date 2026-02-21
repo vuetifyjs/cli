@@ -280,7 +280,7 @@
     },
     "preset": {
       "description": "Path to a preset file to load"
-    },
+    }
   },
   "cli": {
     "main": {
