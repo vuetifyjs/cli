@@ -216,12 +216,25 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       }
       return Promise.resolve(false)
     },
-    packageManager: () => {
+    install: () => {
+      if (args.install !== undefined) {
+        return Promise.resolve(args.install)
+      }
+      if (!args.interactive) {
+        return Promise.resolve(false)
+      }
+      return confirm({
+        message: i18n.t('prompts.install'),
+        initialValue: true,
+      })
+    },
+    packageManager: ({ results }) => {
       if (args.packageManager) {
         return Promise.resolve(args.packageManager)
       }
-      if (args.install === false) {
-        return Promise.resolve('none')
+      const install = (results.install as boolean) ?? args.install
+      if (install === false) {
+        return Promise.resolve(getUserAgent() ?? 'npm')
       }
       if (!args.interactive) {
         return Promise.resolve(getUserAgent() ?? 'npm')
@@ -235,24 +248,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
           { label: 'yarn', value: 'yarn' },
           { label: 'deno', value: 'deno' },
           { label: 'bun', value: 'bun' },
-          { label: 'none', value: 'none' },
         ],
-      })
-    },
-    install: ({ results }) => {
-      if (args.install !== undefined) {
-        return Promise.resolve(args.install)
-      }
-      if (!args.interactive) {
-        return Promise.resolve(false)
-      }
-      const pm = (results.packageManager as string) || args.packageManager
-      if (pm === 'none') {
-        return Promise.resolve(false)
-      }
-      return confirm({
-        message: i18n.t('prompts.install'),
-        initialValue: true,
       })
     },
   }, {
