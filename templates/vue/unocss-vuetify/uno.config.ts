@@ -1,23 +1,24 @@
-import { defineConfig, presetWind4, transformerDirectives, variantMatcher } from 'unocss'
+import { defineConfig, transformerDirectives } from 'unocss'
 import { presetVuetify } from 'unocss-preset-vuetify'
 
 export default defineConfig({
   presets: [
-    presetWind4(),
     presetVuetify(),
   ],
   transformers: [
     transformerDirectives(),
   ],
   variants: [
-    variantMatcher('dark', (input: string) => ({
+    // dark
+    (input: string) => ({
       matcher: input,
       selector: (s: string) => `.v-theme--dark ${s}, .v-theme--dark${s}`,
-    })),
-    variantMatcher('light', (input: string) => ({
+    }),
+    // light
+    (input: string) => ({
       matcher: input,
       selector: (s: string) => `.v-theme--light ${s}, .v-theme--light${s}`,
-    })),
+    }),
   ],
   preflights: [
     {
