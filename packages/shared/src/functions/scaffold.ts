@@ -1,7 +1,7 @@
 import fs, { existsSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { downloadTemplate } from 'giget'
-import { dirname, join, parse } from 'pathe'
+import { dirname, join } from 'pathe'
 import { readPackageJSON, writePackageJSON } from 'pkg-types'
 import { applyFeatures, vuetifyNuxtManual } from '../features'
 import { convertProjectToJS } from '../utils/convertProjectToJS'
@@ -32,27 +32,6 @@ export interface ScaffoldCallbacks {
   onConvertEnd?: () => void
   onInstallStart?: (pm: string) => void
   onInstallEnd?: () => void
-}
-
-function findLocalTemplatePath (templateName: string) {
-  let current = process.cwd()
-  const root = parse(current).root
-
-  while (true) {
-    const templatePath = join(current, 'templates', templateName)
-    const workspacePath = join(current, 'pnpm-workspace.yaml')
-    const sharedPath = join(current, 'packages', 'shared')
-
-    if (existsSync(templatePath) && existsSync(workspacePath) && existsSync(sharedPath)) {
-      return templatePath
-    }
-
-    if (current === root) {
-      return null
-    }
-
-    current = dirname(current)
-  }
 }
 
 function resolveTemplateName (
@@ -93,11 +72,6 @@ async function resolveSharedAssetsPath () {
     if (existsSync(templatePath)) {
       return { path: templatePath }
     }
-  }
-
-  const localTemplatePath = findLocalTemplatePath(templateName)
-  if (localTemplatePath) {
-    return { path: localTemplatePath }
   }
 
   const tempDir = fs.mkdtempSync(join(tmpdir(), 'vuetify-cli-assets-'))
@@ -211,27 +185,16 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
       debug(`templatePath does not exist: ${templatePath}`)
     }
   } else {
-    const localTemplatePath = findLocalTemplatePath(templateName)
-    if (localTemplatePath) {
-      debug(`Copying template from ${localTemplatePath}...`)
-      fs.cpSync(localTemplatePath, projectRoot, {
-        recursive: true,
-        filter: src => {
-          return !src.includes('node_modules') && !src.includes('.git') && !src.includes('.DS_Store')
-        },
-      })
-    } else {
-      const templateSource = getTemplateSource(templateName)
+    const templateSource = getTemplateSource(templateName)
 
-      try {
-        await downloadTemplate(templateSource, {
-          dir: projectRoot,
-          force,
-        })
-      } catch (error) {
-        console.error(`Failed to download template: ${error}`)
-        throw error
-      }
+    try {
+      await downloadTemplate(templateSource, {
+        dir: projectRoot,
+        force,
+      })
+    } catch (error) {
+      console.error(`Failed to download template: ${error}`)
+      throw error
     }
   }
   callbacks.onDownloadEnd?.()
