@@ -161,6 +161,10 @@
     },
     "features": {
       "select": "Выберите функции для установки: %{hint}",
+      "router": {
+        "label": "Роутер",
+        "hint": "Добавить Vue Router"
+      },
       "pinia": {
         "label": "Pinia"
       },

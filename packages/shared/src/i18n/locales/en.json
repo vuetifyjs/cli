@@ -164,6 +164,10 @@
     },
     "features": {
       "select": "Select features to install: %{hint}",
+      "router": {
+        "label": "Router",
+        "hint": "Configure Vue Router"
+      },
       "pinia": {
         "label": "Pinia"
       },
