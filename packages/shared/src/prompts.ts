@@ -20,7 +20,6 @@ export interface ProjectOptions {
   clientHints?: boolean
   interactive?: boolean
   css?: 'unocss' | 'unocss-wind4' | 'unocss-vuetify' | 'tailwindcss' | 'none'
-  cssFramework?: 'unocss' | 'unocss-wind4' | 'unocss-vuetify' | 'tailwindcss' | 'none'
   router?: 'router' | 'file-router' | 'none'
 }
 
@@ -99,27 +98,12 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         ],
       })
     },
-    cssFramework: ({ results }) => {
+    css: ({ results }) => {
       const type = (results.type as string) || args.type
       const platform = (results.platform as string) || args.platform
 
       if (args.css) {
-        if (args.css.includes('unocss')) {
-          if (type === 'vuetify0') {
-            return Promise.resolve('unocss')
-          }
-          if (args.css.includes('preset-vuetify') || args.css.includes('vuetify')) {
-            return Promise.resolve('unocss-vuetify')
-          }
-          if (args.css.includes('wind4') || args.css.includes('windi4')) {
-            return Promise.resolve('unocss-wind4')
-          }
-          return Promise.resolve('unocss-wind4')
-        }
-        if (args.css.includes('tailwindcss')) {
-          return Promise.resolve('tailwindcss')
-        }
-        return Promise.resolve('none')
+        return Promise.resolve(args.css)
       }
 
       if (!args.interactive) {
@@ -294,13 +278,12 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
     ...((options.features as string[]) || []).filter(f => f !== 'router'),
     options.router === 'none' ? undefined : options.router,
     options.type === 'vuetify0'
-      ? (options.cssFramework === 'none' ? 'css-none' : options.cssFramework)
-      : (options.cssFramework === 'none' ? undefined : options.cssFramework),
+      ? (options.css === 'none' ? 'css-none' : options.css)
+      : (options.css === 'none' ? undefined : options.css),
   ].filter(f => f && f !== 'none')
 
   return {
     ...options,
-    css: options.cssFramework,
     features,
   } as ProjectOptions
 }
