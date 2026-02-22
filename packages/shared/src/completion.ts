@@ -28,6 +28,8 @@ export function registerProjectArgsCompletion (completion: any) {
   if (cssOption) {
     cssOption.handler = (complete: any) => {
       complete('unocss', 'UnoCSS')
+      complete('unocss-wind4', 'UnoCSS (Wind4)')
+      complete('unocss-vuetify', 'UnoCSS (Vuetify)')
       complete('tailwindcss', 'Tailwind CSS')
       complete('none', 'None')
     }

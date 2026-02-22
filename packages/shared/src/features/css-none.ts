@@ -6,9 +6,14 @@ export const cssNone: Feature = {
   name: 'css-none',
   apply: async ({ cwd, isNuxt }) => {
     // Cleanup from tailwindcss.ts
-    const unocssConfig = join(cwd, 'unocss.config.ts')
-    if (existsSync(unocssConfig)) {
-      rmSync(unocssConfig)
+    const unocssConfigs = [
+      join(cwd, 'unocss.config.ts'),
+      join(cwd, 'uno.config.ts'),
+    ]
+    for (const configPath of unocssConfigs) {
+      if (existsSync(configPath)) {
+        rmSync(configPath)
+      }
     }
 
     // Cleanup from unocss.ts

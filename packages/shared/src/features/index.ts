@@ -7,7 +7,7 @@ import { mcp } from './mcp'
 import { pinia } from './pinia'
 import { fileRouter, router } from './router'
 import { tailwindcss } from './tailwindcss'
-import { unocss } from './unocss'
+import { unocss, unocssVuetify, unocssWind4 } from './unocss'
 import { vuetifyNuxtManual } from './vuetify-nuxt-manual'
 import { vuetifyNuxtModule } from './vuetify-nuxt-module'
 
@@ -33,6 +33,8 @@ export const features: Record<string, Feature> = {
   'vuetify-nuxt-module': vuetifyNuxtModule,
   'vuetify-nuxt-manual': vuetifyNuxtManual,
   unocss,
+  'unocss-wind4': unocssWind4,
+  'unocss-vuetify': unocssVuetify,
   tailwindcss,
   'css-none': cssNone,
 }
