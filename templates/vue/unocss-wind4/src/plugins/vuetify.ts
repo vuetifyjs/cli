@@ -6,8 +6,8 @@
 
 import { createVuetify } from 'vuetify'
 import '@mdi/font/css/materialdesignicons.css'
-import 'vuetify/styles'
 import '../styles/layers.css'
+import 'vuetify/styles'
 
 export default createVuetify({
   theme: {
