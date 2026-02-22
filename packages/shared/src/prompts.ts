@@ -44,7 +44,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       })
     },
     force: async ({ results }) => {
-      const name = (results.name as string) || args.name
+      const name = results.name || args.name
       const projectRoot = join(cwd, name!)
 
       if (existsSync(projectRoot) && readdirSync(projectRoot).length > 0) {
@@ -99,8 +99,8 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       })
     },
     css: ({ results }) => {
-      const type = (results.type as string) || args.type
-      const platform = (results.platform as string) || args.platform
+      const type = results.type || args.type
+      const platform = results.platform || args.platform
 
       if (args.css) {
         return Promise.resolve(args.css)
@@ -139,7 +139,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       })
     },
     typescript: ({ results }) => {
-      const platform = (results.platform as string) || args.platform
+      const platform = results.platform || args.platform
 
       if (platform === 'vue' && args.typescript === undefined) {
         return confirm({
@@ -151,13 +151,13 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
     },
     features: ({ results }) => {
       if (args.features) {
-        return Promise.resolve(args.features)
+        return Promise.resolve(args.features!)
       }
       if (!args.interactive) {
-        return Promise.resolve([])
+        return Promise.resolve([] as string[])
       }
-      const platform = (results.platform as string) || args.platform
-      const type = (results.type as string) || args.type
+      const platform = results.platform || args.platform
+      const type = results.type || args.type
 
       return platform === 'vue'
         ? multiselect({
@@ -190,7 +190,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         return Promise.resolve(args.router)
       }
 
-      const platform = (results.platform as string) || args.platform
+      const platform = results.platform || args.platform
       if (platform !== 'vue') {
         return Promise.resolve('none')
       }
@@ -221,7 +221,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       if (!args.interactive) {
         return Promise.resolve(false)
       }
-      const platform = (results.platform as string) || args.platform
+      const platform = results.platform || args.platform
       const features = (results.features as string[]) || args.features || []
 
       if (platform === 'nuxt' && features.includes('vuetify-nuxt-module')) {
@@ -248,7 +248,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       if (args.packageManager) {
         return Promise.resolve(args.packageManager)
       }
-      const install = (results.install as boolean) ?? args.install
+      const install = results.install ?? args.install
       if (install === false) {
         return Promise.resolve(getUserAgent() ?? 'npm')
       }
