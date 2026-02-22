@@ -10,10 +10,10 @@
 
       <div class="mb-8 text-center">
         <div class="font-light">Welcome to</div>
-        <h1 class="text-7xl font-heading my-0 font-medium">Vuetify</h1>
+        <h1 class="text-h1 my-0">Vuetify</h1>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-4">
+      <div class="grid md:grid-cols-2 ga-4">
         <v-card
           class="hero-card"
           color="surface-variant"
@@ -30,7 +30,7 @@
           </template>
 
           <template #title>
-            <h2 class="text-2xl font-heading my-0 font-medium pt-1 translate-y-1">
+            <h2 class="text-h3 my-0 pt-1 translate-y-1">
               Get started
             </h2>
           </template>
@@ -109,7 +109,7 @@
 }
 
 .feature-card {
-  @apply flex items-center [&>.v-card-item]:w-full bg-secondary-100;
+  @apply d-flex items-center [&>.v-card-item]:w-full bg-secondary-100;
   @apply dark:bg-linear-to-r dark:from-secondary-800 dark:to-secondary-600 dark:text-white;
 
   .v-card-item {
