@@ -50,7 +50,7 @@ export function projectArgs (options?: { exclude?: (keyof ProjectArgs)[] }) {
     css: {
       type: 'string',
       description: i18n.t('args.css.description'),
-      valueHint: 'unocss | tailwindcss | none',
+      valueHint: 'unocss | unocss-wind4 | unocss-vuetify | tailwindcss | none',
     },
     packageManager: {
       type: 'string',

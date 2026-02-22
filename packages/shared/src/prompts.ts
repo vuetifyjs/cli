@@ -19,7 +19,8 @@ export interface ProjectOptions {
   force?: boolean
   clientHints?: boolean
   interactive?: boolean
-  css?: 'unocss' | 'tailwindcss' | 'none'
+  css?: 'unocss' | 'unocss-wind4' | 'unocss-vuetify' | 'tailwindcss' | 'none'
+  cssFramework?: 'unocss' | 'unocss-wind4' | 'unocss-vuetify' | 'tailwindcss' | 'none'
   router?: 'router' | 'file-router' | 'none'
 }
 
@@ -100,13 +101,20 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
     },
     cssFramework: ({ results }) => {
       const type = (results.type as string) || args.type
-      if (type !== 'vuetify0') {
-        return Promise.resolve('none')
-      }
+      const platform = (results.platform as string) || args.platform
 
       if (args.css) {
         if (args.css.includes('unocss')) {
-          return Promise.resolve('unocss')
+          if (type === 'vuetify0') {
+            return Promise.resolve('unocss')
+          }
+          if (args.css.includes('preset-vuetify') || args.css.includes('vuetify')) {
+            return Promise.resolve('unocss-vuetify')
+          }
+          if (args.css.includes('wind4') || args.css.includes('windi4')) {
+            return Promise.resolve('unocss-wind4')
+          }
+          return Promise.resolve('unocss-wind4')
         }
         if (args.css.includes('tailwindcss')) {
           return Promise.resolve('tailwindcss')
@@ -118,14 +126,32 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         return Promise.resolve('none')
       }
 
+      if (type === 'vuetify' && platform === 'nuxt') {
+        return select({
+          message: i18n.t('prompts.css_framework.select'),
+          initialValue: 'none',
+          options: [
+            { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
+            { label: i18n.t('prompts.css_framework.none'), value: 'none' },
+          ],
+        })
+      }
+
       return select({
         message: i18n.t('prompts.css_framework.select'),
         initialValue: type === 'vuetify0' ? 'unocss' : 'none',
-        options: [
-          { label: 'UnoCSS', value: 'unocss', hint: i18n.t('prompts.css_framework.unocss.hint') },
-          { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
-          { label: i18n.t('prompts.css_framework.none'), value: 'none' },
-        ],
+        options: type === 'vuetify0'
+          ? [
+              { label: 'UnoCSS', value: 'unocss', hint: i18n.t('prompts.css_framework.unocss.hint') },
+              { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
+              { label: i18n.t('prompts.css_framework.none'), value: 'none' },
+            ]
+          : [
+              { label: i18n.t('prompts.css_framework.unocss_wind4.label'), value: 'unocss-wind4', hint: i18n.t('prompts.css_framework.unocss_wind4.hint') },
+              { label: i18n.t('prompts.css_framework.unocss_vuetify.label'), value: 'unocss-vuetify', hint: i18n.t('prompts.css_framework.unocss_vuetify.hint') },
+              { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
+              { label: i18n.t('prompts.css_framework.none'), value: 'none' },
+            ],
       })
     },
     typescript: ({ results }) => {
@@ -261,11 +287,14 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
   const features = [
     ...(options.features as string[]),
     options.router,
-    options.cssFramework === 'none' ? 'css-none' : options.cssFramework,
+    options.type === 'vuetify0'
+      ? (options.cssFramework === 'none' ? 'css-none' : options.cssFramework)
+      : (options.cssFramework === 'none' ? undefined : options.cssFramework),
   ].filter(f => f && f !== 'none')
 
   return {
     ...options,
+    css: options.cssFramework,
     features,
   } as ProjectOptions
 }

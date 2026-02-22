@@ -133,6 +133,14 @@
       "unocss": {
         "hint": "Instant on-demand atomic CSS engine"
       },
+      "unocss_wind4": {
+        "label": "UnoCSS (Wind4)",
+        "hint": "UnoCSS with Wind4 preset"
+      },
+      "unocss_vuetify": {
+        "label": "UnoCSS (Vuetify)",
+        "hint": "UnoCSS with Vuetify preset"
+      },
       "tailwindcss": {
         "hint": "A utility-first CSS framework"
       },

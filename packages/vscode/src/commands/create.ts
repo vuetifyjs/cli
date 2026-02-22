@@ -228,22 +228,29 @@ async function collectManualOptions (): Promise<ProjectConfig | undefined> {
   }
   const type = templateItem.value
 
-  // CSS Framework (only for Vuetify 0)
+  // CSS Framework
   let cssFramework = 'none'
-  if (type === 'vuetify0') {
-    const cssItem = await window.showQuickPick<StringItem>(
-      [
+  const cssOptions: StringItem[] = type === 'vuetify0'
+    ? [
         { label: 'UnoCSS', value: 'unocss', description: 'Instant on-demand atomic CSS engine', picked: true },
         { label: 'Tailwind CSS', value: 'tailwindcss', description: 'Utility-first CSS framework' },
         { label: 'None', value: 'none' },
-      ],
-      { placeHolder: 'Select CSS Framework' },
-    )
-    if (!cssItem) {
-      return
-    }
-    cssFramework = cssItem.value
+      ]
+    : [
+        { label: 'UnoCSS (Vuetify)', value: 'unocss-vuetify', description: 'UnoCSS with Vuetify preset', picked: true },
+        { label: 'UnoCSS (Wind4)', value: 'unocss-wind4', description: 'UnoCSS with Wind4 preset' },
+        { label: 'Tailwind CSS', value: 'tailwindcss', description: 'Utility-first CSS framework' },
+        { label: 'None', value: 'none' },
+      ]
+
+  const cssItem = await window.showQuickPick<StringItem>(
+    cssOptions,
+    { placeHolder: 'Select CSS Framework' },
+  )
+  if (!cssItem) {
+    return
   }
+  cssFramework = cssItem.value
 
   // TypeScript
   const tsItem = await window.showQuickPick<BoolItem>(

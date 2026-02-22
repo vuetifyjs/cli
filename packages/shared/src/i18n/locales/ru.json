@@ -130,6 +130,14 @@
         "label": "UnoCSS",
         "hint": "Быстрая и гибкая система стилей"
       },
+      "unocss_wind4": {
+        "label": "UnoCSS (Wind4)",
+        "hint": "UnoCSS с пресетом Wind4"
+      },
+      "unocss_vuetify": {
+        "label": "UnoCSS (Vuetify)",
+        "hint": "UnoCSS с пресетом Vuetify"
+      },
       "tailwindcss": {
         "label": "Tailwind CSS",
         "hint": "Атомарный CSS-фреймворк"
