@@ -32,7 +32,7 @@
 
   --breakpoint-*: initial;
   --breakpoint-xs: 0px;
-  --breakpoint-sm: 400px;
+  --breakpoint-sm: 600px;
   --breakpoint-md: 840px;
   --breakpoint-lg: 1145px;
   --breakpoint-xl: 1545px;
