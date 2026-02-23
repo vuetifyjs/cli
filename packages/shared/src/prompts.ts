@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { existsSync, readdirSync } from 'node:fs'
-import { cancel, confirm, group, multiselect, select, text } from '@clack/prompts'
+import { cancel, confirm, group, log, multiselect, select, text } from '@clack/prompts'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { dim } from 'kolorist'
 import { getUserAgent } from 'package-manager-detector'
@@ -103,7 +103,11 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       const platform = results.platform || args.platform
 
       if (args.css) {
-        return Promise.resolve(args.css)
+        if (type === 'vuetify' && args.css.startsWith('unocss')) {
+          log.warn(i18n.t('prompts.css_framework.status.not_supported', { css: 'UnoCSS', vuetify: 'Vuetify' }))
+        } else {
+          return Promise.resolve(args.css)
+        }
       }
 
       if (!args.interactive) {
@@ -131,10 +135,10 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
               { label: i18n.t('prompts.css_framework.none'), value: 'none' },
             ]
           : [
-              { label: i18n.t('prompts.css_framework.unocss_wind4.label'), value: 'unocss-wind4', hint: i18n.t('prompts.css_framework.unocss_wind4.hint') },
-              { label: i18n.t('prompts.css_framework.unocss_vuetify.label'), value: 'unocss-vuetify', hint: i18n.t('prompts.css_framework.unocss_vuetify.hint') },
-              { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
               { label: i18n.t('prompts.css_framework.none'), value: 'none' },
+              { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
+              { label: i18n.t('prompts.css_framework.unocss_wind4.label'), disabled: true, value: 'unocss-wind4', hint: i18n.t('prompts.css_framework.unocss_wind4.hint') },
+              { label: i18n.t('prompts.css_framework.unocss_vuetify.label'), disabled: true, value: 'unocss-vuetify', hint: i18n.t('prompts.css_framework.unocss_vuetify.hint') },
             ],
       })
     },

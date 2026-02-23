@@ -134,15 +134,19 @@
         "hint": "Instant on-demand atomic CSS engine"
       },
       "unocss_wind4": {
-        "label": "UnoCSS (Wind4)",
-        "hint": "UnoCSS with Wind4 preset"
+        "label": "UnoCSS with Wind4 preset",
+        "hint": "soon"
       },
       "unocss_vuetify": {
-        "label": "UnoCSS (Vuetify)",
-        "hint": "UnoCSS with Vuetify preset"
+        "label": "UnoCSS with Vuetify preset",
+        "hint": "soon"
       },
       "tailwindcss": {
+        "label": "Tailwind CSS",
         "hint": "A utility-first CSS framework"
+      },
+      "status": {
+        "not_supported": "CSS framework %{css} is not supported for %{vuetify} yet."
       },
       "none": "None"
     },
