@@ -18,11 +18,19 @@ if (targetVersion.startsWith('v')) {
   targetVersion = targetVersion.slice(1)
 }
 
-const targetMajor = targetVersion.split('.')[0]
+const targetMajorMatch = targetVersion.match(/^(\d+)/)
+
+if (!targetMajorMatch) {
+  console.error(`Could not parse target version: ${targetVersion}`)
+  // eslint-disable-next-line unicorn/no-process-exit
+  process.exit(1)
+}
+
+const targetMajor = targetMajorMatch[1]
 
 // Parse current version
-// Assumes semver-like: major.minor.patch(-prerelease)?
-const versionMatch = pkg.version.match(/^(\d+)\.(\d+)\.(\d+)(?:-(.+))?$/)
+// Assumes semver-like: major.minor.patch(-prerelease)?(+build)?
+const versionMatch = pkg.version.match(/^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/)
 
 if (!versionMatch) {
   console.error(`Could not parse package version: ${pkg.version}`)
@@ -31,22 +39,9 @@ if (!versionMatch) {
 }
 
 // eslint-disable-next-line unicorn/no-unreadable-array-destructuring
-const [, , minor, patch, prerelease] = versionMatch
+const [, , minor, patch, prerelease, build] = versionMatch
 
-let newPrerelease = ''
-
-if (prerelease) {
-  // 0.x.y-beta.z -> 0.x.y-beta-next.z
-  // Non-beta: for now, keeping as is to be safe, but user only specified beta.
-  newPrerelease = prerelease.startsWith('beta.')
-    ? `-${prerelease.replace('beta.', 'beta-next.')}`
-    : `-${prerelease}`
-} else {
-  // 0.x.y -> 0.x.y-next.1
-  newPrerelease = '-next.1'
-}
-
-const newVersion = `${targetMajor}.${minor}.${patch}${newPrerelease}`
+const newVersion = `${targetMajor}.${minor}.${patch}${prerelease ? `-${prerelease}` : ''}${build ? `+${build}` : ''}`
 
 console.log(`Patching packages/create/package.json version from ${pkg.version} to ${newVersion}`)
 pkg.version = newVersion
