@@ -71,6 +71,15 @@
     ],
     "description": "Vuetify VAvatar Component"
   },
+  "VAvatarGroup": {
+    "prefix": "v-avatar-group",
+    "body": [
+      "<v-avatar-group items=\"${1}\">",
+      "\t$0",
+      "</v-avatar-group>"
+    ],
+    "description": "Vuetify VAvatarGroup Component"
+  },
   "VBadge": {
     "prefix": "v-badge",
     "body": [
@@ -350,6 +359,24 @@
     ],
     "description": "Vuetify VCombobox Component"
   },
+  "VCommandPalette": {
+    "prefix": "v-command-palette",
+    "body": [
+      "<v-command-palette items=\"${1}\">",
+      "\t$0",
+      "</v-command-palette>"
+    ],
+    "description": "Vuetify VCommandPalette Component"
+  },
+  "VCommandPaletteItemComponent": {
+    "prefix": "v-command-palette-item-component",
+    "body": [
+      "<v-command-palette-item-component>",
+      "\t$0",
+      "</v-command-palette-item-component>"
+    ],
+    "description": "Vuetify VCommandPaletteItemComponent Component"
+  },
   "VComponentIcon": {
     "prefix": "v-component-icon",
     "body": [
@@ -583,6 +610,15 @@
       "</v-empty-state>"
     ],
     "description": "Vuetify VEmptyState Component"
+  },
+  "VExpandBothTransition": {
+    "prefix": "v-expand-both-transition",
+    "body": [
+      "<v-expand-both-transition>",
+      "\t$0",
+      "</v-expand-both-transition>"
+    ],
+    "description": "Vuetify VExpandBothTransition Component"
   },
   "VExpandTransition": {
     "prefix": "v-expand-transition",
@@ -1334,7 +1370,7 @@
   "VSnackbar": {
     "prefix": "v-snackbar",
     "body": [
-      "<v-snackbar text=\"${1}\">",
+      "<v-snackbar text=\"${1}\" title=\"${2}\">",
       "\t$0",
       "</v-snackbar>"
     ],
@@ -1343,7 +1379,7 @@
   "VSnackbarQueue": {
     "prefix": "v-snackbar-queue",
     "body": [
-      "<v-snackbar-queue text=\"${1}\">",
+      "<v-snackbar-queue text=\"${1}\" title=\"${2}\">",
       "\t$0",
       "</v-snackbar-queue>"
     ],
