@@ -1,5 +1,5 @@
 {
-  "publisher": "vuetify",
+  "publisher": "vuetifyjs",
   "name": "vuetify-vscode",
   "displayName": "Vuetify",
   "type": "module",
