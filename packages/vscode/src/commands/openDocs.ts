@@ -1,5 +1,4 @@
-import { tryResolveVuetifyVersion } from '@vuetify/cli-shared/utils'
-import { env, Uri, window, workspace } from 'vscode'
+import { env, Uri, window } from 'vscode'
 import { getComponentAtPosition } from '../utils/component'
 import componentMap from '../utils/component-map.json'
 
@@ -19,13 +18,7 @@ async function openDocs (type: 'api' | 'component', componentName?: string) {
     return
   }
 
-  const cwd = workspace.getWorkspaceFolder(editor.document.uri)?.uri.fsPath
-  const version = await tryResolveVuetifyVersion({ cwd })
-
-  let baseUrl = 'https://vuetifyjs.com/en'
-  if (version && version !== '0.0.0' && version.startsWith('4')) {
-    baseUrl = 'https://next.vuetifyjs.com/en'
-  }
+  const baseUrl = 'https://vuetifyjs.com/en'
 
   let url = baseUrl
 
