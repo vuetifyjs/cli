@@ -39,10 +39,6 @@ async function openDocs (type: 'api' | 'component', componentName?: string) {
     url = `${baseUrl}/api/${componentName}`
   }
 
-  if (version && version !== '0.0.0') {
-    url += `?v=${version}&utm_source=vscode-extension`
-  }
-
   await env.openExternal(Uri.parse(url))
 }
 
