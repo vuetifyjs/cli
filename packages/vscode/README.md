@@ -1,6 +1,6 @@
 # Vuetify for VS Code
 
-[![Version](https://img.shields.io/visual-studio-marketplace/v/vuetify.vuetify)](https://marketplace.visualstudio.com/items?itemName=vuetify.vuetify) [![Installs](https://img.shields.io/visual-studio-marketplace/i/vuetify.vuetify)](https://marketplace.visualstudio.com/items?itemName=vuetify.vuetify) [![Reactive VSCode](https://img.shields.io/badge/made_with-reactive--vscode-%23007ACC?style=flat&labelColor=%23229863)](https://kermanx.com/reactive-vscode/)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/vuetifyjs.vuetify-vscode)](https://marketplace.visualstudio.com/items?itemName=vuetifyjs.vuetify-vscode) [![Installs](https://img.shields.io/visual-studio-marketplace/i/vuetifyjs.vuetify-vscode)](https://marketplace.visualstudio.com/items?itemName=vuetifyjs.vuetify-vscode) [![Reactive VSCode](https://img.shields.io/badge/made_with-reactive--vscode-%23007ACC?style=flat&labelColor=%23229863)](https://kermanx.com/reactive-vscode/)
 
 The official VS Code extension for [Vuetify](https://vuetifyjs.com/).
 
