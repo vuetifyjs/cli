@@ -1,17 +1,14 @@
 import { env, Uri, window } from 'vscode'
-import { getComponentAtPosition } from '../utils/component'
+import { resolveComponentName } from '../utils/component'
 import componentMap from '../utils/component-map.json'
 
-async function openDocs (type: 'api' | 'component', componentName?: string) {
+async function openDocs (type: 'api' | 'component', componentName?: string | Uri) {
   const editor = window.activeTextEditor
   if (!editor) {
     return
   }
 
-  if (!componentName) {
-    const selection = editor.selection
-    componentName = getComponentAtPosition(editor.document, selection.active) || undefined
-  }
+  componentName = resolveComponentName(componentName, editor)
 
   if (!componentName) {
     window.showInformationMessage('No Vuetify component found at cursor position')
