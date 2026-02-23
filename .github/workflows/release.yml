@@ -48,4 +48,4 @@ jobs:
         run: pnpm --filter "!create-vuetify" -r publish --tag latest --access public --no-git-checks
 
       - name: Publish create-vuetify with beta
-        run: pnpm --filter "create-vuetify" publish --tag beta --access public --no-git-checks
+        run: pnpm --filter "create-vuetify" publish --tag latest --access public --no-git-checks
