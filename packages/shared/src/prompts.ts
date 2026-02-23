@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { existsSync, readdirSync } from 'node:fs'
-import { cancel, confirm, group, multiselect, select, text } from '@clack/prompts'
+import { cancel, confirm, group, log, multiselect, select, text } from '@clack/prompts'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { dim } from 'kolorist'
 import { getUserAgent } from 'package-manager-detector'
@@ -19,7 +19,7 @@ export interface ProjectOptions {
   force?: boolean
   clientHints?: boolean
   interactive?: boolean
-  css?: 'unocss' | 'tailwindcss' | 'none'
+  css?: 'unocss' | 'unocss-wind4' | 'unocss-vuetify' | 'tailwindcss' | 'none'
   router?: 'router' | 'file-router' | 'none'
 }
 
@@ -44,7 +44,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       })
     },
     force: async ({ results }) => {
-      const name = (results.name as string) || args.name
+      const name = results.name || args.name
       const projectRoot = join(cwd, name!)
 
       if (existsSync(projectRoot) && readdirSync(projectRoot).length > 0) {
@@ -98,38 +98,52 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         ],
       })
     },
-    cssFramework: ({ results }) => {
-      const type = (results.type as string) || args.type
-      if (type !== 'vuetify0') {
-        return Promise.resolve('none')
-      }
+    css: ({ results }) => {
+      const type = results.type || args.type
+      const platform = results.platform || args.platform
 
       if (args.css) {
-        if (args.css.includes('unocss')) {
-          return Promise.resolve('unocss')
+        if (type === 'vuetify' && args.css.startsWith('unocss')) {
+          log.warn(i18n.t('prompts.css_framework.status.not_supported', { css: 'UnoCSS', vuetify: 'Vuetify' }))
+        } else {
+          return Promise.resolve(args.css)
         }
-        if (args.css.includes('tailwindcss')) {
-          return Promise.resolve('tailwindcss')
-        }
-        return Promise.resolve('none')
       }
 
       if (!args.interactive) {
         return Promise.resolve('none')
       }
 
+      if (type === 'vuetify' && platform === 'nuxt') {
+        return select({
+          message: i18n.t('prompts.css_framework.select'),
+          initialValue: 'none',
+          options: [
+            { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
+            { label: i18n.t('prompts.css_framework.none'), value: 'none' },
+          ],
+        })
+      }
+
       return select({
         message: i18n.t('prompts.css_framework.select'),
         initialValue: type === 'vuetify0' ? 'unocss' : 'none',
-        options: [
-          { label: 'UnoCSS', value: 'unocss', hint: i18n.t('prompts.css_framework.unocss.hint') },
-          { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
-          { label: i18n.t('prompts.css_framework.none'), value: 'none' },
-        ],
+        options: type === 'vuetify0'
+          ? [
+              { label: 'UnoCSS', value: 'unocss', hint: i18n.t('prompts.css_framework.unocss.hint') },
+              { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
+              { label: i18n.t('prompts.css_framework.none'), value: 'none' },
+            ]
+          : [
+              { label: i18n.t('prompts.css_framework.none'), value: 'none' },
+              { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
+              { label: i18n.t('prompts.css_framework.unocss_wind4.label'), disabled: true, value: 'unocss-wind4', hint: i18n.t('prompts.css_framework.unocss_wind4.hint') },
+              { label: i18n.t('prompts.css_framework.unocss_vuetify.label'), disabled: true, value: 'unocss-vuetify', hint: i18n.t('prompts.css_framework.unocss_vuetify.hint') },
+            ],
       })
     },
     typescript: ({ results }) => {
-      const platform = (results.platform as string) || args.platform
+      const platform = results.platform || args.platform
 
       if (platform === 'vue' && args.typescript === undefined) {
         return confirm({
@@ -139,45 +153,22 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       }
       return Promise.resolve(args.typescript ?? true)
     },
-    router: ({ results }) => {
-      if (args.router) {
-        return Promise.resolve(args.router)
-      }
-
-      const platform = (results.platform as string) || args.platform
-      if (platform !== 'vue') {
-        return Promise.resolve('none')
-      }
-
-      if (!args.interactive) {
-        return Promise.resolve('none')
-      }
-
-      return select({
-        message: i18n.t('prompts.router.select'),
-        initialValue: 'router',
-        options: [
-          { label: i18n.t('prompts.router.none'), value: 'none' },
-          { label: i18n.t('prompts.router.standard.label'), value: 'router', hint: i18n.t('prompts.router.standard.hint') },
-          { label: i18n.t('prompts.router.file.label'), value: 'file-router', hint: i18n.t('prompts.router.file.hint') },
-        ],
-      })
-    },
     features: ({ results }) => {
       if (args.features) {
-        return Promise.resolve(args.features.filter(f => f !== 'router' && f !== 'file-router'))
+        return Promise.resolve(args.features!)
       }
       if (!args.interactive) {
-        return Promise.resolve([])
+        return Promise.resolve([] as string[])
       }
-      const platform = (results.platform as string) || args.platform
-      const type = (results.type as string) || args.type
+      const platform = results.platform || args.platform
+      const type = results.type || args.type
 
       return platform === 'vue'
         ? multiselect({
             message: i18n.t('prompts.features.select', { hint: dim('↑/↓ to navigate, space to select, a to toggle all, enter to confirm') }),
             options: [
               { label: i18n.t('prompts.features.eslint.label'), value: 'eslint', hint: i18n.t('prompts.features.eslint.hint') },
+              { label: i18n.t('prompts.features.router.label'), value: 'router', hint: i18n.t('prompts.features.router.hint') },
               { label: i18n.t('prompts.features.mcp.label'), value: 'mcp', hint: i18n.t('prompts.features.mcp.hint') },
               { label: i18n.t('prompts.features.pinia.label'), value: 'pinia' },
               { label: i18n.t('prompts.features.i18n.label'), value: 'i18n' },
@@ -198,6 +189,35 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
             required: false,
           })
     },
+    router: ({ results }) => {
+      if (args.router) {
+        return Promise.resolve(args.router)
+      }
+
+      const platform = results.platform || args.platform
+      if (platform !== 'vue') {
+        return Promise.resolve('none')
+      }
+
+      const features = (results.features as string[]) || args.features || []
+      if (!features.includes('router')) {
+        return Promise.resolve('none')
+      }
+
+      if (!args.interactive) {
+        return Promise.resolve('router')
+      }
+
+      return select({
+        message: i18n.t('prompts.router.select'),
+        initialValue: 'router',
+        options: [
+          { label: i18n.t('prompts.router.none'), value: 'none' },
+          { label: i18n.t('prompts.router.standard.label'), value: 'router', hint: i18n.t('prompts.router.standard.hint') },
+          { label: i18n.t('prompts.router.file.label'), value: 'file-router', hint: i18n.t('prompts.router.file.hint') },
+        ],
+      })
+    },
     clientHints: ({ results }) => {
       if (args.clientHints !== undefined) {
         return Promise.resolve(args.clientHints)
@@ -205,7 +225,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       if (!args.interactive) {
         return Promise.resolve(false)
       }
-      const platform = (results.platform as string) || args.platform
+      const platform = results.platform || args.platform
       const features = (results.features as string[]) || args.features || []
 
       if (platform === 'nuxt' && features.includes('vuetify-nuxt-module')) {
@@ -232,7 +252,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       if (args.packageManager) {
         return Promise.resolve(args.packageManager)
       }
-      const install = (results.install as boolean) ?? args.install
+      const install = results.install ?? args.install
       if (install === false) {
         return Promise.resolve(getUserAgent() ?? 'npm')
       }
@@ -259,9 +279,11 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
   })
 
   const features = [
-    ...(options.features as string[]),
-    options.router,
-    options.cssFramework === 'none' ? 'css-none' : options.cssFramework,
+    ...((options.features as string[]) || []).filter(f => f !== 'router'),
+    options.router === 'none' ? undefined : options.router,
+    options.type === 'vuetify0'
+      ? (options.css === 'none' ? 'css-none' : options.css)
+      : (options.css === 'none' ? undefined : options.css),
   ].filter(f => f && f !== 'none')
 
   return {

@@ -20,7 +20,7 @@ export const presets = defineCommand({
     description: i18n.t('commands.presets.description'),
   },
   args: {
-    ...projectArgs(),
+    ...projectArgs({ exclude: ['type'] }),
     list: {
       type: 'boolean',
       description: 'List available presets',
@@ -127,6 +127,7 @@ export const presets = defineCommand({
         await createVuetify({
           ...args,
           preset: (preset as any).key || join(presetsDir, (preset as any).file!),
+          type: 'vuetify',
           version,
         } as any, { intro: false })
       } else {

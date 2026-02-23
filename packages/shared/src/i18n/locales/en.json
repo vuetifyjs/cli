@@ -133,8 +133,20 @@
       "unocss": {
         "hint": "Instant on-demand atomic CSS engine"
       },
+      "unocss_wind4": {
+        "label": "UnoCSS with Wind4 preset",
+        "hint": "soon"
+      },
+      "unocss_vuetify": {
+        "label": "UnoCSS with Vuetify preset",
+        "hint": "soon"
+      },
       "tailwindcss": {
+        "label": "Tailwind CSS",
         "hint": "A utility-first CSS framework"
+      },
+      "status": {
+        "not_supported": "CSS framework %{css} is not supported for %{vuetify} yet."
       },
       "none": "None"
     },
@@ -156,6 +168,10 @@
     },
     "features": {
       "select": "Select features to install: %{hint}",
+      "router": {
+        "label": "Router",
+        "hint": "Configure Vue Router"
+      },
       "pinia": {
         "label": "Pinia"
       },

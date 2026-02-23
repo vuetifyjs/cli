@@ -130,9 +130,20 @@
         "label": "UnoCSS",
         "hint": "Быстрая и гибкая система стилей"
       },
+      "unocss_wind4": {
+        "label": "UnoCSS с пресетом Wind4",
+        "hint": "скоро"
+      },
+      "unocss_vuetify": {
+        "label": "UnoCSS с пресетом Vuetify",
+        "hint": "скоро"
+      },
       "tailwindcss": {
         "label": "Tailwind CSS",
         "hint": "Атомарный CSS-фреймворк"
+      },
+      "status": {
+        "not_supported": "CSS-фреймворк %{css} пока не поддерживается для %{vuetify}."
       }
     },
     "typescript": {
@@ -153,6 +164,10 @@
     },
     "features": {
       "select": "Выберите функции для установки: %{hint}",
+      "router": {
+        "label": "Роутер",
+        "hint": "Добавить Vue Router"
+      },
       "pinia": {
         "label": "Pinia"
       },

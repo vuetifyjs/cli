@@ -14,7 +14,7 @@ export const main = defineCommand({
     description: i18n.t('cli.create.description'),
   },
   args: {
-    ...projectArgs(),
+    ...projectArgs({ exclude: ['type'] }),
     cwd: {
       type: 'string',
       description: 'The current working directory',
@@ -26,6 +26,7 @@ export const main = defineCommand({
     }
     await createVuetify({
       ...args,
+      type: 'vuetify',
       version,
     })
   },

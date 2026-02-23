@@ -8,11 +8,19 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 
 export const tailwindcss: Feature = {
   name: 'tailwindcss',
-  apply: async ({ cwd, pkg, isTypescript, isNuxt }) => {
-    const unocssConfig = join(cwd, 'unocss.config.ts')
+  apply: async ({ cwd, pkg, isTypescript, isNuxt, type }) => {
+    if (type === 'vuetify' && !isNuxt) {
+      return
+    }
 
-    if (existsSync(unocssConfig)) {
-      rmSync(unocssConfig)
+    const unocssConfigs = [
+      join(cwd, 'unocss.config.ts'),
+      join(cwd, 'uno.config.ts'),
+    ]
+    for (const configPath of unocssConfigs) {
+      if (existsSync(configPath)) {
+        rmSync(configPath)
+      }
     }
 
     if (isNuxt) {
@@ -41,13 +49,11 @@ export const tailwindcss: Feature = {
 
       await writeFile(viteConfigPath, mod.generate().code)
 
-      // Import in main.ts
       const mainFiles = ['src/main.ts', 'src/main.js']
       for (const file of mainFiles) {
         const filePath = join(cwd, file)
         if (existsSync(filePath)) {
           const mainFile = await readFile(filePath, 'utf8')
-          // find // Styles and add import './main.css'; after it
           await writeFile(filePath, mainFile.replace(/\/\/ Styles/g, '// Styles\nimport \'./tailwind.css\';'))
           break
         }
