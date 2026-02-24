@@ -12,5 +12,6 @@ export const i18n = new I18n({
   ru: ruBase,
 }, {
   defaultLocale: 'en',
+  enableFallback: true,
   locale: normalizeLocale(getCurrentLocale()),
 })
