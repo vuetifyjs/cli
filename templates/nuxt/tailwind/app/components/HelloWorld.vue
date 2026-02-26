@@ -100,12 +100,14 @@
 </script>
 
 <style scoped>
+@reference "../assets/styles/tailwind.css";
+
 /*
   1. mixing helper classes and @apply for demonstration purposes only
   2. the classes below are NOT wrapped in any CSS layer, so they "win" over everything else
 */
 .hero-card {
-  @apply py-3 md:pr-[120px] w-full transition-none;
+  @apply py-3 md:pr-[120px] w-full;
 }
 
 ::v-deep(.v-card) {

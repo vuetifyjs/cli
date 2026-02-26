@@ -1,64 +1,56 @@
+import type { StaticRule } from 'unocss'
 import { defineConfig, presetWind4, transformerDirectives } from 'unocss'
+import { elevationPresets } from 'unocss-preset-vuetify'
+import * as breakpoints from './src/theme/breakpoints'
 
 export default defineConfig({
   presets: [
-    presetWind4(),
+    presetWind4({
+      dark: {
+        dark: '.v-theme--dark',
+        light: '.v-theme--light',
+      },
+    }),
   ],
   transformers: [
     transformerDirectives(),
   ],
-  variants: [
-    // dark
-    (input: string) => ({
-      matcher: input,
-      selector: (s: string) => `.v-theme--dark ${s}, .v-theme--dark${s}`,
-    }),
-    // light
-    (input: string) => ({
-      matcher: input,
-      selector: (s: string) => `.v-theme--light ${s}, .v-theme--light${s}`,
-    }),
-  ],
-  preflights: [
-    {
-      getCSS: () => `
-:root {
-  --font-heading: "Roboto", sans-serif;
-  --font-body: "Roboto", sans-serif;
-  --font-mono: "Roboto Mono", monospace;
-}
-`,
-    },
-  ],
   theme: {
-    fontFamily: {
-      heading: 'var(--font-heading)',
-      body: 'var(--font-body)',
-      mono: 'var(--font-mono)',
+    breakpoint: breakpoints.forUnoCSS,
+    font: {
+      heading: "'Roboto', sans-serif",
+      body: "'Roboto', sans-serif",
     },
     colors: {
-      primary: {
-        100: '#a7e0ff',
-        900: '#003256',
-      },
-      secondary: {
-        100: '#92f7ff',
-        200: '#57f0ff',
-        300: '#10e3fb',
-        400: '#00c1da',
-        500: '#009fbd',
-        600: '#0087a4',
-        700: '#097088',
-        800: '#0d5d73',
-      },
+      primary: 'rgb(var(--v-theme-primary))',
     },
-    breakpoints: {
-      xs: '0px',
-      sm: '400px',
-      md: '840px',
-      lg: '1145px',
-      xl: '1545px',
-      xxl: '2138px',
-    },
+  },
+  rules: [
+    ...Object.entries(elevationPresets.md3)
+      .map(([level, css]) => [`elevation-${level}`, css]) satisfies StaticRule[]
+  ],
+  safelist: [
+    ...Array.from({ length: 6 }, (_, i) => `elevation-${i}`),
+    ...['', '-0', '-sm', '-lg', '-xl', '-pill', '-circle', '-shaped'].map(suffix => `rounded${suffix}`),
+  ],
+  outputToCssLayers: {
+    cssLayerName: (layer) => layer === 'properties' ? null : `uno-${layer}`,
+  },
+  shortcuts: {
+    'text-display-large':   'font-heading normal-case text-[3.5625rem] font-[400] leading-[1.1228] tracking-[-.0044em]',
+    'text-display-medium':  'font-heading normal-case text-[2.8125rem] font-[400] leading-[1.1556] tracking-[normal]',
+    'text-display-small':   'font-heading normal-case text-[2.25rem]   font-[400] leading-[1.2222] tracking-[normal]',
+    'text-headline-large':  'font-heading normal-case text-[2rem]      font-[400] leading-[1.25]   tracking-[normal]',
+    'text-headline-medium': 'font-heading normal-case text-[1.75rem]   font-[400] leading-[1.2857] tracking-[normal]',
+    'text-headline-small':  'font-heading normal-case text-[1.5rem]    font-[400] leading-[1.3333] tracking-[normal]',
+    'text-title-large':     'font-heading normal-case text-[1.375rem]  font-[400] leading-[1.2727] tracking-[normal]',
+    'text-title-medium':    'font-body    normal-case text-[1rem]      font-[500] leading-[1.5]    tracking-[.0094em]',
+    'text-title-small':     'font-body    normal-case text-[.875rem]   font-[500] leading-[1.4286] tracking-[.0071em]',
+    'text-body-large':      'font-body    normal-case text-[1rem]      font-[400] leading-[1.5]    tracking-[.0313em]',
+    'text-body-medium':     'font-body    normal-case text-[.875rem]   font-[400] leading-[1.4286] tracking-[.0179em]',
+    'text-body-small':      'font-body    normal-case text-[.75rem]    font-[400] leading-[1.3333] tracking-[.0333em]',
+    'text-label-large':     'font-body    normal-case text-[.875rem]   font-[500] leading-[1.4286] tracking-[.0071em]',
+    'text-label-medium':    'font-body    normal-case text-[.75rem]    font-[500] leading-[1.3333] tracking-[.0417em]',
+    'text-label-small':     'font-body    normal-case text-[.6875rem]  font-[500] leading-[1.4545] tracking-[.0455em]',
   },
 })

@@ -49,17 +49,17 @@ function resolveTemplateName (
   type: 'vuetify' | 'vuetify0',
   features: string[],
 ) {
-  if (platform !== 'vue' || type !== 'vuetify') {
+  if (type !== 'vuetify') {
     return templates[platform][type]
   }
   if (features.includes('unocss-wind4')) {
-    return 'vue/unocss-wind4'
+    return `${platform}/unocss-wind4`
   }
   if (features.includes('unocss-vuetify')) {
-    return 'vue/unocss-vuetify'
+    return `${platform}/unocss-vuetify`
   }
   if (features.includes('tailwindcss')) {
-    return 'vue/tailwind'
+    return `${platform}/tailwind`
   }
   return templates[platform][type]
 }
@@ -117,7 +117,7 @@ async function applySharedAssets (
     }
     if (needsLogo) {
       const logoRoot = platform === 'nuxt'
-        ? join(projectRoot, 'assets')
+        ? join(projectRoot, 'app', 'assets')
         : join(projectRoot, 'src', 'assets')
       copySharedAsset(join(assets.path, 'logo.png'), join(logoRoot, 'logo.png'))
       copySharedAsset(join(assets.path, 'logo.svg'), join(logoRoot, 'logo.svg'))

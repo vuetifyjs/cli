@@ -3,6 +3,13 @@
     <v-main>
       <HelloWorld />
     </v-main>
+    <v-btn
+      icon="mdi-theme-light-dark"
+      position="absolute"
+      location="top right"
+      class="ma-2"
+      @click="$vuetify.theme.cycle()"
+    />
   </v-app>
 </template>
 

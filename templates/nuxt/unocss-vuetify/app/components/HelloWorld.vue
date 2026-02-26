@@ -9,8 +9,8 @@
       />
 
       <div class="mb-8 text-center">
-        <div class="text-body-medium font-weight-light mb-n1">Welcome to</div>
-        <div class="text-display-medium font-weight-bold">Vuetify</div>
+        <div class="text-body-2 font-weight-light mb-n1">Welcome to</div>
+        <div class="text-h2 font-weight-bold">Vuetify</div>
       </div>
 
       <v-row>
@@ -31,11 +31,11 @@
             </template>
 
             <template #title>
-              <div class="my-title my-uppercase text-headline-medium font-weight-bold">Get started</div>
+              <div class="text-h5 font-weight-bold">Get started</div>
             </template>
 
             <template #subtitle>
-              <div class="text-body-large">
+              <div class="text-subtitle-1">
                 Change this page by updating <v-kbd>{{ `<HelloWorld />` }}</v-kbd> in <v-kbd>components/HelloWorld.vue</v-kbd>.
               </div>
             </template>

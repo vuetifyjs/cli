@@ -1,0 +1,26 @@
+{
+  "name": "nuxt-tailwindcss",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@mdi/font": "7.4.47",
+    "nuxt": "^4.2.2",
+    "vue": "^3.5.26",
+    "vuetify": "^4.0.0",
+    "vuetify-nuxt-module": "^0.19.5"
+  },
+  "devDependencies": {
+    "@unocss/nuxt": "^66.0.0",
+    "@unocss/preset-wind4": "^66.0.0",
+    "sass": "^1.97.1",
+    "unocss": "^66.0.0",
+    "unocss-preset-vuetify": "^0.1.1"
+  }
+}

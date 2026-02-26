@@ -2,6 +2,7 @@
   <v-container class="fill-height" max-width="900">
     <div>
       <v-img
+        alt="Placeholder logo"
         class="mb-4"
         height="150"
         src="@/assets/logo.png"
