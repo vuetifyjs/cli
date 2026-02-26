@@ -4,9 +4,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   // ssr: false,
   modules: [
-    '@nuxtjs/tailwindcss',
     'vuetify-nuxt-module',
   ],
+
+  postcss: {
+    plugins: {
+      '@tailwindcss/postcss': {},
+    },
+  },
 
   css: [
     'assets/styles/layers.css',
