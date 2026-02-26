@@ -1,5 +1,4 @@
-// import { presetVuetify } from 'unocss-preset-vuetify'
-import { presetVuetify } from '../../unocss-preset-vuetify/dist/index.mjs'
+import { presetVuetify } from 'unocss-preset-vuetify'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({

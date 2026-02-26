@@ -1,7 +1,7 @@
 import type { StaticRule } from 'unocss'
 import { presetWind4, transformerDirectives } from 'unocss'
 import * as breakpoints from './app/theme/breakpoints'
-import { elevationPresets } from 'unocss-preset-vuetify'
+import { elevationPresets, createThemeVariants } from 'unocss-preset-vuetify'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -35,12 +35,7 @@ export default defineNuxtConfig({
 
   unocss: {
     presets: [
-      presetWind4({
-        dark: {
-          dark: '.v-theme--dark',
-          light: '.v-theme--light',
-        },
-      }),
+      presetWind4(),
     ],
     transformers: [
       transformerDirectives(),
@@ -51,6 +46,7 @@ export default defineNuxtConfig({
         primary: 'rgb(var(--v-theme-primary))',
       },
     },
+    variants: createThemeVariants(['light', 'dark']),
     rules: [
       ...Object.entries(elevationPresets.md3)
         .map(([level, css]) => [`elevation-${level}`, css]) satisfies StaticRule[],

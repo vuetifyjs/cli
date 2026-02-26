@@ -1,16 +1,11 @@
 import type { StaticRule } from 'unocss'
 import { defineConfig, presetWind4, transformerDirectives } from 'unocss'
-import { elevationPresets } from 'unocss-preset-vuetify'
+import { elevationPresets, createThemeVariants } from 'unocss-preset-vuetify'
 import * as breakpoints from './src/theme/breakpoints'
 
 export default defineConfig({
   presets: [
-    presetWind4({
-      dark: {
-        dark: '.v-theme--dark',
-        light: '.v-theme--light',
-      },
-    }),
+    presetWind4(),
   ],
   transformers: [
     transformerDirectives(),
@@ -25,6 +20,7 @@ export default defineConfig({
       primary: 'rgb(var(--v-theme-primary))',
     },
   },
+  variants: createThemeVariants(['light', 'dark']),
   rules: [
     ...Object.entries(elevationPresets.md3)
       .map(([level, css]) => [`elevation-${level}`, css]) satisfies StaticRule[]
