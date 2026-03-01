@@ -2,5 +2,9 @@
 @layer vuetify-components;
 @layer vuetify-overrides;
 @layer vuetify-utilities;
-@layer uno;
+
+@layer uno-typography;
+@layer uno-utilities;
+@layer uno-default;
+
 @layer vuetify-final;
