@@ -7,6 +7,7 @@ import { elevationPresets, createThemeVariants } from 'unocss-preset-vuetify'
 export default defineNuxtConfig({
   compatibilityDate: '2025-12-21',
   devtools: { enabled: true },
+  // ssr: false,
   modules: [
     '@unocss/nuxt',
     'vuetify-nuxt-module',
@@ -28,7 +29,7 @@ export default defineNuxtConfig({
         thresholds: breakpoints.forVuetify,
       },
       theme: {
-        defaultTheme: 'dark',
+        defaultTheme: 'dark', // default 'system' requires `ssr: false` to avoid hydration warnings
       },
     },
   },
