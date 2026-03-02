@@ -291,14 +291,6 @@ async function collectManualOptions (): Promise<ProjectConfig | undefined> {
     { label: 'i18n', value: 'i18n' },
   ]
 
-  if (platform === 'nuxt' && type !== 'vuetify0') {
-    featureOptions.push({
-      label: 'Vuetify Nuxt Module',
-      value: 'vuetify-nuxt-module',
-      picked: true,
-    })
-  }
-
   const featureItems = await window.showQuickPick<FeatureItem>(
     featureOptions,
     {
@@ -312,9 +304,9 @@ async function collectManualOptions (): Promise<ProjectConfig | undefined> {
   }
   const features = featureItems.map(item => item.value)
 
-  // Client Hints (only for Nuxt + vuetify-nuxt-module)
+  // Client Hints (only for Nuxt)
   let clientHints = false
-  if (platform === 'nuxt' && features.includes('vuetify-nuxt-module')) {
+  if (platform === 'nuxt') {
     const hintsItem = await window.showQuickPick<BoolItem>(
       [
         { label: 'No', value: false, picked: true },

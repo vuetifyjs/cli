@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os'
 import { downloadTemplate } from 'giget'
 import { dirname, join } from 'pathe'
 import { readPackageJSON, writePackageJSON } from 'pkg-types'
-import { applyFeatures, vuetifyNuxtManual } from '../features'
+import { applyFeatures } from '../features'
 import { convertProjectToJS } from '../utils/convertProjectToJS'
 import { getTemplateSource } from '../utils/getTemplateSource'
 import { installDependencies } from '../utils/installDependencies'
@@ -209,9 +209,6 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
     await applyFeatures(projectRoot, features, pkg, !!typescript, platform === 'nuxt', clientHints, type)
   }
 
-  if (platform === 'nuxt' && type !== 'vuetify0' && (!features || !features.includes('vuetify-nuxt-module'))) {
-    await vuetifyNuxtManual.apply({ cwd: projectRoot, pkg, isTypescript: !!typescript, isNuxt: true })
-  }
   callbacks.onConfigEnd?.()
 
   // Update package.json name

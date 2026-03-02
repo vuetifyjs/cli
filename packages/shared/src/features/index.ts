@@ -8,8 +8,6 @@ import { pinia } from './pinia'
 import { fileRouter, router } from './router'
 import { tailwindcss } from './tailwindcss'
 import { unocss, unocssVuetify, unocssWind4 } from './unocss'
-import { vuetifyNuxtManual } from './vuetify-nuxt-manual'
-import { vuetifyNuxtModule } from './vuetify-nuxt-module'
 
 export * from './css-none'
 export * from './eslint'
@@ -20,8 +18,6 @@ export * from './router'
 export * from './tailwindcss'
 export * from './types'
 export * from './unocss'
-export * from './vuetify-nuxt-manual'
-export * from './vuetify-nuxt-module'
 
 export const features: Record<string, Feature> = {
   router,
@@ -30,8 +26,6 @@ export const features: Record<string, Feature> = {
   i18n,
   eslint,
   mcp,
-  'vuetify-nuxt-module': vuetifyNuxtModule,
-  'vuetify-nuxt-manual': vuetifyNuxtManual,
   unocss,
   'unocss-wind4': unocssWind4,
   'unocss-vuetify': unocssVuetify,
