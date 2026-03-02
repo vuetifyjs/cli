@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   // ssr: false,
   modules: [
+    '@nuxt/fonts',
     '@unocss/nuxt',
     'vuetify-nuxt-module',
   ],
@@ -16,6 +17,7 @@ export default defineNuxtConfig({
   css: [
     'assets/styles/layers.css',
     'vuetify/styles',
+    'assets/styles/main.scss',
   ],
 
   vuetify: {
@@ -43,6 +45,11 @@ export default defineNuxtConfig({
     ],
     theme: {
       breakpoint: breakpoints.forUnoCSS,
+      font: {
+        heading: 'Roboto, sans-serif',
+        body: 'Roboto, sans-serif',
+        mono: '"Roboto Mono", sans-serif',
+      },
       colors: {
         primary: 'rgb(var(--v-theme-primary))',
       },
@@ -53,6 +60,7 @@ export default defineNuxtConfig({
         .map(([level, css]) => [`elevation-${level}`, css]) satisfies StaticRule[],
     ],
     safelist: [
+      'font-heading', 'font-body', 'font-mono',
       ...Array.from({ length: 6 }, (_, i) => `elevation-${i}`),
       ...['', '-0', '-sm', '-lg', '-xl', '-pill', '-circle', '-shaped'].map(suffix => `rounded${suffix}`),
     ],

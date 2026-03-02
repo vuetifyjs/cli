@@ -7,6 +7,7 @@ export default defineConfig({
       font: {
         heading: 'Roboto, sans-serif',
         body: 'Roboto, sans-serif',
+        mono: '"Roboto Mono", sans-serif',
       },
       typography: 'md3',
       elevation: 'md3',

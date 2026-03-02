@@ -3,7 +3,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-12-21',
   devtools: { enabled: true },
   // ssr: false,
-  modules: ['vuetify-nuxt-module'],
+  modules: [
+    '@nuxt/fonts',
+    'vuetify-nuxt-module',
+  ],
 
   vuetify: {
     moduleOptions: {

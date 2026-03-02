@@ -17,6 +17,7 @@
     "vuetify-nuxt-module": "^0.19.5"
   },
   "devDependencies": {
+    "@nuxt/fonts": "^0.14.0",
     "@unocss/nuxt": "^66.0.0",
     "@unocss/preset-wind4": "^66.0.0",
     "sass": "^1.97.1",

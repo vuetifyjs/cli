@@ -1,6 +1,10 @@
 @use 'vuetify/settings' with (
   $color-pack: false,
   $utilities: false,
+
+  $heading-font-family: var(--font-heading),
+  $body-font-family: var(--font-body),
+
   $grid-breakpoints: (
     'xs': 0,
     'sm': 600px,
