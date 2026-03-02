@@ -107,7 +107,7 @@
   2. the classes below are NOT wrapped in any CSS layer, so they "win" over everything else
 */
 .hero-card {
-  @apply py-3 md:pr-[120px] w-full;
+  @apply py-3 md:pr-[120px] w-full transition-none;
 }
 
 :deep(.v-card) {
