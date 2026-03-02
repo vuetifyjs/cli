@@ -1,15 +1,15 @@
 <template>
-  <v-container class="fill-height" max-width="900">
+  <v-container class="fill-height d-flex flex-column justify-center" max-width="1100">
     <div>
       <v-img
-        class="mb-4"
+        class="mb-4 font-weight-bold"
         height="150"
         src="@/assets/logo.png"
       />
 
       <div class="mb-8 text-center">
-        <div class="text-body-2 font-weight-light mb-n1">Welcome to</div>
-        <h1 class="text-h2 font-weight-bold">Vuetify</h1>
+        <div class="text-body-medium font-weight-light mb-n1">Welcome to</div>
+        <div class="text-display-medium font-weight-bold">Vuetify</div>
       </div>
 
       <v-row>
@@ -18,22 +18,23 @@
             class="py-4"
             color="surface-variant"
             image="https://cdn.vuetifyjs.com/docs/images/one/create/feature.png"
-            prepend-icon="mdi-rocket-launch-outline"
             rounded="lg"
             variant="tonal"
           >
+            <template #prepend>
+              <v-avatar class="ml-2 mr-4" icon="mdi-rocket-launch-outline" size="60" variant="tonal" />
+            </template>
+
             <template #image>
               <v-img position="top right" />
             </template>
 
             <template #title>
-              <h2 class="text-h5 font-weight-bold">
-                Get started
-              </h2>
+              <div class="my-title my-uppercase text-headline-medium font-weight-bold">Get started</div>
             </template>
 
             <template #subtitle>
-              <div class="text-subtitle-1">
+              <div class="text-body-large">
                 Change this page by updating <v-kbd>{{ `<HelloWorld />` }}</v-kbd> in <v-kbd>components/HelloWorld.vue</v-kbd>.
               </div>
             </template>
@@ -46,14 +47,17 @@
             class="py-4"
             color="surface-variant"
             :href="link.href"
-            :prepend-icon="link.icon"
             rel="noopener noreferrer"
             rounded="lg"
             :subtitle="link.subtitle"
             target="_blank"
             :title="link.title"
             variant="tonal"
-          />
+          >
+            <template #prepend>
+              <v-avatar class="ml-2 mr-4" :icon="link.icon" size="60" variant="tonal" />
+            </template>
+          </v-card>
         </v-col>
       </v-row>
     </div>

@@ -119,8 +119,10 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
           message: i18n.t('prompts.css_framework.select'),
           initialValue: 'none',
           options: [
-            { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
             { label: i18n.t('prompts.css_framework.none'), value: 'none' },
+            { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
+            { label: i18n.t('prompts.css_framework.unocss_wind4.label'), value: 'unocss-wind4' },
+            { label: i18n.t('prompts.css_framework.unocss_vuetify.label'), value: 'unocss-vuetify' },
           ],
         })
       }
@@ -137,8 +139,8 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
           : [
               { label: i18n.t('prompts.css_framework.none'), value: 'none' },
               { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
-              { label: i18n.t('prompts.css_framework.unocss_wind4.label'), disabled: true, value: 'unocss-wind4', hint: i18n.t('prompts.css_framework.unocss_wind4.hint') },
-              { label: i18n.t('prompts.css_framework.unocss_vuetify.label'), disabled: true, value: 'unocss-vuetify', hint: i18n.t('prompts.css_framework.unocss_vuetify.hint') },
+              { label: i18n.t('prompts.css_framework.unocss_wind4.label'), value: 'unocss-wind4' },
+              { label: i18n.t('prompts.css_framework.unocss_vuetify.label'), value: 'unocss-vuetify' },
             ],
       })
     },

@@ -15,7 +15,7 @@ import App from './App.vue'
 
 // Styles
 import 'unfonts.css'
-import './styles/main.scss'
+import 'virtual:uno.css'
 
 const app = createApp(App)
 
