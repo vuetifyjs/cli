@@ -110,7 +110,7 @@
   @apply py-3 md:pr-[120px] w-full;
 }
 
-::v-deep(.v-card) {
+:deep(.v-card) {
   @apply bg-gray-200;
   @apply dark:bg-black dark:bg-linear-to-r dark:from-primary/50 dark:to-primary/30 dark:text-white/80;
 }
