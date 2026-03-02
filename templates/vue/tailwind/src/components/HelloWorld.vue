@@ -9,34 +9,33 @@
       />
 
       <div class="mb-8 text-center">
-        <div class="font-light">Welcome to</div>
-        <h1 class="text-7xl font-heading my-0 font-medium">Vuetify</h1>
+        <div class="font-light -mb-1">Welcome to</div>
+        <h1 class="text-6xl font-bold">Vuetify</h1>
       </div>
 
       <div class="grid md:grid-cols-2 gap-4">
         <v-card
-          class="hero-card"
-          color="surface-variant"
+          class="hero-card md:col-span-2"
           image="https://cdn.vuetifyjs.com/docs/images/one/create/feature.png"
-          rounded="xl"
-          variant="tonal"
+          rounded="3xl"
+          variant="flat"
         >
           <template #prepend>
             <v-avatar class="ml-2 mr-4" icon="mdi-rocket-launch-outline" size="60" variant="tonal" />
           </template>
 
           <template #image>
-            <v-img alt="Hero card supplemental image" class="hidden sm:block my-auto" height="120" position="top right" />
+            <v-img class="hidden md:flex" position="top right" />
           </template>
 
           <template #title>
-            <h2 class="text-2xl font-heading my-0 font-medium pt-1 translate-y-1">
+            <h2 class="text-2xl font-medium my-0">
               Get started
             </h2>
           </template>
 
           <template #subtitle>
-            <div class="mt-2">
+            <div class="leading-7">
               Change this page by updating <v-code>components/HelloWorld.vue</v-code>.
             </div>
           </template>
@@ -44,20 +43,26 @@
 
         <v-card
           v-for="link in links"
-          :key="link.href"
-          append-icon="mdi-arrow-top-right"
-          class="feature-card"
-          color="surface-variant"
           :href="link.href"
-          rel="noopener noreferrer"
-          rounded="xl"
+          :key="link.href"
           :subtitle="link.subtitle"
-          target="_blank"
           :title="link.title"
-          variant="tonal"
+          class="
+            h-full py-3 rounded-3xl transition-[border-radius] hover:rounded-lg
+            flex items-center [&>.v-card-item]:w-full
+            group"
+          rel="noopener noreferrer"
+          target="_blank"
+          variant="flat"
         >
           <template #prepend>
-            <v-avatar class="ml-2 mr-4" :icon="link.icon" size="60" variant="tonal" />
+            <v-avatar :icon="link.icon" size="60" variant="tonal" class="ml-2 mr-4" />
+          </template>
+          <template #append>
+            <v-icon class="ml-1 opacity-0 transition group-hover:opacity-90 group-hover:-translate-x-1" icon="mdi-open-in-new" />
+          </template>
+          <template #subtitle>
+            <div class="line-clamp-2 text-wrap">{{ link.subtitle }}</div>
           </template>
         </v-card>
       </div>
@@ -94,31 +99,19 @@
   ]
 </script>
 
-<style>
+<style scoped>
 @reference "../styles/tailwind.css";
 
-.v-card {
-  @apply rounded-xl;
-}
-
+/*
+  1. mixing helper classes and @apply for demonstration purposes only
+  2. the classes below are NOT wrapped in any CSS layer, so they "win" over everything else
+*/
 .hero-card {
-  @apply md:col-span-2 md:py-4 sm:pr-[120px] w-full bg-primary-100 dark:bg-primary-900
+  @apply py-3 md:pr-[120px] w-full;
 }
 
-.v-card-subtitle {
-  @apply text-wrap line-clamp-2 leading-[1.2];
-  --v-medium-emphasis-opacity: .8;
-}
-
-.feature-card {
-  @apply flex items-center [&>.v-card-item]:w-full bg-secondary-100;
-  @apply dark:bg-linear-to-r dark:from-secondary-800 dark:to-secondary-600 dark:text-white;
-
-  .v-card-item {
-    @apply self-stretch;
-  }
-  .v-card-item__content {
-    @apply self-stretch py-2;
-  }
+:deep(.v-card) {
+  @apply bg-gray-200;
+  @apply dark:bg-black dark:bg-linear-to-r dark:from-primary/50 dark:to-primary/30 dark:text-white/80;
 }
 </style>
