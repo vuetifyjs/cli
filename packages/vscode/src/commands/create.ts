@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
-import { scaffold } from '@vuetify/cli-shared'
+import { scaffold, ScaffoldOptions } from '@vuetify/cli-shared'
 import { commands, type QuickPickItem, Uri, window, workspace } from 'vscode'
 
 interface PresetItem extends QuickPickItem {
@@ -73,11 +73,13 @@ export async function createProject () {
     ? {
         platform: preset.platform || 'vue',
         type: preset.type || 'vuetify',
-        features: preset.features || [],
+        features: [
+          ...preset.Features,
+          ...preset.clientHints ? ['client-hints'] : [],
+        ],
         typescript: preset.typescript ?? true,
         packageManager: preset.packageManager || 'npm',
         install: preset.install ?? false,
-        clientHints: preset.clientHints ?? false,
       }
     : await collectManualOptions()
 
@@ -139,7 +141,6 @@ interface ProjectConfig {
   typescript: boolean
   packageManager: string
   install: boolean
-  clientHints: boolean
 }
 
 async function selectPreset (): Promise<any | null | undefined> {

@@ -18,7 +18,6 @@ export interface ScaffoldOptions {
   packageManager?: string
   install?: boolean
   force?: boolean
-  clientHints?: boolean
   debug?: boolean
 }
 
@@ -141,7 +140,6 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
     packageManager,
     install,
     force,
-    clientHints,
     debug: debugFlag,
   } = options
 
@@ -206,7 +204,7 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
 
   callbacks.onConfigStart?.()
   if (features && features.length > 0) {
-    await applyFeatures(projectRoot, features, pkg, !!typescript, platform === 'nuxt', clientHints, type)
+    await applyFeatures(projectRoot, features, pkg, !!typescript, platform === 'nuxt', type)
   }
 
   callbacks.onConfigEnd?.()
