@@ -2,7 +2,7 @@ import type { Feature } from './types'
 import { existsSync, rmSync } from 'node:fs'
 import { readFile, writeFile } from 'node:fs/promises'
 import { loadFile } from 'magicast'
-import { addNuxtModule, addVitePlugin } from 'magicast/helpers'
+import { addVitePlugin } from 'magicast/helpers'
 import { join } from 'pathe'
 import rootPkg from './dependencies/package.json' with { type: 'json' }
 
@@ -26,13 +26,7 @@ export const tailwindcss: Feature = {
     if (isNuxt) {
       pkg.devDependencies = pkg.devDependencies || {}
       pkg.devDependencies['tailwindcss'] = rootPkg.dependencies['tailwindcss']
-      pkg.devDependencies['@nuxtjs/tailwindcss'] = rootPkg.dependencies['@nuxtjs/tailwindcss']
-
-      const configPath = join(cwd, 'nuxt.config.ts')
-      const mod = await loadFile(configPath)
-      addNuxtModule(mod, '@nuxtjs/tailwindcss')
-
-      await writeFile(configPath, mod.generate().code)
+      pkg.devDependencies['@tailwindcss/postcss'] = rootPkg.dependencies['@tailwindcss/postcss']
     } else {
       pkg.devDependencies = pkg.devDependencies || {}
       pkg.devDependencies['tailwindcss'] = rootPkg.dependencies['tailwindcss']

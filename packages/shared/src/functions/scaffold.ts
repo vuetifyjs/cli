@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os'
 import { downloadTemplate } from 'giget'
 import { dirname, join } from 'pathe'
 import { readPackageJSON, writePackageJSON } from 'pkg-types'
-import { applyFeatures, vuetifyNuxtManual } from '../features'
+import { applyFeatures } from '../features'
 import { convertProjectToJS } from '../utils/convertProjectToJS'
 import { getTemplateSource } from '../utils/getTemplateSource'
 import { installDependencies } from '../utils/installDependencies'
@@ -18,7 +18,6 @@ export interface ScaffoldOptions {
   packageManager?: string
   install?: boolean
   force?: boolean
-  clientHints?: boolean
   debug?: boolean
 }
 
@@ -49,17 +48,17 @@ function resolveTemplateName (
   type: 'vuetify' | 'vuetify0',
   features: string[],
 ) {
-  if (platform !== 'vue' || type !== 'vuetify') {
+  if (type !== 'vuetify') {
     return templates[platform][type]
   }
   if (features.includes('unocss-wind4')) {
-    return 'vue/unocss-wind4'
+    return `${platform}/unocss-wind4`
   }
   if (features.includes('unocss-vuetify')) {
-    return 'vue/unocss-vuetify'
+    return `${platform}/unocss-vuetify`
   }
   if (features.includes('tailwindcss')) {
-    return 'vue/tailwind'
+    return `${platform}/tailwind`
   }
   return templates[platform][type]
 }
@@ -117,7 +116,7 @@ async function applySharedAssets (
     }
     if (needsLogo) {
       const logoRoot = platform === 'nuxt'
-        ? join(projectRoot, 'assets')
+        ? join(projectRoot, 'app', 'assets')
         : join(projectRoot, 'src', 'assets')
       copySharedAsset(join(assets.path, 'logo.png'), join(logoRoot, 'logo.png'))
       copySharedAsset(join(assets.path, 'logo.svg'), join(logoRoot, 'logo.svg'))
@@ -141,7 +140,6 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
     packageManager,
     install,
     force,
-    clientHints,
     debug: debugFlag,
   } = options
 
@@ -206,12 +204,9 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
 
   callbacks.onConfigStart?.()
   if (features && features.length > 0) {
-    await applyFeatures(projectRoot, features, pkg, !!typescript, platform === 'nuxt', clientHints, type)
+    await applyFeatures(projectRoot, features, pkg, !!typescript, platform === 'nuxt', type)
   }
 
-  if (platform === 'nuxt' && type !== 'vuetify0' && (!features || !features.includes('vuetify-nuxt-module'))) {
-    await vuetifyNuxtManual.apply({ cwd: projectRoot, pkg, isTypescript: !!typescript, isNuxt: true })
-  }
   callbacks.onConfigEnd?.()
 
   // Update package.json name

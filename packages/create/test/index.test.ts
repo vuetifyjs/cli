@@ -65,10 +65,8 @@ describe('create-vuetify matrix', () => {
     { name: 'nuxt', args: ['--type=nuxt', '--features='] },
     // Nuxt + Pinia
     { name: 'nuxt-pinia', args: ['--type=nuxt', '--features=pinia'] },
-    // Nuxt + Vuetify Module
-    { name: 'nuxt-module', args: ['--type=nuxt', '--features=vuetify-nuxt-module'] },
     // Nuxt + All
-    { name: 'nuxt-all', args: ['--type=nuxt', '--features=pinia,eslint,vuetify-nuxt-module'] },
+    { name: 'nuxt-all', args: ['--type=nuxt', '--features=pinia,eslint'] },
   ]
 
   for (const { name, args } of matrix) {
@@ -98,19 +96,6 @@ describe('create-vuetify matrix', () => {
         expect(fs.existsSync(join(projectPath, 'src/main.ts')) || fs.existsSync(join(projectPath, 'src/main.js'))).toBe(true)
       } else if (args.includes('nuxt')) {
         expect(fs.existsSync(join(projectPath, 'nuxt.config.ts'))).toBe(true)
-
-        // Check for modules/vuetify.ts and dependencies
-        const hasModuleFeature = args.some(arg => arg.includes('vuetify-nuxt-module'))
-        if (hasModuleFeature) {
-          expect(fs.existsSync(join(projectPath, 'modules/vuetify.ts'))).toBe(false)
-        } else {
-          expect(fs.existsSync(join(projectPath, 'modules/vuetify.ts'))).toBe(true)
-
-          const pkg = JSON.parse(fs.readFileSync(join(projectPath, 'package.json'), 'utf8'))
-          expect(pkg.devDependencies).toHaveProperty('vite-plugin-vuetify')
-          expect(pkg.devDependencies).toHaveProperty('@vuetify/loader-shared')
-          expect(pkg.devDependencies).toHaveProperty('pathe')
-        }
       }
     }, TIMEOUT)
   }

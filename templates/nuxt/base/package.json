@@ -1,5 +1,5 @@
 {
-  "name": "vuetify-nuxt-project",
+  "name": "vuetify-project",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,9 +13,11 @@
     "@mdi/font": "7.4.47",
     "nuxt": "^4.2.2",
     "vue": "^3.5.26",
-    "vuetify": "^4.0.0"
+    "vuetify": "^4.0.1",
+    "vuetify-nuxt-module": "^0.19.5"
   },
   "devDependencies": {
+    "@nuxt/fonts": "^0.14.0",
     "sass": "^1.97.1"
   }
 }

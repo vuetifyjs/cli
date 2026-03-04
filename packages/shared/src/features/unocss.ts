@@ -26,7 +26,7 @@ async function applyUnocssBase (
   if (pkg.devDependencies) {
     delete pkg.devDependencies['tailwindcss']
     delete pkg.devDependencies['@tailwindcss/vite']
-    delete pkg.devDependencies['@nuxtjs/tailwindcss']
+    delete pkg.devDependencies['@tailwindcss/postcss']
   }
 
   if (isNuxt) {

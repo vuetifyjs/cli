@@ -10,7 +10,7 @@
 
       <div class="mb-8 text-center">
         <div class="font-light -mb-1">Welcome to</div>
-        <h1 class="text-6xl font-bold">Vuetify</h1>
+        <h1 class="text-6xl font-heading font-bold">Vuetify</h1>
       </div>
 
       <div class="grid md:grid-cols-2 gap-4">
@@ -107,7 +107,7 @@
   2. the classes below are NOT wrapped in any CSS layer, so they "win" over everything else
 */
 .hero-card {
-  @apply py-3 md:pr-[120px] w-full;
+  @apply py-3 md:pr-[120px] w-full transition-none;
 }
 
 :deep(.v-card) {

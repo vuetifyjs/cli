@@ -119,8 +119,10 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
           message: i18n.t('prompts.css_framework.select'),
           initialValue: 'none',
           options: [
-            { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
             { label: i18n.t('prompts.css_framework.none'), value: 'none' },
+            { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
+            { label: i18n.t('prompts.css_framework.unocss_wind4.label'), value: 'unocss-wind4' },
+            { label: i18n.t('prompts.css_framework.unocss_vuetify.label'), value: 'unocss-vuetify' },
           ],
         })
       }
@@ -137,8 +139,8 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
           : [
               { label: i18n.t('prompts.css_framework.none'), value: 'none' },
               { label: 'Tailwind CSS', value: 'tailwindcss', hint: i18n.t('prompts.css_framework.tailwindcss.hint') },
-              { label: i18n.t('prompts.css_framework.unocss_wind4.label'), disabled: true, value: 'unocss-wind4', hint: i18n.t('prompts.css_framework.unocss_wind4.hint') },
-              { label: i18n.t('prompts.css_framework.unocss_vuetify.label'), disabled: true, value: 'unocss-vuetify', hint: i18n.t('prompts.css_framework.unocss_vuetify.hint') },
+              { label: i18n.t('prompts.css_framework.unocss_wind4.label'), value: 'unocss-wind4' },
+              { label: i18n.t('prompts.css_framework.unocss_vuetify.label'), value: 'unocss-vuetify' },
             ],
       })
     },
@@ -180,12 +182,11 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
             message: i18n.t('prompts.features.select', { hint: dim('↑/↓ to navigate, space to select, a to toggle all, enter to confirm') }),
             options: [
               { label: i18n.t('prompts.features.eslint.label'), value: 'eslint', hint: i18n.t('prompts.features.eslint.hint') },
-              ...(type === 'vuetify0' ? [] : [{ label: i18n.t('prompts.features.vuetify_nuxt_module.label'), value: 'vuetify-nuxt-module', hint: i18n.t('prompts.features.vuetify_nuxt_module.hint') }]),
               { label: i18n.t('prompts.features.mcp.label'), value: 'mcp', hint: i18n.t('prompts.features.mcp.hint') },
               { label: i18n.t('prompts.features.pinia.label'), value: 'pinia' },
               { label: i18n.t('prompts.features.i18n.label'), value: 'i18n' },
             ],
-            initialValues: ['eslint', ...(type === 'vuetify0' ? [] : ['vuetify-nuxt-module']), 'mcp'],
+            initialValues: ['eslint', 'mcp'],
             required: false,
           })
     },
@@ -226,9 +227,7 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         return Promise.resolve(false)
       }
       const platform = results.platform || args.platform
-      const features = (results.features as string[]) || args.features || []
-
-      if (platform === 'nuxt' && features.includes('vuetify-nuxt-module')) {
+      if (platform === 'nuxt') {
         return confirm({
           message: i18n.t('prompts.client_hints.enable'),
           initialValue: false,

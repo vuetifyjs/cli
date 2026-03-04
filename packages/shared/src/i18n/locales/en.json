@@ -134,12 +134,10 @@
         "hint": "Instant on-demand atomic CSS engine"
       },
       "unocss_wind4": {
-        "label": "UnoCSS with Wind4 preset",
-        "hint": "soon"
+        "label": "UnoCSS with Wind4 preset"
       },
       "unocss_vuetify": {
-        "label": "UnoCSS with Vuetify preset",
-        "hint": "soon"
+        "label": "UnoCSS with Vuetify preset"
       },
       "tailwindcss": {
         "label": "Tailwind CSS",
@@ -181,10 +179,6 @@
       },
       "i18n": {
         "label": "I18n"
-      },
-      "vuetify_nuxt_module": {
-        "label": "Vuetify Nuxt Module",
-        "hint": "Use vuetify-nuxt-module instead of local plugin"
       },
       "mcp": {
         "label": "MCP",

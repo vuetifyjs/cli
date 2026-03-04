@@ -163,12 +163,14 @@ export async function createVuetify (options: CreateVuetifyOptions, commandOptio
       name: context.name,
       platform: context.platform as 'vue' | 'nuxt',
       type: context.type as 'vuetify' | 'vuetify0',
-      features: context.features,
+      features: [
+        ...context.features,
+        ...context.clientHints ? ['client-hints'] : [],
+      ],
       typescript: !!context.typescript,
       packageManager: context.packageManager,
       install: context.install,
       force: context.force,
-      clientHints: context.clientHints,
       debug: args.debug,
     }, {
       onDownloadStart: templateName => {

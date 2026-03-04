@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
-import { scaffold } from '@vuetify/cli-shared'
+import { scaffold, ScaffoldOptions } from '@vuetify/cli-shared'
 import { commands, type QuickPickItem, Uri, window, workspace } from 'vscode'
 
 interface PresetItem extends QuickPickItem {
@@ -73,11 +73,13 @@ export async function createProject () {
     ? {
         platform: preset.platform || 'vue',
         type: preset.type || 'vuetify',
-        features: preset.features || [],
+        features: [
+          ...preset.Features,
+          ...preset.clientHints ? ['client-hints'] : [],
+        ],
         typescript: preset.typescript ?? true,
         packageManager: preset.packageManager || 'npm',
         install: preset.install ?? false,
-        clientHints: preset.clientHints ?? false,
       }
     : await collectManualOptions()
 
@@ -139,7 +141,6 @@ interface ProjectConfig {
   typescript: boolean
   packageManager: string
   install: boolean
-  clientHints: boolean
 }
 
 async function selectPreset (): Promise<any | null | undefined> {
@@ -291,14 +292,6 @@ async function collectManualOptions (): Promise<ProjectConfig | undefined> {
     { label: 'i18n', value: 'i18n' },
   ]
 
-  if (platform === 'nuxt' && type !== 'vuetify0') {
-    featureOptions.push({
-      label: 'Vuetify Nuxt Module',
-      value: 'vuetify-nuxt-module',
-      picked: true,
-    })
-  }
-
   const featureItems = await window.showQuickPick<FeatureItem>(
     featureOptions,
     {
@@ -312,9 +305,9 @@ async function collectManualOptions (): Promise<ProjectConfig | undefined> {
   }
   const features = featureItems.map(item => item.value)
 
-  // Client Hints (only for Nuxt + vuetify-nuxt-module)
+  // Client Hints (only for Nuxt)
   let clientHints = false
-  if (platform === 'nuxt' && features.includes('vuetify-nuxt-module')) {
+  if (platform === 'nuxt') {
     const hintsItem = await window.showQuickPick<BoolItem>(
       [
         { label: 'No', value: false, picked: true },

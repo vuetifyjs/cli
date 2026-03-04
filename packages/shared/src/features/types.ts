@@ -5,7 +5,6 @@ export interface FeatureContext {
   pkg: PackageJson
   isTypescript: boolean
   isNuxt: boolean
-  clientHints?: boolean
   type?: 'vuetify' | 'vuetify0'
 }
 
