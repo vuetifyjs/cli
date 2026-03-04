@@ -103,11 +103,13 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
       const platform = results.platform || args.platform
 
       if (args.css) {
-        if (type === 'vuetify' && args.css.startsWith('unocss')) {
-          log.warn(i18n.t('prompts.css_framework.status.not_supported', { css: 'UnoCSS', vuetify: 'Vuetify' }))
-        } else {
-          return Promise.resolve(args.css)
+        if (type === 'vuetify' && args.css === 'unocss') {
+          return Promise.resolve('unocss-vuetify')
         }
+        if (type === 'vuetify0' && args.css.startsWith('unocss-')) {
+          log.warn('v0 supports only --css with "unocss | tailwindcss | none", fallback to "unocss"')
+        }
+        return Promise.resolve(args.css)
       }
 
       if (!args.interactive) {
