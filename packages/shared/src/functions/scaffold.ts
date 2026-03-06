@@ -149,7 +149,29 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
   debug('projectRoot=', projectRoot)
 
   if (force && existsSync(projectRoot)) {
-    rmSync(projectRoot, { recursive: true, force: true })
+    // Retry removal if it fails with ENOTEMPTY
+    // This can happen on macOS if .DS_Store is recreated immediately after deletion
+    let retries = 5
+    while (retries > 0) {
+      try {
+        rmSync(projectRoot, { recursive: true, force: true })
+        break
+      } catch (error: any) {
+        if (['ENOTEMPTY', 'EPERM', 'EBUSY'].includes(error.code)) {
+          retries--
+          if (retries === 0) {
+            throw error
+          }
+          // Busy wait for 50ms
+          const start = Date.now()
+          while (Date.now() - start < 50) {
+            // wait
+          }
+        } else {
+          throw error
+        }
+      }
+    }
   }
 
   const templates = {
