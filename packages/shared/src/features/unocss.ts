@@ -56,8 +56,10 @@ async function applyUnocssBase (
     const filePath = join(cwd, file)
     if (existsSync(filePath)) {
       const content = await readFile(filePath, 'utf8')
-      await writeFile(filePath, content.replace(/\/\/ Styles/g, '// Styles\nimport \'virtual:uno.css\''))
-      break
+      if (!content.includes('virtual:uno.css')) {
+        await writeFile(filePath, content.replace(/\/\/ Styles/g, '// Styles\nimport \'virtual:uno.css\''))
+        break
+      }
     }
   }
 }
