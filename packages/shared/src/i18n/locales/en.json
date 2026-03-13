@@ -161,7 +161,7 @@
       },
       "file": {
         "label": "Vue Router (File-based)",
-        "hint": "File-based routing with unplugin-vue-router"
+        "hint": "File-based routing with vue-router"
       }
     },
     "features": {

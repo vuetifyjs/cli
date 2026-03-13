@@ -39,6 +39,19 @@ export const router: Feature = {
     }
 
     await writeFile(pluginsPath, mod.generate().code)
+
+    // Update tsconfig.app.json
+    if (isTypescript) {
+      const tsConfigPath = join(cwd, 'tsconfig.app.json')
+      if (existsSync(tsConfigPath)) {
+        const tsConfig = await loadFile(tsConfigPath)
+        tsConfig.exports.vueCompilerOptions = tsConfig.exports.vueCompilerOptions || {}
+        tsConfig.exports.vueCompilerOptions.plugins = tsConfig.exports.vueCompilerOptions.plugins || []
+        // Standard router doesn't strictly need these for unplugin features, but it helps if user adds route blocks later
+        tsConfig.exports.vueCompilerOptions.plugins.push('vue-router/volar/sfc-typed-router', 'vue-router/volar/sfc-route-blocks')
+        await writeFile(tsConfigPath, tsConfig.generate().code)
+      }
+    }
   },
 }
 
@@ -50,8 +63,6 @@ export const fileRouter: Feature = {
     const ext = isTypescript ? 'ts' : 'js'
     pkg.dependencies = pkg.dependencies || {}
     pkg.dependencies['vue-router'] = rootPkg.dependencies['vue-router']
-    pkg.devDependencies = pkg.devDependencies || {}
-    pkg.devDependencies['unplugin-vue-router'] = rootPkg.dependencies['unplugin-vue-router']
 
     // Create router file
     const routerContent = getFileRouterContent(isTypescript)
@@ -83,7 +94,7 @@ export const fileRouter: Feature = {
       const viteMod = await loadFile(viteConfigPath)
 
       viteMod.imports.$prepend({
-        from: 'unplugin-vue-router/vite',
+        from: 'vue-router/vite',
         imported: 'default',
         local: 'VueRouter',
       })
@@ -96,10 +107,22 @@ export const fileRouter: Feature = {
         // We need to insert before 'vue()' or 'Vue()'
         // For simplicity, let's unshift it.
         // Note: unplugin-vue-router MUST be before vue()
-        plugins.unshift(builders.raw('VueRouter()'))
+        plugins.unshift(builders.raw('VueRouter({ dts: \'src/typed-router.d.ts\' })'))
       }
 
       await writeFile(viteConfigPath, viteMod.generate().code)
+    }
+
+    // Update tsconfig.app.json
+    if (isTypescript) {
+      const tsConfigPath = join(cwd, 'tsconfig.app.json')
+      if (existsSync(tsConfigPath)) {
+        const tsConfig = await loadFile(tsConfigPath)
+        tsConfig.exports.vueCompilerOptions = tsConfig.exports.vueCompilerOptions || {}
+        tsConfig.exports.vueCompilerOptions.plugins = tsConfig.exports.vueCompilerOptions.plugins || []
+        tsConfig.exports.vueCompilerOptions.plugins.push('vue-router/volar/sfc-typed-router', 'vue-router/volar/sfc-route-blocks')
+        await writeFile(tsConfigPath, tsConfig.generate().code)
+      }
     }
   },
 }

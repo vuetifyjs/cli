@@ -273,7 +273,7 @@ async function collectManualOptions (): Promise<ProjectConfig | undefined> {
     const routerItem = await window.showQuickPick<StringItem>(
       [
         { label: 'Vue Router', value: 'router', description: 'Standard Vue Router', picked: true },
-        { label: 'File-based Router', value: 'file-router', description: 'unplugin-vue-router' },
+        { label: 'File-based Router', value: 'file-router', description: 'vue-router' },
         { label: 'None', value: 'none' },
       ],
       { placeHolder: 'Select Router' },

@@ -159,7 +159,7 @@
       },
       "file": {
         "label": "Vue Router (File-based)",
-        "hint": "Файловый роутинг с unplugin-vue-router"
+        "hint": "Файловый роутинг с vue-router"
       }
     },
     "features": {

@@ -4,7 +4,7 @@ import { x } from 'tinyexec'
 
 const templateToAppend = `
 packageExtensions:
-  unplugin-vue-router@*:
+  vue-router@*:
     dependencies:
       "@vue/compiler-sfc": "*"
 `
