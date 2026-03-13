@@ -44,8 +44,16 @@ jobs:
       - name: Update NPM
         run: npm install -g npm@latest
 
-      - name: Publish other packages besides create-vuetify
-        run: pnpm --filter "!create-vuetify" -r publish --tag latest --access public --no-git-checks
+      - name: Determine NPM tag
+        run: |
+          if [[ "${{ github.ref_name }}" == *"beta"* ]]; then
+            echo "NPM_TAG=beta" >> $GITHUB_ENV
+          else
+            echo "NPM_TAG=latest" >> $GITHUB_ENV
+          fi
 
-      - name: Publish create-vuetify with beta
-        run: pnpm --filter "create-vuetify" publish --tag latest --access public --no-git-checks
+      - name: Publish other packages besides create-vuetify
+        run: pnpm --filter "!create-vuetify" -r publish --tag ${{ env.NPM_TAG }} --access public --no-git-checks
+
+      - name: Publish create-vuetify
+        run: pnpm --filter "create-vuetify" publish --tag ${{ env.NPM_TAG }} --access public --no-git-checks
