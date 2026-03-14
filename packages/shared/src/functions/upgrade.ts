@@ -5,8 +5,6 @@ import { addDependency } from 'nypm'
 import { i18n } from '../i18n'
 
 function isInstalledLocally (): boolean {
-  // Check if CLI is inside a local node_modules (relative to cwd)
-  // If so, it's a local installation and shouldn't be upgraded globally
   const __dirname = path.dirname(fileURLToPath(import.meta.url))
   const cwd = process.cwd()
   const localNodeModules = path.join(cwd, 'node_modules')

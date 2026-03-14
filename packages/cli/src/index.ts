@@ -2,7 +2,6 @@ import tab from '@bomb.sh/tab/citty'
 import { createBanner, registerProjectArgsCompletion } from '@vuetify/cli-shared'
 import { add } from '@vuetify/cli-shared/commands'
 import { i18n } from '@vuetify/cli-shared/i18n'
-import { checkForUpdate } from '@vuetify/cli-shared/utils'
 
 import { defineCommand, runMain, showUsage } from 'citty'
 import { version } from '../package.json'
@@ -43,11 +42,5 @@ await tab(main).then(completion => {
     registerProjectArgsCompletion(initCommand)
   }
 })
-
-const hasReporter = process.argv.includes('--reporter') || process.argv.includes('-r')
-
-if (!hasReporter) {
-  await checkForUpdate(version)
-}
 
 runMain(main)

@@ -59,7 +59,8 @@
       "done": "Done!"
     },
     "upgrade": {
-      "description": "Upgrade %{pkg} to latest version",
+      "description": "[deprecated] Upgrade %{pkg} to latest version",
+      "deprecated": "This command is deprecated and may be removed in a future release.",
       "not_global": "%{pkg} is not installed globally.",
       "start": "Upgrading %{pkg} globally using nypm...",
       "success": "Successfully upgraded %{pkg} to latest.",
@@ -310,7 +311,11 @@
     "update_check": {
       "available": "Update available!",
       "run_update": "Run %{command} to update",
-      "run_with": "Run with %{command}"
+      "run_with": "Run with %{command}",
+      "update_to_continue": "Update now to continue?",
+      "updating": "Updating...",
+      "updated": "Updated.",
+      "rerun": "Please re-run the command to continue."
     }
   }
 }
