@@ -21,6 +21,6 @@ export default defineConfig({
     ...['', '-0', '-sm', '-lg', '-xl', '-pill', '-circle', '-shaped'].map(suffix => `rounded${suffix}`),
   ],
   outputToCssLayers: {
-    cssLayerName: (layer) => layer === 'properties' ? null : `uno.${layer}`,
+    cssLayerName: layer => layer === 'properties' ? null : `uno.${layer}`,
   },
 })

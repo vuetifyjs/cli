@@ -1,6 +1,6 @@
 import type { StaticRule } from 'unocss'
 import { defineConfig, presetWind4, transformerDirectives } from 'unocss'
-import { elevationPresets, createThemeVariants } from 'unocss-preset-vuetify'
+import { createThemeVariants, elevationPresets } from 'unocss-preset-vuetify'
 import * as breakpoints from './src/theme/breakpoints'
 
 export default defineConfig({
@@ -32,7 +32,7 @@ export default defineConfig({
     ...['', '-0', '-sm', '-lg', '-xl', '-pill', '-circle', '-shaped'].map(suffix => `rounded${suffix}`),
   ],
   outputToCssLayers: {
-    cssLayerName: (layer) => layer === 'properties' ? null : `uno-${layer}`,
+    cssLayerName: layer => layer === 'properties' ? null : `uno-${layer}`,
   },
   shortcuts: {
     'text-display-large': '  font-heading normal-case text-[3.5625rem] font-[400] leading-[1.1228] tracking-[-.0044em]',

@@ -1,7 +1,7 @@
 import type { StaticRule } from 'unocss'
 import { presetWind4, transformerDirectives } from 'unocss'
+import { createThemeVariants, elevationPresets } from 'unocss-preset-vuetify'
 import * as breakpoints from './app/theme/breakpoints'
-import { elevationPresets, createThemeVariants } from 'unocss-preset-vuetify'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -65,7 +65,7 @@ export default defineNuxtConfig({
       ...['', '-0', '-sm', '-lg', '-xl', '-pill', '-circle', '-shaped'].map(suffix => `rounded${suffix}`),
     ],
     outputToCssLayers: {
-      cssLayerName: (layer) => layer === 'properties' ? null : `uno-${layer}`,
+      cssLayerName: layer => layer === 'properties' ? null : `uno-${layer}`,
     },
     shortcuts: {
       'text-display-large': '  font-heading normal-case text-[3.5625rem] font-[400] leading-[1.1228] tracking-[-.0044em]',
@@ -84,5 +84,5 @@ export default defineNuxtConfig({
       'text-label-medium': '   font-body    normal-case text-[.75rem]    font-[500] leading-[1.3333] tracking-[.0417em]',
       'text-label-small': '    font-body    normal-case text-[.6875rem]  font-[500] leading-[1.4545] tracking-[.0455em]',
     },
- },
+  },
 })
