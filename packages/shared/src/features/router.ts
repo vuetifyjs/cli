@@ -1,6 +1,6 @@
 import type { Feature } from './types'
 import { existsSync, mkdirSync } from 'node:fs'
-import { writeFile } from 'node:fs/promises'
+import { readFile, writeFile } from 'node:fs/promises'
 import { builders, loadFile } from 'magicast'
 import { join } from 'pathe'
 import { installFeature } from '../utils/installFeature'
@@ -44,12 +44,10 @@ export const router: Feature = {
     if (isTypescript) {
       const tsConfigPath = join(cwd, 'tsconfig.app.json')
       if (existsSync(tsConfigPath)) {
-        const tsConfig = await loadFile(tsConfigPath)
-        tsConfig.exports.vueCompilerOptions = tsConfig.exports.vueCompilerOptions || {}
-        tsConfig.exports.vueCompilerOptions.plugins = tsConfig.exports.vueCompilerOptions.plugins || []
-        // Standard router doesn't strictly need these for unplugin features, but it helps if user adds route blocks later
-        tsConfig.exports.vueCompilerOptions.plugins.push('vue-router/volar/sfc-typed-router', 'vue-router/volar/sfc-route-blocks')
-        await writeFile(tsConfigPath, tsConfig.generate().code)
+        await updateTsconfigVueCompilerPlugins(tsConfigPath, [
+          'vue-router/volar/sfc-typed-router',
+          'vue-router/volar/sfc-route-blocks',
+        ])
       }
     }
   },
@@ -117,11 +115,10 @@ export const fileRouter: Feature = {
     if (isTypescript) {
       const tsConfigPath = join(cwd, 'tsconfig.app.json')
       if (existsSync(tsConfigPath)) {
-        const tsConfig = await loadFile(tsConfigPath)
-        tsConfig.exports.vueCompilerOptions = tsConfig.exports.vueCompilerOptions || {}
-        tsConfig.exports.vueCompilerOptions.plugins = tsConfig.exports.vueCompilerOptions.plugins || []
-        tsConfig.exports.vueCompilerOptions.plugins.push('vue-router/volar/sfc-typed-router', 'vue-router/volar/sfc-route-blocks')
-        await writeFile(tsConfigPath, tsConfig.generate().code)
+        await updateTsconfigVueCompilerPlugins(tsConfigPath, [
+          'vue-router/volar/sfc-typed-router',
+          'vue-router/volar/sfc-route-blocks',
+        ])
       }
     }
   },
@@ -170,4 +167,24 @@ const router = createRouter({
 
 export default router
 `
+}
+
+async function updateTsconfigVueCompilerPlugins (tsConfigPath: string, pluginsToAdd: string[]) {
+  try {
+    const raw = await readFile(tsConfigPath, 'utf8')
+    const config = JSON.parse(raw)
+
+    const vueCompilerOptions = config.vueCompilerOptions || {}
+    const current = Array.isArray(vueCompilerOptions.plugins) ? vueCompilerOptions.plugins : []
+    const plugins = Array.from(new Set([...current, ...pluginsToAdd]))
+
+    config.vueCompilerOptions = {
+      ...vueCompilerOptions,
+      plugins,
+    }
+
+    await writeFile(tsConfigPath, JSON.stringify(config, null, 2) + '\n')
+  } catch {
+    return
+  }
 }

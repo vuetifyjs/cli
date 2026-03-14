@@ -1,15 +1,16 @@
 import type { ProjectArgs } from '../args'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
-import { box, confirm, intro, log, outro, spinner, text } from '@clack/prompts'
+import { box, confirm, intro, log, outro, select, spinner, text } from '@clack/prompts'
 import slugify from '@sindresorhus/slugify'
 import { ansi256, link } from 'kolorist'
 import { getUserAgent } from 'package-manager-detector'
-import { join, relative, resolve } from 'pathe'
+import { join, relative } from 'pathe'
 import { standardPresets } from '../constants/presets'
 import { i18n } from '../i18n'
 import { type ProjectOptions, prompt } from '../prompts'
 import { createBanner } from '../utils/banner'
+import { listUserPresets, loadPreset } from '../utils/presets'
 import { scaffold } from './scaffold'
 
 export interface CreateVuetifyOptions extends ProjectArgs {
@@ -46,39 +47,45 @@ export async function createVuetify (options: CreateVuetifyOptions, commandOptio
     intro(i18n.t('messages.create.intro', { version }))
   }
 
+  if (args.interactive && !args.preset) {
+    const userPresets = listUserPresets().filter(p => !p.invalid)
+
+    const options: { label: string, value: string, hint?: string }[] = [
+      {
+        label: i18n.t('prompts.preset.start_scratch.label'),
+        hint: i18n.t('prompts.preset.start_scratch.hint'),
+        value: '__scratch__',
+      },
+      ...Object.entries(standardPresets).map(([key, preset]) => ({
+        label: preset.meta.displayName,
+        value: key,
+        hint: `${preset.type}/${preset.platform}${preset.features.length ? ` | ${preset.features.join(',')}` : ''}`,
+      })),
+      ...userPresets.map(p => ({
+        label: p.displayName,
+        value: p.slug,
+        hint: `${p.preset?.type || 'vuetify'}/${p.preset?.platform || 'vue'}${p.preset?.features?.length ? ` | ${p.preset.features.join(',')}` : ''}`,
+      })),
+    ]
+
+    const choice = await select({
+      message: i18n.t('prompts.preset.start_select'),
+      initialValue: '__scratch__',
+      options,
+    })
+
+    if (typeof choice === 'string' && choice !== '__scratch__') {
+      args.preset = choice
+    }
+  }
+
   if (args.preset) {
-    if (standardPresets[args.preset]) {
-      const preset = standardPresets[args.preset]
+    const preset = loadPreset(args.preset)
+    if (preset) {
       Object.assign(args, preset)
-      debug('loaded standard preset=', preset)
+      debug('loaded preset=', preset)
     } else {
-      const home = homedir()
-      const presetPath = resolve(args.preset)
-      const presetName = args.preset.endsWith('.json') ? args.preset : `${args.preset}.json`
-      const globalPresetPath = join(home, '.vuetify', 'presets', presetName)
-
-      let presetContent
-      if (existsSync(presetPath)) {
-        presetContent = readFileSync(presetPath, 'utf8')
-      } else if (existsSync(globalPresetPath)) {
-        presetContent = readFileSync(globalPresetPath, 'utf8')
-      } else {
-        const slug = slugify(args.preset)
-        const slugGlobalPath = join(home, '.vuetify', 'presets', `${slug}.json`)
-        if (existsSync(slugGlobalPath)) {
-          presetContent = readFileSync(slugGlobalPath, 'utf8')
-        }
-      }
-
-      if (presetContent) {
-        try {
-          const preset = JSON.parse(presetContent)
-          Object.assign(args, preset)
-          debug('loaded preset=', preset)
-        } catch (error) {
-          debug('failed to parse preset', error)
-        }
-      }
+      debug('failed to load preset=', args.preset)
     }
   }
 
@@ -100,7 +107,7 @@ export async function createVuetify (options: CreateVuetifyOptions, commandOptio
   }, cwd)
   debug('context=', JSON.stringify(context, null, 2))
 
-  if (args.interactive && !args.preset) {
+  if (args.interactive) {
     const save = await confirm({
       message: i18n.t('prompts.preset.save'),
       initialValue: false,
@@ -147,6 +154,7 @@ export async function createVuetify (options: CreateVuetifyOptions, commandOptio
           }
           writeFileSync(presetPath, JSON.stringify(presetContent, null, 2))
           log.step(i18n.t('prompts.preset.saved', { path: presetPath }))
+          log.info(i18n.t('prompts.preset.usage', { slug }))
         }
       }
     }

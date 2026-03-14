@@ -98,7 +98,13 @@
       "save": "Do you want to save these settings as a preset?",
       "name": "Preset name (display name):",
       "overwrite": "Preset \"%{name}\" already exists. Do you want to overwrite it?",
-      "saved": "Preset saved to %{path}"
+      "saved": "Preset saved to %{path}",
+      "usage": "Next time you can use: --preset %{slug}\nTip: run the \"presets\" command to list and use saved presets.",
+      "start_select": "Start from a preset?",
+      "start_scratch": {
+        "label": "Start from scratch",
+        "hint": "Manually select options"
+      }
     },
     "directory": {
       "name": "Project name",
@@ -290,7 +296,7 @@
       "description": "The Vuetify version to check documentation for"
     },
     "preset": {
-      "description": "Path to a preset file to load"
+      "description": "Preset key/name or path to a preset file (see: presets)"
     }
   },
   "cli": {

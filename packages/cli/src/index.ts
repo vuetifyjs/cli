@@ -1,6 +1,6 @@
 import tab from '@bomb.sh/tab/citty'
 import { createBanner, registerProjectArgsCompletion } from '@vuetify/cli-shared'
-import { add } from '@vuetify/cli-shared/commands'
+import { add, createPresetsCommand } from '@vuetify/cli-shared/commands'
 import { i18n } from '@vuetify/cli-shared/i18n'
 
 import { defineCommand, runMain, showUsage } from 'citty'
@@ -11,6 +11,8 @@ import { init } from './commands/init'
 import { update } from './commands/update'
 import { upgrade } from './commands/upgrade'
 
+const presets = createPresetsCommand({ version, type: 'vuetify' })
+
 export const main = defineCommand({
   meta: {
     name: 'vuetify',
@@ -19,6 +21,7 @@ export const main = defineCommand({
   },
   subCommands: {
     init,
+    presets,
     add,
     update,
     docs,
@@ -40,6 +43,10 @@ await tab(main).then(completion => {
   const initCommand = completion.commands.get('init')
   if (initCommand) {
     registerProjectArgsCompletion(initCommand)
+  }
+  const presetsCommand = completion.commands.get('presets')
+  if (presetsCommand) {
+    registerProjectArgsCompletion(presetsCommand)
   }
 })
 

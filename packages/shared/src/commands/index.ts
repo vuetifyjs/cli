@@ -1,4 +1,5 @@
 export * from './add'
 export * from './docs'
+export * from './presets'
 export * from './update'
 export * from './upgrade'

@@ -1,12 +1,14 @@
 import tab from '@bomb.sh/tab/citty'
 import { createVuetify, projectArgs, registerProjectArgsCompletion } from '@vuetify/cli-shared'
+import { createPresetsCommand } from '@vuetify/cli-shared/commands'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { promptLocalUpdateToContinue } from '@vuetify/cli-shared/utils'
 import { defineCommand, runMain } from 'citty'
 
 import { version } from '../package.json'
-import { presets } from './commands/presets'
 import { upgrade } from './commands/upgrade'
+
+const presets = createPresetsCommand({ version, type: 'vuetify' })
 
 export const main = defineCommand({
   meta: {
