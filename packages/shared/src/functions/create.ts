@@ -32,6 +32,27 @@ export interface StylisticOptions {
   intro?: boolean
 }
 
+function hasExplicitProjectConfigFlags () {
+  const argv = process.argv.slice(2)
+  const flags = [
+    '--platform',
+    '--features',
+    '--router',
+    '--css',
+    '--package-manager',
+    '--packageManager',
+    '--install',
+    '--no-install',
+    '--typescript',
+    '--no-typescript',
+    '--client-hints',
+    '--no-client-hints',
+    '--type',
+  ]
+
+  return argv.some(arg => flags.some(flag => arg === flag || arg.startsWith(`${flag}=`)))
+}
+
 export async function createVuetify (options: CreateVuetifyOptions, commandOptions?: StylisticOptions) {
   const { version, ...args } = options
   const cwd = args.cwd || process.cwd()
@@ -47,7 +68,7 @@ export async function createVuetify (options: CreateVuetifyOptions, commandOptio
     intro(i18n.t('messages.create.intro', { version }))
   }
 
-  if (args.interactive && !args.preset) {
+  if (args.interactive && !args.preset && !hasExplicitProjectConfigFlags()) {
     const userPresets = listUserPresets().filter(p => !p.invalid)
 
     const options: { label: string, value: string, hint?: string }[] = [
@@ -59,12 +80,12 @@ export async function createVuetify (options: CreateVuetifyOptions, commandOptio
       ...Object.entries(standardPresets).map(([key, preset]) => ({
         label: preset.meta.displayName,
         value: key,
-        hint: `${preset.type}/${preset.platform}${preset.features.length ? ` | ${preset.features.join(',')}` : ''}`,
+        hint: `${preset.type}/${preset.platform}${preset.features.length > 0 ? ` | ${preset.features.join(',')}` : ''}`,
       })),
       ...userPresets.map(p => ({
         label: p.displayName,
         value: p.slug,
-        hint: `${p.preset?.type || 'vuetify'}/${p.preset?.platform || 'vue'}${p.preset?.features?.length ? ` | ${p.preset.features.join(',')}` : ''}`,
+        hint: `${p.preset?.type || 'vuetify'}/${p.preset?.platform || 'vue'}${(p.preset?.features?.length || 0) > 0 ? ` | ${p.preset.features.join(',')}` : ''}`,
       })),
     ]
 
