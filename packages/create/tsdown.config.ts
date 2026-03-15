@@ -4,7 +4,9 @@ export default defineConfig({
   entry: './src/index.ts',
   banner: `#!/usr/bin/env node`,
   exports: true,
-  inlineOnly: false,
+  deps: {
+    onlyBundle: false,
+  },
   plugins: [
     {
       name: 'replace-cyan-with-blue',

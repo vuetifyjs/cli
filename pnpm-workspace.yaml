@@ -3,21 +3,21 @@ packages:
   - templates/*
 
 catalog:
-  '@bomb.sh/tab': ^0.0.12
-  '@clack/prompts': ^1.0.0
-  '@intellectronica/ruler': ^0.3.31
+  '@bomb.sh/tab': ^0.0.14
+  '@clack/prompts': ^1.1.0
+  '@intellectronica/ruler': ^0.3.37
   '@sindresorhus/slugify': ^3.0.0
-  '@types/node': ^24.10.11
+  '@types/node': ^24.12.0
   '@types/semver': ^7.7.1
   '@types/validate-npm-package-name': ^4.0.2
-  '@typescript-eslint/parser': ^8.54.0
-  bumpp: ^10.4.1
-  citty: ^0.2.0
-  eslint: ^9.39.2
+  '@typescript-eslint/parser': ^8.57.0
+  bumpp: ^11.0.0
+  citty: ^0.2.1
+  eslint: ^9.39.4
   eslint-config-vuetify: ^4.3.5-beta.1
   exsolve: ^1.0.8
   giget: ^3.1.2
-  i18n-js: ^4.5.2
+  i18n-js: ^4.5.3
   is-installed-globally: ^1.0.0
   is-interactive: ^2.0.0
   kolorist: ^1.8.0
@@ -30,12 +30,12 @@ catalog:
   reactive-vscode: ^1.0.0-beta.2
   semver: ^7.7.4
   sherif: ^1.10.0
-  tinyexec: ^1.0.2
+  tinyexec: ^1.0.4
   tinyglobby: ^0.2.15
-  tsdown: ^0.20.3
+  tsdown: ^0.21.3
   typescript: ^5.9.3
   validate-npm-package-name: ^7.0.2
-  vitest: ^4.0.18
-  vue-eslint-parser: ^10.2.0
+  vitest: ^4.1.0
+  vue-eslint-parser: ^10.4.0
 
 catalogMode: strict
