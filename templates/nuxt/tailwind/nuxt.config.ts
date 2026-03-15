@@ -22,7 +22,6 @@ export default defineNuxtConfig({
 
   vuetify: {
     moduleOptions: {
-      disableVuetifyStyles: true,
       styles: { configFile: 'assets/styles/settings.scss' },
     },
     vuetifyOptions: {

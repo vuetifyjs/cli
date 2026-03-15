@@ -10,13 +10,13 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@fontsource/roboto": "^5.2.9",
-    "@vuetify/v0": "^0.1.2",
-    "nuxt": "^4.2.2",
-    "vue": "^3.5.26"
+    "@fontsource/roboto": "^5.2.10",
+    "@vuetify/v0": "^0.1.7",
+    "nuxt": "^4.4.2",
+    "vue": "^3.5.30"
   },
   "devDependencies": {
-    "@unocss/nuxt": "^66.5.9",
-    "unocss": "^66.5.9"
+    "@unocss/nuxt": "^66.6.6",
+    "unocss": "^66.6.6"
   }
 }
