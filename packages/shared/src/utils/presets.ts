@@ -104,4 +104,3 @@ export function loadPreset (input: string): any | undefined {
     return
   }
 }
-
