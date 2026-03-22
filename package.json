@@ -21,6 +21,7 @@
   },
   "packageManager": "pnpm@10.32.1",
   "devDependencies": {
+    "@e18e/eslint-plugin": "catalog:",
     "@intellectronica/ruler": "catalog:",
     "@types/node": "catalog:",
     "@types/validate-npm-package-name": "catalog:",

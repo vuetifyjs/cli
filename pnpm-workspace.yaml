@@ -5,6 +5,7 @@ packages:
 catalog:
   '@bomb.sh/tab': ^0.0.14
   '@clack/prompts': ^1.1.0
+  '@e18e/eslint-plugin': ^0.2.0
   '@intellectronica/ruler': ^0.3.37
   '@sindresorhus/slugify': ^3.0.0
   '@types/node': ^24.12.0

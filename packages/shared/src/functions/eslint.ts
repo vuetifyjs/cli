@@ -122,7 +122,7 @@ export async function addEslint () {
       if (packagesToUpgrade.length > 0) {
         const packageManager = await getPackageManager()
         const upgradeCommand = resolveCommand(packageManager!.agent, 'upgrade', packagesToUpgrade)
-        await x(upgradeCommand!.command, upgradeCommand!.args.concat(['--silent']))
+        await x(upgradeCommand!.command, [...upgradeCommand!.args, '--silent'])
       }
       s.stop(i18n.t('spinners.dependencies.installed'))
     }

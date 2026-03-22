@@ -176,7 +176,7 @@ async function updateTsconfigVueCompilerPlugins (tsConfigPath: string, pluginsTo
 
     const vueCompilerOptions = config.vueCompilerOptions || {}
     const current = Array.isArray(vueCompilerOptions.plugins) ? vueCompilerOptions.plugins : []
-    const plugins = Array.from(new Set([...current, ...pluginsToAdd]))
+    const plugins = [...new Set([...current, ...pluginsToAdd])]
 
     config.vueCompilerOptions = {
       ...vueCompilerOptions,

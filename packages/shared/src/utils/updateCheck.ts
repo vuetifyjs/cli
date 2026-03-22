@@ -11,7 +11,7 @@ const blue = ansi256(33)
 
 async function getLatestVersion (packageName: string) {
   const timeout = new Promise<string | null>(resolve =>
-    setTimeout(() => resolve(null), 800),
+    setTimeout(resolve, 800, null),
   )
   const latestVersion = await Promise.race([
     getNpmPackageVersion(packageName),
