@@ -29,6 +29,8 @@ interface StringItem extends QuickPickItem {
   value: string
 }
 
+const RE_PROJECT_NAME = /^[a-z0-9-_]+$/
+
 export async function createProject () {
   // 1. Select Destination Directory
   const uri = await window.showOpenDialog({
@@ -52,7 +54,7 @@ export async function createProject () {
       if (!value) {
         return 'Project name is required'
       }
-      if (!/^[a-z0-9-_]+$/.test(value)) {
+      if (!RE_PROJECT_NAME.test(value)) {
         return 'Project name can only contain lowercase letters, numbers, hyphens, and underscores'
       }
       return null

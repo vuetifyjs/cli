@@ -9,6 +9,11 @@ import { parse } from 'vue-eslint-parser'
 
 const require = createRequire(import.meta.url)
 
+const RE_COMPOSABLE = /[A-Z]/
+const RE_PLUGIN = /^create.*Plugin$/
+const RE_CONSTANT = /^[A-Z][A-Z0-9_]*$/
+const RE_COMPONENT = /^[A-Z]/
+
 async function loadImportMap (cwd: string, targetPackage: string) {
   try {
     const pkgPath = await resolvePackageJSON(targetPackage, { url: cwd, try: true })
@@ -34,16 +39,16 @@ function getFeatureType (name: string, isType = false, importMap?: any): Feature
   if (importMap?.components?.[name]) {
     return 'component'
   }
-  if (name.startsWith('use') && name.length > 3 && name.at(3)?.match(/[A-Z]/)) {
+  if (name.startsWith('use') && name.length > 3 && name.at(3)?.match(RE_COMPOSABLE)) {
     return 'composable'
   }
-  if (/^create.*Plugin$/.test(name)) {
+  if (RE_PLUGIN.test(name)) {
     return 'plugin'
   }
-  if (/^[A-Z][A-Z0-9_]*$/.test(name)) {
+  if (RE_CONSTANT.test(name)) {
     return 'constant'
   }
-  if (/^[A-Z]/.test(name)) {
+  if (RE_COMPONENT.test(name)) {
     return 'component'
   }
   return 'util'
@@ -246,7 +251,7 @@ export async function analyzeProject (cwd: string = process.cwd(), targetPackage
         packageName: pkgInfo?.name || pkgName,
         version: pkgInfo?.version || 'unknown',
       },
-      features: Array.from(pkgFeatures.keys()).toSorted().map((name: string) => ({
+      features: [...pkgFeatures.keys()].toSorted().map((name: string) => ({
         name,
         type: getFeatureType(name, pkgFeatures.get(name)?.isType, importMap),
       })),

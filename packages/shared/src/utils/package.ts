@@ -12,11 +12,13 @@ export async function getProjectPackageJSON (cwd?: string) {
   return readPackageJSON(cwd || process.cwd())
 }
 
+const RE_DIGIT = /(\d+)/
+
 export function extractMajor (version: string): number | null {
   if (!version) {
     return null
   }
-  const match = version.match(/(\d+)/)
+  const match = version.match(RE_DIGIT)
   if (!match) {
     return null
   }

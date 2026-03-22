@@ -18,6 +18,8 @@ export function getCreatePresetsDir () {
   return join(home, '.vuetify', 'create', 'presets')
 }
 
+const RE_JSON_EXT = /\.json$/
+
 export function listUserPresets (): UserPresetEntry[] {
   const presetsDir = getCreatePresetsDir()
   const files = existsSync(presetsDir) ? readdirSync(presetsDir).filter(f => f.endsWith('.json')) : []
@@ -25,7 +27,7 @@ export function listUserPresets (): UserPresetEntry[] {
   const entries: UserPresetEntry[] = []
   for (const file of files) {
     const path = join(presetsDir, file)
-    const slug = file.replace(/\.json$/, '')
+    const slug = file.replace(RE_JSON_EXT, '')
 
     try {
       const content = readFileSync(path, 'utf8')

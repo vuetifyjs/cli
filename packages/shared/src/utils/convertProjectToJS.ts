@@ -2,6 +2,11 @@ import { existsSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync 
 import { join } from 'pathe'
 import { readPackageJSON, writePackageJSON } from 'pkg-types'
 
+const RE_LANG_TS = /\s?lang="ts"/g
+const RE_APP_IMPORT = /import type { App } from 'vue'.*\n/
+const RE_APP_TYPE = /app: App/
+const RE_TS_EXT = /\.m?ts$/
+
 export async function convertProjectToJS (projectRoot: string) {
   // 1. Remove TS specific config files
   const filesToRemove = [
@@ -72,19 +77,19 @@ export async function convertProjectToJS (projectRoot: string) {
     if (filePath.endsWith('.vue')) {
       let content = readFileSync(filePath, 'utf8')
       // Remove lang="ts"
-      content = content.replace(/\s?lang="ts"/g, '')
+      content = content.replace(RE_LANG_TS, '')
       writeFileSync(filePath, content)
     } else if (filePath.endsWith('.ts') || filePath.endsWith('.mts')) {
       let content = readFileSync(filePath, 'utf8')
 
       // Special handling for plugins/index.ts
       if (filePath.endsWith('plugins/index.ts')) {
-        content = content.replace(/import type { App } from 'vue'.*\n/, '')
-        content = content.replace(/app: App/, 'app')
+        content = content.replace(RE_APP_IMPORT, '')
+        content = content.replace(RE_APP_TYPE, 'app')
       }
 
       // Rename file
-      const newPath = filePath.replace(/\.m?ts$/, match => match === '.mts' ? '.mjs' : '.js')
+      const newPath = filePath.replace(RE_TS_EXT, match => match === '.mts' ? '.mjs' : '.js')
       writeFileSync(newPath, content)
       rmSync(filePath)
     } else if (filePath.endsWith('index.html')) {

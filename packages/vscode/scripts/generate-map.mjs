@@ -19,10 +19,16 @@ const SOURCES = [
   },
 ]
 
+const RE_V_PREFIX = /^V([A-Z])/
+const RE_KEBAB_CASE = /([a-z0-9])([A-Z])/g
+const RE_MD_EXT = /\.md$/
+const RE_LABEL_MATCH = /label:\s*['"]?C:\s*(V[a-zA-Z0-9]+)['"]?/
+const RE_COMPONENT_LINK = /\|\s*\[(v-[a-z0-9-]+)\]/g
+
 function kebabCase (str) {
   return str
-    .replace(/^V([A-Z])/, 'v-$1')
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(RE_V_PREFIX, 'v-$1')
+    .replace(RE_KEBAB_CASE, '$1-$2')
     .toLowerCase()
 }
 
@@ -43,9 +49,9 @@ async function scanDir (dir, category, map) {
         const content = await fs.readFile(fullPath, 'utf8')
 
         const relativePath = relative(map.root, fullPath)
-        const slug = relativePath.replace(/\.md$/, '')
+        const slug = relativePath.replace(RE_MD_EXT, '')
 
-        const labelMatch = content.match(/label:\s*['"]?C:\s*(V[a-zA-Z0-9]+)['"]?/)
+        const labelMatch = content.match(RE_LABEL_MATCH)
         if (labelMatch) {
           const componentName = labelMatch[1] // PascalCase
           const kebab = kebabCase(componentName)
@@ -56,7 +62,7 @@ async function scanDir (dir, category, map) {
           map.primary[componentName] = finalSlug
         }
 
-        const regex = /\|\s*\[(v-[a-z0-9-]+)\]/g
+        const regex = RE_COMPONENT_LINK
         let match
         while ((match = regex.exec(content)) !== null) {
           const componentName = match[1]

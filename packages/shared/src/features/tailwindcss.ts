@@ -6,6 +6,8 @@ import { addVitePlugin } from 'magicast/helpers'
 import { join } from 'pathe'
 import rootPkg from './dependencies/package.json' with { type: 'json' }
 
+const RE_STYLES = /\/\/ Styles/g
+
 export const tailwindcss: Feature = {
   name: 'tailwindcss',
   apply: async ({ cwd, pkg, isTypescript, isNuxt, type }) => {
@@ -48,7 +50,7 @@ export const tailwindcss: Feature = {
         const filePath = join(cwd, file)
         if (existsSync(filePath)) {
           const mainFile = await readFile(filePath, 'utf8')
-          await writeFile(filePath, mainFile.replace(/\/\/ Styles/g, '// Styles\nimport \'./tailwind.css\';'))
+          await writeFile(filePath, mainFile.replace(RE_STYLES, '// Styles\nimport \'./tailwind.css\';'))
           break
         }
       }
