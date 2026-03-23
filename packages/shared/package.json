@@ -22,11 +22,15 @@
     "pathe": "catalog:",
     "pkg-types": "catalog:",
     "tinyexec": "catalog:",
-    "tsdown": "catalog:"
+    "tsdown": "catalog:",
+    "vitest": "catalog:"
   },
   "exports": {
     ".": {
       "import": "./index.ts"
+    },
+    "./mcp-core": {
+      "import": "./mcp-core/index.ts"
     },
     "./commands": {
       "import": "./commands/index.ts"
@@ -43,6 +47,7 @@
     "@typescript-eslint/parser": "catalog:",
     "magicast": "catalog:",
     "semver": "catalog:",
+    "smol-toml": "catalog:",
     "tinyglobby": "catalog:",
     "validate-npm-package-name": "catalog:",
     "vue-eslint-parser": "catalog:"

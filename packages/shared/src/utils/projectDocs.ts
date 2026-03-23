@@ -108,6 +108,16 @@ function formatScripts (scripts: ProjectDocsOptions['scripts'], pm: string) {
   return items.join('\n')
 }
 
+function dlxCommand (pm: string, pkg: string) {
+  if (pm === 'pnpm' || pm === 'yarn') {
+    return `${pm} dlx ${pkg}`
+  }
+  if (pm === 'bun') {
+    return `bunx ${pkg}`
+  }
+  return `npx -y ${pkg}`
+}
+
 export function getProjectAgentsMd (options: ProjectDocsOptions) {
   const pm = getPackageManager(options.packageManager)
   const enabledFeatures = options.features.length > 0
@@ -195,7 +205,20 @@ ${build}
 ## 🧪 Available Scripts
 
 ${formatScripts(options.scripts, pm)}
+${options.features.includes('mcp')
+  ? `
+## 🤖 Vuetify MCP Server
 
+This project is configured with the Vuetify Model Context Protocol (MCP) server.
+To install and configure the MCP server for your favorite IDE (Cursor, Trae, Windsurf, VS Code, Claude Desktop, etc.) run:
+
+\`\`\`bash
+${dlxCommand(pm, '@vuetify/mcp-cli')}
+\`\`\`
+
+This will open an interactive setup wizard to help you connect your AI assistant to the Vuetify ecosystem.
+`
+  : ''}
 ## 💪 Support Vuetify Development
 
 This project uses ${uiLabel(options.type)} - an MIT licensed Open Source project. We are glad to welcome contributors and any support for ongoing development:

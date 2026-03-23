@@ -10,12 +10,129 @@
       "need_to": "We need to %{actions}."
     },
     "mcp": {
-      "description": "Install %{pkg} to enable MCP integration with Vuetify.",
+      "description": "Install %{pkg} to enable Vuetify MCP. Optional: set up %{ruler}.",
       "action": {
         "install": "install %{pkg}"
       },
       "current": "Currently",
       "need_to": "We need to %{action}."
+    },
+    "mcp_cli": {
+      "description": "Configure Vuetify MCP for your IDE",
+      "intro": "Vuetify MCP",
+      "args": {
+        "local": "Use local (project) scope",
+        "global": "Use global (user) scope",
+        "remote": "Use hosted server (remote) instead of @vuetify/mcp",
+        "ide": "Target IDE id (e.g. code, cursor, trae, claude)",
+        "agent": "Target agent id (e.g. cursor, roo, zed)",
+        "cwd": "Working directory (used to detect project scope)"
+      },
+      "install": {
+        "description": "Install/configure MCP connection for an IDE"
+      },
+      "config": {
+        "description": "Configure MCP connection for an IDE (alias of install)"
+      },
+      "status": {
+        "description": "Show current MCP installation status",
+        "not_installed": "No MCP installation state found.",
+        "scope": "Scope: %{installScope}",
+        "mode": "Mode: %{mode}",
+        "ide": "IDE: %{ide}",
+        "updated": "Updated: %{at}",
+        "config_file": "Config file: %{path}",
+        "config_command": "Command: %{command}",
+        "state": "State file: %{path}",
+        "auth": "VUETIFY_API_KEY: %{status}",
+        "auth_set": "set",
+        "auth_not_set": "not set"
+      },
+      "where": {
+        "description": "Show where state/config files are stored",
+        "scope": "Scope: %{installScope}",
+        "mode": "Mode: %{mode}",
+        "state": "State file: %{path}",
+        "config_file": "Config file: %{path}",
+        "config_command": "Command: %{command}",
+        "config_unknown": "Config target not found for this IDE."
+      },
+      "update": {
+        "description": "Update current installation (rewrite IDE config)",
+        "done": "Updated"
+      },
+      "env": {
+        "description": "Manage MCP secrets in IDE config (without printing values)",
+        "scope": "Scope: %{installScope}",
+        "mode": "Mode: %{mode}",
+        "key": "%{key}: %{status}",
+        "unavailable": "Cannot inspect IDE config for this IDE.",
+        "hint_set": "Use: mcp env set VUETIFY_API_KEY=...",
+        "show": {
+          "description": "Show which secrets are configured"
+        },
+        "set": {
+          "description": "Set a secret in the current installation",
+          "args": {
+            "pair": "KEY=VALUE (supported: VUETIFY_API_KEY)"
+          },
+          "invalid": "Invalid pair. Expected KEY=VALUE for VUETIFY_API_KEY.",
+          "done": "Updated %{key}"
+        },
+        "unset": {
+          "description": "Remove a secret from the current installation",
+          "args": {
+            "key": "KEY (supported: VUETIFY_API_KEY)"
+          },
+          "invalid": "Invalid key. Supported: VUETIFY_API_KEY.",
+          "unsupported": "This IDE cannot be updated automatically. Please edit config manually.",
+          "done": "Removed %{key}",
+          "noop": "%{key} was not set"
+        }
+      },
+      "agents": {
+        "description": "List supported agents",
+        "args": {
+          "query": "Agent id (or alias) to show details"
+        },
+        "list": {
+          "title": "Agents:"
+        },
+        "not_found": "Agent not found: %{query}",
+        "show": {
+          "title": "Agent: %{id}",
+          "name": "Name: %{name}",
+          "description": "Description: %{description}",
+          "publisher": "Publisher: %{publisher}",
+          "homepage": "Homepage: %{homepage}",
+          "categories": "Categories: %{categories}",
+          "tags": "Tags: %{tags}",
+          "ides": "IDEs: %{ides}",
+          "scopes": "Scopes: %{scopes}",
+          "modes": "Modes: %{modes}"
+        }
+      },
+      "done": "Configured (%{installScope}, %{mode}) for %{ide}",
+      "details": {
+        "scope": "Scope: %{installScope}",
+        "mode": "Mode: %{mode}",
+        "ide": "IDE: %{ide}",
+        "server": "Server: %{server}",
+        "config": "IDE config: %{config}",
+        "state": "State: %{path}"
+      },
+      "auth": {
+        "missing": "VUETIFY_API_KEY is not configured.",
+        "how_to_set": "Tip: use `mcp env set VUETIFY_API_KEY=...` to add it safely.",
+        "configured": "Authentication is configured."
+      },
+      "output": {
+        "unknown": "unknown",
+        "skipped": "skipped (%{reason})"
+      },
+      "scope": {
+        "conflict": "Conflicting scope flags. Using default."
+      }
     },
     "init": {
       "v0": "Initialize a Vuetify0 project",
@@ -92,7 +209,13 @@
     "mcp": {
       "overwrite": "Found %{file}. Overwrite?",
       "create": "Create Ruler config files?",
+      "enable_ruler": "Enable Ruler integration? (Optional)",
       "scripts": "Add mcp scripts to package.json?"
+    },
+    "mcp_cli": {
+      "ide": "Select an IDE to configure",
+      "agents": "Which agents do you want to configure?",
+      "detected": "(detected)"
     },
     "preset": {
       "save": "Do you want to save these settings as a preset?",
@@ -189,7 +312,7 @@
       },
       "mcp": {
         "label": "MCP",
-        "hint": "with @vuetify/mcp and @intellectronica/ruler"
+        "hint": "with @vuetify/mcp"
       }
     },
     "client_hints": {

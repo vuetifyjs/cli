@@ -1,0 +1,5 @@
+export * from './agent-registry'
+export * from './ide-config-writer'
+export * from './ide-detector'
+export * from './installer'
+export * from './types'

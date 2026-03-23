@@ -16,6 +16,9 @@ export default defineConfig({
         if (id.includes('@clack/prompts/')) {
           return code.replace(RE_CYAN, 't.blue')
         }
+        if (id.includes('citty') && id.endsWith('index.mjs')) {
+          return code.replace('_c(36);', '_c(34);')
+        }
         return code
       },
     },

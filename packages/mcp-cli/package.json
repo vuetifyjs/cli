@@ -1,7 +1,7 @@
 {
-  "name": "@vuetify/cli",
+  "name": "@vuetify/mcp-cli",
   "version": "1.1.6",
-  "description": "Vuetify CLI",
+  "description": "Vuetify MCP CLI",
   "type": "module",
   "scripts": {
     "build": "tsdown"
@@ -12,36 +12,25 @@
     "LICENSE"
   ],
   "bin": {
-    "vuetify": "./dist/index.mjs"
+    "vuetify-mcp": "./dist/index.mjs"
   },
   "keywords": [
     "vuetify",
-    "cli",
-    "tool",
-    "vue",
-    "component framework"
+    "mcp",
+    "cli"
   ],
   "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuetifyjs/cli.git",
-    "directory": "packages/cli"
+    "directory": "packages/mcp-cli"
   },
   "devDependencies": {
     "@bomb.sh/tab": "catalog:",
-    "@clack/prompts": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
     "citty": "catalog:",
-    "giget": "catalog:",
-    "kolorist": "catalog:",
-    "nypm": "catalog:",
-    "open": "catalog:",
-    "pathe": "catalog:",
     "tsdown": "catalog:"
-  },
-  "dependencies": {
-    "@typescript-eslint/parser": "catalog:"
   },
   "exports": {
     ".": "./dist/index.mjs",
@@ -62,8 +51,6 @@
     "@humanfs/core": "0.19.1",
     "@humanfs/node": "0.16.7",
     "@humanwhocodes/retry": "0.4.3",
-    "@sindresorhus/slugify": "3.0.0",
-    "@sindresorhus/transliterate": "2.3.1",
     "acorn": "8.15.0",
     "acorn-jsx": "5.3.2",
     "ajv": "6.14.0",
@@ -79,10 +66,7 @@
     "default-browser": "5.4.0",
     "default-browser-id": "5.0.0",
     "define-lazy-prop": "3.0.0",
-    "escape-string-regexp": [
-      "4.0.0",
-      "5.0.0"
-    ],
+    "escape-string-regexp": "4.0.0",
     "eslint": "9.39.4",
     "eslint-scope": "8.4.0",
     "eslint-visitor-keys": [
@@ -97,12 +81,10 @@
     "exsolve": "1.0.8",
     "fast-deep-equal": "3.1.3",
     "fast-json-stable-stringify": "2.1.0",
-    "fdir": "6.5.0",
     "file-entry-cache": "8.0.0",
     "find-up": "5.0.0",
     "flat-cache": "4.0.1",
     "flatted": "3.3.3",
-    "giget": "3.1.2",
     "glob-parent": "6.0.2",
     "globals": "14.0.0",
     "has-flag": "4.0.0",
@@ -115,7 +97,6 @@
     "is-glob": "4.0.3",
     "is-in-ssh": "1.0.0",
     "is-inside-container": "1.0.0",
-    "is-interactive": "2.0.0",
     "is-wsl": "3.1.0",
     "jiti": "2.6.1",
     "json-buffer": "3.0.1",
@@ -140,7 +121,6 @@
     "parent-module": "1.0.1",
     "path-exists": "4.0.0",
     "pathe": "2.0.3",
-    "picomatch": "4.0.3",
     "pkg-types": "2.3.0",
     "powershell-utils": "0.1.0",
     "prelude-ls": "1.2.1",
@@ -155,7 +135,6 @@
       "1.0.2",
       "1.0.4"
     ],
-    "tinyglobby": "0.2.15",
     "type-check": "0.4.0",
     "uri-js": "4.4.1",
     "validate-npm-package-name": "7.0.2",

@@ -1,5 +1,6 @@
 export * from './add'
 export * from './docs'
+export * from './mcp'
 export * from './presets'
 export * from './update'
 export * from './upgrade'

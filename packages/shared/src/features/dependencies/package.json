@@ -10,6 +10,7 @@
     "@tailwindcss/vite": "^4.2.1",
     "@unocss/nuxt": "^66.6.6",
     "@unocss/transformer-directives": "^66.6.6",
+    "@vuetify/mcp": "^0.5.0",
     "@vuetify/loader-shared": "^2.1.2",
     "eslint": "^9.39.4",
     "eslint-config-vuetify": "^4.3.4",
