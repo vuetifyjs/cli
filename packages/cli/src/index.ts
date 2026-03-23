@@ -1,7 +1,10 @@
 import tab from '@bomb.sh/tab/citty'
-import { createBanner, registerProjectArgsCompletion } from '@vuetify/cli-shared'
-import { add, createPresetsCommand, mcp } from '@vuetify/cli-shared/commands'
+import { add } from '@vuetify/cli-shared/commands/add'
+import { mcp } from '@vuetify/cli-shared/commands/mcp'
+import { createPresetsCommand } from '@vuetify/cli-shared/commands/presets'
+import { registerProjectArgsCompletion } from '@vuetify/cli-shared/completion'
 import { i18n } from '@vuetify/cli-shared/i18n'
+import { createBanner } from '@vuetify/cli-shared/utils/banner'
 
 import { defineCommand, runMain, showUsage } from 'citty'
 import { version } from '../package.json'

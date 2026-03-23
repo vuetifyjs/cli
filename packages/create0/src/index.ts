@@ -1,6 +1,8 @@
 import tab from '@bomb.sh/tab/citty'
-import { createVuetify, projectArgs, registerProjectArgsCompletion } from '@vuetify/cli-shared'
-import { createPresetsCommand } from '@vuetify/cli-shared/commands'
+import { projectArgs } from '@vuetify/cli-shared/args'
+import { createPresetsCommand } from '@vuetify/cli-shared/commands/presets'
+import { registerProjectArgsCompletion } from '@vuetify/cli-shared/completion'
+import { createVuetify } from '@vuetify/cli-shared/functions/create'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand, runMain } from 'citty'
 

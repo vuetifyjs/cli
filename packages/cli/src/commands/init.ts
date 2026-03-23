@@ -1,4 +1,5 @@
-import { createVuetify, projectArgs } from '@vuetify/cli-shared'
+import { projectArgs } from '@vuetify/cli-shared/args'
+import { createVuetify } from '@vuetify/cli-shared/functions/create'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { promptLocalUpdateToContinue } from '@vuetify/cli-shared/utils'
 import { defineCommand } from 'citty'

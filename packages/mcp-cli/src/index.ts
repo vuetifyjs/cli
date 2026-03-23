@@ -1,5 +1,5 @@
 import tab from '@bomb.sh/tab/citty'
-import { mcp } from '@vuetify/cli-shared/commands'
+import { mcp } from '@vuetify/cli-shared/commands/mcp'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { defineCommand, runMain, showUsage } from 'citty'
 import { version } from '../package.json'

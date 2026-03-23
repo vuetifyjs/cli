@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
-import { scaffold } from '@vuetify/cli-shared'
+import { scaffold } from '@vuetify/cli-shared/functions/scaffold'
 import { commands, type QuickPickItem, Uri, window, workspace } from 'vscode'
 
 interface PresetItem extends QuickPickItem {
