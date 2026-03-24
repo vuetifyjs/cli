@@ -165,7 +165,6 @@ export async function prompt (args: Partial<ProjectOptions>, cwd = process.cwd()
         return Promise.resolve([] as string[])
       }
       const platform = results.platform || args.platform
-      const type = results.type || args.type
 
       return platform === 'vue'
         ? multiselect({

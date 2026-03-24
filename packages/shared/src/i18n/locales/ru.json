@@ -10,12 +10,129 @@
       "need_to": "Нужно %{actions}."
     },
     "mcp": {
-      "description": "Установим %{configPkg}, чтобы включить интеграцию MCP с Vuetify.",
+      "description": "Установим %{pkg}, чтобы включить Vuetify MCP. Опционально: настроим %{ruler}.",
       "action": {
-        "install": "установить %{pkgs}"
+        "install": "установить %{pkg}"
       },
       "current": "Сейчас",
-      "need_to": "Нужно %{actions}."
+      "need_to": "Нужно %{action}."
+    },
+    "mcp_cli": {
+      "description": "Настроить Vuetify MCP для IDE",
+      "intro": "Vuetify MCP",
+      "args": {
+        "local": "Использовать local (в проекте)",
+        "global": "Использовать global (для пользователя)",
+        "remote": "Использовать hosted server (remote) вместо @vuetify/mcp",
+        "ide": "ID IDE (например: code, cursor, trae, claude)",
+        "agent": "ID агента (например: cursor, roo, zed)",
+        "cwd": "Рабочая папка (для определения project scope)"
+      },
+      "install": {
+        "description": "Установить/настроить подключение MCP для IDE"
+      },
+      "config": {
+        "description": "Настроить подключение MCP для IDE (алиас install)"
+      },
+      "status": {
+        "description": "Показать текущее состояние установки MCP",
+        "not_installed": "Состояние установки MCP не найдено.",
+        "scope": "Scope: %{installScope}",
+        "mode": "Режим: %{mode}",
+        "ide": "IDE: %{ide}",
+        "updated": "Обновлено: %{at}",
+        "config_file": "Файл конфига: %{path}",
+        "config_command": "Команда: %{command}",
+        "state": "Файл состояния: %{path}",
+        "auth": "VUETIFY_API_KEY: %{status}",
+        "auth_set": "задан",
+        "auth_not_set": "не задан"
+      },
+      "where": {
+        "description": "Показать, где хранятся файлы состояния и конфиги",
+        "scope": "Scope: %{installScope}",
+        "mode": "Режим: %{mode}",
+        "state": "Файл состояния: %{path}",
+        "config_file": "Файл конфига: %{path}",
+        "config_command": "Команда: %{command}",
+        "config_unknown": "Не удалось определить место хранения конфига для этой IDE."
+      },
+      "update": {
+        "description": "Обновить текущую установку (перезаписать конфиг IDE)",
+        "done": "Обновлено"
+      },
+      "env": {
+        "description": "Управление секретами в конфиге IDE (без вывода значений)",
+        "scope": "Scope: %{installScope}",
+        "mode": "Режим: %{mode}",
+        "key": "%{key}: %{status}",
+        "unavailable": "Невозможно проверить конфиг IDE для этой IDE.",
+        "hint_set": "Команда: mcp env set VUETIFY_API_KEY=...",
+        "show": {
+          "description": "Показать, какие секреты настроены"
+        },
+        "set": {
+          "description": "Установить секрет для текущей установки",
+          "args": {
+            "pair": "KEY=VALUE (поддерживается: VUETIFY_API_KEY)"
+          },
+          "invalid": "Некорректная пара. Ожидается KEY=VALUE для VUETIFY_API_KEY.",
+          "done": "Обновлено %{key}"
+        },
+        "unset": {
+          "description": "Удалить секрет из текущей установки",
+          "args": {
+            "key": "KEY (поддерживается: VUETIFY_API_KEY)"
+          },
+          "invalid": "Некорректный ключ. Поддерживается: VUETIFY_API_KEY.",
+          "unsupported": "Эту IDE нельзя обновить автоматически. Отредактируйте конфиг вручную.",
+          "done": "Удалено %{key}",
+          "noop": "%{key} не был задан"
+        }
+      },
+      "agents": {
+        "description": "Список поддерживаемых агентов",
+        "args": {
+          "query": "ID агента (или alias), чтобы показать детали"
+        },
+        "list": {
+          "title": "Агенты:"
+        },
+        "not_found": "Агент не найден: %{query}",
+        "show": {
+          "title": "Агент: %{id}",
+          "name": "Имя: %{name}",
+          "description": "Описание: %{description}",
+          "publisher": "Издатель: %{publisher}",
+          "homepage": "Сайт: %{homepage}",
+          "categories": "Категории: %{categories}",
+          "tags": "Теги: %{tags}",
+          "ides": "IDE: %{ides}",
+          "scopes": "Scope: %{scopes}",
+          "modes": "Режимы: %{modes}"
+        }
+      },
+      "done": "Настроено (%{installScope}, %{mode}) для %{ide}",
+      "details": {
+        "scope": "Scope: %{installScope}",
+        "mode": "Режим: %{mode}",
+        "ide": "IDE: %{ide}",
+        "server": "Server: %{server}",
+        "config": "Конфиг IDE: %{config}",
+        "state": "State: %{path}"
+      },
+      "auth": {
+        "missing": "VUETIFY_API_KEY не настроен.",
+        "how_to_set": "Подсказка: используйте `mcp env set VUETIFY_API_KEY=...`, чтобы добавить ключ безопасно.",
+        "configured": "Авторизация настроена."
+      },
+      "output": {
+        "unknown": "неизвестно",
+        "skipped": "пропущено (%{reason})"
+      },
+      "scope": {
+        "conflict": "Конфликт флагов области. Используем значение по умолчанию."
+      }
     },
     "init": {
       "v0": "Инициализировать проект Vuetify0",
@@ -59,7 +176,8 @@
       "done": "Готово!"
     },
     "upgrade": {
-      "description": "Обновить %{pkg} до последней версии",
+      "description": "[устарело] Обновить %{pkg} до последней версии",
+      "deprecated": "Эта команда устарела и может быть удалена в будущих релизах.",
       "not_global": "%{pkg} не установлен глобально.",
       "start": "Обновляем %{pkg}",
       "success": "Успешно обновлен %{pkg} до последней версии.",
@@ -88,11 +206,28 @@
       "create": "Конфиг ESLint не найден. Создать его?",
       "scripts": "Добавить скрипты lint в package.json?"
     },
+    "mcp": {
+      "overwrite": "Найден %{file}. Хотите перезаписать?",
+      "create": "Создать конфиги Ruler?",
+      "enable_ruler": "Включить интеграцию Ruler? (опционально)",
+      "scripts": "Добавить mcp скрипты в package.json?"
+    },
+    "mcp_cli": {
+      "ide": "Выберите IDE для настройки",
+      "agents": "Какие агенты настроить?",
+      "detected": "(обнаружено)"
+    },
     "preset": {
       "save": "Хотите сохранить эти настройки как пресет?",
       "name": "Имя пресета (отображаемое имя):",
       "overwrite": "Пресет \"%{name}\" уже существует. Перезаписать?",
-      "saved": "Пресет сохранен в %{path}"
+      "saved": "Пресет сохранен в %{path}",
+      "usage": "В следующий раз можно использовать: --preset %{slug}\nПодсказка: команда \"presets\" покажет список сохранённых пресетов.",
+      "start_select": "Начать с пресета?",
+      "start_scratch": {
+        "label": "Настроить вручную",
+        "hint": "Выбрать параметры в мастере"
+      }
     },
     "directory": {
       "name": "Название проекта",
@@ -159,7 +294,7 @@
       },
       "file": {
         "label": "Vue Router (File-based)",
-        "hint": "Файловый роутинг с unplugin-vue-router"
+        "hint": "Файловый роутинг с vue-router"
       }
     },
     "features": {
@@ -180,7 +315,7 @@
       },
       "mcp": {
         "label": "MCP",
-        "hint": "с @vuetify/mcp и @intellectronica/ruler"
+        "hint": "с @vuetify/mcp"
       }
     },
     "package_manager": {
@@ -212,6 +347,10 @@
     "eslint": {
       "setup_config": "Настраиваем конфиг ESLint",
       "complete": "Настройка конфига ESLint завершена!"
+    },
+    "mcp": {
+      "setup_config": "Настраиваем конфиг Ruler...",
+      "complete": "Ruler настроен"
     }
   },
   "messages": {
@@ -277,7 +416,7 @@
       "description": "Вывести подробные логи"
     },
     "preset": {
-      "description": "Путь к файлу пресета для загрузки"
+      "description": "Ключ/имя пресета или путь к файлу пресета (см. presets)"
     },
     "version": {
       "description": "Версия Vuetify для просмотра документации"
@@ -301,7 +440,11 @@
     "update_check": {
       "available": "Доступно обновление!",
       "run_update": "Выполните %{command}, чтобы обновить",
-      "run_with": "Выполните %{command}"
+      "run_with": "Выполните %{command}",
+      "update_to_continue": "Обновить сейчас, чтобы продолжить?",
+      "updating": "Обновляю...",
+      "updated": "Обновлено.",
+      "rerun": "Перезапустите команду, чтобы продолжить."
     }
   }
 }

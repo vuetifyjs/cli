@@ -1,0 +1,53 @@
+{
+  "name": "@vuetify/mcp-cli",
+  "version": "1.2.0-beta.1",
+  "description": "Vuetify MCP CLI",
+  "type": "module",
+  "scripts": {
+    "build": "tsdown"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "vuetify-mcp": "./dist/index.mjs"
+  },
+  "keywords": [
+    "vuetify",
+    "mcp",
+    "cli"
+  ],
+  "author": "Andrey Yolkin <andreyyolkin@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuetifyjs/cli.git",
+    "directory": "packages/mcp-cli"
+  },
+  "devDependencies": {
+    "@bomb.sh/tab": "catalog:",
+    "@vuetify/cli-shared": "workspace:*",
+    "citty": "catalog:",
+    "tsdown": "catalog:"
+  },
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "inlinedDependencies": {
+    "@bomb.sh/tab": "0.0.14",
+    "@clack/core": "1.1.0",
+    "@clack/prompts": "1.1.0",
+    "bignumber.js": "9.3.1",
+    "citty": "0.2.1",
+    "i18n-js": "4.5.3",
+    "kolorist": "1.8.0",
+    "lodash": "4.17.21",
+    "make-plural": "7.5.0",
+    "pathe": "2.0.3",
+    "sisteransi": "1.0.5",
+    "smol-toml": "1.6.0"
+  }
+}

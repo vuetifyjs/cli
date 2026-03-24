@@ -21,13 +21,14 @@ describe('create-vuetify matrix', () => {
     // fs.rmSync(TEMP_DIR, { recursive: true, force: true })
   })
 
-  const runCli = async (args: string[], cwd: string) => {
+  const runCli = async (args: string[], cwd: string, env: Record<string, string | undefined> = {}) => {
     try {
       const proc = x('node', [CLI_PATH, ...args], {
         nodeOptions: {
           cwd,
           env: {
             ...process.env,
+            ...env,
             VUETIFY_CLI_TEMPLATES_PATH: TEMPLATES_PATH,
           },
         },
@@ -46,6 +47,52 @@ describe('create-vuetify matrix', () => {
       throw error
     }
   }
+
+  it('should load user preset by display name', async () => {
+    const homeDir = join(TEMP_DIR, 'home-presets')
+    const presetDir = join(homeDir, '.vuetify', 'create', 'presets')
+    fs.mkdirSync(presetDir, { recursive: true })
+
+    const presetContent = {
+      platform: 'nuxt',
+      type: 'vuetify',
+      features: [],
+      typescript: true,
+      router: 'none',
+      css: 'none',
+      install: false,
+      packageManager: 'pnpm',
+      meta: {
+        displayName: 'My Preset',
+      },
+    }
+    fs.writeFileSync(join(presetDir, 'my-preset.json'), JSON.stringify(presetContent, null, 2))
+
+    const projectName = 'test-user-preset'
+    const projectPath = join(TEMP_DIR, projectName)
+
+    if (fs.existsSync(projectPath)) {
+      fs.rmSync(projectPath, { recursive: true, force: true })
+    }
+
+    const cliArgs = [
+      `--name=${projectName}`,
+      '--preset=My Preset',
+      '--package-manager=pnpm',
+      '--force',
+      '--no-install',
+      '--no-interactive',
+    ]
+
+    const { stdout, stderr } = await runCli(cliArgs, TEMP_DIR, { HOME: homeDir })
+    console.log('STDOUT:', stdout)
+    if (stderr) {
+      console.error('STDERR:', stderr)
+    }
+
+    expect(fs.existsSync(projectPath)).toBe(true)
+    expect(fs.existsSync(join(projectPath, 'nuxt.config.ts'))).toBe(true)
+  }, TIMEOUT)
 
   const matrix = [
     // Vue + JS
@@ -90,6 +137,8 @@ describe('create-vuetify matrix', () => {
 
       expect(fs.existsSync(projectPath)).toBe(true)
       expect(fs.existsSync(join(projectPath, 'package.json'))).toBe(true)
+      expect(fs.existsSync(join(projectPath, 'AGENTS.md'))).toBe(true)
+      expect(fs.existsSync(join(projectPath, 'README.md'))).toBe(true)
 
       // Basic check for file structure
       if (args.includes('vue')) {

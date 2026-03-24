@@ -19,7 +19,6 @@ export default defineNuxtConfig({
 
   vuetify: {
     moduleOptions: {
-      disableVuetifyStyles: true,
       styles: { configFile: 'assets/styles/settings.scss' },
     },
     vuetifyOptions: {
@@ -47,7 +46,7 @@ export default defineNuxtConfig({
       ...['', '-0', '-sm', '-lg', '-xl', '-pill', '-circle', '-shaped'].map(suffix => `rounded${suffix}`),
     ],
     outputToCssLayers: {
-      cssLayerName: (layer) => layer === 'properties' ? null : `uno-${layer}`,
+      cssLayerName: layer => layer === 'properties' ? null : `uno-${layer}`,
     },
   },
 })

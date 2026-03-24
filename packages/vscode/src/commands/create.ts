@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
-import { scaffold, ScaffoldOptions } from '@vuetify/cli-shared'
+import { scaffold } from '@vuetify/cli-shared/functions/scaffold'
 import { commands, type QuickPickItem, Uri, window, workspace } from 'vscode'
 
 interface PresetItem extends QuickPickItem {
@@ -29,6 +29,8 @@ interface StringItem extends QuickPickItem {
   value: string
 }
 
+const RE_PROJECT_NAME = /^[a-z0-9-_]+$/
+
 export async function createProject () {
   // 1. Select Destination Directory
   const uri = await window.showOpenDialog({
@@ -52,7 +54,7 @@ export async function createProject () {
       if (!value) {
         return 'Project name is required'
       }
-      if (!/^[a-z0-9-_]+$/.test(value)) {
+      if (!RE_PROJECT_NAME.test(value)) {
         return 'Project name can only contain lowercase letters, numbers, hyphens, and underscores'
       }
       return null
@@ -273,7 +275,7 @@ async function collectManualOptions (): Promise<ProjectConfig | undefined> {
     const routerItem = await window.showQuickPick<StringItem>(
       [
         { label: 'Vue Router', value: 'router', description: 'Standard Vue Router', picked: true },
-        { label: 'File-based Router', value: 'file-router', description: 'unplugin-vue-router' },
+        { label: 'File-based Router', value: 'file-router', description: 'vue-router' },
         { label: 'None', value: 'none' },
       ],
       { placeHolder: 'Select Router' },

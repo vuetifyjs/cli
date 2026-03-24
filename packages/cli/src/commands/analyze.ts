@@ -1,5 +1,8 @@
+import type { Reporter } from '@vuetify/cli-shared/reporters/types'
 import { log } from '@clack/prompts'
-import { analyzeProject, ConsoleReporter, JsonReporter, type Reporter } from '@vuetify/cli-shared'
+import { analyzeProject } from '@vuetify/cli-shared/functions/analyze'
+import { ConsoleReporter } from '@vuetify/cli-shared/reporters/console'
+import { JsonReporter } from '@vuetify/cli-shared/reporters/json'
 import { defineCommand } from 'citty'
 import { resolve } from 'pathe'
 

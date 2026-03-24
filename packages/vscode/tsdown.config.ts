@@ -5,8 +5,8 @@ export default defineConfig({
   format: ['cjs'],
   target: 'node18',
   minify: true,
-  external: [
-    'vscode',
-  ],
-  inlineOnly: false,
+  deps: {
+    onlyBundle: false,
+    neverBundle: ['vscode'],
+  },
 })

@@ -16,9 +16,17 @@
     ],
     "paths": {
       "@vuetify/cli-shared": ["./packages/shared/src"],
+      "@vuetify/cli-shared/*": ["./packages/shared/src/*"],
       "@vuetify/cli-shared/commands": ["./packages/shared/src/commands"],
+      "@vuetify/cli-shared/commands/*": ["./packages/shared/src/commands/*"],
       "@vuetify/cli-shared/utils": ["./packages/shared/src/utils"],
-      "@vuetify/cli-shared/i18n": ["./packages/shared/src/i18n"]
+      "@vuetify/cli-shared/utils/*": ["./packages/shared/src/utils/*"],
+      "@vuetify/cli-shared/i18n": ["./packages/shared/src/i18n"],
+      "@vuetify/cli-shared/i18n/*": ["./packages/shared/src/i18n/*"],
+      "@vuetify/cli-shared/mcp-core": ["./packages/shared/src/mcp-core"],
+      "@vuetify/cli-shared/mcp-core/*": ["./packages/shared/src/mcp-core/*"],
+      "@vuetify/cli-shared/functions/*": ["./packages/shared/src/functions/*"],
+      "@vuetify/cli-shared/reporters/*": ["./packages/shared/src/reporters/*"]
     }
   },
   "include": ["./packages/**/src"]

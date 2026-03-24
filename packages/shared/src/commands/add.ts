@@ -1,9 +1,10 @@
 import { log, select } from '@clack/prompts'
-import { defineCommand } from 'citty'
-import { addEslint, addMcp } from '../functions'
+import { defineCommand, runCommand } from 'citty'
+import { addEslint } from '../functions'
 import { i18n } from '../i18n'
+import { mcp } from './mcp'
 
-const choices = ['eslint', 'mcp']
+const choices = ['eslint']
 
 export const add = defineCommand({
   meta: {
@@ -18,6 +19,13 @@ export const add = defineCommand({
   },
   run: async ({ args }) => {
     let integration = args.integration
+
+    if (integration === 'mcp') {
+      log.warning('The "vuetify add mcp" command is deprecated. Redirecting to "vuetify mcp install"...')
+      await runCommand(mcp, { rawArgs: ['install'] })
+      return
+    }
+
     if (!integration) {
       const selected = await select({
         message: i18n.t('prompts.add.integration'),
@@ -36,10 +44,6 @@ export const add = defineCommand({
     switch (integration) {
       case 'eslint': {
         await addEslint()
-        break
-      }
-      case 'mcp': {
-        await addMcp()
         break
       }
     }

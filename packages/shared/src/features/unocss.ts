@@ -6,6 +6,8 @@ import { addNuxtModule, addVitePlugin } from 'magicast/helpers'
 import { join } from 'pathe'
 import rootPkg from './dependencies/package.json' with { type: 'json' }
 
+const RE_STYLES = /\/\/ Styles/g
+
 async function applyUnocssBase (
   { cwd, pkg, isTypescript, isNuxt }: FeatureContext,
   options: { presetVuetify?: boolean } = {},
@@ -57,7 +59,7 @@ async function applyUnocssBase (
     if (existsSync(filePath)) {
       const content = await readFile(filePath, 'utf8')
       if (!content.includes('virtual:uno.css')) {
-        await writeFile(filePath, content.replace(/\/\/ Styles/g, '// Styles\nimport \'virtual:uno.css\''))
+        await writeFile(filePath, content.replace(RE_STYLES, '// Styles\nimport \'virtual:uno.css\''))
         break
       }
     }

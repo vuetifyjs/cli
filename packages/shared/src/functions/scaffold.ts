@@ -7,6 +7,7 @@ import { applyFeatures } from '../features'
 import { convertProjectToJS } from '../utils/convertProjectToJS'
 import { getTemplateSource } from '../utils/getTemplateSource'
 import { installDependencies } from '../utils/installDependencies'
+import { getProjectAgentsMd, getProjectReadmeMd } from '../utils/projectDocs'
 
 export interface ScaffoldOptions {
   cwd: string
@@ -246,6 +247,19 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
     await convertProjectToJS(projectRoot)
     callbacks.onConvertEnd?.()
   }
+
+  const projectDocsOptions = {
+    name,
+    platform,
+    type,
+    features,
+    typescript,
+    packageManager,
+    scripts: pkg?.scripts,
+  } as const
+
+  fs.writeFileSync(join(projectRoot, 'AGENTS.md'), getProjectAgentsMd(projectDocsOptions))
+  fs.writeFileSync(join(projectRoot, 'README.md'), getProjectReadmeMd(projectDocsOptions))
 
   if (install && packageManager) {
     callbacks.onInstallStart?.(packageManager)

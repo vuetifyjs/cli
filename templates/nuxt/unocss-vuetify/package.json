@@ -11,16 +11,16 @@
   },
   "dependencies": {
     "@mdi/font": "7.4.47",
-    "nuxt": "^4.2.2",
-    "vue": "^3.5.26",
-    "vuetify": "^4.0.1",
-    "vuetify-nuxt-module": "^0.19.5"
+    "nuxt": "^4.4.2",
+    "vue": "^3.5.30",
+    "vuetify": "^4.0.2",
+    "vuetify-nuxt-module": "^1.0.0-beta.1"
   },
   "devDependencies": {
     "@nuxt/fonts": "^0.14.0",
-    "@unocss/nuxt": "^66.0.0",
-    "sass": "^1.97.1",
-    "unocss": "^66.0.0",
+    "@unocss/nuxt": "^66.6.6",
+    "sass": "^1.98.0",
+    "unocss": "^66.6.6",
     "unocss-preset-vuetify": "^0.2.1"
   }
 }

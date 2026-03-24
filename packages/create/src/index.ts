@@ -1,11 +1,16 @@
 import tab from '@bomb.sh/tab/citty'
-import { createVuetify, projectArgs, registerProjectArgsCompletion } from '@vuetify/cli-shared'
+import { projectArgs } from '@vuetify/cli-shared/args'
+import { createPresetsCommand } from '@vuetify/cli-shared/commands/presets'
+import { registerProjectArgsCompletion } from '@vuetify/cli-shared/completion'
+import { createVuetify } from '@vuetify/cli-shared/functions/create'
 import { i18n } from '@vuetify/cli-shared/i18n'
+import { promptLocalUpdateToContinue } from '@vuetify/cli-shared/utils'
 import { defineCommand, runMain } from 'citty'
 
 import { version } from '../package.json'
-import { presets } from './commands/presets'
 import { upgrade } from './commands/upgrade'
+
+const presets = createPresetsCommand({ version, type: 'vuetify' })
 
 export const main = defineCommand({
   meta: {
@@ -22,6 +27,14 @@ export const main = defineCommand({
   },
   run: async ({ args }) => {
     if (args._[0] === 'complete' || args._[0] === 'presets') {
+      return
+    }
+    const didUpdate = await promptLocalUpdateToContinue({
+      packageName: 'create-vuetify',
+      currentVersion: version,
+      cwd: typeof args.cwd === 'string' ? args.cwd : undefined,
+    })
+    if (didUpdate) {
       return
     }
     await createVuetify({
