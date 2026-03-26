@@ -10,6 +10,7 @@ import { createVuetify } from 'vuetify'
 import '@mdi/font/css/materialdesignicons.css'
 
 import '../styles/layers.css'
+// @ts-ignore
 import 'vuetify/styles'
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
