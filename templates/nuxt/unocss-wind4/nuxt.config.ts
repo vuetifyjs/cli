@@ -16,7 +16,6 @@ export default defineNuxtConfig({
 
   css: [
     'assets/styles/layers.css',
-    'vuetify/styles',
     'assets/styles/main.scss',
   ],
 
