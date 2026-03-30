@@ -2,6 +2,9 @@ packages:
   - packages/*
   - templates/*
 
+allowBuilds:
+  esbuild: false
+
 catalog:
   '@bomb.sh/tab': ^0.0.14
   '@clack/prompts': ^1.1.0
@@ -41,3 +44,5 @@ catalog:
   vue-eslint-parser: ^10.4.0
 
 catalogMode: strict
+
+minimumReleaseAge: 4320
