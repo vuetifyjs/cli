@@ -6,7 +6,7 @@
       "\t$0",
       "</v-alert>"
     ],
-    "description": "Vuetify VAlert Component"
+    "description": "Used to convey important message that has to stand out from the regular content. Easy to use with `type` for typical error, warning, info, and success callouts."
   },
   "VAlertTitle": {
     "prefix": "v-alert-title",
@@ -15,7 +15,7 @@
       "\t$0",
       "</v-alert-title>"
     ],
-    "description": "Vuetify VAlertTitle Component"
+    "description": "Title area of a v-alert."
   },
   "VApp": {
     "prefix": "v-app",
@@ -24,7 +24,7 @@
       "\t$0",
       "</v-app>"
     ],
-    "description": "Vuetify VApp Component"
+    "description": "Root-level layout component resolving global theme and background color."
   },
   "VAppBar": {
     "prefix": "v-app-bar",
@@ -33,7 +33,7 @@
       "\t$0",
       "</v-app-bar>"
     ],
-    "description": "Vuetify VAppBar Component"
+    "description": "Toolbar wrapper dedicated to hold logo and the primary navigation."
   },
   "VAppBarNavIcon": {
     "prefix": "v-app-bar-nav-icon",
@@ -42,7 +42,7 @@
       "\t$0",
       "</v-app-bar-nav-icon>"
     ],
-    "description": "Vuetify VAppBarNavIcon Component"
+    "description": "Pre-configured icon button for toggling navigation drawers, typically displayed as a hamburger menu in v-app-bar."
   },
   "VAppBarTitle": {
     "prefix": "v-app-bar-title",
@@ -51,7 +51,7 @@
       "\t$0",
       "</v-app-bar-title>"
     ],
-    "description": "Vuetify VAppBarTitle Component"
+    "description": "Title area within v-app-bar, supporting truncation and custom content."
   },
   "VAutocomplete": {
     "prefix": "v-autocomplete",
@@ -60,7 +60,7 @@
       "\t$0",
       "</v-autocomplete>"
     ],
-    "description": "Vuetify VAutocomplete Component"
+    "description": "A flexible dropdown field with type-ahead. Helps users avoid scrolling through long lists of items in the dropdown (countries, states, people, etc.)."
   },
   "VAvatar": {
     "prefix": "v-avatar",
@@ -69,7 +69,7 @@
       "\t$0",
       "</v-avatar>"
     ],
-    "description": "Vuetify VAvatar Component"
+    "description": "Container for image, icon, or initials used to represent a user or entity."
   },
   "VAvatarGroup": {
     "prefix": "v-avatar-group",
@@ -78,7 +78,7 @@
       "\t$0",
       "</v-avatar-group>"
     ],
-    "description": "Vuetify VAvatarGroup Component"
+    "description": "Displays a collection of avatars in a compact stacked row or column with an overflow indicator."
   },
   "VBadge": {
     "prefix": "v-badge",
@@ -87,7 +87,7 @@
       "\t$0",
       "</v-badge>"
     ],
-    "description": "Vuetify VBadge Component"
+    "description": "Supplemental status or counters next to avatars or navigation items. Content within the badge usually contains numbers or icons."
   },
   "VBanner": {
     "prefix": "v-banner",
@@ -96,7 +96,7 @@
       "\t$0",
       "</v-banner>"
     ],
-    "description": "Vuetify VBanner Component"
+    "description": "Typically used to display concise message above the page content."
   },
   "VBannerActions": {
     "prefix": "v-banner-actions",
@@ -105,7 +105,7 @@
       "\t$0",
       "</v-banner-actions>"
     ],
-    "description": "Vuetify VBannerActions Component"
+    "description": "Container for action buttons within a v-banner."
   },
   "VBannerText": {
     "prefix": "v-banner-text",
@@ -114,7 +114,7 @@
       "\t$0",
       "</v-banner-text>"
     ],
-    "description": "Vuetify VBannerText Component"
+    "description": "Text content area of a v-banner."
   },
   "VBottomNavigation": {
     "prefix": "v-bottom-navigation",
@@ -123,7 +123,7 @@
       "\t$0",
       "</v-bottom-navigation>"
     ],
-    "description": "Vuetify VBottomNavigation Component"
+    "description": "An alternative to the sidebar. Primarily used for mobile applications."
   },
   "VBottomSheet": {
     "prefix": "v-bottom-sheet",
@@ -132,7 +132,7 @@
       "\t$0",
       "</v-bottom-sheet>"
     ],
-    "description": "Vuetify VBottomSheet Component"
+    "description": "A modified `v-dialog` that slides from the bottom."
   },
   "VBreadcrumbs": {
     "prefix": "v-breadcrumbs",
@@ -141,7 +141,7 @@
       "\t$0",
       "</v-breadcrumbs>"
     ],
-    "description": "Vuetify VBreadcrumbs Component"
+    "description": "Used as a navigational helper and represent hierarchy for pages."
   },
   "VBreadcrumbsDivider": {
     "prefix": "v-breadcrumbs-divider",
@@ -150,7 +150,7 @@
       "\t$0",
       "</v-breadcrumbs-divider>"
     ],
-    "description": "Vuetify VBreadcrumbsDivider Component"
+    "description": "Used to define a divider between items in a `v-breadcrumbs` component."
   },
   "VBreadcrumbsItem": {
     "prefix": "v-breadcrumbs-item",
@@ -159,7 +159,7 @@
       "\t$0",
       "</v-breadcrumbs-item>"
     ],
-    "description": "Vuetify VBreadcrumbsItem Component"
+    "description": "Individual item within a v-breadcrumbs list."
   },
   "VBtn": {
     "prefix": "v-btn",
@@ -168,7 +168,7 @@
       "\t$0",
       "</v-btn>"
     ],
-    "description": "Vuetify VBtn Component"
+    "description": "Replaces the standard html button with useful variants for various use cases. Includes robust set of options to customize internal content (text and icons)."
   },
   "VBtnGroup": {
     "prefix": "v-btn-group",
@@ -177,7 +177,7 @@
       "\t$0",
       "</v-btn-group>"
     ],
-    "description": "Vuetify VBtnGroup Component"
+    "description": "Functional wrapper for many buttons, passing most of the props down. Building block of `v-btn-toggle`."
   },
   "VBtnToggle": {
     "prefix": "v-btn-toggle",
@@ -186,7 +186,7 @@
       "\t$0",
       "</v-btn-toggle>"
     ],
-    "description": "Vuetify VBtnToggle Component"
+    "description": "An alternative to radio group and checkboxes. A simple wrapper for `v-item-group` built specifically to work with `v-btn`."
   },
   "VCalendar": {
     "prefix": "v-calendar",
@@ -195,7 +195,7 @@
       "\t$0",
       "</v-calendar>"
     ],
-    "description": "Vuetify VCalendar Component"
+    "description": "Used to display information in a daily, weekly, monthly, or category view."
   },
   "VCard": {
     "prefix": "v-card",
@@ -204,7 +204,7 @@
       "\t$0",
       "</v-card>"
     ],
-    "description": "Vuetify VCard Component"
+    "description": "An alternative to `v-sheet` that provides a semantic interface for various types of cards holding title, general content, and optional actions, icon and image."
   },
   "VCardActions": {
     "prefix": "v-card-actions",
@@ -213,7 +213,7 @@
       "\t$0",
       "</v-card-actions>"
     ],
-    "description": "Vuetify VCardActions Component"
+    "description": "Container for action buttons at the bottom of a v-card."
   },
   "VCardItem": {
     "prefix": "v-card-item",
@@ -222,7 +222,7 @@
       "\t$0",
       "</v-card-item>"
     ],
-    "description": "Vuetify VCardItem Component"
+    "description": "Groups the title, subtitle, icon and image within a v-card."
   },
   "VCardSubtitle": {
     "prefix": "v-card-subtitle",
@@ -231,7 +231,7 @@
       "\t$0",
       "</v-card-subtitle>"
     ],
-    "description": "Vuetify VCardSubtitle Component"
+    "description": "Subtitle text within a v-card."
   },
   "VCardText": {
     "prefix": "v-card-text",
@@ -240,7 +240,7 @@
       "\t$0",
       "</v-card-text>"
     ],
-    "description": "Vuetify VCardText Component"
+    "description": "Primary text content area within a v-card."
   },
   "VCardTitle": {
     "prefix": "v-card-title",
@@ -249,7 +249,7 @@
       "\t$0",
       "</v-card-title>"
     ],
-    "description": "Vuetify VCardTitle Component"
+    "description": "Title text within a v-card."
   },
   "VCarousel": {
     "prefix": "v-carousel",
@@ -258,7 +258,7 @@
       "\t$0",
       "</v-carousel>"
     ],
-    "description": "Vuetify VCarousel Component"
+    "description": "Shows slides with simple navigation, support for horizontal and vertical orientation, auto-play control. Built on top of `v-window`."
   },
   "VCarouselItem": {
     "prefix": "v-carousel-item",
@@ -267,7 +267,7 @@
       "\t$0",
       "</v-carousel-item>"
     ],
-    "description": "Vuetify VCarouselItem Component"
+    "description": "Individual slide within a v-carousel."
   },
   "VCheckbox": {
     "prefix": "v-checkbox",
@@ -276,7 +276,7 @@
       "\t$0",
       "</v-checkbox>"
     ],
-    "description": "Vuetify VCheckbox Component"
+    "description": "Typical form item that provides the ability to select from distinct values, convey approval/acknowledgement. Similar to `v-switch`."
   },
   "VCheckboxBtn": {
     "prefix": "v-checkbox-btn",
@@ -285,7 +285,7 @@
       "\t$0",
       "</v-checkbox-btn>"
     ],
-    "description": "Vuetify VCheckboxBtn Component"
+    "description": "A lightweight alternative to the `v-checkbox` component that is designed to be used inside of data tables, tree views and lists."
   },
   "VChip": {
     "prefix": "v-chip",
@@ -294,7 +294,7 @@
       "\t$0",
       "</v-chip>"
     ],
-    "description": "Vuetify VChip Component"
+    "description": "Used to style short contextual labels, tag-like selection within multi-select fields, or as an alternative to regular `v-btn`."
   },
   "VChipGroup": {
     "prefix": "v-chip-group",
@@ -303,7 +303,7 @@
       "\t$0",
       "</v-chip-group>"
     ],
-    "description": "Vuetify VChipGroup Component"
+    "description": "Used to group the `v-chip` components for users to pick one or many options without a dedicated field wrapper."
   },
   "VClassIcon": {
     "prefix": "v-class-icon",
@@ -312,7 +312,7 @@
       "\t$0",
       "</v-class-icon>"
     ],
-    "description": "Vuetify VClassIcon Component"
+    "description": "Renders an icon using a CSS class name."
   },
   "VCode": {
     "prefix": "v-code",
@@ -321,7 +321,7 @@
       "\t$0",
       "</v-code>"
     ],
-    "description": "Vuetify VCode Component"
+    "description": "Inline code snippet with monospace styling."
   },
   "VCol": {
     "prefix": "v-col",
@@ -330,7 +330,7 @@
       "\t$0",
       "</v-col>"
     ],
-    "description": "Vuetify VCol Component"
+    "description": "Grid column wrapper meant to be placed inside `v-row`."
   },
   "VColorInput": {
     "prefix": "v-color-input",
@@ -339,7 +339,7 @@
       "\t$0",
       "</v-color-input>"
     ],
-    "description": "Vuetify VColorInput Component"
+    "description": "Combines a text field with a color picker."
   },
   "VColorPicker": {
     "prefix": "v-color-picker",
@@ -348,7 +348,7 @@
       "\t$0",
       "</v-color-picker>"
     ],
-    "description": "Vuetify VColorPicker Component"
+    "description": "Allows users to select a color using canvas, sliders, eye-dropper, and inputs."
   },
   "VCombobox": {
     "prefix": "v-combobox",
@@ -357,7 +357,7 @@
       "\t$0",
       "</v-combobox>"
     ],
-    "description": "Vuetify VCombobox Component"
+    "description": "A `v-text-field` enhanced with a dropdown list of suggestions. Unlike `v-autocomplete` whatever user types into the field is considered valid input."
   },
   "VCommandPalette": {
     "prefix": "v-command-palette",
@@ -366,16 +366,16 @@
       "\t$0",
       "</v-command-palette>"
     ],
-    "description": "Vuetify VCommandPalette Component"
+    "description": "A searchable dialog for quick navigation and action execution, opened using configurable keyboard shortcut."
   },
-  "VCommandPaletteItemComponent": {
-    "prefix": "v-command-palette-item-component",
+  "VCommandPaletteItem": {
+    "prefix": "v-command-palette-item",
     "body": [
-      "<v-command-palette-item-component>",
+      "<v-command-palette-item>",
       "\t$0",
-      "</v-command-palette-item-component>"
+      "</v-command-palette-item>"
     ],
-    "description": "Vuetify VCommandPaletteItemComponent Component"
+    "description": "Subcomponent of `v-command-palette` representing a single item in the command list."
   },
   "VComponentIcon": {
     "prefix": "v-component-icon",
@@ -384,7 +384,7 @@
       "\t$0",
       "</v-component-icon>"
     ],
-    "description": "Vuetify VComponentIcon Component"
+    "description": "Renders an icon using a Vue component."
   },
   "VConfirmEdit": {
     "prefix": "v-confirm-edit",
@@ -393,7 +393,7 @@
       "\t$0",
       "</v-confirm-edit>"
     ],
-    "description": "Vuetify VConfirmEdit Component"
+    "description": "Used to allow the user to verify their changes before they are committed. Used in pickers and custom menus."
   },
   "VContainer": {
     "prefix": "v-container",
@@ -402,7 +402,7 @@
       "\t$0",
       "</v-container>"
     ],
-    "description": "Vuetify VContainer Component"
+    "description": "Represents page section that is usually centered and has predictable width (responds to screen width breakpoints)."
   },
   "VCounter": {
     "prefix": "v-counter",
@@ -411,7 +411,7 @@
       "\t$0",
       "</v-counter>"
     ],
-    "description": "Vuetify VCounter Component"
+    "description": "Represents characters count under the `v-text-field` and `v-textarea`. Not meant to be used as standalone component."
   },
   "VDataIterator": {
     "prefix": "v-data-iterator",
@@ -420,7 +420,7 @@
       "\t$0",
       "</v-data-iterator>"
     ],
-    "description": "Vuetify VDataIterator Component"
+    "description": "Used for displaying arbitrary data, and shares a majority of its functionality with the `v-data-table` component."
   },
   "VDataTable": {
     "prefix": "v-data-table",
@@ -429,7 +429,7 @@
       "\t$0",
       "</v-data-table>"
     ],
-    "description": "Vuetify VDataTable Component"
+    "description": "Used for displaying tabular data. Supports searching, grouping, sorting and pagination."
   },
   "VDataTableFooter": {
     "prefix": "v-data-table-footer",
@@ -438,7 +438,7 @@
       "\t$0",
       "</v-data-table-footer>"
     ],
-    "description": "Vuetify VDataTableFooter Component"
+    "description": "Pre-defined pagination component for `v-data-table`."
   },
   "VDataTableHeaders": {
     "prefix": "v-data-table-headers",
@@ -447,7 +447,7 @@
       "\t$0",
       "</v-data-table-headers>"
     ],
-    "description": "Vuetify VDataTableHeaders Component"
+    "description": "Used to define the headers for a `v-data-table`."
   },
   "VDataTableRow": {
     "prefix": "v-data-table-row",
@@ -456,7 +456,7 @@
       "\t$0",
       "</v-data-table-row>"
     ],
-    "description": "Vuetify VDataTableRow Component"
+    "description": "Used to define a row for a `v-data-table`."
   },
   "VDataTableRows": {
     "prefix": "v-data-table-rows",
@@ -465,7 +465,7 @@
       "\t$0",
       "</v-data-table-rows>"
     ],
-    "description": "Vuetify VDataTableRows Component"
+    "description": "Used to define the rows for a `v-data-table`."
   },
   "VDataTableServer": {
     "prefix": "v-data-table-server",
@@ -474,7 +474,7 @@
       "\t$0",
       "</v-data-table-server>"
     ],
-    "description": "Vuetify VDataTableServer Component"
+    "description": "Specialized `v-data-table` to be combined with backend API that responds with single rows page to display."
   },
   "VDataTableVirtual": {
     "prefix": "v-data-table-virtual",
@@ -483,7 +483,7 @@
       "\t$0",
       "</v-data-table-virtual>"
     ],
-    "description": "Vuetify VDataTableVirtual Component"
+    "description": "Specialized `v-data-table` with built-in row virtualization to handle thousands of rows with minimal performance impact."
   },
   "VDateInput": {
     "prefix": "v-date-input",
@@ -492,7 +492,7 @@
       "\t$0",
       "</v-date-input>"
     ],
-    "description": "Vuetify VDateInput Component"
+    "description": "Combines a text field with a date picker."
   },
   "VDatePicker": {
     "prefix": "v-date-picker",
@@ -501,7 +501,7 @@
       "\t$0",
       "</v-date-picker>"
     ],
-    "description": "Vuetify VDatePicker Component"
+    "description": "A fully featured date selection component that lets users select a single date, date range, limit available selection."
   },
   "VDatePickerControls": {
     "prefix": "v-date-picker-controls",
@@ -510,7 +510,7 @@
       "\t$0",
       "</v-date-picker-controls>"
     ],
-    "description": "Vuetify VDatePickerControls Component"
+    "description": "Provides navigation controls for the `v-date-picker` component."
   },
   "VDatePickerHeader": {
     "prefix": "v-date-picker-header",
@@ -519,7 +519,7 @@
       "\t$0",
       "</v-date-picker-header>"
     ],
-    "description": "Vuetify VDatePickerHeader Component"
+    "description": "Displays the header of the `v-date-picker` component."
   },
   "VDatePickerMonth": {
     "prefix": "v-date-picker-month",
@@ -528,7 +528,7 @@
       "\t$0",
       "</v-date-picker-month>"
     ],
-    "description": "Vuetify VDatePickerMonth Component"
+    "description": "Displays a single month view for the `v-date-picker` component."
   },
   "VDatePickerMonths": {
     "prefix": "v-date-picker-months",
@@ -537,7 +537,7 @@
       "\t$0",
       "</v-date-picker-months>"
     ],
-    "description": "Vuetify VDatePickerMonths Component"
+    "description": "Displays a list of months for the `v-date-picker` component."
   },
   "VDatePickerYears": {
     "prefix": "v-date-picker-years",
@@ -546,7 +546,16 @@
       "\t$0",
       "</v-date-picker-years>"
     ],
-    "description": "Vuetify VDatePickerYears Component"
+    "description": "Displays a list of years for the `v-date-picker` component."
+  },
+  "VDateRangePicker": {
+    "prefix": "v-date-range-picker",
+    "body": [
+      "<v-date-range-picker title=\"${1}\">",
+      "\t$0",
+      "</v-date-range-picker>"
+    ],
+    "description": "A dual-month date range picker built on top of `v-date-picker`. Shows two adjacent months side-by-side with a single shared range selection."
   },
   "VDefaultsProvider": {
     "prefix": "v-defaults-provider",
@@ -555,7 +564,7 @@
       "\t$0",
       "</v-defaults-provider>"
     ],
-    "description": "Vuetify VDefaultsProvider Component"
+    "description": "Allows you to provide specific default prop values to components in a section of your application."
   },
   "VDialog": {
     "prefix": "v-dialog",
@@ -564,7 +573,7 @@
       "\t$0",
       "</v-dialog>"
     ],
-    "description": "Vuetify VDialog Component"
+    "description": "Used to display popup forms, confirmation cards or any information that should block user from interacting with the rest of the page."
   },
   "VDialogBottomTransition": {
     "prefix": "v-dialog-bottom-transition",
@@ -573,7 +582,7 @@
       "\t$0",
       "</v-dialog-bottom-transition>"
     ],
-    "description": "Vuetify VDialogBottomTransition Component"
+    "description": "Slide-up transition for dialogs entering from the bottom edge."
   },
   "VDialogTopTransition": {
     "prefix": "v-dialog-top-transition",
@@ -582,7 +591,7 @@
       "\t$0",
       "</v-dialog-top-transition>"
     ],
-    "description": "Vuetify VDialogTopTransition Component"
+    "description": "Slide-down transition for dialogs entering from the top edge."
   },
   "VDialogTransition": {
     "prefix": "v-dialog-transition",
@@ -591,7 +600,7 @@
       "\t$0",
       "</v-dialog-transition>"
     ],
-    "description": "Vuetify VDialogTransition Component"
+    "description": "Transition effect tuned specifically for the `v-dialog` component."
   },
   "VDivider": {
     "prefix": "v-divider",
@@ -600,7 +609,7 @@
       "\t$0",
       "</v-divider>"
     ],
-    "description": "Vuetify VDivider Component"
+    "description": "Used to visually separate sections of lists or layouts."
   },
   "VEmptyState": {
     "prefix": "v-empty-state",
@@ -609,7 +618,7 @@
       "\t$0",
       "</v-empty-state>"
     ],
-    "description": "Vuetify VEmptyState Component"
+    "description": "Used to indicate that a section does not have any data to show yet or that a search yielded no results."
   },
   "VExpandBothTransition": {
     "prefix": "v-expand-both-transition",
@@ -618,7 +627,7 @@
       "\t$0",
       "</v-expand-both-transition>"
     ],
-    "description": "Vuetify VExpandBothTransition Component"
+    "description": "Expand/collapse transition in both vertical directions."
   },
   "VExpandTransition": {
     "prefix": "v-expand-transition",
@@ -627,7 +636,7 @@
       "\t$0",
       "</v-expand-transition>"
     ],
-    "description": "Vuetify VExpandTransition Component"
+    "description": "Vertical expand/collapse transition for revealing content."
   },
   "VExpandXTransition": {
     "prefix": "v-expand-xtransition",
@@ -636,7 +645,7 @@
       "\t$0",
       "</v-expand-xtransition>"
     ],
-    "description": "Vuetify VExpandXTransition Component"
+    "description": "Horizontal expand/collapse transition for revealing content."
   },
   "VExpansionPanel": {
     "prefix": "v-expansion-panel",
@@ -645,7 +654,7 @@
       "\t$0",
       "</v-expansion-panel>"
     ],
-    "description": "Vuetify VExpansionPanel Component"
+    "description": "Represents single section inside `v-expansion-panels`."
   },
   "VExpansionPanelText": {
     "prefix": "v-expansion-panel-text",
@@ -654,7 +663,7 @@
       "\t$0",
       "</v-expansion-panel-text>"
     ],
-    "description": "Vuetify VExpansionPanelText Component"
+    "description": "Content body of a v-expansion-panel."
   },
   "VExpansionPanelTitle": {
     "prefix": "v-expansion-panel-title",
@@ -663,7 +672,7 @@
       "\t$0",
       "</v-expansion-panel-title>"
     ],
-    "description": "Vuetify VExpansionPanelTitle Component"
+    "description": "Clickable title wrapper for `v-expansion-panel`."
   },
   "VExpansionPanels": {
     "prefix": "v-expansion-panels",
@@ -672,7 +681,7 @@
       "\t$0",
       "</v-expansion-panels>"
     ],
-    "description": "Vuetify VExpansionPanels Component"
+    "description": "Useful for reducing vertical space with large amounts of information."
   },
   "VFab": {
     "prefix": "v-fab",
@@ -681,7 +690,7 @@
       "\t$0",
       "</v-fab>"
     ],
-    "description": "Vuetify VFab Component"
+    "description": "Layout-aware component used to display a floating action button."
   },
   "VFabTransition": {
     "prefix": "v-fab-transition",
@@ -690,7 +699,7 @@
       "\t$0",
       "</v-fab-transition>"
     ],
-    "description": "Vuetify VFabTransition Component"
+    "description": "Scale and rotate transition typically used for floating action buttons."
   },
   "VFadeTransition": {
     "prefix": "v-fade-transition",
@@ -699,7 +708,7 @@
       "\t$0",
       "</v-fade-transition>"
     ],
-    "description": "Vuetify VFadeTransition Component"
+    "description": "Fade in/out transition."
   },
   "VField": {
     "prefix": "v-field",
@@ -708,7 +717,7 @@
       "\t$0",
       "</v-field>"
     ],
-    "description": "Vuetify VField Component"
+    "description": "A low level component for building specialized custom field components to work inside `v-form`."
   },
   "VFieldLabel": {
     "prefix": "v-field-label",
@@ -717,7 +726,7 @@
       "\t$0",
       "</v-field-label>"
     ],
-    "description": "Vuetify VFieldLabel Component"
+    "description": "A label component used within `v-field`."
   },
   "VFileInput": {
     "prefix": "v-file-input",
@@ -726,16 +735,25 @@
       "\t$0",
       "</v-file-input>"
     ],
-    "description": "Vuetify VFileInput Component"
+    "description": "A specialized form input for selecting files."
   },
   "VFileUpload": {
     "prefix": "v-file-upload",
     "body": [
-      "<v-file-upload title=\"${1}\">",
+      "<v-file-upload title=\"${1}\" label=\"${2}\">",
       "\t$0",
       "</v-file-upload>"
     ],
-    "description": "Vuetify VFileUpload Component"
+    "description": "Combines drag and drop area for files and a list that represents current selection."
+  },
+  "VFileUploadDropzone": {
+    "prefix": "v-file-upload-dropzone",
+    "body": [
+      "<v-file-upload-dropzone title=\"${1}\">",
+      "\t$0",
+      "</v-file-upload-dropzone>"
+    ],
+    "description": "Subcomponent of `v-file-upload` representing droppable area."
   },
   "VFileUploadItem": {
     "prefix": "v-file-upload-item",
@@ -744,7 +762,16 @@
       "\t$0",
       "</v-file-upload-item>"
     ],
-    "description": "Vuetify VFileUploadItem Component"
+    "description": "Represents an individual file item within the `v-file-upload` component."
+  },
+  "VFileUploadList": {
+    "prefix": "v-file-upload-list",
+    "body": [
+      "<v-file-upload-list items=\"${1}\">",
+      "\t$0",
+      "</v-file-upload-list>"
+    ],
+    "description": "Subcomponent of `v-file-upload` that displays the list of currently selected files."
   },
   "VFooter": {
     "prefix": "v-footer",
@@ -753,7 +780,7 @@
       "\t$0",
       "</v-footer>"
     ],
-    "description": "Vuetify VFooter Component"
+    "description": "Used for displaying page footer."
   },
   "VForm": {
     "prefix": "v-form",
@@ -762,7 +789,52 @@
       "\t$0",
       "</v-form>"
     ],
-    "description": "Vuetify VForm Component"
+    "description": "Standard replacement for `form` HTML element. `v-model` makes it easy to determine if the fields inside are all valid and ready to submit."
+  },
+  "VHeatmap": {
+    "prefix": "v-heatmap",
+    "body": [
+      "<v-heatmap items=\"${1}\">",
+      "\t$0",
+      "</v-heatmap>"
+    ],
+    "description": "Vuetify VHeatmap Component"
+  },
+  "VHeatmapCell": {
+    "prefix": "v-heatmap-cell",
+    "body": [
+      "<v-heatmap-cell>",
+      "\t$0",
+      "</v-heatmap-cell>"
+    ],
+    "description": "Vuetify VHeatmapCell Component"
+  },
+  "VHeatmapLegend": {
+    "prefix": "v-heatmap-legend",
+    "body": [
+      "<v-heatmap-legend>",
+      "\t$0",
+      "</v-heatmap-legend>"
+    ],
+    "description": "Vuetify VHeatmapLegend Component"
+  },
+  "VHeatmapLegendCell": {
+    "prefix": "v-heatmap-legend-cell",
+    "body": [
+      "<v-heatmap-legend-cell>",
+      "\t$0",
+      "</v-heatmap-legend-cell>"
+    ],
+    "description": "Vuetify VHeatmapLegendCell Component"
+  },
+  "VHighlight": {
+    "prefix": "v-highlight",
+    "body": [
+      "<v-highlight text=\"${1}\">",
+      "\t$0",
+      "</v-highlight>"
+    ],
+    "description": "Vuetify VHighlight Component"
   },
   "VHotkey": {
     "prefix": "v-hotkey",
@@ -771,7 +843,7 @@
       "\t$0",
       "</v-hotkey>"
     ],
-    "description": "Vuetify VHotkey Component"
+    "description": "Visual representation of a keyboard keys combination."
   },
   "VHover": {
     "prefix": "v-hover",
@@ -780,7 +852,7 @@
       "\t$0",
       "</v-hover>"
     ],
-    "description": "Vuetify VHover Component"
+    "description": "Provides a simple interface for handling hover states for any component."
   },
   "VIcon": {
     "prefix": "v-icon",
@@ -789,7 +861,7 @@
       "\t$0",
       "</v-icon>"
     ],
-    "description": "Vuetify VIcon Component"
+    "description": "Displays an icon from a supported icon set or library."
   },
   "VIconBtn": {
     "prefix": "v-icon-btn",
@@ -798,7 +870,7 @@
       "\t$0",
       "</v-icon-btn>"
     ],
-    "description": "Vuetify VIconBtn Component"
+    "description": "A lightweight button component meant to hold only the icon."
   },
   "VImg": {
     "prefix": "v-img",
@@ -807,7 +879,7 @@
       "\t$0",
       "</v-img>"
     ],
-    "description": "Vuetify VImg Component"
+    "description": "Standard replacement for `img` HTML element. Supports lazy-loading, blurred placeholders and gradient overlays."
   },
   "VInfiniteScroll": {
     "prefix": "v-infinite-scroll",
@@ -816,7 +888,7 @@
       "\t$0",
       "</v-infinite-scroll>"
     ],
-    "description": "Vuetify VInfiniteScroll Component"
+    "description": "Container that detects when user scrolls to either edge and allows auto-loading more items to show."
   },
   "VInput": {
     "prefix": "v-input",
@@ -825,7 +897,7 @@
       "\t$0",
       "</v-input>"
     ],
-    "description": "Vuetify VInput Component"
+    "description": "A baseline component for building custom field components to work inside `v-form` with validation rules, error messages, typical slots, and loading states."
   },
   "VItem": {
     "prefix": "v-item",
@@ -834,7 +906,7 @@
       "\t$0",
       "</v-item>"
     ],
-    "description": "Vuetify VItem Component"
+    "description": "Provides selection state for a child element within v-item-group."
   },
   "VItemGroup": {
     "prefix": "v-item-group",
@@ -843,7 +915,7 @@
       "\t$0",
       "</v-item-group>"
     ],
-    "description": "Vuetify VItemGroup Component"
+    "description": "Functional component meant to interact with `v-item` sub-components to augment any components inside with selection ability."
   },
   "VKbd": {
     "prefix": "v-kbd",
@@ -852,7 +924,7 @@
       "\t$0",
       "</v-kbd>"
     ],
-    "description": "Vuetify VKbd Component"
+    "description": "Styled element for displaying keyboard keys or shortcuts."
   },
   "VLabel": {
     "prefix": "v-label",
@@ -861,7 +933,7 @@
       "\t$0",
       "</v-label>"
     ],
-    "description": "Vuetify VLabel Component"
+    "description": "Used to display a label for form fields."
   },
   "VLayout": {
     "prefix": "v-layout",
@@ -870,7 +942,7 @@
       "\t$0",
       "</v-layout>"
     ],
-    "description": "Vuetify VLayout Component"
+    "description": "A flexible layout wrapper that allows you to scope layout-aware components like `v-main`, `v-footer`, `v-toolbar`, `v-navigation-drawer`, etc."
   },
   "VLayoutItem": {
     "prefix": "v-layout-item",
@@ -879,7 +951,7 @@
       "\t$0",
       "</v-layout-item>"
     ],
-    "description": "Vuetify VLayoutItem Component"
+    "description": "Abstract component to use within a `v-layout` or `v-app` container."
   },
   "VLazy": {
     "prefix": "v-lazy",
@@ -888,7 +960,7 @@
       "\t$0",
       "</v-lazy>"
     ],
-    "description": "Vuetify VLazy Component"
+    "description": "Easy to use wrapper that delays components mount and helps avoid performance overhead of rendering everything at once. Utilizes intersection observer."
   },
   "VLigatureIcon": {
     "prefix": "v-ligature-icon",
@@ -897,7 +969,7 @@
       "\t$0",
       "</v-ligature-icon>"
     ],
-    "description": "Vuetify VLigatureIcon Component"
+    "description": "Renders an icon using a font ligature (e.g. Material Icons)."
   },
   "VList": {
     "prefix": "v-list",
@@ -906,7 +978,7 @@
       "\t$0",
       "</v-list>"
     ],
-    "description": "Vuetify VList Component"
+    "description": "Used to display list-like structures. Supports nested structures."
   },
   "VListGroup": {
     "prefix": "v-list-group",
@@ -915,7 +987,7 @@
       "\t$0",
       "</v-list-group>"
     ],
-    "description": "Vuetify VListGroup Component"
+    "description": "Subcomponent of `v-list` used to display or hide groups of items."
   },
   "VListImg": {
     "prefix": "v-list-img",
@@ -924,7 +996,7 @@
       "\t$0",
       "</v-list-img>"
     ],
-    "description": "Vuetify VListImg Component"
+    "description": "Image container within a list item."
   },
   "VListItem": {
     "prefix": "v-list-item",
@@ -933,7 +1005,7 @@
       "\t$0",
       "</v-list-item>"
     ],
-    "description": "Vuetify VListItem Component"
+    "description": "Subcomponent of `v-list` used to display a single item or modify the `v-list` state."
   },
   "VListItemAction": {
     "prefix": "v-list-item-action",
@@ -942,7 +1014,7 @@
       "\t$0",
       "</v-list-item-action>"
     ],
-    "description": "Vuetify VListItemAction Component"
+    "description": "Action area (e.g. buttons, toggles) within a v-list-item."
   },
   "VListItemMedia": {
     "prefix": "v-list-item-media",
@@ -951,7 +1023,7 @@
       "\t$0",
       "</v-list-item-media>"
     ],
-    "description": "Vuetify VListItemMedia Component"
+    "description": "Media area (e.g. avatar, image) within a v-list-item."
   },
   "VListItemSubtitle": {
     "prefix": "v-list-item-subtitle",
@@ -960,7 +1032,7 @@
       "\t$0",
       "</v-list-item-subtitle>"
     ],
-    "description": "Vuetify VListItemSubtitle Component"
+    "description": "Secondary text within a v-list-item."
   },
   "VListItemTitle": {
     "prefix": "v-list-item-title",
@@ -969,7 +1041,7 @@
       "\t$0",
       "</v-list-item-title>"
     ],
-    "description": "Vuetify VListItemTitle Component"
+    "description": "Primary text within a v-list-item."
   },
   "VListSubheader": {
     "prefix": "v-list-subheader",
@@ -978,7 +1050,7 @@
       "\t$0",
       "</v-list-subheader>"
     ],
-    "description": "Vuetify VListSubheader Component"
+    "description": "Subcomponent of `v-list` used to separate groups of items."
   },
   "VLocaleProvider": {
     "prefix": "v-locale-provider",
@@ -987,7 +1059,7 @@
       "\t$0",
       "</v-locale-provider>"
     ],
-    "description": "Vuetify VLocaleProvider Component"
+    "description": "Allows to override global locale for part of the application."
   },
   "VMain": {
     "prefix": "v-main",
@@ -996,7 +1068,7 @@
       "\t$0",
       "</v-main>"
     ],
-    "description": "Vuetify VMain Component"
+    "description": "Typically a main content wrapper in `v-app`."
   },
   "VMaskInput": {
     "prefix": "v-mask-input",
@@ -1005,7 +1077,7 @@
       "\t$0",
       "</v-mask-input>"
     ],
-    "description": "Vuetify VMaskInput Component"
+    "description": "Input with configurable character-pattern masking."
   },
   "VMenu": {
     "prefix": "v-menu",
@@ -1014,7 +1086,7 @@
       "\t$0",
       "</v-menu>"
     ],
-    "description": "Vuetify VMenu Component"
+    "description": "Shows a popover menu at the position of the element used to activate it."
   },
   "VMessages": {
     "prefix": "v-messages",
@@ -1023,7 +1095,16 @@
       "\t$0",
       "</v-messages>"
     ],
-    "description": "Vuetify VMessages Component"
+    "description": "Subcomponent of `v-input` used to display validation messages and hints."
+  },
+  "VMonthPicker": {
+    "prefix": "v-month-picker",
+    "body": [
+      "<v-month-picker title=\"${1}\">",
+      "\t$0",
+      "</v-month-picker>"
+    ],
+    "description": "Vuetify VMonthPicker Component"
   },
   "VNavigationDrawer": {
     "prefix": "v-navigation-drawer",
@@ -1032,7 +1113,7 @@
       "\t$0",
       "</v-navigation-drawer>"
     ],
-    "description": "Vuetify VNavigationDrawer Component"
+    "description": "Typically used to show application sidebar with navigation."
   },
   "VNoSsr": {
     "prefix": "v-no-ssr",
@@ -1041,7 +1122,7 @@
       "\t$0",
       "</v-no-ssr>"
     ],
-    "description": "Vuetify VNoSsr Component"
+    "description": "Prevents its slot content from rendering during server-side rendering."
   },
   "VNumberInput": {
     "prefix": "v-number-input",
@@ -1050,7 +1131,25 @@
       "\t$0",
       "</v-number-input>"
     ],
-    "description": "Vuetify VNumberInput Component"
+    "description": "Replacement for standard HTML number-type input."
+  },
+  "VOtpField": {
+    "prefix": "v-otp-field",
+    "body": [
+      "<v-otp-field>",
+      "\t$0",
+      "</v-otp-field>"
+    ],
+    "description": "Sub-component representing a single OTP character field intended for `#fields` slot in VOtpInput"
+  },
+  "VOtpGroup": {
+    "prefix": "v-otp-group",
+    "body": [
+      "<v-otp-group>",
+      "\t$0",
+      "</v-otp-group>"
+    ],
+    "description": "Sub-component intend for use inside the `#fields` slot of VOtpInput"
   },
   "VOtpInput": {
     "prefix": "v-otp-input",
@@ -1059,7 +1158,16 @@
       "\t$0",
       "</v-otp-input>"
     ],
-    "description": "Vuetify VOtpInput Component"
+    "description": "Used for short one-time codes - typically when authenticating users."
+  },
+  "VOtpSeparator": {
+    "prefix": "v-otp-separator",
+    "body": [
+      "<v-otp-separator>",
+      "\t$0",
+      "</v-otp-separator>"
+    ],
+    "description": "Sub-component rendering a visual separator between OTP fields or groups inside the `#fields` slot."
   },
   "VOverlay": {
     "prefix": "v-overlay",
@@ -1068,7 +1176,7 @@
       "\t$0",
       "</v-overlay>"
     ],
-    "description": "Vuetify VOverlay Component"
+    "description": "The baseline for `v-menu`, `v-dialog` and other components that float over the rest of the page content."
   },
   "VPagination": {
     "prefix": "v-pagination",
@@ -1077,7 +1185,7 @@
       "\t$0",
       "</v-pagination>"
     ],
-    "description": "Vuetify VPagination Component"
+    "description": "Navigation component used for paginated sets of data."
   },
   "VParallax": {
     "prefix": "v-parallax",
@@ -1086,7 +1194,7 @@
       "\t$0",
       "</v-parallax>"
     ],
-    "description": "Vuetify VParallax Component"
+    "description": "Creates a 3D effect that makes an image appear to scroll slower than the window."
   },
   "VPicker": {
     "prefix": "v-picker",
@@ -1095,7 +1203,7 @@
       "\t$0",
       "</v-picker>"
     ],
-    "description": "Vuetify VPicker Component"
+    "description": "A baseline component for building various picker components."
   },
   "VPickerTitle": {
     "prefix": "v-picker-title",
@@ -1104,7 +1212,7 @@
       "\t$0",
       "</v-picker-title>"
     ],
-    "description": "Vuetify VPickerTitle Component"
+    "description": "Title area of v-picker components."
   },
   "VPie": {
     "prefix": "v-pie",
@@ -1113,7 +1221,7 @@
       "\t$0",
       "</v-pie>"
     ],
-    "description": "Vuetify VPie Component"
+    "description": "Chart component designed to display either pie or a donut chart with integrated tooltips and legend."
   },
   "VPieSegment": {
     "prefix": "v-pie-segment",
@@ -1122,7 +1230,7 @@
       "\t$0",
       "</v-pie-segment>"
     ],
-    "description": "Vuetify VPieSegment Component"
+    "description": "Subcomponent for `v-pie` that represents a single segment of the pie chart."
   },
   "VPieTooltip": {
     "prefix": "v-pie-tooltip",
@@ -1131,7 +1239,16 @@
       "\t$0",
       "</v-pie-tooltip>"
     ],
-    "description": "Vuetify VPieTooltip Component"
+    "description": "Subcomponent for `v-pie` that represents the tooltip displayed when hovering over chart segments."
+  },
+  "VProgress": {
+    "prefix": "v-progress",
+    "body": [
+      "<v-progress label=\"${1}\">",
+      "\t$0",
+      "</v-progress>"
+    ],
+    "description": "Unified progress indicator combining accessibility attributes, supporting circular or linear representation with a label and formatted value."
   },
   "VProgressCircular": {
     "prefix": "v-progress-circular",
@@ -1140,7 +1257,7 @@
       "\t$0",
       "</v-progress-circular>"
     ],
-    "description": "Vuetify VProgressCircular Component"
+    "description": "Used to display progress (0-100 scale) or a loading state."
   },
   "VProgressLinear": {
     "prefix": "v-progress-linear",
@@ -1149,7 +1266,7 @@
       "\t$0",
       "</v-progress-linear>"
     ],
-    "description": "Vuetify VProgressLinear Component"
+    "description": "Used to display progress (0-100 scale) or a loading state."
   },
   "VPullToRefresh": {
     "prefix": "v-pull-to-refresh",
@@ -1158,7 +1275,7 @@
       "\t$0",
       "</v-pull-to-refresh>"
     ],
-    "description": "Vuetify VPullToRefresh Component"
+    "description": "Allows users to update content with a simple downward swipe on their screen."
   },
   "VRadio": {
     "prefix": "v-radio",
@@ -1167,7 +1284,7 @@
       "\t$0",
       "</v-radio>"
     ],
-    "description": "Vuetify VRadio Component"
+    "description": "A single radio button, meant to be used within `v-radio-group`."
   },
   "VRadioGroup": {
     "prefix": "v-radio-group",
@@ -1176,7 +1293,7 @@
       "\t$0",
       "</v-radio-group>"
     ],
-    "description": "Vuetify VRadioGroup Component"
+    "description": "A wrapper for `v-radio` components. It manages the selection state."
   },
   "VRangeSlider": {
     "prefix": "v-range-slider",
@@ -1185,7 +1302,7 @@
       "\t$0",
       "</v-range-slider>"
     ],
-    "description": "Vuetify VRangeSlider Component"
+    "description": "Complements the `v-slider` component letting user to pick 2 data points on the linear scale."
   },
   "VRating": {
     "prefix": "v-rating",
@@ -1194,7 +1311,7 @@
       "\t$0",
       "</v-rating>"
     ],
-    "description": "Vuetify VRating Component"
+    "description": "A specialized input for showing sequence of icons for the user to express feedback."
   },
   "VResponsive": {
     "prefix": "v-responsive",
@@ -1203,7 +1320,7 @@
       "\t$0",
       "</v-responsive>"
     ],
-    "description": "Vuetify VResponsive Component"
+    "description": "Can be used to control sizing behavior of any section or set specific aspect ratio."
   },
   "VRow": {
     "prefix": "v-row",
@@ -1212,7 +1329,7 @@
       "\t$0",
       "</v-row>"
     ],
-    "description": "Vuetify VRow Component"
+    "description": "A layout component used to create a horizontal group of columns with easy control over gap size and alignment."
   },
   "VScaleTransition": {
     "prefix": "v-scale-transition",
@@ -1221,7 +1338,7 @@
       "\t$0",
       "</v-scale-transition>"
     ],
-    "description": "Vuetify VScaleTransition Component"
+    "description": "Scale in/out transition."
   },
   "VScrollXReverseTransition": {
     "prefix": "v-scroll-xreverse-transition",
@@ -1230,7 +1347,7 @@
       "\t$0",
       "</v-scroll-xreverse-transition>"
     ],
-    "description": "Vuetify VScrollXReverseTransition Component"
+    "description": "Horizontal scroll transition in the reverse direction (right-to-left entry)."
   },
   "VScrollXTransition": {
     "prefix": "v-scroll-xtransition",
@@ -1239,7 +1356,7 @@
       "\t$0",
       "</v-scroll-xtransition>"
     ],
-    "description": "Vuetify VScrollXTransition Component"
+    "description": "Horizontal scroll transition (left-to-right entry)."
   },
   "VScrollYReverseTransition": {
     "prefix": "v-scroll-yreverse-transition",
@@ -1248,7 +1365,7 @@
       "\t$0",
       "</v-scroll-yreverse-transition>"
     ],
-    "description": "Vuetify VScrollYReverseTransition Component"
+    "description": "Vertical scroll transition in the reverse direction (bottom-to-top entry)."
   },
   "VScrollYTransition": {
     "prefix": "v-scroll-ytransition",
@@ -1257,7 +1374,7 @@
       "\t$0",
       "</v-scroll-ytransition>"
     ],
-    "description": "Vuetify VScrollYTransition Component"
+    "description": "Vertical scroll transition (top-to-bottom entry)."
   },
   "VSelect": {
     "prefix": "v-select",
@@ -1266,7 +1383,7 @@
       "\t$0",
       "</v-select>"
     ],
-    "description": "Vuetify VSelect Component"
+    "description": "Replacement for native `<select>` HTML element. Forces selection from the dropdown list without type-ahead."
   },
   "VSelectionControl": {
     "prefix": "v-selection-control",
@@ -1275,7 +1392,7 @@
       "\t$0",
       "</v-selection-control>"
     ],
-    "description": "Vuetify VSelectionControl Component"
+    "description": "Low-level component used by `v-checkbox-btn` and `v-switch` for binary selection with support for indeterminate state as well."
   },
   "VSelectionControlGroup": {
     "prefix": "v-selection-control-group",
@@ -1284,7 +1401,7 @@
       "\t$0",
       "</v-selection-control-group>"
     ],
-    "description": "Vuetify VSelectionControlGroup Component"
+    "description": "Groups multiple selection controls (checkboxes or radios) with shared validation and layout."
   },
   "VSheet": {
     "prefix": "v-sheet",
@@ -1293,7 +1410,7 @@
       "\t$0",
       "</v-sheet>"
     ],
-    "description": "Vuetify VSheet Component"
+    "description": "Represents section within the application that is a good alternative to `v-card` most of the time."
   },
   "VSkeletonLoader": {
     "prefix": "v-skeleton-loader",
@@ -1302,7 +1419,7 @@
       "\t$0",
       "</v-skeleton-loader>"
     ],
-    "description": "Vuetify VSkeletonLoader Component"
+    "description": "Provides a straightforward loading placeholders in your application. Modern alternative to generic loading spinners."
   },
   "VSlideGroup": {
     "prefix": "v-slide-group",
@@ -1311,7 +1428,7 @@
       "\t$0",
       "</v-slide-group>"
     ],
-    "description": "Vuetify VSlideGroup Component"
+    "description": "Used to display scrollable items. Supports horizontal and vertical orientation."
   },
   "VSlideGroupItem": {
     "prefix": "v-slide-group-item",
@@ -1320,7 +1437,7 @@
       "\t$0",
       "</v-slide-group-item>"
     ],
-    "description": "Vuetify VSlideGroupItem Component"
+    "description": "Selectable item within v-slide-group, providing active state management."
   },
   "VSlideXReverseTransition": {
     "prefix": "v-slide-xreverse-transition",
@@ -1329,7 +1446,7 @@
       "\t$0",
       "</v-slide-xreverse-transition>"
     ],
-    "description": "Vuetify VSlideXReverseTransition Component"
+    "description": "Horizontal slide transition in the reverse direction."
   },
   "VSlideXTransition": {
     "prefix": "v-slide-xtransition",
@@ -1338,7 +1455,7 @@
       "\t$0",
       "</v-slide-xtransition>"
     ],
-    "description": "Vuetify VSlideXTransition Component"
+    "description": "Horizontal slide transition."
   },
   "VSlideYReverseTransition": {
     "prefix": "v-slide-yreverse-transition",
@@ -1347,7 +1464,7 @@
       "\t$0",
       "</v-slide-yreverse-transition>"
     ],
-    "description": "Vuetify VSlideYReverseTransition Component"
+    "description": "Vertical slide transition in the reverse direction."
   },
   "VSlideYTransition": {
     "prefix": "v-slide-ytransition",
@@ -1356,7 +1473,7 @@
       "\t$0",
       "</v-slide-ytransition>"
     ],
-    "description": "Vuetify VSlideYTransition Component"
+    "description": "Vertical slide transition."
   },
   "VSlider": {
     "prefix": "v-slider",
@@ -1365,7 +1482,7 @@
       "\t$0",
       "</v-slider>"
     ],
-    "description": "Vuetify VSlider Component"
+    "description": "Form input used to select single number from the linear range. A simple alternative to a standard number input."
   },
   "VSnackbar": {
     "prefix": "v-snackbar",
@@ -1374,7 +1491,7 @@
       "\t$0",
       "</v-snackbar>"
     ],
-    "description": "Vuetify VSnackbar Component"
+    "description": "Used to display a quick message or notification to a user. Supports positioning, auto-dismiss with timeout, and a dedicated slot for action."
   },
   "VSnackbarQueue": {
     "prefix": "v-snackbar-queue",
@@ -1383,7 +1500,7 @@
       "\t$0",
       "</v-snackbar-queue>"
     ],
-    "description": "Vuetify VSnackbarQueue Component"
+    "description": "Used to control and display a sequence of messages to the user."
   },
   "VSpacer": {
     "prefix": "v-spacer",
@@ -1392,7 +1509,7 @@
       "\t$0",
       "</v-spacer>"
     ],
-    "description": "Vuetify VSpacer Component"
+    "description": "Fills available space within flex containers such as toolbars and card actions."
   },
   "VSparkline": {
     "prefix": "v-sparkline",
@@ -1401,7 +1518,16 @@
       "\t$0",
       "</v-sparkline>"
     ],
-    "description": "Vuetify VSparkline Component"
+    "description": "Chart component used to create simple line or bars."
+  },
+  "VSparklineTooltip": {
+    "prefix": "v-sparkline-tooltip",
+    "body": [
+      "<v-sparkline-tooltip>",
+      "\t$0",
+      "</v-sparkline-tooltip>"
+    ],
+    "description": "Subcomponent for `v-sparkline` that renders the tooltip displayed when hovering over data points."
   },
   "VSpeedDial": {
     "prefix": "v-speed-dial",
@@ -1410,7 +1536,7 @@
       "\t$0",
       "</v-speed-dial>"
     ],
-    "description": "Vuetify VSpeedDial Component"
+    "description": "Typically combined with `v-fab` to reveal additional actions when clicked."
   },
   "VStepper": {
     "prefix": "v-stepper",
@@ -1419,7 +1545,7 @@
       "\t$0",
       "</v-stepper>"
     ],
-    "description": "Vuetify VStepper Component"
+    "description": "Displays multi-step sequence expecting user to interact with every panel individually."
   },
   "VStepperActions": {
     "prefix": "v-stepper-actions",
@@ -1428,7 +1554,7 @@
       "\t$0",
       "</v-stepper-actions>"
     ],
-    "description": "Vuetify VStepperActions Component"
+    "description": "Subcomponent for `v-stepper` that represents the step action controls."
   },
   "VStepperHeader": {
     "prefix": "v-stepper-header",
@@ -1437,7 +1563,7 @@
       "\t$0",
       "</v-stepper-header>"
     ],
-    "description": "Vuetify VStepperHeader Component"
+    "description": "Subcomponent for `v-stepper` that represents the step header."
   },
   "VStepperItem": {
     "prefix": "v-stepper-item",
@@ -1446,7 +1572,7 @@
       "\t$0",
       "</v-stepper-item>"
     ],
-    "description": "Vuetify VStepperItem Component"
+    "description": "Subcomponent for `v-stepper` that represents an individual step."
   },
   "VStepperVertical": {
     "prefix": "v-stepper-vertical",
@@ -1455,7 +1581,7 @@
       "\t$0",
       "</v-stepper-vertical>"
     ],
-    "description": "Vuetify VStepperVertical Component"
+    "description": "Guides users through a sequence of steps. Same as `v-stepper`, but for vertical orientation."
   },
   "VStepperVerticalActions": {
     "prefix": "v-stepper-vertical-actions",
@@ -1464,7 +1590,7 @@
       "\t$0",
       "</v-stepper-vertical-actions>"
     ],
-    "description": "Vuetify VStepperVerticalActions Component"
+    "description": "Navigation buttons (next/previous) for a vertical stepper item."
   },
   "VStepperVerticalItem": {
     "prefix": "v-stepper-vertical-item",
@@ -1473,7 +1599,7 @@
       "\t$0",
       "</v-stepper-vertical-item>"
     ],
-    "description": "Vuetify VStepperVerticalItem Component"
+    "description": "Subcomponent for `v-stepper-vertical` that represents an individual step item."
   },
   "VStepperWindow": {
     "prefix": "v-stepper-window",
@@ -1482,7 +1608,7 @@
       "\t$0",
       "</v-stepper-window>"
     ],
-    "description": "Vuetify VStepperWindow Component"
+    "description": "`v-window` container for `v-stepper` content."
   },
   "VStepperWindowItem": {
     "prefix": "v-stepper-window-item",
@@ -1491,7 +1617,7 @@
       "\t$0",
       "</v-stepper-window-item>"
     ],
-    "description": "Vuetify VStepperWindowItem Component"
+    "description": "Item for the `v-stepper-window` component."
   },
   "VSvgIcon": {
     "prefix": "v-svg-icon",
@@ -1500,7 +1626,7 @@
       "\t$0",
       "</v-svg-icon>"
     ],
-    "description": "Vuetify VSvgIcon Component"
+    "description": "Renders an icon from an inline SVG path or element."
   },
   "VSwitch": {
     "prefix": "v-switch",
@@ -1509,7 +1635,7 @@
       "\t$0",
       "</v-switch>"
     ],
-    "description": "Vuetify VSwitch Component"
+    "description": "Provides users the ability to choose between two distinct values. Typically used as an on/off switch. Supports indeterminate and loading states."
   },
   "VSystemBar": {
     "prefix": "v-system-bar",
@@ -1518,7 +1644,7 @@
       "\t$0",
       "</v-system-bar>"
     ],
-    "description": "Vuetify VSystemBar Component"
+    "description": "Status bar representing Android system bar - used for UI mocks."
   },
   "VTab": {
     "prefix": "v-tab",
@@ -1527,7 +1653,7 @@
       "\t$0",
       "</v-tab>"
     ],
-    "description": "Vuetify VTab Component"
+    "description": "Represents single tab inside `v-tabs`. Wrapper of `v-btn`."
   },
   "VTable": {
     "prefix": "v-table",
@@ -1536,7 +1662,7 @@
       "\t$0",
       "</v-table>"
     ],
-    "description": "Vuetify VTable Component"
+    "description": "Replacement for native `<table>` HTML element. Lightweight alternative to `v-data-table`."
   },
   "VTabs": {
     "prefix": "v-tabs",
@@ -1545,7 +1671,7 @@
       "\t$0",
       "</v-tabs>"
     ],
-    "description": "Vuetify VTabs Component"
+    "description": "Used to organize content across different screens, data sets, and other interactions."
   },
   "VTabsWindow": {
     "prefix": "v-tabs-window",
@@ -1554,7 +1680,7 @@
       "\t$0",
       "</v-tabs-window>"
     ],
-    "description": "Vuetify VTabsWindow Component"
+    "description": "Container for tab panel content, synced with v-tabs selection."
   },
   "VTabsWindowItem": {
     "prefix": "v-tabs-window-item",
@@ -1563,7 +1689,7 @@
       "\t$0",
       "</v-tabs-window-item>"
     ],
-    "description": "Vuetify VTabsWindowItem Component"
+    "description": "Individual tab panel within v-tabs-window."
   },
   "VTextField": {
     "prefix": "v-text-field",
@@ -1572,7 +1698,7 @@
       "\t$0",
       "</v-text-field>"
     ],
-    "description": "Vuetify VTextField Component"
+    "description": "Form component used for collecting single-line text."
   },
   "VTextarea": {
     "prefix": "v-textarea",
@@ -1581,7 +1707,7 @@
       "\t$0",
       "</v-textarea>"
     ],
-    "description": "Vuetify VTextarea Component"
+    "description": "Form component used for collecting multi-line text."
   },
   "VThemeProvider": {
     "prefix": "v-theme-provider",
@@ -1590,7 +1716,7 @@
       "\t$0",
       "</v-theme-provider>"
     ],
-    "description": "Vuetify VThemeProvider Component"
+    "description": "Allows to override theme for a part of the application."
   },
   "VTimePicker": {
     "prefix": "v-time-picker",
@@ -1599,7 +1725,7 @@
       "\t$0",
       "</v-time-picker>"
     ],
-    "description": "Vuetify VTimePicker Component"
+    "description": "A picker for selecting time: hours, minutes and optionally seconds."
   },
   "VTimePickerClock": {
     "prefix": "v-time-picker-clock",
@@ -1608,7 +1734,7 @@
       "\t$0",
       "</v-time-picker-clock>"
     ],
-    "description": "Vuetify VTimePickerClock Component"
+    "description": "Subcomponent for `v-time-picker` that provides the clock interface for selecting time."
   },
   "VTimePickerControls": {
     "prefix": "v-time-picker-controls",
@@ -1617,7 +1743,7 @@
       "\t$0",
       "</v-time-picker-controls>"
     ],
-    "description": "Vuetify VTimePickerControls Component"
+    "description": "Subcomponent for `v-time-picker` that provides the controls for selecting hours, minutes, seconds, and AM/PM."
   },
   "VTimeline": {
     "prefix": "v-timeline",
@@ -1626,7 +1752,7 @@
       "\t$0",
       "</v-timeline>"
     ],
-    "description": "Vuetify VTimeline Component"
+    "description": "Used for displaying chronological information."
   },
   "VTimelineItem": {
     "prefix": "v-timeline-item",
@@ -1635,7 +1761,7 @@
       "\t$0",
       "</v-timeline-item>"
     ],
-    "description": "Vuetify VTimelineItem Component"
+    "description": "Subcomponent for `v-timeline` that provides an individual timeline item."
   },
   "VToolbar": {
     "prefix": "v-toolbar",
@@ -1644,7 +1770,7 @@
       "\t$0",
       "</v-toolbar>"
     ],
-    "description": "Vuetify VToolbar Component"
+    "description": "Pivotal to any graphical user interface (GUI), as it generally is the primary source of site navigation."
   },
   "VToolbarItems": {
     "prefix": "v-toolbar-items",
@@ -1653,7 +1779,7 @@
       "\t$0",
       "</v-toolbar-items>"
     ],
-    "description": "Vuetify VToolbarItems Component"
+    "description": "Groups action items within v-toolbar with consistent styling."
   },
   "VToolbarTitle": {
     "prefix": "v-toolbar-title",
@@ -1662,7 +1788,7 @@
       "\t$0",
       "</v-toolbar-title>"
     ],
-    "description": "Vuetify VToolbarTitle Component"
+    "description": "Title text area within v-toolbar or v-app-bar."
   },
   "VTooltip": {
     "prefix": "v-tooltip",
@@ -1671,7 +1797,7 @@
       "\t$0",
       "</v-tooltip>"
     ],
-    "description": "Vuetify VTooltip Component"
+    "description": "Displays brief informational text when users hover over or focus on an element."
   },
   "VTreeview": {
     "prefix": "v-treeview",
@@ -1680,7 +1806,7 @@
       "\t$0",
       "</v-treeview>"
     ],
-    "description": "Vuetify VTreeview Component"
+    "description": "Useful for displaying nested uniform data."
   },
   "VTreeviewGroup": {
     "prefix": "v-treeview-group",
@@ -1689,7 +1815,7 @@
       "\t$0",
       "</v-treeview-group>"
     ],
-    "description": "Vuetify VTreeviewGroup Component"
+    "description": "Subcomponent for `v-treeview` used to display a single treeview node’s children."
   },
   "VTreeviewItem": {
     "prefix": "v-treeview-item",
@@ -1698,7 +1824,7 @@
       "\t$0",
       "</v-treeview-item>"
     ],
-    "description": "Vuetify VTreeviewItem Component"
+    "description": "Subcomponent for `v-treeview` used to display a single treeview node."
   },
   "VValidation": {
     "prefix": "v-validation",
@@ -1707,7 +1833,7 @@
       "\t$0",
       "</v-validation>"
     ],
-    "description": "Vuetify VValidation Component"
+    "description": "Headless validation wrapper for building custom form inputs with Vuetify's validation system."
   },
   "VVideo": {
     "prefix": "v-video",
@@ -1716,7 +1842,7 @@
       "\t$0",
       "</v-video>"
     ],
-    "description": "Vuetify VVideo Component"
+    "description": "Used for background video or a standalone player for self-hosted media files."
   },
   "VVideoControls": {
     "prefix": "v-video-controls",
@@ -1725,7 +1851,7 @@
       "\t$0",
       "</v-video-controls>"
     ],
-    "description": "Vuetify VVideoControls Component"
+    "description": "Subcomponent for `v-video` used to display a video player controls."
   },
   "VVideoVolume": {
     "prefix": "v-video-volume",
@@ -1734,7 +1860,7 @@
       "\t$0",
       "</v-video-volume>"
     ],
-    "description": "Vuetify VVideoVolume Component"
+    "description": "Subcomponent for `v-video` used to display a volume control."
   },
   "VVirtualScroll": {
     "prefix": "v-virtual-scroll",
@@ -1743,7 +1869,7 @@
       "\t$0",
       "</v-virtual-scroll>"
     ],
-    "description": "Vuetify VVirtualScroll Component"
+    "description": "Displays a virtualized container where only subset of items is actually rendered in the DOM. Yields massive performance gains when used correctly."
   },
   "VWindow": {
     "prefix": "v-window",
@@ -1752,7 +1878,7 @@
       "\t$0",
       "</v-window>"
     ],
-    "description": "Vuetify VWindow Component"
+    "description": "Provides the baseline functionality for transitioning content from one pane to another."
   },
   "VWindowItem": {
     "prefix": "v-window-item",
@@ -1761,6 +1887,6 @@
       "\t$0",
       "</v-window-item>"
     ],
-    "description": "Vuetify VWindowItem Component"
+    "description": "Subcomponent for `v-window` used to display a single panel/slide."
   }
 }
