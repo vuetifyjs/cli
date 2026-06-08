@@ -96,27 +96,27 @@ describe('create-vuetify matrix', () => {
 
   const matrix = [
     // Vue + JS
-    { name: 'vue-js', args: ['--type=vue', '--no-typescript', '--features='] },
+    { name: 'vue-js', platform: 'vue', args: ['--platform=vue', '--no-typescript', '--features='] },
     // Vue + TS
-    { name: 'vue-ts', args: ['--type=vue', '--typescript', '--features='] },
+    { name: 'vue-ts', platform: 'vue', args: ['--platform=vue', '--typescript', '--features='] },
     // Vue + TS + Router
-    { name: 'vue-ts-router', args: ['--type=vue', '--typescript', '--router=router'] },
+    { name: 'vue-ts-router', platform: 'vue', args: ['--platform=vue', '--typescript', '--router=router'] },
     // Vue + TS + Pinia
-    { name: 'vue-ts-pinia', args: ['--type=vue', '--typescript', '--features=pinia'] },
+    { name: 'vue-ts-pinia', platform: 'vue', args: ['--platform=vue', '--typescript', '--features=pinia'] },
     // Vue + TS + ESLint
-    { name: 'vue-ts-eslint', args: ['--type=vue', '--typescript', '--features=eslint'] },
+    { name: 'vue-ts-eslint', platform: 'vue', args: ['--platform=vue', '--typescript', '--features=eslint'] },
     // Vue + TS + All
-    { name: 'vue-ts-all', args: ['--type=vue', '--typescript', '--router=router', '--features=pinia,eslint'] },
+    { name: 'vue-ts-all', platform: 'vue', args: ['--platform=vue', '--typescript', '--router=router', '--features=pinia,eslint'] },
 
     // Nuxt
-    { name: 'nuxt', args: ['--type=nuxt', '--features='] },
+    { name: 'nuxt', platform: 'nuxt', args: ['--platform=nuxt', '--features='] },
     // Nuxt + Pinia
-    { name: 'nuxt-pinia', args: ['--type=nuxt', '--features=pinia'] },
+    { name: 'nuxt-pinia', platform: 'nuxt', args: ['--platform=nuxt', '--features=pinia'] },
     // Nuxt + All
-    { name: 'nuxt-all', args: ['--type=nuxt', '--features=pinia,eslint'] },
+    { name: 'nuxt-all', platform: 'nuxt', args: ['--platform=nuxt', '--features=pinia,eslint'] },
   ]
 
-  for (const { name, args } of matrix) {
+  for (const { name, platform, args } of matrix) {
     it(`should create project ${name}`, async () => {
       const projectName = `test-${name}`
       const projectPath = join(TEMP_DIR, projectName)
@@ -141,10 +141,10 @@ describe('create-vuetify matrix', () => {
       expect(fs.existsSync(join(projectPath, 'README.md'))).toBe(true)
 
       // Basic check for file structure
-      if (args.includes('vue')) {
-        expect(fs.existsSync(join(projectPath, 'src/main.ts')) || fs.existsSync(join(projectPath, 'src/main.js'))).toBe(true)
-      } else if (args.includes('nuxt')) {
+      if (platform === 'nuxt') {
         expect(fs.existsSync(join(projectPath, 'nuxt.config.ts'))).toBe(true)
+      } else {
+        expect(fs.existsSync(join(projectPath, 'src/main.ts')) || fs.existsSync(join(projectPath, 'src/main.js'))).toBe(true)
       }
     }, TIMEOUT)
   }
