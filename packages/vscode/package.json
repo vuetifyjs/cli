@@ -108,7 +108,7 @@
     "@types/node": "catalog:",
     "@types/vscode": "1.107.0",
     "@vuetify/cli-shared": "workspace:*",
-    "giget": "catalog:",
+    "nanotar": "catalog:",
     "pathe": "catalog:",
     "reactive-vscode": "catalog:",
     "tsdown": "catalog:",

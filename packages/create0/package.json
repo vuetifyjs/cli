@@ -35,8 +35,8 @@
     "@clack/prompts": "catalog:",
     "@vuetify/cli-shared": "workspace:*",
     "citty": "catalog:",
-    "giget": "catalog:",
     "kolorist": "catalog:",
+    "nanotar": "catalog:",
     "pathe": "catalog:",
     "tsdown": "catalog:"
   },
@@ -63,12 +63,12 @@
     "fast-string-truncated-width": "3.0.3",
     "fast-string-width": "3.0.2",
     "fast-wrap-ansi": "0.2.2",
-    "giget": "3.2.0",
     "i18n-js": "4.5.3",
     "is-interactive": "2.0.0",
     "kolorist": "1.8.0",
     "lodash": "4.17.21",
     "make-plural": "7.5.0",
+    "nanotar": "0.3.0",
     "pathe": "2.0.3",
     "semver": "7.8.2",
     "sisteransi": "1.0.5"

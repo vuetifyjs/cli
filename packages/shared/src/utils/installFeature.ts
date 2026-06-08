@@ -1,7 +1,7 @@
 import { cpSync, existsSync, mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { downloadTemplate } from 'giget'
 import { join } from 'pathe'
+import { downloadTemplate } from './downloadTemplate'
 import { getTemplateSource } from './getTemplateSource'
 
 export async function installFeature (feature: string, cwd: string, type: 'vuetify' | 'vuetify0' = 'vuetify') {

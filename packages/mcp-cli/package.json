@@ -37,17 +37,20 @@
     "./package.json": "./package.json"
   },
   "inlinedDependencies": {
-    "@bomb.sh/tab": "0.0.14",
-    "@clack/core": "1.1.0",
-    "@clack/prompts": "1.1.0",
+    "@bomb.sh/tab": "0.0.15",
+    "@clack/core": "1.4.1",
+    "@clack/prompts": "1.5.1",
     "bignumber.js": "9.3.1",
-    "citty": "0.2.1",
+    "citty": "0.2.2",
+    "fast-string-truncated-width": "3.0.3",
+    "fast-string-width": "3.0.2",
+    "fast-wrap-ansi": "0.2.2",
     "i18n-js": "4.5.3",
     "kolorist": "1.8.0",
     "lodash": "4.17.21",
     "make-plural": "7.5.0",
     "pathe": "2.0.3",
     "sisteransi": "1.0.5",
-    "smol-toml": "1.6.0"
+    "smol-toml": "1.6.1"
   }
 }
