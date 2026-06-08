@@ -7,7 +7,7 @@ import { applyFeatures } from '../features'
 import { convertProjectToJS } from '../utils/convertProjectToJS'
 import { getTemplateSource } from '../utils/getTemplateSource'
 import { installDependencies } from '../utils/installDependencies'
-import { getProjectAgentsMd, getProjectReadmeMd } from '../utils/projectDocs'
+import { getProjectAgentsMd, getProjectGitignore, getProjectReadmeMd } from '../utils/projectDocs'
 
 export interface ScaffoldOptions {
   cwd: string
@@ -260,6 +260,13 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
 
   fs.writeFileSync(join(projectRoot, 'AGENTS.md'), getProjectAgentsMd(projectDocsOptions))
   fs.writeFileSync(join(projectRoot, 'README.md'), getProjectReadmeMd(projectDocsOptions))
+
+  // Templates can't ship a `.gitignore` (it would be stripped by tooling that
+  // packs them), so generate one unless the template already provided it.
+  const gitignorePath = join(projectRoot, '.gitignore')
+  if (!existsSync(gitignorePath)) {
+    fs.writeFileSync(gitignorePath, getProjectGitignore(projectDocsOptions))
+  }
 
   if (install && packageManager) {
     callbacks.onInstallStart?.(packageManager)
