@@ -48,9 +48,6 @@ catalogs:
     exsolve:
       specifier: ^1.0.8
       version: 1.0.8
-    giget:
-      specifier: ^3.2.0
-      version: 3.2.0
     i18n-js:
       specifier: ^4.5.3
       version: 4.5.3
@@ -66,6 +63,9 @@ catalogs:
     magicast:
       specifier: ^0.5.3
       version: 0.5.3
+    nanotar:
+      specifier: ^0.3.0
+      version: 0.3.0
     open:
       specifier: ^11.0.0
       version: 11.0.0
@@ -165,12 +165,12 @@ importers:
       citty:
         specifier: 'catalog:'
         version: 0.2.2
-      giget:
-        specifier: 'catalog:'
-        version: 3.2.0
       kolorist:
         specifier: 'catalog:'
         version: 1.8.0
+      nanotar:
+        specifier: 'catalog:'
+        version: 0.3.0
       open:
         specifier: 'catalog:'
         version: 11.0.0
@@ -214,12 +214,12 @@ importers:
       citty:
         specifier: 'catalog:'
         version: 0.2.2
-      giget:
-        specifier: 'catalog:'
-        version: 3.2.0
       kolorist:
         specifier: 'catalog:'
         version: 1.8.0
+      nanotar:
+        specifier: 'catalog:'
+        version: 0.3.0
       pathe:
         specifier: 'catalog:'
         version: 2.0.3
@@ -260,12 +260,12 @@ importers:
       citty:
         specifier: 'catalog:'
         version: 0.2.2
-      giget:
-        specifier: 'catalog:'
-        version: 3.2.0
       kolorist:
         specifier: 'catalog:'
         version: 1.8.0
+      nanotar:
+        specifier: 'catalog:'
+        version: 0.3.0
       pathe:
         specifier: 'catalog:'
         version: 2.0.3
@@ -330,9 +330,6 @@ importers:
       exsolve:
         specifier: 'catalog:'
         version: 1.0.8
-      giget:
-        specifier: 'catalog:'
-        version: 3.2.0
       i18n-js:
         specifier: 'catalog:'
         version: 4.5.3
@@ -345,6 +342,9 @@ importers:
       kolorist:
         specifier: 'catalog:'
         version: 1.8.0
+      nanotar:
+        specifier: 'catalog:'
+        version: 0.3.0
       open:
         specifier: 'catalog:'
         version: 11.0.0
@@ -378,9 +378,9 @@ importers:
       '@vuetify/cli-shared':
         specifier: workspace:*
         version: link:../shared
-      giget:
+      nanotar:
         specifier: 'catalog:'
-        version: 3.2.0
+        version: 0.3.0
       pathe:
         specifier: 'catalog:'
         version: 2.0.3
@@ -1620,10 +1620,6 @@ packages:
   get-tsconfig@4.14.0:
     resolution: {integrity: sha512-yTb+8DXzDREzgvYmh6s9vHsSVCHeC0G3PI5bEXNBHtmshPnO+S5O7qgLEOn0I5QvMy6kpZN8K1NKGyilLb93wA==}
 
-  giget@3.2.0:
-    resolution: {integrity: sha512-GvHTWcykIR/fP8cj8dMpuMMkvaeJfPvYnhq0oW+chSeIr+ldX21ifU2Ms6KBoyKZQZmVaUAAhQ2EZ68KJF8a7A==}
-    hasBin: true
-
   glob-parent@6.0.2:
     resolution: {integrity: sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==}
     engines: {node: '>=10.13.0'}
@@ -1816,6 +1812,9 @@ packages:
     resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+
+  nanotar@0.3.0:
+    resolution: {integrity: sha512-Kv2JYYiCzt16Kt5QwAc9BFG89xfPNBx+oQL4GQXD9nLqPkZBiNaqaCWtwnbk/q7UVsTYevvM1b0UF8zmEI4pCg==}
 
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
@@ -3467,8 +3466,6 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  giget@3.2.0: {}
-
   glob-parent@6.0.2:
     dependencies:
       is-glob: 4.0.3
@@ -3629,6 +3626,8 @@ snapshots:
   ms@2.1.3: {}
 
   nanoid@3.3.11: {}
+
+  nanotar@0.3.0: {}
 
   natural-compare@1.4.0: {}
 
