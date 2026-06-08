@@ -139,6 +139,7 @@ describe('create-vuetify matrix', () => {
       expect(fs.existsSync(join(projectPath, 'package.json'))).toBe(true)
       expect(fs.existsSync(join(projectPath, 'AGENTS.md'))).toBe(true)
       expect(fs.existsSync(join(projectPath, 'README.md'))).toBe(true)
+      expect(fs.existsSync(join(projectPath, '.gitignore'))).toBe(true)
 
       // Basic check for file structure
       if (platform === 'nuxt') {

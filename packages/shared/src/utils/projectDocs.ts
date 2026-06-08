@@ -118,6 +118,65 @@ function dlxCommand (pm: string, pkg: string) {
   return `npx -y ${pkg}`
 }
 
+export function getProjectGitignore (options: ProjectDocsOptions) {
+  if (options.platform === 'nuxt') {
+    return `# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
+`
+  }
+
+  return `# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.tsbuildinfo
+`
+}
+
 export function getProjectAgentsMd (options: ProjectDocsOptions) {
   const pm = getPackageManager(options.packageManager)
   const enabledFeatures = options.features.length > 0
