@@ -1,9 +1,9 @@
 import { intro, log, outro, spinner } from '@clack/prompts'
 import { defineCommand } from 'citty'
 import { green } from 'kolorist'
-import { addDependency, addDevDependency } from 'nypm'
 import { i18n } from '../i18n'
 import { extractMajor, getNpmPackageVersion, getPackageVersion, getProjectPackageJSON } from '../utils'
+import { addDependency, addDevDependency } from '../utils/installDependencies'
 
 export const update = defineCommand({
   meta: {

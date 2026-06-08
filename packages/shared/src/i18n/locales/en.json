@@ -179,7 +179,7 @@
       "description": "[deprecated] Upgrade %{pkg} to latest version",
       "deprecated": "This command is deprecated and may be removed in a future release.",
       "not_global": "%{pkg} is not installed globally.",
-      "start": "Upgrading %{pkg} globally using nypm...",
+      "start": "Upgrading %{pkg} globally...",
       "success": "Successfully upgraded %{pkg} to latest.",
       "fail": "Failed to upgrade %{pkg}: %{message}"
     },
