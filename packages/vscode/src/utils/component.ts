@@ -16,9 +16,7 @@ export function getComponentAtPosition (document: TextDocument, position: Positi
   }
 
   const word = document.getText(wordRange)
-  let componentName = word
-
-  componentName = word.startsWith('V') && !word.startsWith('V-') && !word.includes('-') ? kebabCase(word) : word.toLowerCase()
+  let componentName = word.startsWith('V') && !word.startsWith('V-') && !word.includes('-') ? kebabCase(word) : word.toLowerCase()
 
   if (!componentName.startsWith('v-')) {
     componentName = `v-${componentName}`

@@ -232,6 +232,7 @@ async function collectManualOptions (): Promise<ProjectConfig | undefined> {
   const type = templateItem.value
 
   // CSS Framework
+  // eslint-disable-next-line no-useless-assignment
   let cssFramework = 'none'
   const cssOptions: StringItem[] = type === 'vuetify0'
     ? [

@@ -209,7 +209,7 @@ export function getDefaultIdeConfigPath (options: { scope: McpInstallScope, ide:
     return null
   }
   const ide = options.ide
-  let candidates: string[] = []
+  let candidates: string[]
   switch (ide) {
     case 'copilot':
     case 'cline':
@@ -402,6 +402,7 @@ export async function listInstallStates (scope: McpInstallScope, cwd: string): P
     ? join(cwd, '.vuetify', 'mcp')
     : join(getUserConfigDir(), 'vuetify', 'mcp')
 
+  // eslint-disable-next-line no-useless-assignment
   let entries: string[] = []
   try {
     entries = await readdir(dir)

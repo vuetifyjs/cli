@@ -1,5 +1,5 @@
-import type { TranslateOptions } from 'i18n-js'
 import type { TranslationKey } from './types'
+import type { TranslateOptions } from 'i18n-js'
 import { i18n as _i18n } from './setup'
 
 export * from './language'

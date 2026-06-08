@@ -5,7 +5,6 @@ import { createPresetsCommand } from '@vuetify/cli-shared/commands/presets'
 import { registerProjectArgsCompletion } from '@vuetify/cli-shared/completion'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { createBanner } from '@vuetify/cli-shared/utils/banner'
-
 import { defineCommand, runMain, showUsage } from 'citty'
 import { version } from '../package.json'
 import { analyze } from './commands/analyze'

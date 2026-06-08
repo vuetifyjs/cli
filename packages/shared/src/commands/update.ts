@@ -33,7 +33,9 @@ export const update = defineCommand({
     const devDeps = pkg.devDependencies || {}
     const allDeps = { ...deps, ...devDeps }
 
+    // eslint-disable-next-line no-useless-assignment
     let packagesToUpdate: string[] = []
+    // eslint-disable-next-line no-useless-assignment
     let candidatesFound = false
     const isNightly = args.nightly
 

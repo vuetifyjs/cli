@@ -150,8 +150,7 @@ export async function addEslint () {
     }
   }
 
-  let overwriteConfig = false as boolean | symbol
-  overwriteConfig = await (configPath
+  const overwriteConfig = await (configPath
     ? confirm({
         message: i18n.t('prompts.eslint.overwrite', { file: underline(relative(process.cwd(), configPath)) }),
       })

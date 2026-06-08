@@ -1,5 +1,5 @@
-import type { PackageJson } from 'pkg-types'
 import type { Feature } from './types'
+import type { PackageJson } from 'pkg-types'
 import { nuxtClientHints } from './client-hints'
 import { cssNone } from './css-none'
 import { eslint } from './eslint'
