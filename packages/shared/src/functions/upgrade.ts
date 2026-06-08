@@ -1,8 +1,8 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { log } from '@clack/prompts'
-import { addDependency } from 'nypm'
 import { i18n } from '../i18n'
+import { addDependency } from '../utils/installDependencies'
 
 function isInstalledLocally (): boolean {
   const __dirname = path.dirname(fileURLToPath(import.meta.url))

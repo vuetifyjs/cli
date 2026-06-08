@@ -26,7 +26,6 @@ catalog:
   is-interactive: ^2.0.0
   kolorist: ^1.8.0
   magicast: ^0.5.3
-  nypm: ^0.6.6
   open: ^11.0.0
   package-manager-detector: ^1.6.0
   pathe: ^2.0.3

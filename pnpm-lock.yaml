@@ -66,9 +66,6 @@ catalogs:
     magicast:
       specifier: ^0.5.3
       version: 0.5.3
-    nypm:
-      specifier: ^0.6.6
-      version: 0.6.6
     open:
       specifier: ^11.0.0
       version: 11.0.0
@@ -174,9 +171,6 @@ importers:
       kolorist:
         specifier: 'catalog:'
         version: 1.8.0
-      nypm:
-        specifier: 'catalog:'
-        version: 0.6.6
       open:
         specifier: 'catalog:'
         version: 11.0.0
@@ -226,9 +220,6 @@ importers:
       kolorist:
         specifier: 'catalog:'
         version: 1.8.0
-      nypm:
-        specifier: 'catalog:'
-        version: 0.6.6
       pathe:
         specifier: 'catalog:'
         version: 2.0.3
@@ -275,9 +266,6 @@ importers:
       kolorist:
         specifier: 'catalog:'
         version: 1.8.0
-      nypm:
-        specifier: 'catalog:'
-        version: 0.6.6
       pathe:
         specifier: 'catalog:'
         version: 2.0.3
@@ -357,9 +345,6 @@ importers:
       kolorist:
         specifier: 'catalog:'
         version: 1.8.0
-      nypm:
-        specifier: 'catalog:'
-        version: 0.6.6
       open:
         specifier: 'catalog:'
         version: 11.0.0
@@ -396,9 +381,6 @@ importers:
       giget:
         specifier: 'catalog:'
         version: 3.2.0
-      nypm:
-        specifier: 'catalog:'
-        version: 0.6.6
       pathe:
         specifier: 'catalog:'
         version: 2.0.3
@@ -1850,11 +1832,6 @@ packages:
 
   nypm@0.6.5:
     resolution: {integrity: sha512-K6AJy1GMVyfyMXRVB88700BJqNUkByijGJM8kEHpLdcAt+vSQAVfkWWHYzuRXHSY6xA2sNc5RjTj0p9rE2izVQ==}
-    engines: {node: '>=18'}
-    hasBin: true
-
-  nypm@0.6.6:
-    resolution: {integrity: sha512-vRyr0r4cbBapw07Xw8xrj9Teq3o7MUD35rSaTcanDbW+aK2XHDgJFiU6ZTj2GBw7Q12ysdsyFss+Vdz4hQ0Y6Q==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3669,12 +3646,6 @@ snapshots:
       pathe: 2.0.3
       tinyexec: 1.2.4
 
-  nypm@0.6.6:
-    dependencies:
-      citty: 0.2.2
-      pathe: 2.0.3
-      tinyexec: 1.2.4
-
   obug@2.1.1: {}
 
   ohash@2.0.11: {}
@@ -4057,11 +4028,11 @@ snapshots:
   vite@7.3.0(@types/node@24.13.0)(jiti@2.6.1)(yaml@2.9.0):
     dependencies:
       esbuild: 0.27.2
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
       postcss: 8.5.6
       rollup: 4.54.0
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 24.13.0
       fsevents: 2.3.3
