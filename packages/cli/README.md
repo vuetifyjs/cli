@@ -16,7 +16,7 @@
   <a href="https://github.com/vuetifyjs/cli/blob/master/LICENSE">
     <img src="https://img.shields.io/npm/l/@vuetify/cli.svg" alt="License">
   </a>
-  <a href="https://community.vuetifyjs.com">
+  <a href="https://discord.gg/vuetify">
     <img src="https://discordapp.com/api/guilds/340160225338195969/widget.png" alt="Chat">
   </a>
 </p>
