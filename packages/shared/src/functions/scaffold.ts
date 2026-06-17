@@ -222,8 +222,22 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
 
   await applySharedAssets(projectRoot, platform, type)
 
-  let pkg
-  pkg = await readPackageJSON(join(projectRoot, 'package.json'))
+  const pkgPath = join(projectRoot, 'package.json')
+  let pkg = await readPackageJSON(pkgPath)
+
+  // Convert the project to JavaScript *before* applying features. Templates are
+  // authored in TypeScript and conversion renames the whole tree (e.g.
+  // `src/plugins/index.ts` -> `.js`, `vite.config.mts` -> `.mjs`). Features
+  // target files by their final extension, so they must run against the
+  // already-converted project, otherwise they fail with ENOENT. Re-read the
+  // package.json afterwards so the in-memory copy reflects the dependency and
+  // script changes conversion writes to disk.
+  if (platform === 'vue' && !typescript) {
+    callbacks.onConvertStart?.()
+    await convertProjectToJS(projectRoot)
+    callbacks.onConvertEnd?.()
+    pkg = await readPackageJSON(pkgPath)
+  }
 
   callbacks.onConfigStart?.()
   if (features && features.length > 0) {
@@ -233,19 +247,9 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
   callbacks.onConfigEnd?.()
 
   // Update package.json name
-  const pkgPath = join(projectRoot, 'package.json')
   if (existsSync(pkgPath)) {
-    if (!pkg) {
-      pkg = await readPackageJSON(pkgPath)
-    }
     pkg.name = name
     await writePackageJSON(pkgPath, pkg)
-  }
-
-  if (platform === 'vue' && !typescript) {
-    callbacks.onConvertStart?.()
-    await convertProjectToJS(projectRoot)
-    callbacks.onConvertEnd?.()
   }
 
   const projectDocsOptions = {
