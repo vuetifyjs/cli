@@ -8,6 +8,14 @@ export default defineNuxtConfig({
     'vuetify-nuxt-module',
   ],
 
+  app: {
+    head: {
+      link: [
+        { rel: 'stylesheet', href: '/layers.css' },
+      ],
+    },
+  },
+
   vuetify: {
     moduleOptions: {
       styles: { configFile: 'assets/styles/settings.scss' },

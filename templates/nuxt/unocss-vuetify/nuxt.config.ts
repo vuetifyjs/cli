@@ -11,8 +11,15 @@ export default defineNuxtConfig({
     'vuetify-nuxt-module',
   ],
 
+  app: {
+    head: {
+      link: [
+        { rel: 'stylesheet', href: '/layers.css' },
+      ],
+    },
+  },
+
   css: [
-    'assets/styles/layers.css',
     'assets/styles/main.scss',
   ],
 

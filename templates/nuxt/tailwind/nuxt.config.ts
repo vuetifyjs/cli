@@ -8,6 +8,14 @@ export default defineNuxtConfig({
     'vuetify-nuxt-module',
   ],
 
+  app: {
+    head: {
+      link: [
+        { rel: 'stylesheet', href: '/layers.css' },
+      ],
+    },
+  },
+
   postcss: {
     plugins: {
       '@tailwindcss/postcss': {},
@@ -15,7 +23,6 @@ export default defineNuxtConfig({
   },
 
   css: [
-    'assets/styles/layers.css',
     'assets/styles/tailwind.css',
   ],
 
