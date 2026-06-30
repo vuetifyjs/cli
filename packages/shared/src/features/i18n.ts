@@ -10,8 +10,6 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 export const i18n: Feature = {
   name: 'i18n',
   apply: async ({ cwd, pkg, isTypescript, isNuxt }) => {
-    const ext = isTypescript ? 'ts' : 'js'
-
     if (isNuxt) {
       pkg.dependencies ??= {}
       pkg.dependencies['@nuxtjs/i18n'] = rootPkg.dependencies['@nuxtjs/i18n']
@@ -34,7 +32,7 @@ export const i18n: Feature = {
       await writeFile(configPath, mod.generate().code)
 
       // Create i18n.config.ts
-      await writeFile(join(cwd, `i18n.config.${ext}`), getNuxtI18nConfig(isTypescript))
+      await writeFile(join(cwd, 'i18n.config.ts'), getNuxtI18nConfig(isTypescript))
     } else {
       pkg.dependencies ??= {}
       pkg.dependencies['vue-i18n'] = rootPkg.dependencies['vue-i18n']
@@ -43,10 +41,10 @@ export const i18n: Feature = {
       if (!existsSync(join(cwd, 'src/plugins'))) {
         mkdirSync(join(cwd, 'src/plugins'), { recursive: true })
       }
-      await writeFile(join(cwd, `src/plugins/i18n.${ext}`), getVueI18nContent(isTypescript))
+      await writeFile(join(cwd, 'src/plugins/i18n.ts'), getVueI18nContent(isTypescript))
 
       // Register in plugins/index.ts
-      const pluginsPath = join(cwd, `src/plugins/index.${ext}`)
+      const pluginsPath = join(cwd, 'src/plugins/index.ts')
       if (existsSync(pluginsPath)) {
         const mod = await loadFile(pluginsPath)
 

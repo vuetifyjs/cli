@@ -9,7 +9,7 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 const RE_STYLES = /\/\/ Styles/g
 
 async function applyUnocssBase (
-  { cwd, pkg, isTypescript, isNuxt }: FeatureContext,
+  { cwd, pkg, isNuxt }: FeatureContext,
   options: { presetVuetify?: boolean } = {},
 ) {
   pkg.devDependencies = pkg.devDependencies || {}
@@ -42,8 +42,7 @@ async function applyUnocssBase (
     return
   }
 
-  const ext = isTypescript ? 'ts' : 'js'
-  const viteConfigPath = join(cwd, `vite.config.m${ext}`)
+  const viteConfigPath = join(cwd, 'vite.config.mts')
   const mod = await loadFile(viteConfigPath)
 
   addVitePlugin(mod, {

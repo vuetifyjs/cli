@@ -57,6 +57,18 @@ describe('convertProjectToJS', () => {
     })
   }
 
+  it('strips feature-copied SFCs (router overlaid on base)', async () => {
+    // Mirrors scaffold: base template + a feature's template files, converted
+    // as one final pass.
+    const dir = convertTemplate('vue/base')
+    cpSync(join(TEMPLATES, 'vue/router'), dir, { recursive: true })
+    await convertProjectToJS(dir)
+
+    for (const [file, content] of Object.entries(read(dir, /\.vue$/))) {
+      expect(content, `${file} kept lang="ts"`).not.toMatch(/lang="ts"/)
+    }
+  })
+
   it('preserves runtime object literals and namespace imports', async () => {
     const dir = convertTemplate('vue/unocss-wind4')
     await convertProjectToJS(dir)

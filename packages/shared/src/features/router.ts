@@ -12,7 +12,6 @@ export const router: Feature = {
   apply: async ({ cwd, pkg, isTypescript, type }) => {
     await installFeature('router', cwd, type)
 
-    const ext = isTypescript ? 'ts' : 'js'
     pkg.dependencies = pkg.dependencies || {}
     pkg.dependencies['vue-router'] = rootPkg.dependencies['vue-router']
 
@@ -21,10 +20,10 @@ export const router: Feature = {
     if (!existsSync(join(cwd, 'src/router'))) {
       mkdirSync(join(cwd, 'src/router'), { recursive: true })
     }
-    await writeFile(join(cwd, `src/router/index.${ext}`), routerContent)
+    await writeFile(join(cwd, 'src/router/index.ts'), routerContent)
 
     // Update plugins/index.ts
-    const pluginsPath = join(cwd, `src/plugins/index.${ext}`)
+    const pluginsPath = join(cwd, 'src/plugins/index.ts')
     const mod = await loadFile(pluginsPath)
 
     mod.imports.$prepend({
@@ -58,7 +57,6 @@ export const fileRouter: Feature = {
   apply: async ({ cwd, pkg, isTypescript, type }) => {
     await installFeature('file-router', cwd, type)
 
-    const ext = isTypescript ? 'ts' : 'js'
     pkg.dependencies = pkg.dependencies || {}
     pkg.dependencies['vue-router'] = rootPkg.dependencies['vue-router']
 
@@ -67,10 +65,10 @@ export const fileRouter: Feature = {
     if (!existsSync(join(cwd, 'src/router'))) {
       mkdirSync(join(cwd, 'src/router'), { recursive: true })
     }
-    await writeFile(join(cwd, `src/router/index.${ext}`), routerContent)
+    await writeFile(join(cwd, 'src/router/index.ts'), routerContent)
 
     // Update plugins/index.ts
-    const pluginsPath = join(cwd, `src/plugins/index.${ext}`)
+    const pluginsPath = join(cwd, 'src/plugins/index.ts')
     const mod = await loadFile(pluginsPath)
 
     mod.imports.$prepend({
@@ -86,8 +84,8 @@ export const fileRouter: Feature = {
 
     await writeFile(pluginsPath, mod.generate().code)
 
-    // Update vite.config.mjs / .mts
-    const viteConfigPath = join(cwd, `vite.config.m${ext}`)
+    // Update vite.config.mts
+    const viteConfigPath = join(cwd, 'vite.config.mts')
     if (existsSync(viteConfigPath)) {
       const viteMod = await loadFile(viteConfigPath)
 

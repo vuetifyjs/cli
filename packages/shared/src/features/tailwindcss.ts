@@ -10,7 +10,7 @@ const RE_STYLES = /\/\/ Styles/g
 
 export const tailwindcss: Feature = {
   name: 'tailwindcss',
-  apply: async ({ cwd, pkg, isTypescript, isNuxt, type }) => {
+  apply: async ({ cwd, pkg, isNuxt, type }) => {
     if (type === 'vuetify' && !isNuxt) {
       return
     }
@@ -34,8 +34,7 @@ export const tailwindcss: Feature = {
       pkg.devDependencies['tailwindcss'] = rootPkg.dependencies['tailwindcss']
       pkg.devDependencies['@tailwindcss/vite'] = rootPkg.dependencies['@tailwindcss/vite']
 
-      const ext = isTypescript ? 'ts' : 'js'
-      const viteConfigPath = join(cwd, `vite.config.m${ext}`)
+      const viteConfigPath = join(cwd, 'vite.config.mts')
       const mod = await loadFile(viteConfigPath)
 
       addVitePlugin(mod, {

@@ -225,20 +225,6 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
   const pkgPath = join(projectRoot, 'package.json')
   let pkg = await readPackageJSON(pkgPath)
 
-  // Convert the project to JavaScript *before* applying features. Templates are
-  // authored in TypeScript and conversion renames the whole tree (e.g.
-  // `src/plugins/index.ts` -> `.js`, `vite.config.mts` -> `.mjs`). Features
-  // target files by their final extension, so they must run against the
-  // already-converted project, otherwise they fail with ENOENT. Re-read the
-  // package.json afterwards so the in-memory copy reflects the dependency and
-  // script changes conversion writes to disk.
-  if (platform === 'vue' && !typescript) {
-    callbacks.onConvertStart?.()
-    await convertProjectToJS(projectRoot)
-    callbacks.onConvertEnd?.()
-    pkg = await readPackageJSON(pkgPath)
-  }
-
   callbacks.onConfigStart?.()
   if (features && features.length > 0) {
     await applyFeatures(projectRoot, features, pkg, !!typescript, platform === 'nuxt', type)
@@ -250,6 +236,15 @@ export async function scaffold (options: ScaffoldOptions, callbacks: ScaffoldCal
   if (existsSync(pkgPath)) {
     pkg.name = name
     await writePackageJSON(pkgPath, pkg)
+  }
+
+  // Everything is scaffolded in TypeScript
+  // convert to JavaScript as the final step
+  if (platform === 'vue' && !typescript) {
+    callbacks.onConvertStart?.()
+    await convertProjectToJS(projectRoot)
+    callbacks.onConvertEnd?.()
+    pkg = await readPackageJSON(pkgPath)
   }
 
   const projectDocsOptions = {
