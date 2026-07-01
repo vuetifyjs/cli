@@ -10,8 +10,6 @@ import rootPkg from './dependencies/package.json' with { type: 'json' }
 export const pinia: Feature = {
   name: 'pinia',
   apply: async ({ cwd, pkg, isTypescript, isNuxt }) => {
-    const ext = isTypescript ? 'ts' : 'js'
-
     if (isNuxt) {
       pkg.dependencies ??= {}
       pkg.devDependencies ??= {}
@@ -39,7 +37,7 @@ export const pinia: Feature = {
       if (!existsSync(join(cwd, appPath, 'stores'))) {
         mkdirSync(join(cwd, appPath, 'stores'), { recursive: true })
       }
-      await writeFile(join(cwd, appPath, `stores/app.${ext}`), getStoreContent(isTypescript))
+      await writeFile(join(cwd, appPath, 'stores/app.ts'), getStoreContent(isTypescript))
     } else {
       pkg.dependencies ??= {}
       pkg.dependencies['pinia'] = rootPkg.dependencies.pinia
@@ -48,10 +46,10 @@ export const pinia: Feature = {
       if (!existsSync(join(cwd, 'src/stores'))) {
         mkdirSync(join(cwd, 'src/stores'), { recursive: true })
       }
-      await writeFile(join(cwd, `src/stores/app.${ext}`), getStoreContent(isTypescript))
+      await writeFile(join(cwd, 'src/stores/app.ts'), getStoreContent(isTypescript))
 
       // Update plugins/index.ts
-      const pluginsPath = join(cwd, `src/plugins/index.${ext}`)
+      const pluginsPath = join(cwd, 'src/plugins/index.ts')
       const mod = await loadFile(pluginsPath)
 
       mod.imports.$prepend({

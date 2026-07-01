@@ -3,9 +3,21 @@ import { join } from 'pathe'
 import { readPackageJSON, writePackageJSON } from 'pkg-types'
 
 const RE_LANG_TS = /\s?lang="ts"/g
-const RE_APP_IMPORT = /import type { App } from 'vue'.*\n/
-const RE_APP_TYPE = /app: App/
 const RE_TS_EXT = /\.m?ts$/
+
+const RE_TYPE_IMPORT = /^[ \t]*import\s+type\b.*\r?\n/gm
+const RE_TYPE = String.raw`[A-Z][\w$.]*(?:<[^>]*>)?(?:\[\])?`
+const RE_AS_SATISFIES = new RegExp(String.raw`\s+(?:as|satisfies)\s+${RE_TYPE}`, 'g')
+const RE_DECL_ANNOTATION = new RegExp(String.raw`\b(const|let|var)(\s+[A-Za-z_$][\w$]*)\s*:\s*${RE_TYPE}(?=\s*=)`, 'g')
+const RE_PARAM_ANNOTATION = new RegExp(String.raw`(\(\s*[A-Za-z_$][\w$]*)\s*:\s*${RE_TYPE}(?=\s*[,)])`, 'g')
+
+function stripTypeScript (content: string) {
+  return content
+    .replace(RE_TYPE_IMPORT, '')
+    .replace(RE_AS_SATISFIES, '')
+    .replace(RE_DECL_ANNOTATION, '$1$2')
+    .replace(RE_PARAM_ANNOTATION, '$1')
+}
 
 export async function convertProjectToJS (projectRoot: string) {
   // 1. Remove TS specific config files
@@ -80,13 +92,7 @@ export async function convertProjectToJS (projectRoot: string) {
       content = content.replace(RE_LANG_TS, '')
       writeFileSync(filePath, content)
     } else if (filePath.endsWith('.ts') || filePath.endsWith('.mts')) {
-      let content = readFileSync(filePath, 'utf8')
-
-      // Special handling for plugins/index.ts
-      if (filePath.endsWith('plugins/index.ts')) {
-        content = content.replace(RE_APP_IMPORT, '')
-        content = content.replace(RE_APP_TYPE, 'app')
-      }
+      const content = stripTypeScript(readFileSync(filePath, 'utf8'))
 
       // Rename file
       const newPath = filePath.replace(RE_TS_EXT, match => match === '.mts' ? '.mjs' : '.js')

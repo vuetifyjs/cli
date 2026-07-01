@@ -97,6 +97,8 @@ describe('create-vuetify matrix', () => {
   const matrix = [
     // Vue + JS
     { name: 'vue-js', platform: 'vue', args: ['--platform=vue', '--no-typescript', '--features='] },
+    // Vue + JS + Router + features (regression: features must apply to the converted JS project)
+    { name: 'vue-js-all', platform: 'vue', args: ['--platform=vue', '--no-typescript', '--router=router', '--features=pinia,eslint,i18n'] },
     // Vue + TS
     { name: 'vue-ts', platform: 'vue', args: ['--platform=vue', '--typescript', '--features='] },
     // Vue + TS + Router
