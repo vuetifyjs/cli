@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/npm/l/@vuetify/cli.svg" alt="License">
   </a>
   <a href="https://discord.gg/vuetify">
-    <img src="https://discordapp.com/api/guilds/340160225338195969/widget.png" alt="Chat">
+    <img src="https://discord.com/api/guilds/1513968811047522396/widget.png" alt="Chat">
   </a>
 </p>
 
