@@ -5,6 +5,7 @@ export interface ReleaseNotes {
   name: string
   publishedAt: string
   url: string
+  docs: string
   body: string
 }
 
@@ -33,6 +34,13 @@ function resolveRepo (pkg: string) {
 
 function normalizeTag (version: string) {
   return version.startsWith('v') ? version : `v${version}`
+}
+
+function docsUrl (repo: string, tag: string) {
+  const version = encodeURIComponent(tag)
+  return repo === 'vuetifyjs/0'
+    ? `https://0.vuetifyjs.com/releases/?version=${version}`
+    : `https://vuetifyjs.com/getting-started/release-notes/?version=${version}`
 }
 
 function headers () {
@@ -103,6 +111,7 @@ export async function fetchReleaseNotes (pkg: string, version: string): Promise<
     name: release.name || release.tag_name,
     publishedAt: release.published_at,
     url: release.html_url,
+    docs: docsUrl(repo, release.tag_name),
     body: release.body || '',
   }
 }

@@ -34,7 +34,8 @@ export const releaseNotes = defineCommand({
 
       log.info(i18n.t('commands.releaseNotes.tag', { tag: release.tag }))
       log.info(i18n.t('commands.releaseNotes.published', { date: new Date(release.publishedAt).toLocaleDateString() }))
-      log.info(i18n.t('commands.releaseNotes.url', { url: cyan(release.url) }))
+      log.info(i18n.t('commands.releaseNotes.docs', { url: cyan(release.docs) }))
+      log.info(i18n.t('commands.releaseNotes.github', { url: cyan(release.url) }))
 
       console.log(`\n${release.body || i18n.t('commands.releaseNotes.empty')}\n`)
       outro(i18n.t('commands.releaseNotes.done'))
