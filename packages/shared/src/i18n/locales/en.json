@@ -194,6 +194,30 @@
       "selected": "Selected preset: %{name}",
       "use": "Create a project with this preset?",
       "tip": "Create a project and save it as a preset to see it here."
+    },
+    "releaseNotes": {
+      "description": "Print GitHub release notes for Vuetify or Vuetify0",
+      "package": {
+        "description": "The package to fetch release notes for (vuetify, v0)"
+      },
+      "version": {
+        "description": "The version to fetch (e.g. 4.1.2); defaults to latest"
+      },
+      "intro": "Release Notes",
+      "fetching": "Fetching release notes...",
+      "fetched": "Loaded %{name}",
+      "tag": "Tag: %{tag}",
+      "published": "Published: %{date}",
+      "docs": "Release notes: %{url}",
+      "github": "GitHub release: %{url}",
+      "empty": "No release notes provided for this release.",
+      "done": "Done!",
+      "failed_stop": "Failed to fetch release notes",
+      "unknown_package": "Unknown package \"%{package}\". Use one of: vuetify, v0.",
+      "not_found": "Release not found for %{tag}.",
+      "rate_limited": "GitHub rate limit reached. Set GITHUB_TOKEN to raise the limit.",
+      "failed": "Failed to fetch release notes (%{status}).",
+      "none_found": "No matching release found."
     }
   },
   "prompts": {
