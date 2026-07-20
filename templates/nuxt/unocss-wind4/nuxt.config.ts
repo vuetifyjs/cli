@@ -28,6 +28,7 @@ export default defineNuxtConfig({
 
   vuetify: {
     moduleOptions: {
+      prefixComposables: ['useLayout'],
       styles: { configFile: 'assets/styles/settings.scss' },
     },
     vuetifyOptions: {
