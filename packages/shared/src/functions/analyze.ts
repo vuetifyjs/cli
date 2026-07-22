@@ -45,6 +45,9 @@ function getFeatureType (name: string, isType = false, importMap?: any): Feature
   if (RE_PLUGIN.test(name)) {
     return 'plugin'
   }
+  if (name.startsWith('create') && name.length > 6 && name.at(6)?.match(RE_COMPOSABLE)) {
+    return 'composable'
+  }
   if (RE_CONSTANT.test(name)) {
     return 'constant'
   }
