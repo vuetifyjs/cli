@@ -210,6 +210,7 @@
       "published": "Published: %{date}",
       "docs": "Release notes: %{url}",
       "github": "GitHub release: %{url}",
+      "diff": "Package diff: %{url}",
       "empty": "No release notes provided for this release.",
       "done": "Done!",
       "failed_stop": "Failed to fetch release notes",

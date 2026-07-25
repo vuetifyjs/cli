@@ -6,6 +6,7 @@ export interface ReleaseNotes {
   publishedAt: string
   url: string
   docs: string
+  diff: string
   body: string
 }
 
@@ -24,9 +25,15 @@ const REPOS: Record<string, string> = {
   0: 'vuetifyjs/0',
 }
 
+const NPM_NAMES: Record<string, string> = {
+  'vuetifyjs/vuetify': 'vuetify',
+  'vuetifyjs/0': '@vuetify/v0',
+}
+
 // vuetifyjs/0 interleaves core tags (v1.0.0-beta.4) with Paper package tags
 // (@paper/genesis@1.0.0-beta.3); only tags starting with `v<digit>` are core.
 const RE_CORE_TAG = /^v\d/
+const RE_TAG_PREFIX = /^v/
 
 function resolveRepo (pkg: string) {
   return REPOS[pkg.toLowerCase()]
@@ -41,6 +48,13 @@ function docsUrl (repo: string, tag: string) {
   return repo === 'vuetifyjs/0'
     ? `https://0.vuetifyjs.com/releases/?version=${version}`
     : `https://vuetifyjs.com/getting-started/release-notes/?version=${version}`
+}
+
+function diffUrl (repo: string, tag: string) {
+  const pkg = NPM_NAMES[repo]
+  const version = tag.replace(RE_TAG_PREFIX, '')
+  const params = new URLSearchParams({ a: pkg, av: 'prev', b: pkg, bv: version })
+  return `https://pkg-diff.vuetifyjs.com/?${params}`
 }
 
 function headers () {
@@ -112,6 +126,7 @@ export async function fetchReleaseNotes (pkg: string, version: string): Promise<
     publishedAt: release.published_at,
     url: release.html_url,
     docs: docsUrl(repo, release.tag_name),
+    diff: diffUrl(repo, release.tag_name),
     body: release.body || '',
   }
 }

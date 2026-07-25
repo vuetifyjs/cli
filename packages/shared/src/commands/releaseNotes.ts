@@ -36,6 +36,7 @@ export const releaseNotes = defineCommand({
       log.info(i18n.t('commands.releaseNotes.published', { date: new Date(release.publishedAt).toLocaleDateString() }))
       log.info(i18n.t('commands.releaseNotes.docs', { url: cyan(release.docs) }))
       log.info(i18n.t('commands.releaseNotes.github', { url: cyan(release.url) }))
+      log.info(i18n.t('commands.releaseNotes.diff', { url: cyan(release.diff) }))
 
       console.log(`\n${release.body || i18n.t('commands.releaseNotes.empty')}\n`)
       outro(i18n.t('commands.releaseNotes.done'))
