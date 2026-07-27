@@ -144,11 +144,35 @@
       "opening": "Opening %{url}"
     },
     "add": {
-      "description": "Add tools to the project",
+      "description": "Add an integration or a component to the project",
       "integration": {
-        "description": "Integration to add (choices: %{choices})",
+        "description": "Integration or component to add (integrations: %{choices})",
         "available": "Available integrations: %{choices}",
         "invalid": "Invalid integration: %{integration}. Available: %{choices}"
+      },
+      "intro": "Add %{name} to your project",
+      "args": {
+        "example": "Example to add when a feature ships more than one",
+        "dir": "Directory to write the files into",
+        "registry": "Registry origin to read from",
+        "overwrite": "Overwrite existing files without asking",
+        "yes": "Accept every prompt with its default"
+      },
+      "unknown": "Nothing in the registry matches \"%{name}\".",
+      "ambiguous": "\"%{name}\" matches more than one thing — name it exactly, or drop --yes to choose.",
+      "suggest": "Did you mean: %{names}?",
+      "wrote": "Wrote %{path}",
+      "skipped": "Skipped %{path}",
+      "deps": "Installing %{pkgs}",
+      "docs": "Docs: %{url}",
+      "styling": {
+        "missing": "Semantic colors are not mapped in %{file}, so the copied markup will render unstyled.",
+        "none": "No UnoCSS or Tailwind config found. %{name} styles itself with semantic utility classes (%{tokens}), which need one of them.",
+        "patched": "Mapped semantic colors in %{file}",
+        "manual": "Add this to your styles, then make sure %{plugin} is installed so the custom properties exist:",
+        "unocss": "UnoCSS — inside defineConfig in uno.config.ts:",
+        "tailwind": "Tailwind — in your CSS entry:",
+        "theme": "%{plugin} was not found. Without it the %{prefix} custom properties are never emitted and every semantic color falls back to nothing."
       }
     },
     "update": {
@@ -223,7 +247,13 @@
   "prompts": {
     "proceed": "Do you want to proceed?",
     "add": {
-      "integration": "Choose an integration to add"
+      "integration": "Choose an integration to add",
+      "feature": "Choose what to add",
+      "resolve": "Several things match — which one?",
+      "example": "Which example?",
+      "install": "Install %{pkgs}?",
+      "tokens": "Map them in %{file}?",
+      "overwrite": "%{path} already exists. Overwrite?"
     },
     "eslint": {
       "overwrite": "Found %{file}. Do you want to overwrite it?",
@@ -347,7 +377,18 @@
     },
     "cancel": "Setup cancelled. You can run this command again anytime."
   },
+  "errors": {
+    "registry": {
+      "unreachable": "Could not reach %{url} (%{reason}).",
+      "status": "%{url} responded with %{status}.",
+      "version": "The registry is version %{found}, but this CLI understands %{expected}. Update the CLI."
+    }
+  },
   "spinners": {
+    "registry": {
+      "fetching": "Reading the registry...",
+      "fetched": "Registry read"
+    },
     "template": {
       "downloading": "Downloading template %{template}...",
       "copied": "Template copied",
