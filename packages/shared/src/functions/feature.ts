@@ -7,7 +7,7 @@ import { dim, underline } from 'kolorist'
 import { loadFile } from 'magicast'
 import { getDefaultExportOptions } from 'magicast/helpers'
 import { dirname, join, relative, resolve } from 'pathe'
-import { REGISTRY_ORIGIN, THEME_PLUGIN, UNOCSS_CONFIGS, V0 } from '../constants/registry'
+import { REGISTRY_ORIGIN, THEME_PLUGIN, THEME_PLUGIN_COMMAND, THEME_PLUGIN_LABEL, UNOCSS_CONFIGS, V0 } from '../constants/registry'
 import { i18n } from '../i18n'
 import { addDependency } from '../utils/installDependencies'
 import { getProjectPackageJSON } from '../utils/package'
@@ -191,7 +191,7 @@ async function depend (example: RegistryExample, options: FeatureOptions) {
 /**
  * Make sure the semantic utility classes in the copied markup resolve.
  *
- * Two independent layers have to be present: `createThemePlugin` emits the
+ * Two independent layers have to be present: the useTheme plugin emits the
  * `--v0-*` custom properties, and the UnoCSS/Tailwind config maps them onto
  * `bg-primary`, `text-on-surface` and friends. Without both, the file lands
  * looking broken and v0 takes the blame — so this warns loudly and offers the
@@ -220,7 +220,7 @@ async function style (item: RegistryItem, example: RegistryExample, contract: To
     // rather than guessing at one and handing over syntax for the other.
     note(
       `${i18n.t('commands.add.styling.unocss')}\n${contract.unocss}\n\n${i18n.t('commands.add.styling.tailwind')}\n${contract.tailwind}`,
-      i18n.t('commands.add.styling.manual', { plugin: THEME_PLUGIN }),
+      i18n.t('commands.add.styling.manual', { plugin: THEME_PLUGIN_LABEL }),
     )
     return
   }
@@ -246,15 +246,15 @@ async function style (item: RegistryItem, example: RegistryExample, contract: To
       if (patched) {
         log.success(i18n.t('commands.add.styling.patched', { file }))
       } else {
-        note(contract.unocss, i18n.t('commands.add.styling.manual', { plugin: THEME_PLUGIN }))
+        note(contract.unocss, i18n.t('commands.add.styling.manual', { plugin: THEME_PLUGIN_LABEL }))
       }
     } else {
-      note(target === uno ? contract.unocss : contract.tailwind, i18n.t('commands.add.styling.manual', { plugin: THEME_PLUGIN }))
+      note(target === uno ? contract.unocss : contract.tailwind, i18n.t('commands.add.styling.manual', { plugin: THEME_PLUGIN_LABEL }))
     }
   }
 
   if (hasV0 && !await themed(cwd)) {
-    log.warn(i18n.t('commands.add.styling.theme', { plugin: THEME_PLUGIN, prefix: contract.prefix }))
+    log.warn(i18n.t('commands.add.styling.theme', { plugin: THEME_PLUGIN_LABEL, command: THEME_PLUGIN_COMMAND, prefix: contract.prefix }))
   }
 }
 

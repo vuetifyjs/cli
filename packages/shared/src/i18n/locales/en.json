@@ -169,10 +169,10 @@
         "missing": "Semantic colors are not mapped in %{file}, so the copied markup will render unstyled.",
         "none": "No UnoCSS or Tailwind config found. %{name} styles itself with semantic utility classes (%{tokens}), which need one of them.",
         "patched": "Mapped semantic colors in %{file}",
-        "manual": "Add this to your styles, then make sure %{plugin} is installed so the custom properties exist:",
+        "manual": "Add this to your styles, then make sure the %{plugin} plugin is installed so the custom properties exist:",
         "unocss": "UnoCSS — inside defineConfig in uno.config.ts:",
         "tailwind": "Tailwind — in your CSS entry:",
-        "theme": "%{plugin} was not found. Without it the %{prefix} custom properties are never emitted and every semantic color falls back to nothing."
+        "theme": "No %{plugin} plugin found. Without it the %{prefix} custom properties are never emitted and every semantic color falls back to nothing. Add it with `vuetify add %{command}`."
       },
       "inventory": "Tracked in %{file}"
     },
