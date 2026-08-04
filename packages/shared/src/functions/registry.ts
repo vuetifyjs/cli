@@ -10,6 +10,12 @@ export interface RegistryFile {
   content: string
 }
 
+/** Icon soft-deps — collections are install units; classes are audit detail. */
+export interface RegistryIcons {
+  collections: string[]
+  classes: string[]
+}
+
 export interface RegistryExample {
   id: string
   title: string
@@ -18,6 +24,8 @@ export interface RegistryExample {
   files: RegistryFile[]
   dependencies: string[]
   tokens: string[]
+  /** Present from registry v1 seed; optional for older payloads. */
+  icons?: RegistryIcons
 }
 
 export interface RegistryItem {
