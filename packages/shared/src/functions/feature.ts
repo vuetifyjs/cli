@@ -13,6 +13,7 @@ import { addDependency } from '../utils/installDependencies'
 import { getProjectPackageJSON } from '../utils/package'
 import { recordComponent } from './inventory'
 import { getContract, getIndex, getItem, match } from './registry'
+import { groupedRegistryOptions } from './registry-options'
 
 export interface FeatureOptions {
   name?: string
@@ -74,12 +75,15 @@ async function pick (index: RegistryIndex, options: FeatureOptions): Promise<Reg
   if (!options.name) {
     const chosen = unwrap(await select({
       message: i18n.t('prompts.add.feature'),
-      options: index.items.map(item => ({
-        label: item.title || item.name,
-        value: `${item.type}/${item.name}`,
-        hint: `${item.type === 'components' ? 'component' : 'composable'} · ${item.category}`,
-      })),
+      options: groupedRegistryOptions(
+        index.items,
+        item => `${item.type}/${item.name}`,
+      ),
     }))
+
+    if (String(chosen).startsWith('__group:')) {
+      stop()
+    }
 
     return index.items.find(item => `${item.type}/${item.name}` === chosen)!
   }
@@ -114,11 +118,10 @@ async function pick (index: RegistryIndex, options: FeatureOptions): Promise<Reg
 
   const chosen = unwrap(await select({
     message: i18n.t('prompts.add.resolve'),
-    options: found.map(item => ({
-      label: item.title || item.name,
-      value: `${item.type}/${item.name}`,
-      hint: `${item.type === 'components' ? 'component' : 'composable'} · ${item.category}`,
-    })),
+    options: groupedRegistryOptions(
+      found,
+      item => `${item.type}/${item.name}`,
+    ),
   }))
 
   return found.find(item => `${item.type}/${item.name}` === chosen)!

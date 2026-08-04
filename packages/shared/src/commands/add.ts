@@ -3,6 +3,7 @@ import { defineCommand, runCommand } from 'citty'
 import { REGISTRY_ORIGIN } from '../constants/registry'
 import { addEslint, addFeature } from '../functions'
 import { getIndex } from '../functions/registry'
+import { groupedRegistryOptions } from '../functions/registry-options'
 import { i18n } from '../i18n'
 import { mcp } from './mcp'
 
@@ -68,17 +69,18 @@ export const add = defineCommand({
       const selected = await select({
         message: i18n.t('prompts.add.feature'),
         options: [
+          { label: 'Integrations', value: '__group:Integrations', disabled: true },
           ...choices.map(choice => ({ label: choice, value: choice, hint: 'integration' })),
-          ...index.items.map(item => ({
-            // title keeps source casing (useTheme); value stays kebab for resolution
-            label: item.title || item.name,
-            value: item.name,
-            hint: `${item.type === 'components' ? 'component' : 'composable'} · ${item.category}`,
-          })),
+          ...groupedRegistryOptions(index.items),
         ],
       })
 
       if (typeof selected === 'symbol') {
+        log.warning(i18n.t('commands.add.integration.available', { choices: choices.join(', ') }))
+        return
+      }
+
+      if (String(selected).startsWith('__group:')) {
         log.warning(i18n.t('commands.add.integration.available', { choices: choices.join(', ') }))
         return
       }
