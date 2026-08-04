@@ -69,7 +69,7 @@ export const add = defineCommand({
       const selected = await select({
         message: i18n.t('prompts.add.feature'),
         options: [
-          { label: 'Integrations', value: '__group:Integrations', disabled: true },
+          { label: '── Integrations', value: '__group:Integrations', disabled: true },
           ...choices.map(choice => ({ label: choice, value: choice, hint: 'integration' })),
           ...groupedRegistryOptions(index.items),
         ],

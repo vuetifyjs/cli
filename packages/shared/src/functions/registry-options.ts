@@ -8,8 +8,9 @@ export interface SelectOption {
 }
 
 function header (label: string): SelectOption {
-  // clack select skips disabled rows for confirmation; used as group labels.
-  return { label, value: `__group:${label}`, disabled: true }
+  // clack only dims/strikethroughs disabled rows — no real header style — so a
+  // leading mark is what makes groups scannable in the list.
+  return { label: `── ${label}`, value: `__group:${label}`, disabled: true }
 }
 
 function row (
