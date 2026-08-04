@@ -75,7 +75,7 @@ async function pick (index: RegistryIndex, options: FeatureOptions): Promise<Reg
     const chosen = unwrap(await select({
       message: i18n.t('prompts.add.feature'),
       options: index.items.map(item => ({
-        label: item.title,
+        label: item.title || item.name,
         value: `${item.type}/${item.name}`,
         hint: `${item.type === 'components' ? 'component' : 'composable'} · ${item.category}`,
       })),
@@ -90,7 +90,7 @@ async function pick (index: RegistryIndex, options: FeatureOptions): Promise<Reg
     const close = index.items
       .filter(item => item.name.startsWith(options.name!.slice(0, 3)))
       .slice(0, 5)
-      .map(item => item.name)
+      .map(item => item.title || item.name)
 
     log.error(i18n.t('commands.add.unknown', { name: options.name }))
     if (close.length > 0) {
@@ -108,14 +108,14 @@ async function pick (index: RegistryIndex, options: FeatureOptions): Promise<Reg
   // and a scripted run has nobody to answer the prompt.
   if (options.yes) {
     log.error(i18n.t('commands.add.ambiguous', { name: options.name }))
-    log.info(i18n.t('commands.add.suggest', { names: found.map(item => item.name).join(', ') }))
+    log.info(i18n.t('commands.add.suggest', { names: found.map(item => item.title || item.name).join(', ') }))
     throw new Bail(1)
   }
 
   const chosen = unwrap(await select({
     message: i18n.t('prompts.add.resolve'),
     options: found.map(item => ({
-      label: item.name,
+      label: item.title || item.name,
       value: `${item.type}/${item.name}`,
       hint: `${item.type === 'components' ? 'component' : 'composable'} · ${item.category}`,
     })),
@@ -411,7 +411,8 @@ async function run (options: FeatureOptions) {
       files: example.files.map(file => file.name),
       entry: entryFile?.name,
       componentsDir: base,
-      title: example.title || item.title,
+      // Feature title keeps source casing (useTheme); example title is the variant id label
+      title: item.title || example.title,
       docs: item.docs,
       origin: {
         registry: origin.replace(/\/$/, ''),

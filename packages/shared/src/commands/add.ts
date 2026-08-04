@@ -70,7 +70,8 @@ export const add = defineCommand({
         options: [
           ...choices.map(choice => ({ label: choice, value: choice, hint: 'integration' })),
           ...index.items.map(item => ({
-            label: item.name,
+            // title keeps source casing (useTheme); value stays kebab for resolution
+            label: item.title || item.name,
             value: item.name,
             hint: `${item.type === 'components' ? 'component' : 'composable'} · ${item.category}`,
           })),

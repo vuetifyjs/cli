@@ -46,7 +46,8 @@ export const list = defineCommand({
         ? dim(` ← ${component.origin.name}/${component.origin.example}`)
         : dim(` ← ${i18n.t('commands.list.local')}`)
       const mark = ok ? green('✓') : yellow('!')
-      log.message(`${mark} ${name}  ${dim(component.path)}${origin}`)
+      const label = component.title || name
+      log.message(`${mark} ${label}  ${dim(component.path)}${origin}`)
       if (!ok) {
         log.warn(i18n.t('commands.list.missing', { name, files: missing.join(', ') }))
       }
