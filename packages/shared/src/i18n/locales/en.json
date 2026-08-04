@@ -174,7 +174,14 @@
         "tailwind": "Tailwind — in your CSS entry:",
         "theme": "No %{plugin} plugin found. Without it the %{prefix} custom properties are never emitted and every semantic color falls back to nothing. Add it with `vuetify add %{command}`."
       },
-      "inventory": "Tracked in %{file}"
+      "inventory": "Tracked in %{file}",
+      "plugin": {
+        "already": "%{plugin} is already installed (%{factory} found in the project).",
+        "wrote": "Wrote %{plugin} plugin module → %{path}",
+        "wired": "Registered %{plugin} in %{path}",
+        "manual": "Could not auto-register %{plugin}. Add this to your app entry:",
+        "unknown": "No install recipe for \"%{name}\" yet — wrote nothing at the app level."
+      }
     },
     "update": {
       "description": "Update vuetify dependencies project",
@@ -274,7 +281,8 @@
       "example": "Which example?",
       "install": "Install %{pkgs}?",
       "tokens": "Map them in %{file}?",
-      "overwrite": "%{path} already exists. Overwrite?"
+      "overwrite": "%{path} already exists. Overwrite?",
+      "pluginExample": "Also add a usage example from the docs?"
     },
     "eslint": {
       "overwrite": "Found %{file}. Do you want to overwrite it?",

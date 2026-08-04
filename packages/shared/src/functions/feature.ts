@@ -12,6 +12,7 @@ import { i18n } from '../i18n'
 import { addDependency } from '../utils/installDependencies'
 import { getProjectPackageJSON } from '../utils/package'
 import { recordComponent } from './inventory'
+import { installPlugin, isPluginItem, pluginInstalled, recipeFor } from './plugin-install'
 import { getContract, getIndex, getItem, match } from './registry'
 import { groupedRegistryOptions } from './registry-options'
 
@@ -127,7 +128,10 @@ async function pick (index: RegistryIndex, options: FeatureOptions): Promise<Reg
   return found.find(item => `${item.type}/${item.name}` === chosen)!
 }
 
-async function choose (item: RegistryItem, options: FeatureOptions): Promise<RegistryExample> {
+async function choose (
+  item: RegistryItem,
+  options: FeatureOptions,
+): Promise<RegistryExample | null> {
   if (options.example) {
     const found = item.examples.find(example => example.id === options.example)
     if (found) {
@@ -137,6 +141,27 @@ async function choose (item: RegistryItem, options: FeatureOptions): Promise<Reg
     log.error(i18n.t('commands.add.unknown', { name: options.example }))
     log.info(i18n.t('commands.add.suggest', { names: item.examples.map(example => example.id).join(', ') }))
     throw new Bail(1)
+  }
+
+  // Plugins are install-first: demos are opt-in (flag, or confirm when interactive).
+  if (isPluginItem(item)) {
+    if (item.examples.length === 0) {
+      return null
+    }
+    if (options.yes) {
+      return null
+    }
+    const also = unwrap(await confirm({
+      message: i18n.t('prompts.add.pluginExample'),
+      initialValue: false,
+    }))
+    if (!also) {
+      return null
+    }
+  }
+
+  if (item.examples.length === 0) {
+    return null
   }
 
   if (item.examples.length === 1) {
@@ -303,23 +328,7 @@ async function append (path: string, content: string, snippet: string) {
 
 /** Whether the project installs the plugin that emits the custom properties. */
 async function themed (cwd: string) {
-  const candidates = [
-    'src/plugins/vuetify.ts',
-    'src/plugins/index.ts',
-    'src/main.ts',
-    'app/plugins/vuetify.ts',
-    'plugins/vuetify.ts',
-    'nuxt.config.ts',
-  ]
-
-  for (const candidate of candidates) {
-    const content = await readFile(join(cwd, candidate), 'utf8').catch(() => '')
-    if (content.includes(THEME_PLUGIN)) {
-      return true
-    }
-  }
-
-  return false
+  return pluginInstalled(THEME_PLUGIN, cwd)
 }
 
 interface WriteResult {
@@ -387,6 +396,7 @@ export async function addFeature (options: FeatureOptions = {}) {
 async function run (options: FeatureOptions) {
   const origin = options.registry ?? REGISTRY_ORIGIN
   const cwd = options.cwd ?? process.cwd()
+  const written: string[] = []
 
   const loader = spinner()
   loader.start(i18n.t('spinners.registry.fetching'))
@@ -395,37 +405,83 @@ async function run (options: FeatureOptions) {
 
   const entry = await pick(index, options)
   const item = await getItem(entry, origin)
-  const example = await choose(item, options)
   const contract = await getContract(origin)
 
-  await depend(example, options)
-  await style(item, example, contract, options)
+  // Plugins: wire create*Plugin into the app first; examples are optional.
+  if (isPluginItem(item)) {
+    const recipe = recipeFor(item.name)
+    if (recipe) {
+      const pkg = await getProjectPackageJSON(cwd).catch(() => null)
+      const hasV0 = !!(pkg?.dependencies?.[V0] ?? pkg?.devDependencies?.[V0])
+      if (!hasV0) {
+        const install = options.yes || unwrap(await confirm({
+          message: i18n.t('prompts.add.install', { pkgs: V0 }),
+        }))
+        if (install) {
+          const spin = spinner()
+          spin.start(i18n.t('commands.add.deps', { pkgs: V0 }))
+          await addDependency(V0, { cwd, silent: true })
+          spin.stop(i18n.t('spinners.dependencies.installed'))
+        }
+      }
 
-  const { written, dir, base } = await write(example, options)
+      const result = await installPlugin(recipe, { cwd, overwrite: options.overwrite })
+      if (result.path) {
+        written.push(result.path)
+        await recordComponent({
+          cwd,
+          name: item.name,
+          dir: dirname(result.path),
+          files: [result.path.split('/').pop()!],
+          entry: result.path.split('/').pop(),
+          title: item.title,
+          docs: item.docs,
+          origin: {
+            registry: origin.replace(/\/$/, ''),
+            name: item.name,
+            example: 'install',
+            v0: index.v0Version,
+            type: item.type,
+          },
+        })
+      }
+    } else {
+      log.warn(i18n.t('commands.add.plugin.unknown', { name: item.name }))
+    }
+  }
 
-  // Always refresh inventory when something landed — tracking is the phase-1
-  // product surface, not an optional side effect of a successful printout.
-  if (written.length > 0) {
-    const entryFile = example.files.find(file => file.entry)
-    await recordComponent({
-      cwd,
-      name: item.name,
-      dir,
-      files: example.files.map(file => file.name),
-      entry: entryFile?.name,
-      componentsDir: base,
-      // Feature title keeps source casing (useTheme); example title is the variant id label
-      title: item.title || example.title,
-      docs: item.docs,
-      origin: {
-        registry: origin.replace(/\/$/, ''),
+  const example = await choose(item, options)
+
+  if (example) {
+    await depend(example, options)
+    await style(item, example, contract, options)
+
+    const out = await write(example, options)
+    written.push(...out.written)
+
+    if (out.written.length > 0) {
+      const entryFile = example.files.find(file => file.entry)
+      await recordComponent({
+        cwd,
         name: item.name,
-        example: example.id,
-        v0: index.v0Version,
-        type: item.type,
-      },
-    })
+        dir: out.dir,
+        files: example.files.map(file => file.name),
+        entry: entryFile?.name,
+        componentsDir: out.base,
+        title: item.title || example.title,
+        docs: item.docs,
+        origin: {
+          registry: origin.replace(/\/$/, ''),
+          name: item.name,
+          example: example.id,
+          v0: index.v0Version,
+          type: item.type,
+        },
+      })
+    }
+  }
 
+  if (written.length > 0) {
     log.message(dim(i18n.t('commands.add.docs', { url: item.docs })))
     log.message(dim(i18n.t('commands.add.inventory', { file: 'vuetify.json' })))
   }
