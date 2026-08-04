@@ -173,7 +173,8 @@
         "unocss": "UnoCSS — inside defineConfig in uno.config.ts:",
         "tailwind": "Tailwind — in your CSS entry:",
         "theme": "%{plugin} was not found. Without it the %{prefix} custom properties are never emitted and every semantic color falls back to nothing."
-      }
+      },
+      "inventory": "Tracked in %{file}"
     },
     "update": {
       "description": "Update vuetify dependencies project",
@@ -242,6 +243,26 @@
       "rate_limited": "GitHub rate limit reached. Set GITHUB_TOKEN to raise the limit.",
       "failed": "Failed to fetch release notes (%{status}).",
       "none_found": "No matching release found."
+    },
+    "list": {
+      "description": "List components tracked in vuetify.json",
+      "intro": "Local component library",
+      "empty": "No components tracked yet.",
+      "hint": "Run `vuetify add <name>` to seed one from the registry.",
+      "count": "%{count} component(s)",
+      "local": "local",
+      "missing": "%{name}: missing on disk — %{files}",
+      "args": {
+        "json": "Print the raw vuetify.json inventory"
+      }
+    },
+    "status": {
+      "description": "Check that tracked components still exist on disk",
+      "intro": "Component library status",
+      "noInventory": "No vuetify.json in this project.",
+      "missingFiles": "missing %{files}",
+      "noOrigin": "local (no registry origin)",
+      "summary": "%{healthy} ok · %{broken} broken · %{local} local · %{total} total"
     }
   },
   "prompts": {

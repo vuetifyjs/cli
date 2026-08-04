@@ -11,6 +11,7 @@ import { REGISTRY_ORIGIN, THEME_PLUGIN, UNOCSS_CONFIGS, V0 } from '../constants/
 import { i18n } from '../i18n'
 import { addDependency } from '../utils/installDependencies'
 import { getProjectPackageJSON } from '../utils/package'
+import { recordComponent } from './inventory'
 import { getContract, getIndex, getItem, match } from './registry'
 
 export interface FeatureOptions {
@@ -318,14 +319,23 @@ async function themed (cwd: string) {
   return false
 }
 
-async function write (example: RegistryExample, options: FeatureOptions) {
+interface WriteResult {
+  written: string[]
+  /** Project-relative directory for the example (even when every file was skipped). */
+  dir: string
+  /** Components alias used as the write base. */
+  base: string
+}
+
+async function write (example: RegistryExample, options: FeatureOptions): Promise<WriteResult> {
   const cwd = options.cwd ?? process.cwd()
   const nuxt = existsSync(join(cwd, 'nuxt.config.ts')) || existsSync(join(cwd, 'nuxt.config.js'))
   const base = options.dir ?? (nuxt ? 'app/components' : 'src/components')
+  const dir = join(base, example.dir)
   const written: string[] = []
 
   for (const file of example.files) {
-    const path = resolve(cwd, base, example.dir, file.name)
+    const path = resolve(cwd, dir, file.name)
     const shown = relative(cwd, path)
 
     if (existsSync(path) && !options.overwrite) {
@@ -352,7 +362,7 @@ async function write (example: RegistryExample, options: FeatureOptions) {
     log.success(i18n.t('commands.add.wrote', { path: shown }))
   }
 
-  return written
+  return { written, dir, base }
 }
 
 export async function addFeature (options: FeatureOptions = {}) {
@@ -373,6 +383,7 @@ export async function addFeature (options: FeatureOptions = {}) {
 
 async function run (options: FeatureOptions) {
   const origin = options.registry ?? REGISTRY_ORIGIN
+  const cwd = options.cwd ?? process.cwd()
 
   const loader = spinner()
   loader.start(i18n.t('spinners.registry.fetching'))
@@ -387,10 +398,32 @@ async function run (options: FeatureOptions) {
   await depend(example, options)
   await style(item, example, contract, options)
 
-  const written = await write(example, options)
+  const { written, dir, base } = await write(example, options)
 
+  // Always refresh inventory when something landed — tracking is the phase-1
+  // product surface, not an optional side effect of a successful printout.
   if (written.length > 0) {
+    const entryFile = example.files.find(file => file.entry)
+    await recordComponent({
+      cwd,
+      name: item.name,
+      dir,
+      files: example.files.map(file => file.name),
+      entry: entryFile?.name,
+      componentsDir: base,
+      title: example.title || item.title,
+      docs: item.docs,
+      origin: {
+        registry: origin.replace(/\/$/, ''),
+        name: item.name,
+        example: example.id,
+        v0: index.v0Version,
+        type: item.type,
+      },
+    })
+
     log.message(dim(i18n.t('commands.add.docs', { url: item.docs })))
+    log.message(dim(i18n.t('commands.add.inventory', { file: 'vuetify.json' })))
   }
 
   return written

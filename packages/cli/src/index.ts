@@ -1,5 +1,7 @@
 import tab from '@bomb.sh/tab/citty'
 import { add } from '@vuetify/cli-shared/commands/add'
+import { list } from '@vuetify/cli-shared/commands/list'
+import { status } from '@vuetify/cli-shared/commands/status'
 import { mcp } from '@vuetify/cli-shared/commands/mcp'
 import { createPresetsCommand } from '@vuetify/cli-shared/commands/presets'
 import { registerProjectArgsCompletion } from '@vuetify/cli-shared/completion'
@@ -26,6 +28,8 @@ export const main = defineCommand({
     init,
     presets,
     add,
+    list,
+    status,
     mcp,
     update,
     docs,

@@ -149,7 +149,8 @@
         "description": "Какую интеграцию добавить (варианты: %{choices})",
         "available": "Доступные интеграции: %{choices}",
         "invalid": "Недопустимая интеграция: %{integration}. Доступные: %{choices}"
-      }
+      },
+      "inventory": "Записано в %{file}"
     },
     "update": {
       "description": "Обновить vuetify зависимости проекта",
@@ -218,6 +219,26 @@
       "rate_limited": "Достигнут лимит запросов GitHub. Установите GITHUB_TOKEN, чтобы увеличить лимит.",
       "failed": "Не удалось получить примечания к релизу (%{status}).",
       "none_found": "Подходящий релиз не найден."
+    },
+    "list": {
+      "description": "Список компонентов из vuetify.json",
+      "intro": "Локальная библиотека компонентов",
+      "empty": "Компоненты ещё не отслеживаются.",
+      "hint": "Запустите `vuetify add <name>`, чтобы добавить из реестра.",
+      "count": "%{count} компонент(ов)",
+      "local": "локальный",
+      "missing": "%{name}: нет на диске — %{files}",
+      "args": {
+        "json": "Вывести сырой vuetify.json"
+      }
+    },
+    "status": {
+      "description": "Проверить, что отслеживаемые компоненты на месте",
+      "intro": "Статус библиотеки компонентов",
+      "noInventory": "В проекте нет vuetify.json.",
+      "missingFiles": "отсутствуют %{files}",
+      "noOrigin": "локальный (без origin реестра)",
+      "summary": "%{healthy} ok · %{broken} сломано · %{local} локальных · %{total} всего"
     }
   },
   "prompts": {
