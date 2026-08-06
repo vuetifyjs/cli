@@ -7,11 +7,11 @@ import { dim, underline } from 'kolorist'
 import { loadFile } from 'magicast'
 import { getDefaultExportOptions } from 'magicast/helpers'
 import { dirname, join, relative, resolve } from 'pathe'
-import { REGISTRY_ORIGIN, THEME_PLUGIN, THEME_PLUGIN_COMMAND, THEME_PLUGIN_LABEL, UNOCSS_CONFIGS, V0 } from '../constants/registry'
+import { THEME_PLUGIN, THEME_PLUGIN_COMMAND, THEME_PLUGIN_LABEL, UNOCSS_CONFIGS, V0 } from '../constants/registry'
 import { i18n } from '../i18n'
 import { addDependency } from '../utils/installDependencies'
 import { getProjectPackageJSON } from '../utils/package'
-import { recordComponent } from './inventory'
+import { loadInventory, recordComponent, resolveRegistryUrl } from './inventory'
 import { installPlugin, isPluginItem, pluginInstalled, recipeFor } from './plugin-install'
 import { getContract, getIndex, getItem, match } from './registry'
 import { groupedRegistryOptions } from './registry-options'
@@ -341,8 +341,12 @@ interface WriteResult {
 
 async function write (example: RegistryExample, options: FeatureOptions): Promise<WriteResult> {
   const cwd = options.cwd ?? process.cwd()
+  const inventory = await loadInventory(cwd)
   const nuxt = existsSync(join(cwd, 'nuxt.config.ts')) || existsSync(join(cwd, 'nuxt.config.js'))
-  const base = options.dir ?? (nuxt ? 'app/components' : 'src/components')
+  // Prefer explicit --dir, then vuetify.json alias, then framework default.
+  const base = options.dir
+    ?? inventory.aliases.components
+    ?? (nuxt ? 'app/components' : 'src/components')
   const dir = join(base, example.dir)
   const written: string[] = []
 
@@ -394,8 +398,9 @@ export async function addFeature (options: FeatureOptions = {}) {
 }
 
 async function run (options: FeatureOptions) {
-  const origin = options.registry ?? REGISTRY_ORIGIN
   const cwd = options.cwd ?? process.cwd()
+  const inventory = await loadInventory(cwd)
+  const origin = resolveRegistryUrl(inventory, options.registry)
   const written: string[] = []
 
   const loader = spinner()
@@ -409,7 +414,7 @@ async function run (options: FeatureOptions) {
 
   // Plugins: wire create*Plugin into the app first; examples are optional.
   if (isPluginItem(item)) {
-    const recipe = recipeFor(item.name)
+    const recipe = recipeFor(item.name, item.install)
     if (recipe) {
       const pkg = await getProjectPackageJSON(cwd).catch(() => null)
       const hasV0 = !!(pkg?.dependencies?.[V0] ?? pkg?.devDependencies?.[V0])

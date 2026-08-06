@@ -16,6 +16,20 @@ export interface RegistryIcons {
   classes: string[]
 }
 
+/**
+ * App-level install recipe for plugins (`useTheme` → `createThemePlugin`).
+ * Emitted by the registry for `category: plugins` items; CLI falls back to a
+ * built-in map when absent (older payloads).
+ */
+export interface RegistryInstall {
+  /** Factory export, e.g. `createThemePlugin`. */
+  factory: string
+  /** Docs surface label, e.g. `useTheme`. */
+  label: string
+  /** Module basename under `src/plugins/`, e.g. `theme.ts`. */
+  file: string
+}
+
 export interface RegistryExample {
   id: string
   title: string
@@ -37,6 +51,8 @@ export interface RegistryItem {
   description: string
   docs: string
   examples: RegistryExample[]
+  /** Present on plugin items when the registry ships an install recipe. */
+  install?: RegistryInstall
 }
 
 export interface RegistryIndexEntry {

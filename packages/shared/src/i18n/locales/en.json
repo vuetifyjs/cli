@@ -270,6 +270,44 @@
       "missingFiles": "missing %{files}",
       "noOrigin": "local (no registry origin)",
       "summary": "%{healthy} ok · %{broken} broken · %{local} local · %{total} total"
+    },
+    "generate": {
+      "description": "Scaffold a local component (no registry origin)",
+      "intro": "Generate %{name}",
+      "wrote": "Wrote %{path}",
+      "args": {
+        "name": "Component name (PascalCase or kebab-case)",
+        "dir": "Directory under the project (defaults to vuetify.json aliases.components)",
+        "overwrite": "Overwrite an existing file"
+      }
+    },
+    "diff": {
+      "description": "Compare a tracked component to its registry origin",
+      "intro": "Diff %{name}",
+      "done": "Diff complete",
+      "args": {
+        "name": "Inventory key (e.g. dialog, use-theme)"
+      }
+    },
+    "refresh": {
+      "description": "Re-fetch a tracked component from its registry origin",
+      "intro": "Refresh %{name}",
+      "noop": "Nothing written — files already match, or the origin refused to overwrite.",
+      "args": {
+        "name": "Inventory key to re-fetch"
+      }
+    },
+    "registry": {
+      "description": "Local registry tools",
+      "build": {
+        "description": "Emit a static registry from vuetify.json + on-disk files",
+        "intro": "Building local registry",
+        "done": "Wrote %{count} item(s) to %{dir}",
+        "hint": "Host the *parent* of %{dir}/ so `{origin}/registry/index.json` resolves (CLI always fetches under `/registry/`). Then: `vuetify add --registry <origin>`.",
+        "args": {
+          "outDir": "Output directory (default: registry)"
+        }
+      }
     }
   },
   "prompts": {

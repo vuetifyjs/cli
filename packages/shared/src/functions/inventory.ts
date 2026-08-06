@@ -9,10 +9,12 @@
 import { existsSync } from 'node:fs'
 import { readFile, writeFile } from 'node:fs/promises'
 import { join, relative, resolve } from 'pathe'
+import { REGISTRY_ORIGIN } from '../constants/registry'
 
 export const INVENTORY_VERSION = 1
 export const INVENTORY_FILE = 'vuetify.json'
-export const DEFAULT_REGISTRY = 'https://0.vuetifyjs.com'
+/** @deprecated Prefer REGISTRY_ORIGIN — kept as alias for inventory call sites. */
+export const DEFAULT_REGISTRY = REGISTRY_ORIGIN
 export const DEFAULT_COMPONENTS_DIR = 'src/components'
 
 export interface ComponentOrigin {
@@ -155,4 +157,36 @@ export function componentStatus (
     }
   }
   return { ok: missing.length === 0, missing }
+}
+
+/** Resolve a registry alias (`@vuetify`) or absolute URL from inventory. */
+export function resolveRegistryUrl (
+  inventory: Inventory,
+  aliasOrUrl?: string,
+): string {
+  if (!aliasOrUrl) {
+    return inventory.registries['@vuetify'] ?? DEFAULT_REGISTRY
+  }
+  if (/^https?:\/\//i.test(aliasOrUrl)) {
+    return aliasOrUrl.replace(/\/$/, '')
+  }
+  const key = aliasOrUrl.startsWith('@') ? aliasOrUrl : `@${aliasOrUrl}`
+  const found = inventory.registries[key] ?? inventory.registries[aliasOrUrl]
+  if (!found) {
+    throw new Error(`Unknown registry "${aliasOrUrl}". Known: ${Object.keys(inventory.registries).join(', ') || '(none)'}`)
+  }
+  return found.replace(/\/$/, '')
+}
+
+/**
+ * Parse `dialog`, `@vuetify/dialog`, or a bare name.
+ * Namespace maps to an inventory registries key.
+ */
+export function parseFeatureRef (query: string): { registry?: string, name: string } {
+  const trimmed = query.trim()
+  const m = trimmed.match(/^(@[\w-]+)\/(.+)$/)
+  if (m) {
+    return { registry: m[1], name: m[2] }
+  }
+  return { name: trimmed }
 }

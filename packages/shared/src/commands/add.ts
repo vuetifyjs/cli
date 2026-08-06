@@ -1,7 +1,7 @@
 import { intro, log, outro, select, spinner } from '@clack/prompts'
 import { defineCommand, runCommand } from 'citty'
-import { REGISTRY_ORIGIN } from '../constants/registry'
 import { addEslint, addFeature } from '../functions'
+import { loadInventory, parseFeatureRef, resolveRegistryUrl } from '../functions/inventory'
 import { getIndex } from '../functions/registry'
 import { groupedRegistryOptions } from '../functions/registry-options'
 import { i18n } from '../i18n'
@@ -35,7 +35,6 @@ export const add = defineCommand({
     },
     registry: {
       type: 'string',
-      default: REGISTRY_ORIGIN,
       description: i18n.t('commands.add.args.registry'),
     },
     overwrite: {
@@ -51,6 +50,7 @@ export const add = defineCommand({
   },
   run: async ({ args }) => {
     let integration = args.integration
+    const inventory = await loadInventory()
 
     if (integration === 'mcp') {
       log.warning('The "vuetify add mcp" command is deprecated. Redirecting to "vuetify mcp install"...')
@@ -61,9 +61,10 @@ export const add = defineCommand({
     // With no argument, offer integrations and registry items in one list so
     // neither surface is hidden behind knowing its name up front.
     if (!integration) {
+      const origin = resolveRegistryUrl(inventory, args.registry)
       const loader = spinner()
       loader.start(i18n.t('spinners.registry.fetching'))
-      const index = await getIndex(args.registry)
+      const index = await getIndex(origin)
       loader.stop(i18n.t('spinners.registry.fetched'))
 
       const selected = await select({
@@ -98,13 +99,16 @@ export const add = defineCommand({
       return
     }
 
-    intro(i18n.t('commands.add.intro', { name: integration }))
+    const ref = parseFeatureRef(integration)
+    const registry = resolveRegistryUrl(inventory, args.registry ?? ref.registry)
+
+    intro(i18n.t('commands.add.intro', { name: ref.name }))
 
     const written = await addFeature({
-      name: integration,
+      name: ref.name,
       example: args.example,
       dir: args.dir,
-      registry: args.registry,
+      registry,
       overwrite: args.overwrite,
       yes: args.yes,
     })

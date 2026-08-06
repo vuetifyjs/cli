@@ -15,6 +15,7 @@ import { join, relative } from 'pathe'
 import { V0 } from '../constants/registry'
 import { i18n } from '../i18n'
 import { addStatementToFunctionBody, isFunction } from '../utils/magicast'
+import type { RegistryInstall } from './registry'
 
 export interface PluginRecipe {
   /** Registry item name (kebab), e.g. use-theme */
@@ -29,8 +30,11 @@ export interface PluginRecipe {
   source: string
 }
 
-/** Official v0 plugins → create*Plugin factories. */
-export const PLUGIN_RECIPES: Record<string, Omit<PluginRecipe, 'name' | 'label' | 'file' | 'source'> & { label: string, factory: string }> = {
+/**
+ * Fallback map when the registry item has no `install` field (older payloads).
+ * Prefer `item.install` from the registry JSON once the seed ships it.
+ */
+export const PLUGIN_RECIPES: Record<string, Pick<RegistryInstall, 'label' | 'factory'>> = {
   'use-breakpoints': { label: 'useBreakpoints', factory: 'createBreakpointsPlugin' },
   'use-date': { label: 'useDate', factory: 'createDatePlugin' },
   'use-features': { label: 'useFeatures', factory: 'createFeaturesPlugin' },
@@ -146,17 +150,36 @@ export default defineNuxtPlugin(nuxtApp => {
 `
 }
 
-export function recipeFor (name: string): PluginRecipe | null {
-  const base = PLUGIN_RECIPES[name]
-  if (!base) return null
+/**
+ * Resolve an install recipe. Registry `install` wins; CLI map is the fallback
+ * for older seeds and offline fixtures.
+ */
+export function recipeFor (name: string, install?: RegistryInstall | null): PluginRecipe | null {
+  const fromRegistry = install?.factory
+    ? {
+        label: install.label || name,
+        factory: install.factory,
+        file: install.file || `${name.replace(/^use-/, '')}.ts`,
+      }
+    : null
 
-  const file = `${name.replace(/^use-/, '')}.ts`
+  const base = fromRegistry ?? (PLUGIN_RECIPES[name]
+    ? {
+        label: PLUGIN_RECIPES[name].label,
+        factory: PLUGIN_RECIPES[name].factory,
+        file: `${name.replace(/^use-/, '')}.ts`,
+      }
+    : null)
+
+  if (!base) return null
 
   return {
     name,
     label: base.label,
     factory: base.factory,
-    file,
+    file: base.file.endsWith('.ts') || base.file.endsWith('.js')
+      ? base.file
+      : `${base.file}.ts`,
     source: pluginSource(base.factory, name),
   }
 }
@@ -200,7 +223,9 @@ export async function installPlugin (
   const cwd = options.cwd ?? process.cwd()
   const nuxt = existsSync(join(cwd, 'nuxt.config.ts')) || existsSync(join(cwd, 'nuxt.config.js'))
 
-  if (await pluginInstalled(recipe.factory, cwd)) {
+  const already = await pluginInstalled(recipe.factory, cwd)
+  // `--overwrite` (refresh) rewrites the module even when the factory is present.
+  if (already && !options.overwrite) {
     log.info(i18n.t('commands.add.plugin.already', {
       plugin: recipe.label,
       factory: recipe.factory,
@@ -237,6 +262,11 @@ export async function installPlugin (
       plugin: recipe.label,
       path: underline(rel),
     }))
+  }
+
+  // Already wired on a previous install — only rewrite the module on refresh.
+  if (already && options.overwrite) {
+    return { path: rel, installed: true }
   }
 
   const wired = await wireRegisterPlugins(cwd, recipe)
