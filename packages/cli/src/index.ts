@@ -1,7 +1,13 @@
 import tab from '@bomb.sh/tab/citty'
 import { add } from '@vuetify/cli-shared/commands/add'
+import { diff } from '@vuetify/cli-shared/commands/diff'
+import { generate } from '@vuetify/cli-shared/commands/generate'
+import { list } from '@vuetify/cli-shared/commands/list'
 import { mcp } from '@vuetify/cli-shared/commands/mcp'
 import { createPresetsCommand } from '@vuetify/cli-shared/commands/presets'
+import { refresh } from '@vuetify/cli-shared/commands/refresh'
+import { registry } from '@vuetify/cli-shared/commands/registry'
+import { status } from '@vuetify/cli-shared/commands/status'
 import { registerProjectArgsCompletion } from '@vuetify/cli-shared/completion'
 import { i18n } from '@vuetify/cli-shared/i18n'
 import { createBanner } from '@vuetify/cli-shared/utils/banner'
@@ -26,6 +32,12 @@ export const main = defineCommand({
     init,
     presets,
     add,
+    generate,
+    diff,
+    refresh,
+    registry,
+    list,
+    status,
     mcp,
     update,
     docs,
