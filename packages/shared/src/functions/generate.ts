@@ -63,7 +63,10 @@ export async function generateComponent (options: GenerateOptions) {
     files: [file],
     entry: file,
     title: pascal,
-    componentsDir: base,
+    // Only seed/update the project components alias when writing to the
+    // inventory default — an explicit --dir is one-shot and must not move
+    // later `add` / `refresh` destinations (e.g. into src/components/ui).
+    componentsDir: options.dir ? undefined : base,
   })
 
   return { path: relative(cwd, abs).split('\\').join('/'), name: pascal }
