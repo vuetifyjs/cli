@@ -16,6 +16,7 @@ export const mcp: Feature = {
 
 async function writeMcpClientConfigs (cwd: string) {
   const json = getMcpClientJson()
+  const kimi = getKimiMcpJson()
   const toml = getGrokMcpToml()
 
   await mkdir(join(cwd, '.cursor'), { recursive: true })
@@ -30,7 +31,7 @@ async function writeMcpClientConfigs (cwd: string) {
   await writeFile(join(cwd, '.codex/config.toml'), toml)
 
   await mkdir(join(cwd, '.kimi-code'), { recursive: true })
-  await writeFile(join(cwd, '.kimi-code/mcp.json'), json)
+  await writeFile(join(cwd, '.kimi-code/mcp.json'), kimi)
 }
 
 function getMcpClientJson () {
@@ -38,6 +39,16 @@ function getMcpClientJson () {
     mcpServers: {
       [DEFAULT_VUETIFY_MCP_SERVER_ID]: {
         type: 'http',
+        url: DEFAULT_VUETIFY_REMOTE_URL,
+      },
+    },
+  }, null, 2)}\n`
+}
+
+function getKimiMcpJson () {
+  return `${JSON.stringify({
+    mcpServers: {
+      [DEFAULT_VUETIFY_MCP_SERVER_ID]: {
         url: DEFAULT_VUETIFY_REMOTE_URL,
       },
     },
