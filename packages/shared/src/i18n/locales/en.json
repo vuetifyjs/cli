@@ -434,7 +434,7 @@
       },
       "mcp": {
         "label": "MCP",
-        "hint": "with @vuetify/mcp"
+        "hint": "hosted MCP + client config"
       }
     },
     "client_hints": {
