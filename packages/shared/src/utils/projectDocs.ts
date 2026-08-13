@@ -128,6 +128,8 @@ This project is wired to the hosted Vuetify MCP server (\`${DEFAULT_VUETIFY_REMO
 - Cursor: \`.cursor/mcp.json\`
 - Claude Code: \`.mcp.json\` — approve/enable the project server when prompted
 - Grok: \`.grok/config.toml\` (also reads \`.mcp.json\` / \`.cursor/mcp.json\` as compat)
+- Codex: \`.codex/config.toml\` — project must be trusted for Codex to load project config
+- Kimi Code: \`.kimi-code/mcp.json\` — approve workspace trust when prompted
 
 You do not need to run \`claude mcp add\` or \`grok mcp add\` if your client loads those files.
 
@@ -136,7 +138,10 @@ If a client ignores project files, you can add the server yourself:
 \`\`\`bash
 claude mcp add --transport http --scope project ${DEFAULT_VUETIFY_MCP_SERVER_ID} ${DEFAULT_VUETIFY_REMOTE_URL}
 grok mcp add --transport http --scope project ${DEFAULT_VUETIFY_MCP_SERVER_ID} ${DEFAULT_VUETIFY_REMOTE_URL}
+codex mcp add ${DEFAULT_VUETIFY_MCP_SERVER_ID} --url ${DEFAULT_VUETIFY_REMOTE_URL}
 \`\`\`
+
+For Kimi Code, use the TUI \`/mcp-config\` command if project files are ignored.
 
 For other IDEs (VS Code, Windsurf, Trae, Claude Desktop), run \`${dlxCommand(pm, '@vuetify/mcp-cli')}\` or \`vuetify mcp install\`.
 `
@@ -221,7 +226,7 @@ export function getProjectAgentsMd (options: ProjectDocsOptions) {
 ${options.features.includes('mcp')
   ? `
 ## MCP
-- Client config is already written (\`.cursor/mcp.json\`, \`.mcp.json\`, \`.grok/config.toml\`).
+- Client config is already written (\`.cursor/mcp.json\`, \`.mcp.json\`, \`.grok/config.toml\`, \`.codex/config.toml\`, \`.kimi-code/mcp.json\`).
 - Claude Code: approve the project server if prompted.
 `
   : ''}

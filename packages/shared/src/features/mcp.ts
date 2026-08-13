@@ -25,6 +25,12 @@ async function writeMcpClientConfigs (cwd: string) {
 
   await mkdir(join(cwd, '.grok'), { recursive: true })
   await writeFile(join(cwd, '.grok/config.toml'), toml)
+
+  await mkdir(join(cwd, '.codex'), { recursive: true })
+  await writeFile(join(cwd, '.codex/config.toml'), toml)
+
+  await mkdir(join(cwd, '.kimi-code'), { recursive: true })
+  await writeFile(join(cwd, '.kimi-code/mcp.json'), json)
 }
 
 function getMcpClientJson () {
