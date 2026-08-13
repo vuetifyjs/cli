@@ -1,4 +1,5 @@
 import type { PackageJson } from 'pkg-types'
+import { DEFAULT_VUETIFY_MCP_SERVER_ID, DEFAULT_VUETIFY_REMOTE_URL } from '../mcp-core'
 
 export interface ProjectDocsOptions {
   name: string
@@ -118,6 +119,34 @@ function dlxCommand (pm: string, pkg: string) {
   return `npx -y ${pkg}`
 }
 
+function mcpReadmeSection (pm: string) {
+  return `
+## 🤖 Vuetify MCP Server
+
+This project is wired to the hosted Vuetify MCP server (\`${DEFAULT_VUETIFY_REMOTE_URL}\`). Client config is already in the repo:
+
+- Cursor: \`.cursor/mcp.json\`
+- Claude Code: \`.mcp.json\` — approve/enable the project server when prompted
+- Grok: \`.grok/config.toml\` (also reads \`.mcp.json\` / \`.cursor/mcp.json\` as compat)
+- Codex: \`.codex/config.toml\` — project must be trusted for Codex to load project config
+- Kimi Code: \`.kimi-code/mcp.json\` — approve workspace trust when prompted
+
+You do not need to run \`claude mcp add\` or \`grok mcp add\` if your client loads those files.
+
+If a client ignores project files, you can add the server yourself:
+
+\`\`\`bash
+claude mcp add --transport http --scope project ${DEFAULT_VUETIFY_MCP_SERVER_ID} ${DEFAULT_VUETIFY_REMOTE_URL}
+grok mcp add --transport http --scope project ${DEFAULT_VUETIFY_MCP_SERVER_ID} ${DEFAULT_VUETIFY_REMOTE_URL}
+codex mcp add ${DEFAULT_VUETIFY_MCP_SERVER_ID} --url ${DEFAULT_VUETIFY_REMOTE_URL}
+\`\`\`
+
+For Kimi Code, use the TUI \`/mcp-config\` command if project files are ignored.
+
+For other IDEs (VS Code, Windsurf, Trae, Claude Desktop), run \`${dlxCommand(pm, '@vuetify/mcp-cli')}\` or \`vuetify mcp install\`.
+`
+}
+
 export function getProjectGitignore (options: ProjectDocsOptions) {
   if (options.platform === 'nuxt') {
     return `# Nuxt dev/build outputs
@@ -194,6 +223,13 @@ export function getProjectAgentsMd (options: ProjectDocsOptions) {
 - Framework: ${frameworkLabel(options.platform)}
 - UI Library: ${uiLabel(options.type)}
 - Enabled Features: ${enabledFeatures}
+${options.features.includes('mcp')
+  ? `
+## MCP
+- Client config is already written (\`.cursor/mcp.json\`, \`.mcp.json\`, \`.grok/config.toml\`, \`.codex/config.toml\`, \`.kimi-code/mcp.json\`).
+- Claude Code: approve the project server if prompted.
+`
+  : ''}
 `
 }
 
@@ -264,20 +300,7 @@ ${build}
 ## 🧪 Available Scripts
 
 ${formatScripts(options.scripts, pm)}
-${options.features.includes('mcp')
-  ? `
-## 🤖 Vuetify MCP Server
-
-This project is configured with the Vuetify Model Context Protocol (MCP) server.
-To install and configure the MCP server for your favorite IDE (Cursor, Trae, Windsurf, VS Code, Claude Desktop, etc.) run:
-
-\`\`\`bash
-${dlxCommand(pm, '@vuetify/mcp-cli')}
-\`\`\`
-
-This will open an interactive setup wizard to help you connect your AI assistant to the Vuetify ecosystem.
-`
-  : ''}
+${options.features.includes('mcp') ? mcpReadmeSection(pm) : ''}
 ## 💪 Support Vuetify Development
 
 This project uses ${uiLabel(options.type)} - an MIT licensed Open Source project. We are glad to welcome contributors and any support for ongoing development:
