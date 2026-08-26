@@ -14,7 +14,7 @@
     "@fontsource/roboto": "^5.2.10",
     "@mdi/font": "7.4.47",
     "vue": "^3.5.30",
-    "vuetify": "^4.0.2"
+    "vuetify": "^4.1.11"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.5",
